@@ -2,7 +2,7 @@ const Customer = require('../models/Customer')
 const Admin = require('../models/Admin')
 const StaffMember = require('../models/StaffMember')
 
-exports.customerRegister = async(req, res, next) => {
+exports.customerRegister = async (req, res, next) => {
     const {username, email, password} = req.body;
 
     try {
@@ -22,7 +22,21 @@ exports.customerRegister = async(req, res, next) => {
 }
 
 exports.customerLogin = (req, res, next) => {
-    res.send('customer login')
+    const { email, password } = req.body
+
+    if(!email || !password) {
+        res.status(400).json({ success: false, error: 'Please provide email and password'})
+    }
+
+    try {
+        const customer = await Customer.findOne({ email }).select('+password')
+        if(!customer) {
+            res.status(404).json({ success: false, error: 'Invalid credentials' })
+        }
+
+    } catch (error) {
+
+    }
 }
 
 exports.customerForgotPassword = (req, res, next) => {
@@ -33,8 +47,23 @@ exports.customerResetPassword = (req, res, next) => {
     res.send('customer reset password')
 }
 
-exports.adminRegister = (req, res, next) => {
-    res.send('admin register')
+exports.adminRegister = async (req, res, next) => {
+    const {username, email, password} = req.body;
+
+    try {
+        const admin = await Admin.create({
+            username, email, password
+        })
+        res.status(201).json({
+            success: true,
+            admin
+        })
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: error.message
+        })
+    }
 }
 
 exports.adminLogin = (req, res, next) => {
@@ -49,8 +78,23 @@ exports.adminResetPassword = (req, res, next) => {
     res.send('admin Reset Password')
 }
 
-exports.staffRegister = (req, res, next) => {
-    res.send('staff register')
+exports.staffRegister = async (req, res, next) => {
+    const {username, email, password} = req.body;
+
+    try {
+        const staffMember = await StaffMember.create({
+            username, email, password
+        })
+        res.status(201).json({
+            success: true,
+            staffMember
+        })
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: error.message
+        })
+    }
 }
 
 exports.staffLogin = (req, res, next) => {
