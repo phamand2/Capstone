@@ -5,6 +5,7 @@ const {
 } = require('../controllers/authController')
 
 
+
 router.route('/customerRegister').post(customerRegister)
 
 router.route('/customerLogin').post(customerLogin)
