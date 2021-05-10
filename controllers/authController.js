@@ -21,23 +21,33 @@ exports.customerRegister = async (req, res, next) => {
     }
 }
 
-// exports.customerLogin = (req, res, next) => {
-//     const { email, password } = req.body
+exports.customerLogin = async (req, res, next) => {
+    const { email, password } = req.body
 
-//     if(!email || !password) {
-//         res.status(400).json({ success: false, error: 'Please provide email and password'})
-//     }
+    if(!email || !password) {
+        res.status(400).json({ success: false, error: 'Please provide email and password'})
+    }
 
-//     try {
-//         const customer = await Customer.findOne({ email }).select('+password')
-//         if(!customer) {
-//             res.status(404).json({ success: false, error: 'Invalid credentials' })
-//         }
+    try {
+        const customer = await Customer.findOne({ email }).select('+password')
+        if(!customer) {
+            res.status(404).json({ success: false, error: 'Invalid credentials' })
+        }
+            const isMatch = await customer.matchPasswords(password)
 
-//     } catch (error) {
+            if(!isMatch) {
+                res.status(404).json({ success: false, error: 'Invalid credentials' })
+            }
 
-//     }
-// }
+            res.status(200).json({
+                success: true,
+                token: 'gibberish'
+            })
+
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message })
+    }
+}
 
 exports.customerForgotPassword = (req, res, next) => {
     res.send('customer forgot password')
