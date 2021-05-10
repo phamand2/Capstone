@@ -4,7 +4,7 @@ const app = express()
 const PORT = process.env.PORT || 5001
 const connectDB = require('./config/db')
 const Product =require('./models/product')
-
+const cors = require('cors')
 
 
 // Connect DB
@@ -12,7 +12,9 @@ connectDB()
 
 
 // Middleware
+app.use(cors())
 app.use(express.json())
+
 // app.use('/api/auth', require('./routes/authRoutes'))
 
 app.get('/all-products', (req, res) => {
@@ -28,6 +30,7 @@ app.get('/all-products', (req, res) => {
 
 
 app.post ('/add-products',(req,res) =>{
+  console.log("add-products has been fired")
   const images = req.body.images 
   const title = req.body.title
   const description = req.body.description 
