@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 const StaffMemberSchema = new mongoose.Schema({
     username: {
@@ -34,6 +35,10 @@ StaffMemberSchema.pre('save', async function(next) {
 
 StaffMemberSchema.methods.matchPasswords = async function(password) {
     return await bcrypt.compare(password, this.password)
+}
+
+StaffMemberSchema.methods.getSignedToken = function() {
+    return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRE})
 }
 
 const StaffMember = mongoose.model('StaffMember', StaffMemberSchema)

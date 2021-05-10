@@ -10,10 +10,7 @@ exports.customerRegister = async (req, res, next) => {
         const customer = await Customer.create({
             username, email, password
         })
-        res.status(201).json({
-            success: true,
-            customer
-        })
+        sendCustomerToken(customer, 201, res)
     } catch (error) {
         next(error)
     }
@@ -37,10 +34,7 @@ exports.customerLogin = async (req, res, next) => {
                 return next(new ErrorResponse('Invalid Credentials', 401))
             }
 
-            res.status(200).json({
-                success: true,
-                token: 'gibberish'
-            })
+            sendCustomerToken(customer, 200, res)
 
     } catch (error) {
         res.status(500).json({ success: false, error: error.message })
@@ -62,10 +56,7 @@ exports.adminRegister = async (req, res, next) => {
         const admin = await Admin.create({
             username, email, password
         })
-        res.status(201).json({
-            success: true,
-            admin
-        })
+        sendAdminToken(admin, 201, res)
     } catch (error) {
         res.status(500).json({
             success: false,
@@ -92,10 +83,7 @@ exports.adminLogin = async (req, res, next) => {
                 return next(new ErrorResponse('Invalid Credentials', 401))
             }
 
-            res.status(200).json({
-                success: true,
-                token: 'gibberish'
-            })
+            sendAdminToken(admin, 200, res)
 
     } catch (error) {
         res.status(500).json({ success: false, error: error.message })
@@ -118,10 +106,7 @@ exports.staffRegister = async (req, res, next) => {
         const staffMember = await StaffMember.create({
             username, email, password
         })
-        res.status(201).json({
-            success: true,
-            staffMember
-        })
+        sendStaffMemberToken(staffMember, 201, res)
     } catch (error) {
         res.status(500).json({
             success: false,
@@ -148,10 +133,7 @@ exports.staffLogin = async (req, res, next) => {
                 return next(new ErrorResponse('Invalid Credentials', 401))
             }
 
-            res.status(200).json({
-                success: true,
-                token: 'gibberish'
-            })
+            sendStaffMemberToken(staffMember, 200, res)
     } catch (error) {
         res.status(500).json({ success: false, error: error.message })
     }
@@ -163,4 +145,19 @@ exports.staffForgotPassword = (req, res, next) => {
 
 exports.staffResetPassword = (req, res, next) => {
     res.send('staff reset password')
+}
+
+const sendCustomerToken = (customer, statusCode, res) => {
+    const token = customer.getSignedToken()
+    res.status(statusCode).json({ success: true, token })
+}
+
+const sendAdminToken = (admin, statusCode, res) => {
+    const token = admin.getSignedToken()
+    res.status(statusCode).json({ success: true, token })
+}
+
+const sendStaffMemberToken = (staffMember, statusCode, res) => {
+    const token = staffMember.getSignedToken()
+    res.status(statusCode).json({ success: true, token })
 }
