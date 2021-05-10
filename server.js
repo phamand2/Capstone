@@ -11,7 +11,10 @@ connectDB()
 
 // Middleware
 app.use(express.json())
-app.use('/api/auth', require('./routes/authRoutes'))
+app.use('/auth', require('./routes/authRoutes'))
+app.use('/admin', require('./routes/adminRoutes'))
+app.use('/customer', require('./routes/customerRoutes'))
+app.use('/staff', require('./routes/staffMemberRoutes'))
 // error handler - should be *last* piece of middleware
 app.use(errorHandler)
 

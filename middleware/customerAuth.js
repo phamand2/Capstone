@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const Customer = require('../models/Customer')
 const ErrorResponse = require('../utils/errorResponse')
 
-exports.protect = async(req, res, next) => {
+exports.authenticate = async(req, res, next) => {
     let token;
 
     if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
