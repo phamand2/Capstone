@@ -42,11 +42,25 @@ exports.customerLogin = async (req, res, next) => {
 }
 
 exports.customerForgotPassword = (req, res, next) => {
-    res.send('customer forgot password')
+    res.send('customer reset password')
+    // functionality still in progress...
+    // const {email} = req.body
+
+    // try {
+    //     const customer = await Customer.findOne({email})
+
+    //     if(!customer) {
+    //         return next(new ErrorResponse('Email could not be sent', 404))
+    //     }
+
+    //     const resetToken
+    // } catch (error) {
+
+    // }
 }
 
 exports.customerResetPassword = (req, res, next) => {
-    res.send('customer reset password')
+    
 }
 
 exports.adminRegister = async (req, res, next) => {
