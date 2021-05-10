@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const PORT = process.env.PORT || 5001
 const connectDB = require('./config/db')
+const errorHandler = require('./middleware/error')
 
 // Connect DB
 connectDB()
@@ -11,6 +12,9 @@ connectDB()
 // Middleware
 app.use(express.json())
 app.use('/api/auth', require('./routes/authRoutes'))
+// error handler - should be *last* piece of middleware
+app.use(errorHandler)
+
 
 
 

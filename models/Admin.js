@@ -32,6 +32,10 @@ AdminSchema.pre('save', async function(next) {
     next();
 })
 
+AdminSchema.methods.matchPasswords = async function(password) {
+    return await bcrypt.compare(password, this.password)
+}
+
 const Admin = mongoose.model('Admin', AdminSchema)
 
 module.exports = Admin

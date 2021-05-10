@@ -32,6 +32,10 @@ StaffMemberSchema.pre('save', async function(next) {
     next();
 })
 
+StaffMemberSchema.methods.matchPasswords = async function(password) {
+    return await bcrypt.compare(password, this.password)
+}
+
 const StaffMember = mongoose.model('StaffMember', StaffMemberSchema)
 
 module.exports = StaffMember
