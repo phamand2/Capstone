@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/pages/App';
 import ProductManage from '../src/components/pages/ProductManage'
+import ProductUpdate from '../src/components/pages/UpdateProduct'
 import { BaseLayout } from '../src/components/pages/Baselayout';
 import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware, compose } from 'redux'
@@ -29,6 +30,7 @@ ReactDOM.render(
         <BaseLayout>
           <Switch>
             <Route exact path = "/product-manage" component = {ProductManage} />
+            <Route exact path = "/update-product/:_id" component = {ProductUpdate} />
             <Route exact path = "/" component = {App} />
           </Switch>
         </BaseLayout>

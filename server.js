@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT || 5001
+const PORT = process.env.PORT || 5000
 const connectDB = require('./config/db')
 const errorHandler = require('./middleware/error')
 const Product =require('./models/product')
@@ -37,7 +37,7 @@ app.get('/all-products', (req, res) => {
 
 app.post ('/add-products',(req,res) =>{
   console.log("add-products has been fired")
-  const images = req.body.images 
+  const imageurl = req.body.imageurl 
   const title = req.body.title
   const description = req.body.description 
   const rate = req.body.rate 
@@ -45,7 +45,7 @@ app.post ('/add-products',(req,res) =>{
   const subcategory = req.body.subcategory 
 
   let product  = new Product({
-    images: images,
+    imageurl: imageurl,
     title: title,
     description: description,
     rate: rate,
@@ -66,12 +66,13 @@ app.post ('/add-products',(req,res) =>{
 
 
 
-app.delete('/product/:productId', (req, res) => {
+app.delete('/delete-product/:productId', (req, res) => {
 
   const productId = req.params.productId 
+  console.log(productId)
 
-  Product.remove({
-    _id: productId
+  Product.deleteOne({
+    _id: productId,
   }, (error, result) => {
     if(error) {
       res.json({error: 'Unable to delete product'})
@@ -83,10 +84,11 @@ app.delete('/product/:productId', (req, res) => {
 })
 
 
+
 app.put('/update-product/:productId', (req, res) => {
 
   const productId = req.params.productId 
-  const images = req.body.images 
+  const imageurl = req.body.imageurl 
   const title = req.body.title
   const description = req.body.description 
   const rate = req.body.rate 
@@ -94,7 +96,7 @@ app.put('/update-product/:productId', (req, res) => {
   const subcategory = req.body.subcategory 
 
   const updatedProduct = {
-    images: images,
+    imageurl: imageurl,
     title: title,
     description: description,
     rate: rate,

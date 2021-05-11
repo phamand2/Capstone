@@ -36,3 +36,30 @@
     transform: rotate(360deg);
   }
 }
+
+
+.card_flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-bottom: 1px solid grey;
+  
+  
+}
+
+.card {
+  margin: 10px;
+  padding:10px;
+  border: 1px solid grey;
+
+}
+.card:hover {
+  border: 5px solid grey;
+}
+
+
+img {
+  width:200px;
+  height:200px;
+}
