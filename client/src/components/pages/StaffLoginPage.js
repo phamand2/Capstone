@@ -1,5 +1,5 @@
 // can change any/all class names for CSS...just placeholder stuff
-import '../css/LoginPage.css'
+import '../css/CustLoginPage.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
@@ -10,6 +10,9 @@ const LoginPage = ({history}) => {
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
 
+    // This below redirects users to the home page if they're already logged in
+    // Not using it right now b/c it makes testing annoying
+    
     // useEffect(() => {
     //     if(localStorage.getItem('customerToken') || localStorage.getItem('adminToken') || localStorage.getItem('staffToken')) {
     //         history.push('/')
@@ -39,10 +42,56 @@ const LoginPage = ({history}) => {
         }
     }
 
+    const staffLoginHandler = async (e) => {
+        e.preventDefault()
+
+        const config = {
+            header: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        try {
+            const { data } = await axios.post('/auth/staffLogin', { email, password }, config)
+
+            localStorage.setItem('staffToken', data.token)
+
+            history.push('/')
+        } catch (error) {
+            setError(error.response.data.error)
+            setTimeout(() => {
+                setError('')
+            }, 5000)
+        }
+    }
+
+    const adminLoginHandler = async (e) => {
+        e.preventDefault()
+
+        const config = {
+            header: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        try {
+            const { data } = await axios.post('/auth/adminLogin', { email, password }, config)
+
+            localStorage.setItem('adminToken', data.token)
+
+            history.push('/')
+        } catch (error) {
+            setError(error.response.data.error)
+            setTimeout(() => {
+                setError('')
+            }, 5000)
+        }
+    }
+
     return (
         <div className='login'>
             <div className = 'login-screen'>
-                <form onSubmit={customerLoginHandler} className = 'login-screen__form'>
+                <form onSubmit={customerLoginHandler} className = 'login-screen__form' autocomplete="off" action="...">
                     <h3 className = 'login-screen__title'>Customer Login</h3>
                     {error && <span className='error-message'>{error}</span>}
                     <div className = 'form-group'>
@@ -58,7 +107,7 @@ const LoginPage = ({history}) => {
                 </form>
             </div>
             <div className = 'login-screen'>
-            <form onSubmit={customerLoginHandler} className = 'login-screen__form'>
+            <form onSubmit={staffLoginHandler} className = 'login-screen__form'autocomplete="off" action="...">
                 <h3 className = 'login-screen__title'>Staff Login</h3>
                 {error && <span className='error-message'>{error}</span>}
                 <div className = 'form-group'>
@@ -74,7 +123,7 @@ const LoginPage = ({history}) => {
             </form>
             </div>
             <div className = 'login-screen'>
-            <form onSubmit={customerLoginHandler} className = 'login-screen__form'>
+            <form onSubmit={adminLoginHandler} className = 'login-screen__form' autocomplete="off" action="...">
                 <h3 className = 'login-screen__title'>Admin Login</h3>
                 {error && <span className='error-message'>{error}</span>}
                 <div className = 'form-group'>
