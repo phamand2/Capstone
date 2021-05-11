@@ -4,3 +4,4 @@ exports.getAdminData = (req, res, next) => {
         data: "You have access to the private data on this route"
     })
 }
+
