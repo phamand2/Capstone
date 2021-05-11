@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT || 5001
+const PORT = process.env.PORT || 5000
 const connectDB = require('./config/db')
 const errorHandler = require('./middleware/error')
 const Product =require('./models/product')
@@ -32,6 +32,7 @@ app.get('/all-products', (req, res) => {
     }
   })
 })
+
 
 
 const server = app.listen(PORT, () => {

@@ -7,6 +7,7 @@ import ProductManage from '../src/components/pages/ProductManage'
 import BaseLayout from './components/pages/BaseLayout';
 import CustRegisterPage from './components/pages/CustRegisterPage'
 import LoginPage from './components/pages/LoginPage'
+import ProductUpdate from '../src/components/pages/UpdateProduct'
 import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from '../src/stores/reducer';
@@ -31,6 +32,7 @@ ReactDOM.render(
         <BaseLayout>
           <Switch>
             <Route exact path = "/product-manage" component = {ProductManage} />
+            <Route exact path = "/update-product/:_id" component = {ProductUpdate} />
             <Route exact path = "/" component = {App} />
             <Route exact path = '/auth/register' component = {CustRegisterPage}/>
             <Route exact path = '/auth/login' component = {LoginPage}/>
