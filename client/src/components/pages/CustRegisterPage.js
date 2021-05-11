@@ -1,7 +1,6 @@
 // can change any/all class names for CSS...just placeholder stuff
-import './CustRegisterPage.css'
+import '../css/CustRegisterPage.css'
 import axios from 'axios'
-import './CustRegisterPage.css'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
@@ -64,7 +63,7 @@ const CustRegisterPage = ({history}) => {
 
                 <button type = 'submit' className = 'btn btn-primary'>Register</button>
 
-                <span className='register-screen__subtext'>Already have an account? <Link to='/login'>Log In</Link></span>
+                <span className='register-screen__subtext'>Already have an account? <Link to='/auth/login'>Log In</Link></span>
             </form>
         </div>
     )

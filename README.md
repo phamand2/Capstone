@@ -1,7 +1,19 @@
-In-progress Capstone Project by YQ, NS, WK, and NMA
+# Harvest Direct
 
-MVP e-commerce site for the nascent grocery delivery service business being started by a family member of one of our dev team. 
+* **Live Link:**
+(coming soon)
 
-Site to include user, admin, and staff login functionality. Suggestions from instructor for 'nice-to-haves' include a way to search products and/or filter by price or other categories, possibly product reviews.
+* **Purpose of the app:** <br/><br/>
+    Harvest Direct is a proof-of-concept/MVP e-commerce site for the nascent grocery delivery business of the family of one of our dev team members.
 
-Tools used: MERN stack (MongoDB, Express, React, Node), Redux, SendGrid SMTP relay
+
+* **Features:** 
+- Ability to add items to cart and check out securely. Cart persistence handled through Redux.
+- Registration, login, forgot password, and password reset functions for 3 different levels of access: customer, staff, and admin. All passwords are stored encrypted and JWTs are used for authentication.
+
+* **Languages/Frameworks/Tools Used:**
+MERN stack (MongoDB, Express, React, Node), Redux, SendGrid SMTP relay, Javascript, HTML/CSS
+
+* **Developers:** 
+Neil Shah, Younus Qureishy, Wesley Kolar, and Nicole Aldurien
+
