@@ -2,6 +2,7 @@ const Customer = require('../models/Customer')
 const Admin = require('../models/Admin')
 const StaffMember = require('../models/StaffMember')
 const ErrorResponse = require('../utils/errorResponse')
+const sendEmail = require('../utils/sendEmail')
 
 exports.customerRegister = async (req, res, next) => {
     const {username, email, password} = req.body;
@@ -41,22 +42,44 @@ exports.customerLogin = async (req, res, next) => {
     }
 }
 
-exports.customerForgotPassword = (req, res, next) => {
-    res.send('customer reset password')
-    // functionality still in progress...
-    // const {email} = req.body
+exports.customerForgotPassword = async(req, res, next) => {
 
-    // try {
-    //     const customer = await Customer.findOne({email})
+    const { email } = req.body
 
-    //     if(!customer) {
-    //         return next(new ErrorResponse('Email could not be sent', 404))
-    //     }
+    try {
+        const customer = await Customer.findOne({ email })
 
-    //     const resetToken
-    // } catch (error) {
+        if(!customer) {
+            return next(new ErrorResponse('Email could not be sent', 404))
+        }
 
-    // }
+        const resetToken = customer.getResetPasswordToken()
+            await customer.save()
+            const resetUrl = `http:localhost:5000/passwordreset/${resetToken}`
+            const message = `
+                <h1>You have requested a password reset.</h1>
+                <p>Follow this link to reset your password:</p>
+                <a href=${resetUrl} clicktracking=off>${resetUrl}</a>
+                `
+
+            try {
+                await sendEmail({
+                    to: customer.email,
+                    subject: 'Password Reset Request',
+                    text: message
+                })
+                res.status(200).json({ success: true, data: 'Email sent'})
+            } catch (error) {
+                customer.resetPasswordToken = undefined
+                customer.resetPasswordExpire = undefined
+
+                await customer.save()
+
+                return next(new ErrorResponse('Email could not be sent', 500))
+            }
+    } catch (error) {
+        next(error)
+    }
 }
 
 exports.customerResetPassword = (req, res, next) => {
@@ -105,9 +128,45 @@ exports.adminLogin = async (req, res, next) => {
 }
 
 
-exports.adminForgotPassword = (req, res, next) => {
-    res.send('admin forgot password')
+exports.adminForgotPassword = async (req, res, next) => {
+    const { email } = req.body
+
+    try {
+        const admin = await Admin.findOne({ email })
+
+        if(!admin) {
+            return next(new ErrorResponse('Email could not be sent', 404))
+        }
+
+        const resetToken = admin.getResetPasswordToken()
+            await admin.save()
+            const resetUrl = `http:localhost:5000/passwordreset/${resetToken}`
+            const message = `
+                <h1>You have requested a password reset.</h1>
+                <p>Follow this link to reset your password:</p>
+                <a href=${resetUrl} clicktracking=off>${resetUrl}</a>
+                `
+
+            try {
+                await sendEmail({
+                    to: admin.email,
+                    subject: 'Password Reset Request',
+                    text: message
+                })
+                res.status(200).json({ success: true, data: 'Email sent'})
+            } catch (error) {
+                admin.resetPasswordToken = undefined
+                admin.resetPasswordExpire = undefined
+
+                await admin.save()
+
+                return next(new ErrorResponse('Email could not be sent', 500))
+            }
+    } catch (error) {
+        next(error)
+    }
 }
+
 
 exports.adminResetPassword = (req, res, next) => {
     res.send('admin Reset Password')
