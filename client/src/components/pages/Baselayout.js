@@ -1,13 +1,12 @@
-import { Component } from "react";
 
+const BaseLayout = (props) => {
 
-export class BaseLayout extends Component {
-
-    render() {
-        return (
-            <div>
-                    {this.props.children}
-            </div>
-        )
-    }
+    return (
+        <div>
+            {props.children}
+        </div>
+    )
 }
+
+
+export default BaseLayout

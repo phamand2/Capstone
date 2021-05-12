@@ -81,7 +81,7 @@ app.get('/all-products/flower', (req, res) => {
 })
 
 
-//route to add new product
+//TODO: add/update/delete product routes were previously moved under admin route, need to update admin route image category from name of images to name of imageurl
 app.post ('/add-products',(req,res) =>{
   console.log("add-products has been fired")
   const imageurl = req.body.imageurl 
@@ -112,23 +112,7 @@ app.post ('/add-products',(req,res) =>{
 })
 
 
-//route to delete a product
-app.delete('/delete-product/:productId', (req, res) => {
 
-  const productId = req.params.productId 
-  console.log(productId)
-
-  Product.deleteOne({
-    _id: productId,
-  }, (error, result) => {
-    if(error) {
-      res.json({error: 'Unable to delete product'})
-    } else {
-      res.json({success: true, message: 'Product deleted successfully!'})
-    }
-  })
-
-})
 
 
 //route to update an existing product

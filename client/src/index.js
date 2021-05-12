@@ -4,15 +4,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/pages/App';
 import ProductManage from '../src/components/pages/ProductManage'
+import BaseLayout from './components/pages/BaseLayout';
+import CustRegisterPage from './components/pages/CustRegisterPage'
+import CustLoginPage from './components/pages/CustLoginPage'
 import ProductUpdate from '../src/components/pages/UpdateProduct'
-import { BaseLayout } from '../src/components/pages/Baselayout';
 import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from '../src/stores/reducer';
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { Router, Route, Switch } from 'react-router-dom'
-import {createBrowserHistory} from 'history'
+import { createBrowserHistory } from 'history'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -32,6 +34,13 @@ ReactDOM.render(
             <Route exact path = "/product-manage" component = {ProductManage} />
             <Route exact path = "/update-product/:_id" component = {ProductUpdate} />
             <Route exact path = "/" component = {App} />
+            <Route exact path = '/auth/register' component = {CustRegisterPage}/>
+            <Route exact path = '/auth/customer-login' component = {CustLoginPage}/>
+            {/* no routes below exist yet */}
+            {/* 
+            <Route exact path = '/auth/forgotpassword' component = {ForgotPswdScreen}/>
+            <Route exact path = '/auth/passwordreset/:resetToken' component = {ForgotPswdScreen}/> */}
+            
           </Switch>
         </BaseLayout>
       </Router>
@@ -41,7 +50,4 @@ ReactDOM.render(
 );
 
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

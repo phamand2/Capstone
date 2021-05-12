@@ -1,8 +1,32 @@
 const express = require('express')
 const router = express.Router()
-const {getAdminData} = require('../controllers/adminController')
+const { getAdminData, updateProduct, deleteProduct } = require('../controllers/adminController')
 const { authenticate } = require('../middleware/adminAuth')
+const Product = require('../models/product')
 
-router.route('/add-staff').get(authenticate, getAdminData)
+router.get('/add-staff', authenticate, getAdminData)
+router.put('/update-product/:productId', authenticate, updateProduct)
+router.delete('/product/:productId', authenticate, deleteProduct)
+
+
+router.post ('/add-products', authenticate, (req,res) => {
+
+    const { images, title, description, rate, category, subcategory } = req.body
+  
+    let product  = new Product({
+        images, title, description, rate, category, subcategory,
+      })
+
+    product.save((error) => {
+      if(error) {
+        res.json({error: 'Unable to save the product'})
+      } else {
+        res.json({success: true, message: 'New product saved!', product})
+      }
+    })
+})
+
+
+
 
 module.exports = router

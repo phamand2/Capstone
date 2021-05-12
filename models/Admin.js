@@ -1,6 +1,7 @@
-const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
+const crypto = require('crypto')
 const jwt = require('jsonwebtoken')
+const mongoose = require('mongoose')
 
 const AdminSchema = new mongoose.Schema({
     username: {
@@ -39,6 +40,15 @@ AdminSchema.methods.matchPasswords = async function(password) {
 
 AdminSchema.methods.getSignedToken = function() {
     return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRE})
+}
+
+AdminSchema.methods.getResetPasswordToken = function() {
+    const resetToken = crypto.randomBytes(20).toString('hex')
+
+    this.resetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex')
+
+    this.resetPasswordExpire = Date.now() + 10 * (60 * 1000)
+    return resetToken
 }
 
 const Admin = mongoose.model('Admin', AdminSchema)
