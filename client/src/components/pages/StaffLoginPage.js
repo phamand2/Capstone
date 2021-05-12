@@ -4,6 +4,8 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
+
+//NONE OF THIS IS WORKING YET
 const LoginPage = ({history}) => {
     
     const [email, setEmail] = useState('')

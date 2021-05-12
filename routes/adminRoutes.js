@@ -11,10 +11,10 @@ router.delete('/product/:productId', authenticate, deleteProduct)
 
 router.post ('/add-products', authenticate, (req,res) => {
 
-    const { images, title, description, rate, category, subcategory } = req.body
+    const { imageurl, title, description, rate, category, subcategory } = req.body
   
     let product  = new Product({
-        images, title, description, rate, category, subcategory,
+        imageurl, title, description, rate, category, subcategory,
       })
 
     product.save((error) => {

@@ -8,10 +8,10 @@ exports.getAdminData = (req, res, next) => {
 }
 
 exports.updateProduct = (req, res, next) => {
-    const { productId, images, title, description, rate, category, subcategory } = req.body
+    const { productId, imageurl, title, description, rate, category, subcategory } = req.body
   
     const updatedProduct = {
-      images, title, description, rate, category, subcategory
+      imageurl, title, description, rate, category, subcategory
     }
   
     Product.findByIdAndUpdate(productId, updatedProduct, (error, result) => {
