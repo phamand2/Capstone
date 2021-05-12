@@ -50,7 +50,7 @@ export const loadProducts = () => {
 export const deleteProduct = (_id) => {
     return(dispatch) => {
         
-        fetch(`http://localhost:5000/delete-product/${_id}`, {
+        fetch(`http://localhost:5000/admin/delete-product/${_id}`, {
             method: 'DELETE',
             headers: {
                 'Content-type': 'application/json'

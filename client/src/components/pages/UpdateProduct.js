@@ -50,33 +50,35 @@ function ProductUpdate(props) {
 
 
     return<div>
-        <h1>update page</h1>
-        <div>
-            <div>
+        <div id="header">
+              <h1>Update Product page</h1>
+        </div>
+        <div id="inputsection">
+            <div id="storenametextbox">
                 <label>Image</label>
                 <input onChange = {handleChange}  type="text" name="imageurl" />
             </div>
-            <div>
+            <div  id="storenametextbox">
                 <label>title</label>
                 <input onChange = {handleChange}  type="text" name="title" />
-            </div>
-            <div>
+            </div >
+            <div id="storenametextbox">
                 <label>description</label>
                 <input onChange = {handleChange}  type="text" name="description" />
             </div>
-            <div>
+            <div id="storenametextbox">
                 <label>rate</label>
                 <input onChange = {handleChange}  type="text" name="rate" />
             </div>
-            <div>
+            <div id="storenametextbox">
                 <label>category</label>
                 <input onChange = {handleChange}  type="text" name="category" />
             </div>
-            <div>
+            <div id="storenametextbox">
                 <label>subcategory</label>
                 <input onChange = {handleChange}  type="text" name="subcategory" />
             </div>
-            <div>
+            <div id="btnsubmit">
                 <button onClick = {handleupdate}>update product</button>
             </div>
         </div><br></br>
