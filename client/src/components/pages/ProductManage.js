@@ -43,6 +43,7 @@ function ProductManage(props) {
     const handledelete = (_id) => {
         props.onDelete(_id)
         props.onLoadProducts()
+        window.location.reload(false);
         
     }
 
@@ -216,11 +217,13 @@ function ProductManage(props) {
 
   
   const handleSave =() => {
+    const token = localStorage.getItem('adminToken')
     
-    fetch ('http://localhost:5000/add-products',{
+    fetch ('http://localhost:5000/admin/add-products',{
         method: 'POST',
         
         headers: {
+            'authorization':`Bearer ${token}`,
             'Content-Type': 'application/json'
         },
         body:JSON.stringify({
@@ -237,6 +240,7 @@ function ProductManage(props) {
         if(result.success) {
             
           alert("Your Product Has Been Added to Database")
+          window.location.reload(false);
           
         }
        
