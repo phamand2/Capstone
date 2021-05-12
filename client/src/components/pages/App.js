@@ -10,7 +10,6 @@ const App = () => {
       localhost:3000/admin/update-product/:productId<br/>
       (delete) localhost:3000/admin/product/:productId<br/>
       <br/><br/>
-      You will need to login as admin to access them; that route is:<br/>
       localhost:3000/auth/admin-login<br/><br/>
       It will redirect you to the home page if it worked and otherwise display an error. Your credentials are:<br/>
       yourfirstname@test.com<br/>
