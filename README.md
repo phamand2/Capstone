@@ -8,8 +8,8 @@
 
 
 * **Features:** 
-- Ability to add items to cart and check out securely. Cart persistence handled through Redux.
-- Registration, login, forgot password, and password reset functions for 3 different levels of access: customer, staff, and admin. All passwords are stored encrypted and JWTs are used for authentication.
+    : Ability to add items to cart and check out securely. Cart persistence handled through Redux.
+    : Registration, login, forgot password, and password reset functions for 3 different levels of access: customer, staff, and admin. All passwords are stored encrypted and JWTs are used for authentication.
 
 * **Languages/Frameworks/Tools Used:**
 MERN stack (MongoDB, Express, React, Node), Redux, SendGrid SMTP relay, Javascript, HTML/CSS
