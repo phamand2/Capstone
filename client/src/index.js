@@ -4,10 +4,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/pages/App';
 import ProductManage from '../src/components/pages/ProductManage'
-import BaseLayout from './components/pages/BaseLayout';
+import BaseLayout from './components/pages/Baselayout';
 import CustRegisterPage from './components/pages/CustRegisterPage'
 import CustLoginPage from './components/pages/CustLoginPage'
 import AdminLoginPage from './components/pages/AdminLoginPage'
+import StaffLoginPage from './components/pages/StaffLoginPage'
+import ForgotPasswordPage from './components/pages/ForgotPasswordPage'
+import ResetPasswordPage from './components/pages/ResetPasswordPage'
 import ProductUpdate from '../src/components/pages/UpdateProduct'
 import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware, compose } from 'redux'
@@ -38,11 +41,9 @@ ReactDOM.render(
             <Route exact path = '/auth/register' component = {CustRegisterPage}/>
             <Route exact path = '/auth/customer-login' component = {CustLoginPage}/>
             <Route exact path = '/auth/admin-login' component = {AdminLoginPage}/>
-            {/* no routes below exist yet */}
-            {/* 
-            <Route exact path = '/auth/forgotpassword' component = {ForgotPswdScreen}/>
-            <Route exact path = '/auth/passwordreset/:resetToken' component = {ForgotPswdScreen}/> */}
-            
+            <Route exact path = '/auth/staff-login' component = {StaffLoginPage}/>
+            <Route exact path = '/auth/forgotpassword' component = {ForgotPasswordPage}/>
+            <Route exact path = '/auth/passwordreset/:resetToken' component = {ResetPasswordPage}/>
           </Switch>
         </BaseLayout>
       </Router>

@@ -12,9 +12,9 @@
     
     Registration, login, forgot password, and password reset functions for 3 different levels of access: customer, staff, and admin. All passwords are stored encrypted and JWTs are used for authentication.
 
-* **Languages/Frameworks/Tools Used:**
+* **Languages/Frameworks/Tools Used:**<br/>
 MERN stack (MongoDB, Express, React, Node), Redux, SendGrid SMTP relay, Javascript, HTML/CSS
 
-* **Developers:** 
+* **Developers:**<br/>
 Neil Shah, Younus Qureishy, Wesley Kolar, and Nicole Aldurien
 

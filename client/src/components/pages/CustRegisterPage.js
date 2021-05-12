@@ -11,6 +11,15 @@ const CustRegisterPage = ({history}) => {
     const [confirmPassword, setConfirmPassword] = useState('')
     const [error, setError] = useState('')
 
+    // This below redirects users to the home page if they're already logged in
+    // Not using it right now b/c it makes testing annoying
+
+    // useEffect(() => {
+    //     if(localStorage.getItem('customerToken') || localStorage.getItem('adminToken') || localStorage.getItem('staffToken')) {
+    //         history.push('/')
+    //     }
+    // }, [history])
+
     const registerHandler = async (e) => {
         e.preventDefault()
 
