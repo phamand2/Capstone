@@ -73,7 +73,7 @@ app.get('/all-products/flower', (req, res) => {
     category: "flowers",
   }, (error, posts) => {
     if(error) {
-      res.json({error: 'Unable to fetch products!'}) 
+      res.json({error: 'Unable to fetch products!'})
     } else {
       res.json(posts)
     }
