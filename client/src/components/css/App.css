@@ -37,6 +37,19 @@
   }
 }
 
+#header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 80px;
+  color: red;
+}
+
+#box {
+  border: 2px solid black;
+  margin: 10px;
+  padding: 10px;
+}
 
 .card_flex {
   display: flex;
@@ -44,6 +57,7 @@
   flex-wrap: wrap;
   justify-content: center;
   border-bottom: 1px solid grey;
+  background-color: #61dafb;
   
   
 }
@@ -58,8 +72,68 @@
   border: 5px solid grey;
 }
 
+.best-book-h1{
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+  
+}
+
 
 img {
   width:200px;
   height:200px;
+}
+
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+
+.collapse_btn_title {
+  margin: 10px;
+}
+
+#inputsection {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  font-size: 20px;
+  background: yellowgreen;
+}
+
+#storenametextbox {
+  margin: 10px;
+  font-size: 15px;
+  border: 3px solid black;
+}
+
+#btnsubmit {
+  margin: 10px;
+  font-size: 30px;
+  border: 3px solid black;
 }

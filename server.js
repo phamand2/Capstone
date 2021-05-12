@@ -23,8 +23,25 @@ app.use('/staff', require('./routes/staffMemberRoutes'))
 app.use(errorHandler)
 
 
+
+// route to get all products 
 app.get('/all-products', (req, res) => {
-  Product.find({}, (error, posts) => {
+  Product.find({}, (error, product) => {
+    if(error) {
+      res.json({error: 'Unable to fetch products!'}) 
+    } else {
+      res.json(product)
+    }
+  })
+})
+
+
+//route to get product by  all vegetable
+app.get('/all-products/vegetable', (req, res) => {
+  
+  Product.find({
+    category: "vegetable",
+  }, (error, posts) => {
     if(error) {
       res.json({error: 'Unable to fetch products!'}) 
     } else {
@@ -34,7 +51,37 @@ app.get('/all-products', (req, res) => {
 })
 
 
+//route to get product by  all fruit
+app.get('/all-products/fruit', (req, res) => {
+  
+  Product.find({
+    category: "fruit",
+  }, (error, posts) => {
+    if(error) {
+      res.json({error: 'Unable to fetch products!'}) 
+    } else {
+      res.json(posts)
+    }
+  })
+})
 
+
+//route to get product by  all flowers
+app.get('/all-products/flower', (req, res) => {
+  
+  Product.find({
+    category: "flowers",
+  }, (error, posts) => {
+    if(error) {
+      res.json({error: 'Unable to fetch products!'}) 
+    } else {
+      res.json(posts)
+    }
+  })
+})
+
+
+//route to add new product
 app.post ('/add-products',(req,res) =>{
   console.log("add-products has been fired")
   const imageurl = req.body.imageurl 
@@ -65,7 +112,7 @@ app.post ('/add-products',(req,res) =>{
 })
 
 
-
+//route to delete a product
 app.delete('/delete-product/:productId', (req, res) => {
 
   const productId = req.params.productId 
@@ -84,7 +131,7 @@ app.delete('/delete-product/:productId', (req, res) => {
 })
 
 
-
+//route to update an existing product
 app.put('/update-product/:productId', (req, res) => {
 
   const productId = req.params.productId 
