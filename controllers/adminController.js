@@ -26,8 +26,8 @@ exports.updateProduct = (req, res, next) => {
 exports.deleteProduct = (req, res, next) => {
     const productId = req.params.productId 
   
-    Product.remove({
-      _id: productId
+    Product.deleteOne({
+      _id: productId,
     }, (error, result) => {
       if(error) {
         res.json({error: 'Unable to delete product'})

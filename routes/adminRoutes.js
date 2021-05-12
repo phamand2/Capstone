@@ -6,7 +6,7 @@ const Product = require('../models/product')
 
 router.get('/add-staff', authenticate, getAdminData)
 router.put('/update-product/:productId', authenticate, updateProduct)
-router.delete('/product/:productId', authenticate, deleteProduct)
+router.delete('/delete-product/:productId', authenticate, deleteProduct)
 
 
 router.post ('/add-products', authenticate, (req,res) => {
