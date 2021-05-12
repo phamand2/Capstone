@@ -17,12 +17,14 @@ function ProductUpdate(props) {
     // var  all_products = props.all_products 
     // console.log(all_products)
     const handleupdate =() => {
-        
+
+        const token = localStorage.getItem('adminToken')
         const id = props.match.params
         console.log(id)
-        fetch (`http://localhost:5000/update-product/${id._id}`,{
+        fetch (`http://localhost:5000/admin/update-product/${id._id}`,{
             method: 'PUT',
             headers: {
+                'authorization':`Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body:JSON.stringify({
