@@ -1,5 +1,5 @@
 
-const BaseLayout = (props) => {
+const BaseLayout = (props) =>{
 
     return (
         <div>
