@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import "../css/AllForgotPswdPages.css";
 
-const CustForgotPswdPage = () => {
+const StaffForgotPswdPage = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -17,7 +17,7 @@ const CustForgotPswdPage = () => {
     };
 
     try {
-      const { data } = await axios.post('/auth/customer-forgot-password', { email }, config);
+      const { data } = await axios.post('/auth/staff-forgot-password', { email }, config);
       setSuccess(data.data);
     } catch (error) {
         setError(error.response.data.error);
@@ -50,4 +50,4 @@ const CustForgotPswdPage = () => {
   );
 };
 
-export default CustForgotPswdPage;
+export default StaffForgotPswdPage;

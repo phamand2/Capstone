@@ -39,7 +39,7 @@ const CustRegisterPage = ({history}) => {
         }
 
         try {
-            const { data } = await axios.post('/auth/customerRegister', {username, email, password}, config)
+            const { data } = await axios.post('/auth/customer-register', {username, email, password}, config)
 
             localStorage.setItem('customerToken', data.token)
 

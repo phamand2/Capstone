@@ -1,10 +1,10 @@
-import "../css/ResetPasswordPage.css";
+import "../css/AllResetPswdPages.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 
-const ResetPasswordPage = ({ history, match }) => {
+const CustResetPswdPage = ({ history, match }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -78,4 +78,4 @@ const ResetPasswordPage = ({ history, match }) => {
   );
 };
 
-export default ResetPasswordPage;
+export default CustResetPswdPage;

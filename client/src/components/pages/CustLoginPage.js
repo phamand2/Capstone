@@ -1,5 +1,5 @@
 // can change any/all class names for CSS...just placeholder stuff
-import '../css/CustLoginPage.css'
+import '../css/AllLoginPages.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
@@ -44,7 +44,7 @@ const CustLoginPage = ({history}) => {
 
     return (
             <div className = 'login-screen'>
-                <form onSubmit={customerLoginHandler} className = 'login-screen__form' autocomplete="off" action="...">
+                <form onSubmit={customerLoginHandler} className = 'login-screen__form'>
                     <h3 className = 'login-screen__title'>Customer Login</h3>
                     {error && <span className='error-message'>{error}</span>}
                     <div className = 'form-group'>

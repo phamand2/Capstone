@@ -319,6 +319,10 @@ function ProductManage(props) {
         <div id="box">
             <h1>hello</h1>
         </div>
+        <div className = 'admin__links'>
+        <NavLink to= {`/add-new-admin`}>Add New Admin</NavLink><br/>
+        <NavLink to= {`/add-new-staff`}>Add New Staff</NavLink>
+        </div>
     </div>
     
   );

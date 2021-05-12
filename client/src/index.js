@@ -10,7 +10,11 @@ import CustLoginPage from './components/pages/CustLoginPage'
 import AdminLoginPage from './components/pages/AdminLoginPage'
 import StaffLoginPage from './components/pages/StaffLoginPage'
 import CustForgotPswdPage from './components/pages/CustForgotPswdPage'
-import ResetPasswordPage from './components/pages/ResetPasswordPage'
+import AdminForgotPswdPage from './components/pages/AdminForgotPswdPage'
+import StaffForgotPswdPage from './components/pages/StaffForgotPswdPage'
+import CustResetPswdPage from './components/pages/CustResetPswdPage.js'
+import AdminResetPswdPage from './components/pages/AdminResetPswdPage.js'
+import StaffResetPswdPage from './components/pages/StaffResetPswdPage.js'
 import ProductUpdate from '../src/components/pages/UpdateProduct'
 import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware, compose } from 'redux'
@@ -38,12 +42,16 @@ ReactDOM.render(
             <Route exact path = "/product-manage" component = {ProductManage} />
             <Route exact path = "/update-product/:_id" component = {ProductUpdate} />
             <Route exact path = "/" component = {App} />
-            <Route exact path = '/auth/register' component = {CustRegisterPage}/>
+            <Route exact path = '/auth/customer-register' component = {CustRegisterPage}/>
             <Route exact path = '/auth/customer-login' component = {CustLoginPage}/>
             <Route exact path = '/auth/admin-login' component = {AdminLoginPage}/>
             <Route exact path = '/auth/staff-login' component = {StaffLoginPage}/>
             <Route exact path = '/auth/customer-forgot-password' component = {CustForgotPswdPage}/>
-            <Route exact path = '/auth/customer-reset-password/:resetToken' component = {ResetPasswordPage}/>
+            <Route exact path = '/auth/admin-forgot-password' component = {AdminForgotPswdPage}/>
+            <Route exact path = '/auth/staff-forgot-password' component = {StaffForgotPswdPage}/>
+            <Route exact path = '/auth/customer-reset-password/:resetToken' component = {CustResetPswdPage}/>
+            <Route exact path = '/auth/admin-reset-password/:resetToken' component = {AdminResetPswdPage}/>
+            <Route exact path = '/auth/staff-reset-password/:resetToken' component = {StaffResetPswdPage}/>
           </Switch>
         </BaseLayout>
       </Router>
