@@ -4,8 +4,10 @@ const { getAdminData, addProduct, updateProduct, deleteProduct } = require('../c
 const { authenticate } = require('../middleware/adminAuth')
 const Product = require('../models/product')
 
-//TODO later
-// router.get('/add-staff', authenticate, ???)
+router.get('/add-staff', authenticate, getAdminData)
+router.put('/update-product/:productId', authenticate, updateProduct)
+router.delete('/delete-product/:productId', authenticate, deleteProduct)
+
 
 router.get('/admin-profile', authenticate, getAdminData)
 

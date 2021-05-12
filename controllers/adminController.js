@@ -25,13 +25,14 @@ exports.addProduct = (req, res, next) => {
 
 
 exports.updateProduct = (req, res, next) => {
+  console.log("update product is fired")
     const { productId, imageurl, title, description, rate, category, subcategory } = req.body
   
     const updatedProduct = {
       imageurl, title, description, rate, category, subcategory
     }
   
-    Product.findByIdAndUpdate(productId, updatedProduct, (error, result) => {
+    Product.findOneAndUpdate(productId, updatedProduct, (error, result) => {
         if(error) {
             res.json({error: 'Unable to update product'})
         } else {
@@ -43,8 +44,8 @@ exports.updateProduct = (req, res, next) => {
 exports.deleteProduct = (req, res, next) => {
     const productId = req.params.productId 
   
-    Product.remove({
-      _id: productId
+    Product.deleteOne({
+      _id: productId,
     }, (error, result) => {
       if(error) {
         res.json({error: 'Unable to delete product'})

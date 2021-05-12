@@ -47,18 +47,22 @@ export const loadProducts = () => {
     }
 }
 
-export const deleteProduct = (_id) => {
+export const deleteProduct = (_id, props) => {
     return(dispatch) => {
-        
-        fetch(`http://localhost:5000/delete-product/${_id}`, {
+        const token = localStorage.getItem('adminToken')
+        console.log(token)
+        fetch(`http://localhost:5000/admin/delete-product/${_id}`, {
             method: 'DELETE',
             headers: {
+                'authorization':`Bearer ${token}`,
                 'Content-type': 'application/json'
             }})
             .then(response => response.json())
             .then (products => {
                 if(products.success) {
                     alert("Product Is deleted")
+                    window.location.reload(false);
+                    
                 }
         }).catch(error => {
             console.log(error)

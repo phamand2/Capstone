@@ -38,6 +38,7 @@ function ProductManage(props) {
     const handledelete = (_id) => {
         props.onDelete(_id)
         props.onLoadProducts()
+        window.location.reload(false);
         
     }
 
@@ -75,6 +76,9 @@ function ProductManage(props) {
             </div>
             <div>
             <button><NavLink to= {`/update-product/${items._id}`}>update</NavLink></button>
+            </div>
+            <div>
+            <p>Id : {items._id}</p>
             </div>
 
             </div>
@@ -206,11 +210,13 @@ function ProductManage(props) {
 
   
   const handleSave =() => {
-    console.log("hello")
-    fetch ('http://localhost:5000/add-products',{
+    const token = localStorage.getItem('adminToken')
+    
+    fetch ('http://localhost:5000/admin/add-products',{
         method: 'POST',
         
         headers: {
+            'authorization':`Bearer ${token}`,
             'Content-Type': 'application/json'
         },
         body:JSON.stringify({
@@ -227,6 +233,7 @@ function ProductManage(props) {
         if(result.success) {
             
           alert("Your Product Has Been Added to Database")
+          window.location.reload(false);
           
         }
        
@@ -245,79 +252,80 @@ function ProductManage(props) {
 
   return (
       <div>
-          <div id="header">
-              <h1>Admin Page</h1>
-          </div>
-        <div id="inputsection">
-            <div id="storenametextbox">
-                <label>Image url   :</label>
-                <input onChange = {handleChange}  type="text" name="imageurl" />
-            </div>
-            <div id="storenametextbox">
-                <label>Title :</label>
-                <input onChange = {handleChange}  type="text" name="title" />
-            </div>
-            <div id="storenametextbox">
-                <label>Description  :</label>
-                <input onChange = {handleChange}  type="text" name="description" />
-            </div >
-            <div id="storenametextbox">
-                <label>Rate :</label>
-                <input onChange = {handleChange}  type="text" name="rate" />
-            </div>
-            <div id="storenametextbox">
-                <label>Category :</label>
-                <input onChange = {handleChange}  type="text" name="category" />
-            </div>
-            <div id="storenametextbox">
-                <label>Subcategory :</label>
-                <input onChange = {handleChange}  type="text" name="subcategory" />
-            </div>
-            <div>
-                <button id="btnsubmit" onClick = {handleSave}>Add product</button>
-            </div>
-        </div><br></br>
-        <div id="box">
-        <>
             <div id="header">
-              <h1>Edit Or Delete Products</h1>
+              <h1>Admin Page</h1>
             </div>
-            <MDBBtn onClick={toggleFirstElement} className="collapse_btn_title mt-3"> All Products (total products:{counter1}) </MDBBtn>
-            <MDBBtn onClick={toggleSecondElement} className="collapse_btn_title mt-3">Vegetable (total products:{counter2})</MDBBtn>
-            <MDBBtn onClick={toggleThirdElement} className="collapse_btn_title mt-3">Fruit (total products:{counter3})</MDBBtn>
-            <MDBBtn onClick={toggleFourthElement} className="collapse_btn_title mt-3">Flowers (total products:{counter4})</MDBBtn>
-            <MDBBtn onClick={toggleAllElements} className="collapse_btn_title mt-3"> Show All</MDBBtn>
+            <div id="inputsection">
+                <div id="storenametextbox">
+                    <label>Image</label>
+                    <input onChange = {handleChange}  type="text" name="imageurl" />
+                </div>
+                <div  id="storenametextbox">
+                    <label>title</label>
+                    <input onChange = {handleChange}  type="text" name="title" />
+                </div >
+                <div id="storenametextbox">
+                    <label>description</label>
+                    <input onChange = {handleChange}  type="text" name="description" />
+                </div>
+                <div id="storenametextbox">
+                    <label>rate</label>
+                    <input onChange = {handleChange}  type="text" name="rate" />
+                </div>
+                <div id="storenametextbox">
+                    <label>category</label>
+                    <input onChange = {handleChange}  type="text" name="category" />
+                </div>
+                <div id="storenametextbox">
+                    <label>subcategory</label>
+                    <input onChange = {handleChange}  type="text" name="subcategory" />
+                </div>
+                <div>
+                    <button id="btnsubmit" onClick = {handleSave}>Add product</button>
+                </div>
+            </div><br></br>
+            <div id="box">
+            <>
+                <div id="header">
+                    <h1>Edit Or Delete Products</h1>
+                </div>
+                <MDBBtn onClick={toggleFirstElement} className="collapse_btn_title mt-3"> All Products (total products:{counter1}) </MDBBtn>
+                <MDBBtn onClick={toggleSecondElement} className="collapse_btn_title mt-3">Vegetable (total products:{counter2})</MDBBtn>
+                <MDBBtn onClick={toggleThirdElement} className="collapse_btn_title mt-3">Fruit (total products:{counter3})</MDBBtn>
+                <MDBBtn onClick={toggleFourthElement} className="collapse_btn_title mt-3">Flowers (total products:{counter4})</MDBBtn>
+                <MDBBtn onClick={toggleAllElements} className="collapse_btn_title mt-3"> Show All</MDBBtn>
 
-            <MDBRow>
-                <MDBCol>
-                    <MDBCollapse show={showFirstElement} className='mt-3 card_flex best-book-h1'>
-                        <div><h1>All Products</h1></div>
-                        {all_productsItems}
-                    </MDBCollapse>
-                </MDBCol>
-                <MDBCol>
-                    <MDBCollapse show={showSecondElement} className='mt-3 card_flex best-book-h1'>
-                        <div><h1>Vegetable</h1></div>
-                        {vegetableItems}
-                    </MDBCollapse>
-                </MDBCol>
-                <MDBCol>
-                    <MDBCollapse show={showThirdElement} className='mt-3 card_flex best-book-h1'>
-                        <div><h1>Fruit</h1></div>
-                        {fruitItems}
-                    </MDBCollapse>
-                </MDBCol>
-                <MDBCol>
-                    <MDBCollapse show={showFourthElement} className='mt-3 card_flex best-book-h1'>
-                        <div><h1>Flowers</h1></div>
-                        {flowerItems}
-                    </MDBCollapse>
-                </MDBCol>
-            </MDBRow>
-        </>
-        </div>
-        <div id="box">
-            <h1>hello</h1>
+                <MDBRow>
+                    <MDBCol>
+                        <MDBCollapse show={showFirstElement} className='mt-3 card_flex best-book-h1'>
+                            <div><h1>All Products</h1></div>
+                            {all_productsItems}
+                        </MDBCollapse>
+                    </MDBCol>
+                    <MDBCol>
+                        <MDBCollapse show={showSecondElement} className='mt-3 card_flex best-book-h1'>
+                            <div><h1>Vegetable</h1></div>
+                            {vegetableItems}
+                        </MDBCollapse>
+                    </MDBCol>
+                    <MDBCol>
+                        <MDBCollapse show={showThirdElement} className='mt-3 card_flex best-book-h1'>
+                            <div><h1>Fruit</h1></div>
+                            {fruitItems}
+                        </MDBCollapse>
+                    </MDBCol>
+                    <MDBCol>
+                        <MDBCollapse show={showFourthElement} className='mt-3 card_flex best-book-h1'>
+                            <div><h1>Flowers</h1></div>
+                            {flowerItems}
+                        </MDBCollapse>
+                    </MDBCol>
+                </MDBRow>
+            </>
+            </div>
+            <div id="box">
+                <h1>hello</h1>
+            </div>
         </div>
         <div className = 'admin__links'>
         <NavLink to= {`/add-new-admin`}>Add New Admin</NavLink><br/>
