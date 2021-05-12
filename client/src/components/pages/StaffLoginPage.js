@@ -53,13 +53,17 @@ const StaffLoginPage = ({history}) => {
                 <h3 className = 'login-screen__title'>Staff Login</h3>
                 {error && <span className='error-message'>{error}</span>}
                 <div className = 'form-group'>
-                    <input type='email' required id='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <label htmlFor = 'email'>Email:</label>
+                    <input type='email' required id='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} tabIndex = {1}/>
                 </div>
                 <div className = 'form-group'>
-                    <input type='password' required id='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <label htmlFor = 'password'>Password:&nbsp;&nbsp;  
+                            <Link to = '/auth/forgotpassword' className = 'login-screen__forgotpassword'
+                                tabIndex = {4}>Forgot Password?</Link></label>
+                    <input type='password' required id='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} tabIndex = {2}/>
                 </div>
 
-                <button type = 'submit' className = 'btn btn-primary'>Log In</button>
+                <button type = 'submit' className = 'btn btn-primary' tabIndex = {3}>Log In</button>
 
                 <span className='login-screen__subtext'>Don't have an account? Please ask your manager.</span>
             </form>

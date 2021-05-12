@@ -1,8 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
-import "../css/ForgotPasswordPage.css";
+import "../css/CustForgotPswdPage.css";
 
-const ForgotPasswordPage = () => {
+const CustForgotPswdPage = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -17,7 +17,7 @@ const ForgotPasswordPage = () => {
     };
 
     try {
-      const { data } = await axios.post("/auth/forgotpassword", { email }, config);
+      const { data } = await axios.post('/auth/customer-forgot-password', { email }, config);
       setSuccess(data.data);
     } catch (error) {
         setError(error.response.data.error);
@@ -50,4 +50,4 @@ const ForgotPasswordPage = () => {
   );
 };
 
-export default ForgotPasswordPage;
+export default CustForgotPswdPage;

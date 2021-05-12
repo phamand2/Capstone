@@ -30,7 +30,7 @@ const ResetPasswordPage = ({ history, match }) => {
 
     try {
       const { data } = await axios.put(
-        `/auth/passwordreset/${match.params.resetToken}`,
+        `/auth/customer-reset-password/${match.params.resetToken}`,
         {
           password,
         },
@@ -53,11 +53,11 @@ const ResetPasswordPage = ({ history, match }) => {
         onSubmit={resetPasswordHandler}
         className="resetpassword-screen__form"
       >
-        <h3 className="resetpassword-screen__title">Forgot Password</h3>
+        <h3 className="resetpassword-screen__title">Reset Password</h3>
         {error && <span className="error-message">{error} </span>}
         {success && (
           <span className="success-message">
-            {success} <Link to="/login">Login</Link>
+            {success}!   <Link to="/auth/customer-login" className='post__reset__login__link'>Login</Link>
           </span>
         )}
         <div className="form-group">

@@ -17,8 +17,6 @@ function ProductManage(props) {
   const [showFourthElement, setShowFourthElement] = useState(false);
 
 
-
-
   const toggleFirstElement = () => setShowFirstElement(!showFirstElement);
   const toggleSecondElement = () => setShowSecondElement(!showSecondElement);
   const toggleThirdElement = () => setShowThirdElement(!showThirdElement);
@@ -32,8 +30,6 @@ function ProductManage(props) {
   }
 
 
-
-  
     useEffect(() => {
         console.log("use effect is fired")
         props.onLoadProducts()
@@ -45,8 +41,6 @@ function ProductManage(props) {
         
     }
 
-
-    
 
     var  all_products = props.all_products 
 
@@ -89,7 +83,7 @@ function ProductManage(props) {
 
 
 
-    var  vegetable = props.vegetable 
+    var vegetable = props.vegetable 
 
     let counter2 = 0;
     for (let i = 0; i < all_products.length; i++) {
@@ -130,7 +124,7 @@ function ProductManage(props) {
 
 
 
-    var  fruit = props.fruit 
+    var fruit = props.fruit 
     console.log(fruit)
     let counter3 = 0;
     for (let i = 0; i < all_products.length; i++) {
@@ -170,7 +164,7 @@ function ProductManage(props) {
 
 
 
-    var  flower = props.flower 
+    var flower = props.flower 
     let counter4 = 0;
     for (let i = 0; i < all_products.length; i++) {
         if (flower[i]) counter4++;

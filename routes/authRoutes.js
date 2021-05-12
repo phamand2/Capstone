@@ -10,9 +10,9 @@ router.route('/customerRegister').post(customerRegister)
 
 router.route('/customerLogin').post(customerLogin)
 
-router.route('/customerForgotPassword').post(customerForgotPassword)
+router.route('/customer-forgot-password').post(customerForgotPassword)
 
-router.route('/customerResetPassword/:resetToken').put(customerResetPassword)
+router.route('/customer-reset-password/:resetToken').put(customerResetPassword)
 
 router.route('/adminRegister').post(adminRegister)
 

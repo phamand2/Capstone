@@ -9,7 +9,7 @@ import CustRegisterPage from './components/pages/CustRegisterPage'
 import CustLoginPage from './components/pages/CustLoginPage'
 import AdminLoginPage from './components/pages/AdminLoginPage'
 import StaffLoginPage from './components/pages/StaffLoginPage'
-import ForgotPasswordPage from './components/pages/ForgotPasswordPage'
+import CustForgotPswdPage from './components/pages/CustForgotPswdPage'
 import ResetPasswordPage from './components/pages/ResetPasswordPage'
 import ProductUpdate from '../src/components/pages/UpdateProduct'
 import reportWebVitals from './reportWebVitals';
@@ -42,8 +42,8 @@ ReactDOM.render(
             <Route exact path = '/auth/customer-login' component = {CustLoginPage}/>
             <Route exact path = '/auth/admin-login' component = {AdminLoginPage}/>
             <Route exact path = '/auth/staff-login' component = {StaffLoginPage}/>
-            <Route exact path = '/auth/forgotpassword' component = {ForgotPasswordPage}/>
-            <Route exact path = '/auth/passwordreset/:resetToken' component = {ResetPasswordPage}/>
+            <Route exact path = '/auth/customer-forgot-password' component = {CustForgotPswdPage}/>
+            <Route exact path = '/auth/customer-reset-password/:resetToken' component = {ResetPasswordPage}/>
           </Switch>
         </BaseLayout>
       </Router>
