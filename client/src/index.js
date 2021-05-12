@@ -7,6 +7,7 @@ import ProductManage from '../src/components/pages/ProductManage'
 import BaseLayout from './components/pages/BaseLayout';
 import CustRegisterPage from './components/pages/CustRegisterPage'
 import CustLoginPage from './components/pages/CustLoginPage'
+import AdminLoginPage from './components/pages/AdminLoginPage'
 import ProductUpdate from '../src/components/pages/UpdateProduct'
 import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware, compose } from 'redux'
@@ -36,6 +37,7 @@ ReactDOM.render(
             <Route exact path = "/" component = {App} />
             <Route exact path = '/auth/register' component = {CustRegisterPage}/>
             <Route exact path = '/auth/customer-login' component = {CustLoginPage}/>
+            <Route exact path = '/auth/admin-login' component = {AdminLoginPage}/>
             {/* no routes below exist yet */}
             {/* 
             <Route exact path = '/auth/forgotpassword' component = {ForgotPswdScreen}/>
