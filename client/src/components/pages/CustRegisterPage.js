@@ -11,14 +11,6 @@ const CustRegisterPage = ({history}) => {
     const [confirmPassword, setConfirmPassword] = useState('')
     const [error, setError] = useState('')
 
-    // This below redirects users to the home page if they're already logged in
-    // Not using it right now b/c it makes testing annoying
-
-    // useEffect(() => {
-    //     if(localStorage.getItem('customerToken') || localStorage.getItem('adminToken') || localStorage.getItem('staffToken')) {
-    //         history.push('/')
-    //     }
-    // }, [history])
 
     const registerHandler = async (e) => {
         e.preventDefault()
@@ -52,6 +44,9 @@ const CustRegisterPage = ({history}) => {
         }
     }
 
+    
+
+   
     return (
         <div className = 'register-screen'>
             <form onSubmit={registerHandler} className = 'register-screen__form'>
@@ -71,9 +66,10 @@ const CustRegisterPage = ({history}) => {
                 </div>
 
                 <button type = 'submit' className = 'btn btn-primary'>Register</button>
-
+                
                 <span className='register-screen__subtext'>Already have an account? <Link to='/auth/login'>Log In</Link></span>
-            </form>
+            </form><br/>
+            <Link to = '/guest-login'>Login As Guest</Link>
         </div>
     )
 }

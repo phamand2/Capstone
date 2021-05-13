@@ -45,7 +45,7 @@ console.log(counter1)
 const all_productsItems = all_products.map((items, index) => {
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-            <img src={items.imageurl} />
+            <img src={items.imageurl} alt="item"/>
         </div>
         <div>
             <h1>{items.title}</h1>
@@ -86,7 +86,7 @@ console.log(counter2)
 const vegetableItems = vegetable.map((items, index) => {
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-            <img src={items.imageurl} />
+            <img src={items.imageurl} alt="item"/>
         </div>
         <div>
             <h1>{items.title}</h1>
@@ -197,9 +197,9 @@ const flowerItems = flower.map((items, index) => {
         <Link to='/auth/admin-login'>Admin Login</Link><br/>
         <Link to='/auth/staff-login'>Staff Login</Link><br/>
         <br/><br/>
-        Stripe Checkout that looks nice but needs to be hooked up to the cart:
+        Stripe Checkout button that proceeds smoothly but needs to be hooked up to the cart:<br/>
         <Link to='/checkout'>Checkout</Link>
-
+        <br/><br/>
         The admin login will redirect you to the admin landing page if it worked and otherwise display an error. Your credentials are:<br/>
         yourfirstname@test.com<br/>
         test123

@@ -2,7 +2,7 @@
 import '../css/AllLoginPages.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 
 const AdminLoginPage = ({history}) => {
@@ -10,15 +10,6 @@ const AdminLoginPage = ({history}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
-
-    // This below redirects users to the home page if they're already logged in
-    // Not using it right now b/c it makes testing annoying
-    
-    // useEffect(() => {
-    //     if(localStorage.getItem('customerToken') || localStorage.getItem('adminToken') || localStorage.getItem('staffToken')) {
-    //         history.push('/')
-    //     }
-    // }, [history])
 
     
     const adminLoginHandler = async (e) => {

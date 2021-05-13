@@ -11,6 +11,7 @@ import AddAdminPage from './components/pages/AddAdminPage'
 import CustLoginPage from './components/pages/CustLoginPage'
 import AdminLoginPage from './components/pages/AdminLoginPage'
 import StaffLoginPage from './components/pages/StaffLoginPage'
+import GuestLoginPage from './components/pages/GuestLoginPage'
 import CustForgotPswdPage from './components/pages/CustForgotPswdPage'
 import AdminForgotPswdPage from './components/pages/AdminForgotPswdPage'
 import StaffForgotPswdPage from './components/pages/StaffForgotPswdPage'
@@ -51,6 +52,7 @@ ReactDOM.render(
             <Route exact path = '/auth/customer-login' component = {CustLoginPage}/>
             <Route exact path = '/auth/admin-login' component = {AdminLoginPage}/>
             <Route exact path = '/auth/staff-login' component = {StaffLoginPage}/>
+            <Route exact path = '/guest-login' component = {GuestLoginPage}/>
             <Route exact path = '/auth/customer-forgot-password' component = {CustForgotPswdPage}/>
             <Route exact path = '/auth/admin-forgot-password' component = {AdminForgotPswdPage}/>
             <Route exact path = '/auth/staff-forgot-password' component = {StaffForgotPswdPage}/>
