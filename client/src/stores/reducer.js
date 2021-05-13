@@ -6,8 +6,6 @@ const initialState = {
     vegetable:[],
     fruit:[],
     flower:[],
-
-     
 }
 
 const reducer = (state = initialState, action) => {

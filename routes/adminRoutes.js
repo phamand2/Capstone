@@ -17,7 +17,6 @@ router.put('/update-product/:productId', authenticate, updateProduct)
 
 router.delete('/product/:productId', authenticate, deleteProduct)
 
-router.post('/add-staff', authenticate, addStaff)
 
 
 

@@ -209,7 +209,7 @@ function ProductManage(props) {
 
 
   
-  const handleSave =() => {
+  const handleSave = () => {
     const token = localStorage.getItem('adminToken')
     
     fetch ('http://localhost:5000/admin/add-products',{
@@ -219,7 +219,7 @@ function ProductManage(props) {
             'authorization':`Bearer ${token}`,
             'Content-Type': 'application/json'
         },
-        body:JSON.stringify({
+        body: JSON.stringify({
             imageurl: ProductManage.imageurl,
             title: ProductManage.title,
             description: ProductManage.description,
@@ -327,8 +327,8 @@ function ProductManage(props) {
                 <h1>hello</h1>
             </div>
             <div className = 'admin__links'>
-                <NavLink to= {`/admin/add-admin`}>Add New Admin</NavLink><br/>
-                <NavLink to= {`/admin/add-staff`}>Add New Staff</NavLink>
+                <NavLink to= {`/auth/add-admin`}>Add New Admin</NavLink><br/>
+                <NavLink to= {`/auth/add-staff`}>Add New Staff</NavLink>
             </div>
         </div>
     

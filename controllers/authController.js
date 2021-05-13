@@ -222,21 +222,21 @@ exports.adminResetPassword = async (req, res, next) => {
     }
 }
 
-// exports.staffRegister = async (req, res, next) => {
-//     const {username, email, password} = req.body;
+exports.staffRegister = async (req, res, next) => {
+    const {username, email, password} = req.body;
 
-//     try {
-//         const staffMember = await StaffMember.create({
-//             username, email, password
-//         })
-//         sendStaffMemberToken(staffMember, 201, res)
-//     } catch (error) {
-//         res.status(500).json({
-//             success: false,
-//             error: error.message
-//         })
-//     }
-// }
+    try {
+        const staffMember = await StaffMember.create({
+            username, email, password
+        })
+        sendStaffMemberToken(staffMember, 201, res)
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: error.message
+        })
+    }
+}
 
 exports.staffLogin = async (req, res, next) => {
     const { email, password } = req.body
