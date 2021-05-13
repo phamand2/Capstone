@@ -51,7 +51,7 @@ ReactDOM.render(
             <Route exact path = "/vegetables" component = {ProductCategoryVegetable} />
             <Route exact path = "/fruits" component = {ProductCategoryFruits} />
             <Route exact path = "/flowers" component = {ProductCategoryFlowers} />
-            <Route exact path = "/product-detail" component = {ProductDetails} />
+            <Route exact path = "/product-detail/:title" component = {ProductDetails} />
             <Route exact path = '/auth/customer-register' component = {CustRegisterPage}/>
             <Route exact path = '/admin/add-staff' component = {AddStaffPage}/>
             <Route exact path = '/auth/customer-login' component = {CustLoginPage}/>

@@ -6,6 +6,7 @@ const initialState = {
     vegetable:[],
     fruit:[],
     flower:[],
+    moredetails:[],
 
      
 }
@@ -39,6 +40,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 flower: action.payload
+            }
+        }
+        case actionTypes.onMoreDetails:{
+            return {
+                ...state,
+                moredetails: action.payload
             }
         }
         
