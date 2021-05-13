@@ -13,18 +13,25 @@ const ProductCategoryFlower = (props) =>{
     useEffect(() => {
         console.log("use effect is fired")
         props.onLoadProducts()
-      },[])
+    },[])
+
+    
 
     var  flower = props.flower 
-
+    console.log(flower)
     let counter2 = 0;
     for (let i = 0; i < flower.length; i++) {
         if (flower[i]) counter2++;
-}
-console.log(counter2)
+    }
+    console.log(counter2)
+
+    const handleMoreDetails = (items) => {
+        props.onMoreDetails(items)
+    }
 
 
-const flowerItems = flower.map((items, index) => {
+    const flowerItems = flower.map((items, index) => {
+    console.log(items)
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
             <img src={items.imageurl} />
@@ -45,12 +52,12 @@ const flowerItems = flower.map((items, index) => {
         <p>sub-category : {items.subcategory}</p>
         </div>
         <div>
-        <button >More details</button>
+        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}`}>More details</Link></button>
         </div>
         
 
         </div>
-})
+    })
 
 
 
@@ -75,7 +82,8 @@ const flowerItems = flower.map((items, index) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      onLoadProducts: () => dispatch(actionCreators.loadProducts()),  
+      onLoadProducts: () => dispatch(actionCreators.loadProducts()), 
+      onMoreDetails :(items) => dispatch(actionCreators.onMoreDetails(items)) 
     }
   }
 
