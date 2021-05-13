@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
-const CustRegisterPage = ({history}) => {
+const AddStaffPage = ({history}) => {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -23,8 +23,11 @@ const CustRegisterPage = ({history}) => {
     const registerHandler = async (e) => {
         e.preventDefault()
 
+        const token = localStorage.getItem('adminToken')
+
         const config = {
             header: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         }
@@ -39,9 +42,9 @@ const CustRegisterPage = ({history}) => {
         }
 
         try {
-            const { data } = await axios.post('/auth/customer-register', {username, email, password}, config)
+            const { data } = await axios.post('/admin/add-staff', {username, email, password}, config)
 
-            localStorage.setItem('customerToken', data.token)
+            localStorage.setItem('staffToken', data.token)
 
             history.push('/')
         } catch (error) {
@@ -55,7 +58,7 @@ const CustRegisterPage = ({history}) => {
     return (
         <div className = 'register-screen'>
             <form onSubmit={registerHandler} className = 'register-screen__form'>
-                <h3 className = 'register-screen__title'>Register</h3>
+                <h3 className = 'register-screen__title'>Register New Staff Member</h3>
                 {error && <span className='error-message'>{error}</span>}
                 <div className = 'form-group'>
                     <input type='text' required id='name' placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)}/>
@@ -70,12 +73,11 @@ const CustRegisterPage = ({history}) => {
                     <input type='password' required id='confirmpassword' placeholder='Confirm password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
                 </div>
 
-                <button type = 'submit' className = 'btn btn-primary'>Register</button>
-
-                <span className='register-screen__subtext'>Already have an account? <Link to='/auth/login'>Log In</Link></span>
+                <button type = 'submit' className = 'btn btn-primary'>Register</button><br/><br/>
+                <Link to = '/admin/product-manage'>Back to admin profile</Link>
             </form>
         </div>
     )
 }
 
-export default CustRegisterPage
+export default AddStaffPage

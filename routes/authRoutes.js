@@ -22,7 +22,7 @@ router.route('/admin-forgot-password').post(adminForgotPassword)
 
 router.route('/admin-reset-password/:resetToken').put(adminResetPassword)
 
-router.route('/staffRegister').post(staffRegister)
+// router.route('/add-staff').post(staffRegister)
 
 router.route('/staffLogin').post(staffLogin)
 

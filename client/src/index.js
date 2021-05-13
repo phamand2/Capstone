@@ -6,6 +6,7 @@ import App from './components/pages/App';
 import ProductManage from '../src/components/pages/ProductManage'
 import BaseLayout from './components/pages/Baselayout';
 import CustRegisterPage from './components/pages/CustRegisterPage'
+import AddStaffPage from './components/pages/AddStaffPage'
 import CustLoginPage from './components/pages/CustLoginPage'
 import AdminLoginPage from './components/pages/AdminLoginPage'
 import StaffLoginPage from './components/pages/StaffLoginPage'
@@ -43,6 +44,7 @@ ReactDOM.render(
             <Route exact path = "/update-product/:_id" component = {ProductUpdate} />
             <Route exact path = "/" component = {App} />
             <Route exact path = '/auth/customer-register' component = {CustRegisterPage}/>
+            <Route exact path = '/admin/add-staff' component = {AddStaffPage}/>
             <Route exact path = '/auth/customer-login' component = {CustLoginPage}/>
             <Route exact path = '/auth/admin-login' component = {AdminLoginPage}/>
             <Route exact path = '/auth/staff-login' component = {StaffLoginPage}/>

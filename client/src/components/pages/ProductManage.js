@@ -54,7 +54,7 @@ function ProductManage(props) {
     const all_productsItems = all_products.map((items, index) => {
         return <div key ={index} className="card" style={{width: "18rem"}}>
             <div>
-                <img src={items.imageurl} />
+                <img src={items.imageurl} alt='product'/>
             </div>
             <div>
                 <h1>{items.title}</h1>
@@ -99,7 +99,7 @@ function ProductManage(props) {
     const vegetableItems = vegetable.map((items, index) => {
         return <div key ={index} className="card" style={{width: "18rem"}}>
             <div>
-                <img src={items.imageurl} />
+                <img src={items.imageurl} alt='vegetable product'/>
             </div>
             <div>
                 <h1>{items.title}</h1>
@@ -139,7 +139,7 @@ function ProductManage(props) {
     const fruitItems = fruit.map((items, index) => {
         return <div key ={index} className="card" style={{width: "18rem"}}>
             <div>
-                <img src={items.imageurl} />
+                <img src={items.imageurl} alt = 'fruit product'/>
             </div>
             <div>
                 <h1>{items.title}</h1>
@@ -178,7 +178,7 @@ function ProductManage(props) {
     const flowerItems = flower.map((items, index) => {
         return <div key ={index} className="card" style={{width: "18rem"}}>
             <div>
-                <img src={items.imageurl} />
+                <img src={items.imageurl} alt = 'flower product' />
             </div>
             <div>
                 <h1>{items.title}</h1>
@@ -232,7 +232,7 @@ function ProductManage(props) {
     .then(result => {
         if(result.success) {
             
-          alert("Your Product Has Been Added to Database")
+          alert("Your product has been added to the database")
           window.location.reload(false);
           
         }
@@ -260,10 +260,10 @@ function ProductManage(props) {
                     <label>Image</label>
                     <input onChange = {handleChange}  type="text" name="imageurl" />
                 </div>
-                <div  id="storenametextbox">
+                <div id="storenametextbox">
                     <label>title</label>
                     <input onChange = {handleChange}  type="text" name="title" />
-                </div >
+                </div>
                 <div id="storenametextbox">
                     <label>description</label>
                     <input onChange = {handleChange}  type="text" name="description" />
@@ -283,16 +283,16 @@ function ProductManage(props) {
                 <div>
                     <button id="btnsubmit" onClick = {handleSave}>Add product</button>
                 </div>
-            </div><br></br>
+            </div><br/>
             <div id="box">
             <>
                 <div id="header">
                     <h1>Edit Or Delete Products</h1>
                 </div>
-                <MDBBtn onClick={toggleFirstElement} className="collapse_btn_title mt-3"> All Products (total products:{counter1}) </MDBBtn>
-                <MDBBtn onClick={toggleSecondElement} className="collapse_btn_title mt-3">Vegetable (total products:{counter2})</MDBBtn>
-                <MDBBtn onClick={toggleThirdElement} className="collapse_btn_title mt-3">Fruit (total products:{counter3})</MDBBtn>
-                <MDBBtn onClick={toggleFourthElement} className="collapse_btn_title mt-3">Flowers (total products:{counter4})</MDBBtn>
+                <MDBBtn onClick={toggleFirstElement} className="collapse_btn_title mt-3"> All Products (total products: {counter1}) </MDBBtn>
+                <MDBBtn onClick={toggleSecondElement} className="collapse_btn_title mt-3">Vegetables (total products: {counter2})</MDBBtn>
+                <MDBBtn onClick={toggleThirdElement} className="collapse_btn_title mt-3">Fruit (total products: {counter3})</MDBBtn>
+                <MDBBtn onClick={toggleFourthElement} className="collapse_btn_title mt-3">Flowers (total products: {counter4})</MDBBtn>
                 <MDBBtn onClick={toggleAllElements} className="collapse_btn_title mt-3"> Show All</MDBBtn>
 
                 <MDBRow>
@@ -326,12 +326,11 @@ function ProductManage(props) {
             <div id="box">
                 <h1>hello</h1>
             </div>
+            <div className = 'admin__links'>
+                <NavLink to= {`/admin/add-admin`}>Add New Admin</NavLink><br/>
+                <NavLink to= {`/admin/add-staff`}>Add New Staff</NavLink>
+            </div>
         </div>
-        <div className = 'admin__links'>
-        <NavLink to= {`/add-new-admin`}>Add New Admin</NavLink><br/>
-        <NavLink to= {`/add-new-staff`}>Add New Staff</NavLink>
-        </div>
-    </div>
     
   );
 }
