@@ -22,7 +22,7 @@ const sendEmail = (options) => {
         } else {
             console.log(info)
         }
-    })
+    }) 
 }
 
 module.exports = sendEmail

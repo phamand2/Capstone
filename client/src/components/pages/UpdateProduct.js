@@ -1,6 +1,4 @@
-import { Component } from "react"
-import { useState } from 'react'
-import { useEffect , setState } from 'react'
+import { useEffect , useState } from 'react'
 import { connect } from 'react-redux'
 
 
@@ -40,20 +38,16 @@ function ProductUpdate(props) {
             if(result.success) {
                 console.log("Product updated")
                 
-                alert("Your Product Has Been Added to Database")
+                alert("Your product has been added to the database")
                 props.history.push('/product-manage')
-
-                
             }
         })
     }
 
 
-
-
     return<div>
         <div id="header">
-              <h1>Update Product page</h1>
+              <h1>Update Products</h1>
         </div>
         <div id="inputsection">
             <div id="storenametextbox">

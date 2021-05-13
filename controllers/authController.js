@@ -57,7 +57,7 @@ exports.customerForgotPassword = async(req, res, next) => {
 
         const resetToken = customer.getResetPasswordToken()
             await customer.save()
-            const resetUrl = `http:localhost:5000/passwordreset/${resetToken}`
+            const resetUrl = `http://localhost:3000/auth/customer-reset-password/${resetToken}`
             const message = `
                 <h1>You have requested a password reset.</h1>
                 <p>Follow this link to reset your password:</p>
@@ -166,7 +166,7 @@ exports.adminForgotPassword = async (req, res, next) => {
 
         const resetToken = admin.getResetPasswordToken()
             await admin.save()
-            const resetUrl = `http:localhost:5000/passwordreset/${resetToken}`
+            const resetUrl = `http://localhost:3000/auth/customer-reset-password/${resetToken}`
             const message = `
                 <h1>You have requested a password reset.</h1>
                 <p>Follow this link to reset your password:</p>
@@ -222,21 +222,21 @@ exports.adminResetPassword = async (req, res, next) => {
     }
 }
 
-exports.staffRegister = async (req, res, next) => {
-    const {username, email, password} = req.body;
+// exports.staffRegister = async (req, res, next) => {
+//     const {username, email, password} = req.body;
 
-    try {
-        const staffMember = await StaffMember.create({
-            username, email, password
-        })
-        sendStaffMemberToken(staffMember, 201, res)
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            error: error.message
-        })
-    }
-}
+//     try {
+//         const staffMember = await StaffMember.create({
+//             username, email, password
+//         })
+//         sendStaffMemberToken(staffMember, 201, res)
+//     } catch (error) {
+//         res.status(500).json({
+//             success: false,
+//             error: error.message
+//         })
+//     }
+// }
 
 exports.staffLogin = async (req, res, next) => {
     const { email, password } = req.body
@@ -274,7 +274,7 @@ exports.staffForgotPassword = async (req, res, next) => {
 
         const resetToken = staff.getResetPasswordToken()
             await staff.save()
-            const resetUrl = `http:localhost:5000/passwordreset/${resetToken}`
+            const resetUrl = `http://localhost:3000/auth/staff-reset-password/${resetToken}`
             const message = `
                 <h1>You have requested a password reset.</h1>
                 <p>Follow this link to reset your password:</p>

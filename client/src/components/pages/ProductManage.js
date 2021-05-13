@@ -1,7 +1,6 @@
-import { useState } from 'react'
 import { connect } from 'react-redux'
 import * as actionCreators from '../../stores/creators/actionCreators' 
-import { useEffect , setState , } from 'react'
+import { useEffect , useState} from 'react'
 import { NavLink } from "react-router-dom";
 import React from 'react';
 import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
@@ -18,8 +17,6 @@ function ProductManage(props) {
   const [showFourthElement, setShowFourthElement] = useState(false);
 
 
-
-
   const toggleFirstElement = () => setShowFirstElement(!showFirstElement);
   const toggleSecondElement = () => setShowSecondElement(!showSecondElement);
   const toggleThirdElement = () => setShowThirdElement(!showThirdElement);
@@ -33,8 +30,6 @@ function ProductManage(props) {
   }
 
 
-
-  
     useEffect(() => {
         console.log("use effect is fired")
         props.onLoadProducts()
@@ -48,8 +43,6 @@ function ProductManage(props) {
     }
 
 
-    
-
     var  all_products = props.all_products 
 
     let counter1 = 0;
@@ -61,7 +54,7 @@ function ProductManage(props) {
     const all_productsItems = all_products.map((items, index) => {
         return <div key ={index} className="card" style={{width: "18rem"}}>
             <div>
-                <img src={items.imageurl} />
+                <img src={items.imageurl} alt='product'/>
             </div>
             <div>
                 <h1>{items.title}</h1>
@@ -94,7 +87,7 @@ function ProductManage(props) {
 
 
 
-    var  vegetable = props.vegetable 
+    var vegetable = props.vegetable 
 
     let counter2 = 0;
     for (let i = 0; i < all_products.length; i++) {
@@ -106,7 +99,7 @@ function ProductManage(props) {
     const vegetableItems = vegetable.map((items, index) => {
         return <div key ={index} className="card" style={{width: "18rem"}}>
             <div>
-                <img src={items.imageurl} />
+                <img src={items.imageurl} alt='vegetable product'/>
             </div>
             <div>
                 <h1>{items.title}</h1>
@@ -135,7 +128,7 @@ function ProductManage(props) {
 
 
 
-    var  fruit = props.fruit 
+    var fruit = props.fruit 
     console.log(fruit)
     let counter3 = 0;
     for (let i = 0; i < all_products.length; i++) {
@@ -146,7 +139,7 @@ function ProductManage(props) {
     const fruitItems = fruit.map((items, index) => {
         return <div key ={index} className="card" style={{width: "18rem"}}>
             <div>
-                <img src={items.imageurl} />
+                <img src={items.imageurl} alt = 'fruit product'/>
             </div>
             <div>
                 <h1>{items.title}</h1>
@@ -175,7 +168,7 @@ function ProductManage(props) {
 
 
 
-    var  flower = props.flower 
+    var flower = props.flower 
     let counter4 = 0;
     for (let i = 0; i < all_products.length; i++) {
         if (flower[i]) counter4++;
@@ -185,7 +178,7 @@ function ProductManage(props) {
     const flowerItems = flower.map((items, index) => {
         return <div key ={index} className="card" style={{width: "18rem"}}>
             <div>
-                <img src={items.imageurl} />
+                <img src={items.imageurl} alt = 'flower product' />
             </div>
             <div>
                 <h1>{items.title}</h1>
@@ -239,7 +232,7 @@ function ProductManage(props) {
     .then(result => {
         if(result.success) {
             
-          alert("Your Product Has Been Added to Database")
+          alert("Your product has been added to the database")
           window.location.reload(false);
           
         }
@@ -267,10 +260,10 @@ function ProductManage(props) {
                     <label>Image</label>
                     <input onChange = {handleChange}  type="text" name="imageurl" />
                 </div>
-                <div  id="storenametextbox">
+                <div id="storenametextbox">
                     <label>title</label>
                     <input onChange = {handleChange}  type="text" name="title" />
-                </div >
+                </div>
                 <div id="storenametextbox">
                     <label>description</label>
                     <input onChange = {handleChange}  type="text" name="description" />
@@ -290,16 +283,16 @@ function ProductManage(props) {
                 <div>
                     <button id="btnsubmit" onClick = {handleSave}>Add product</button>
                 </div>
-            </div><br></br>
+            </div><br/>
             <div id="box">
             <>
                 <div id="header">
                     <h1>Edit Or Delete Products</h1>
                 </div>
-                <MDBBtn onClick={toggleFirstElement} className="collapse_btn_title mt-3"> All Products (total products:{counter1}) </MDBBtn>
-                <MDBBtn onClick={toggleSecondElement} className="collapse_btn_title mt-3">Vegetable (total products:{counter2})</MDBBtn>
-                <MDBBtn onClick={toggleThirdElement} className="collapse_btn_title mt-3">Fruit (total products:{counter3})</MDBBtn>
-                <MDBBtn onClick={toggleFourthElement} className="collapse_btn_title mt-3">Flowers (total products:{counter4})</MDBBtn>
+                <MDBBtn onClick={toggleFirstElement} className="collapse_btn_title mt-3"> All Products (total products: {counter1}) </MDBBtn>
+                <MDBBtn onClick={toggleSecondElement} className="collapse_btn_title mt-3">Vegetables (total products: {counter2})</MDBBtn>
+                <MDBBtn onClick={toggleThirdElement} className="collapse_btn_title mt-3">Fruit (total products: {counter3})</MDBBtn>
+                <MDBBtn onClick={toggleFourthElement} className="collapse_btn_title mt-3">Flowers (total products: {counter4})</MDBBtn>
                 <MDBBtn onClick={toggleAllElements} className="collapse_btn_title mt-3"> Show All</MDBBtn>
 
                 <MDBRow>
@@ -332,6 +325,10 @@ function ProductManage(props) {
             </div>
             <div id="box">
                 <h1>hello</h1>
+            </div>
+            <div className = 'admin__links'>
+                <NavLink to= {`/admin/add-admin`}>Add New Admin</NavLink><br/>
+                <NavLink to= {`/admin/add-staff`}>Add New Staff</NavLink>
             </div>
         </div>
     

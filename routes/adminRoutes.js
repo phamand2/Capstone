@@ -1,31 +1,23 @@
 const express = require('express')
 const router = express.Router()
-const { getAdminData, updateProduct, deleteProduct } = require('../controllers/adminController')
+const { getAdminData, addProduct, updateProduct, deleteProduct, addStaff} = require('../controllers/adminController')
 const { authenticate } = require('../middleware/adminAuth')
 const Product = require('../models/product')
 
-router.get('/add-staff', authenticate, getAdminData)
+
 router.put('/update-product/:productId', authenticate, updateProduct)
+
 router.delete('/delete-product/:productId', authenticate, deleteProduct)
 
+router.get('/admin-profile', authenticate, getAdminData)
 
-router.post ('/add-products', authenticate, (req,res) => {
+router.post ('/add-products', authenticate, addProduct)
 
-    const { imageurl, title, description, rate, category, subcategory } = req.body
-  
-    let product  = new Product({
-        imageurl, title, description, rate, category, subcategory,
-      })
+router.put('/update-product/:productId', authenticate, updateProduct)
 
-    product.save((error) => {
-      if(error) {
-        res.json({error: 'Unable to save the product'})
-      } else {
-        res.json({success: true, message: 'New product saved!', product})
-      }
-    })
-})
+router.delete('/product/:productId', authenticate, deleteProduct)
 
+router.post('/add-staff', authenticate, addStaff)
 
 
 

@@ -1,7 +1,7 @@
-import { useState } from 'react'
 import { connect } from 'react-redux'
 import * as actionCreators from '../../stores/creators/actionCreators' 
-import { useEffect , setState , } from 'react'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { NavLink } from "react-router-dom";
 import React from 'react';
 import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
@@ -188,17 +188,6 @@ const flowerItems = flower.map((items, index) => {
 })
 
 
-
-
-
-
-
-
-
-
-
-  
-
   return (
     <div>
       <div className="App">
@@ -213,6 +202,11 @@ const flowerItems = flower.map((items, index) => {
         It will redirect you to the admin landing page if it worked and otherwise display an error. Your credentials are:<br/>
         yourfirstname@test.com<br/>
         test123
+        <br/><br/>
+      <Link to='/auth/customer-register'>Customer Register</Link><br/>
+      <Link to='/auth/customer-login'>Customer Login</Link><br/>
+      <Link to='/auth/admin-login'>Admin Login</Link><br/>
+      <Link to='/auth/staff-login'>Staff Login</Link><br/>
       </div>
       <div>
       <div id="box">
@@ -258,7 +252,6 @@ const flowerItems = flower.map((items, index) => {
             <h1>hello</h1>
         </div>
     </div>
-
     </div>
   );
 }
