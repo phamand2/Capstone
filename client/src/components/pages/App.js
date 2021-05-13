@@ -249,7 +249,7 @@ const flowerItems = flower.map((items, index) => {
         </>
         </div>
         <div id="box">
-            <h1>hello</h1>
+            
         </div>
     </div>
     </div>

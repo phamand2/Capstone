@@ -60,7 +60,7 @@ const CustLoginPage = ({history}) => {
 
                     <button type = 'submit' className = 'btn btn-primary' tabIndex = {3}>Log In</button>
 
-                    <span className='login-screen__subtext'>Don't have an account? <Link to='/auth/register'>Register</Link></span>
+                    <span className='login-screen__subtext'>Don't have an account? <Link to='/auth/customer-register'>Register</Link></span>
                 </form>
             </div>
     )
