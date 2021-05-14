@@ -63,7 +63,7 @@ function ProductManage(props) {
                 <h4>{items.description}</h4>
             </div>
             <div>
-                <h6>rate : {items.rate}</h6>
+                <h6>rate : {items.rate} / {items.per}</h6>
             </div>
             <div>
                 <p>category : {items.category}</p>
@@ -108,7 +108,7 @@ function ProductManage(props) {
                 <h4>{items.description}</h4>
             </div>
             <div>
-                <h6>rate : {items.rate}</h6>
+                <h6>rate : {items.rate} / {items.per}</h6>
             </div>
             <div>
                 <p>category : {items.category}</p>
@@ -148,7 +148,7 @@ function ProductManage(props) {
                 <h4>{items.description}</h4>
             </div>
             <div>
-                <h6>rate : {items.rate}</h6>
+                <h6>rate : {items.rate} / {items.per}</h6>
             </div>
             <div>
                 <p>category : {items.category}</p>
@@ -187,7 +187,7 @@ function ProductManage(props) {
                 <h4>{items.description}</h4>
             </div>
             <div>
-                <h6>rate : {items.rate}</h6>
+                <h6>rate : {items.rate} / {items.per}</h6>
             </div>
             <div>
                 <p>category : {items.category}</p>
@@ -224,6 +224,7 @@ function ProductManage(props) {
             title: ProductManage.title,
             description: ProductManage.description,
             rate: ProductManage.rate,
+            per: ProductManage.per,
             category: ProductManage.category,
             subcategory: ProductManage.subcategory,
             
@@ -271,6 +272,10 @@ function ProductManage(props) {
                 <div id="storenametextbox">
                     <label>rate</label>
                     <input onChange = {handleChange}  type="text" name="rate" />
+                </div>
+                <div id="storenametextbox">
+                    <label>per</label>
+                    <input onChange = {handleChange}  type="text" name="per" />
                 </div>
                 <div id="storenametextbox">
                     <label>category</label>

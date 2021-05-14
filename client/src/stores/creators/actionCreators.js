@@ -78,3 +78,10 @@ export const onMoreDetails =(items) => {
         payload : items
     }
 }
+
+export const onAddToCart =(product) => {
+    return {
+        type: actionTypes.onAddToCart,
+        payload : product
+    }
+}
