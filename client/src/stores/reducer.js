@@ -2,10 +2,11 @@ import * as actionTypes from '../stores/actions/actionTypes'
 
 
 const initialState = {
-    all_products : [],
-    vegetable:[],
-    fruit:[],
-    flower:[],
+    all_products: [],
+    vegetable: [],
+    fruit: [],
+    flower: [],
+    moredetails: [],     
 }
 
 const reducer = (state = initialState, action) => {
@@ -37,6 +38,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 flower: action.payload
+            }
+        }
+        case actionTypes.onMoreDetails:{
+            return {
+                ...state,
+                moredetails: action.payload
             }
         }
         

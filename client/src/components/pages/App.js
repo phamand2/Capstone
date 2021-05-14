@@ -13,6 +13,12 @@ const App = (props) => {
     props.onLoadProducts()
   },[])
 
+
+  const handleMoreDetails = (items) => {
+    props.onMoreDetails(items)
+  }
+
+
   const [showFirstElement, setShowFirstElement] = useState(false);
   const [showSecondElement, setShowSecondElement] = useState(false);
   const [showThirdElement, setShowThirdElement] = useState(false);
@@ -63,7 +69,7 @@ const all_productsItems = all_products.map((items, index) => {
         <p>sub-category : {items.subcategory}</p>
         </div>
         <div>
-        <button >More details</button>
+        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}`}>More details</Link></button>
         </div>
         
         
@@ -104,7 +110,7 @@ const vegetableItems = vegetable.map((items, index) => {
         <p>sub-category : {items.subcategory}</p>
         </div>
         <div>
-        <button >More details</button>
+        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}`}>More details</Link></button>
         </div>
         
 
@@ -142,7 +148,7 @@ const fruitItems = fruit.map((items, index) => {
         <p>sub-category : {items.subcategory}</p>
         </div>
         <div>
-        <button>More details</button>
+        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}`}>More details</Link></button>
         </div>
         
 
@@ -179,7 +185,7 @@ const flowerItems = flower.map((items, index) => {
         <p>sub-category : {items.subcategory}</p>
         </div>
         <div>
-        <button >More details</button>
+        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}`}>More details</Link></button>
         </div>
         
 
@@ -250,7 +256,7 @@ const flowerItems = flower.map((items, index) => {
         </>
         </div>
         <div id="box">
-            <h1>hello</h1>
+            
         </div>
     </div>
     </div>
@@ -260,6 +266,7 @@ const flowerItems = flower.map((items, index) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onLoadProducts: () => dispatch(actionCreators.loadProducts()),
+    onMoreDetails :(items) => dispatch(actionCreators.onMoreDetails(items)) 
     
           
   }

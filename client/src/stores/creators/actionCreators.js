@@ -69,3 +69,12 @@ export const deleteProduct = (_id, props) => {
         })
     }
 }
+
+
+
+export const onMoreDetails =(items) => {
+    return {
+        type: actionTypes.onMoreDetails,
+        payload : items
+    }
+}

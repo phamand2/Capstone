@@ -1,10 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import $ from 'jquery';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/pages/App';
+import ProductCategoryVegetable from './components/pages/ProductCategoryVegetable'
+import ProductCategoryFruits from './components/pages/ProductCategoryFruits'
+import ProductCategoryFlowers from './components/pages/ProductCategoryFlowers'
+import ProductDetails from './components/pages/ProductDetails'
 import ProductManage from '../src/components/pages/ProductManage'
-import BaseLayout from './components/pages/Baselayout';
+import BaseLayout from './components/pages/BaseLayout';
 import CustRegisterPage from './components/pages/CustRegisterPage'
 import AddStaffPage from './components/pages/AddStaffPage'
 import AddAdminPage from './components/pages/AddAdminPage'
@@ -46,6 +51,10 @@ ReactDOM.render(
             <Route exact path = "/product-manage" component = {ProductManage} />
             <Route exact path = "/update-product/:_id" component = {ProductUpdate} />
             <Route exact path = "/" component = {App} />
+            <Route exact path = "/vegetables" component = {ProductCategoryVegetable} />
+            <Route exact path = "/fruits" component = {ProductCategoryFruits} />
+            <Route exact path = "/flowers" component = {ProductCategoryFlowers} />
+            <Route exact path = "/product-detail/:title" component = {ProductDetails} />
             <Route exact path = '/auth/customer-register' component = {CustRegisterPage}/>
             <Route exact path = '/auth/add-staff' component = {AddStaffPage}/>
             <Route exact path = '/auth/add-admin' component = {AddAdminPage}/>
