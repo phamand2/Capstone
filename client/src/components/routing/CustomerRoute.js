@@ -12,7 +12,7 @@ const CustomerRoute = ({component: Component, ...rest}) => {
                             <Redirect to='/login' />
                         )
                     }
-            />
+                 } />
         </div>
     )
 }
