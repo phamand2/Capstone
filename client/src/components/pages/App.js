@@ -192,7 +192,7 @@ const flowerItems = flower.map((items, index) => {
       <div className="App">
         React App Home Page Until Router Switch Points Elsewhere
         <br/><br/>
-        <Link to='/auth/customer-register'>Customer Registration</Link><br/>
+        <Link to='/auth/customer-register'>Customer Registration</Link> (contains link to guest login) <br/>
         <Link to='/auth/customer-login'>Customer Login</Link><br/>
         <Link to='/auth/admin-login'>Admin Login</Link><br/>
         <Link to='/auth/staff-login'>Staff Login</Link><br/>

@@ -22,8 +22,8 @@ const GuestLoginPage = ({history}) => {
 
         try {
             const { data } = await axios.post('/auth/customerLogin', {
-                email: 'guesttestaccount@guesttestaccount.com', 
-                password: 'guesttestaccount123' 
+                email: 'donotdelete@thisistheguestlogin.com', 
+                password: '123456' 
             }, config)
 
             localStorage.setItem('customerToken', data.token)
@@ -42,8 +42,6 @@ const GuestLoginPage = ({history}) => {
                 <form className = 'register-screen__form' onSubmit={guestLoginHandler}>
                 <h3 className = 'login-screen__title'>Guest Login</h3>
                 {error && <span className='error-message'>{error}</span>}
-                {/* <input type = 'hidden' name = 'email' value = ''/>
-                <input type = 'hidden' name = 'password' value = ''/> */}
                 <button type = 'submit' className = 'btn btn-primary' >Login As Guest</button>
                 <span className='login-screen__subtext'>Want to make an account instead? <Link to='/auth/customer-register'>Register</Link></span>
             </form>
