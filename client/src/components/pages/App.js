@@ -13,13 +13,8 @@ import CardDeck from 'react-bootstrap/CardDeck'
 import Button from 'react-bootstrap/Button';
 
 import {
-  MDBNavbar,
-  MDBNavbarNav,
-  MDBNavbarItem,
-  MDBNavbarLink,
-  MDBContainer,
-  MDBNavbarToggler,
-  MDBIcon } from 'mdb-react-ui-kit';
+  MDBNavbar, MDBNavbarNav, MDBNavbarItem, MDBNavbarLink,
+  MDBContainer, MDBNavbarToggler, MDBIcon } from 'mdb-react-ui-kit';
 
 const App = (props) => {
 
