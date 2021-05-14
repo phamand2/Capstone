@@ -20,7 +20,202 @@ import {
   MDBNavbarToggler,
   MDBIcon } from 'mdb-react-ui-kit';
 
-export default function App() {
+const App = (props) => {
+
+
+  const [Uniqueid] = useState(Math.random().toString(36).substr(2, 8));
+  const [error, setError] = useState('');
+
+
+
+  const UniqueidlocalStorage = (id) => {
+    console.log("hello")
+    console.log(id)
+      
+      try {
+      
+        console.log("hello2")
+        localStorage.setItem('Uniqueid', id)
+    
+      } catch (error) {
+              setError(error.response.data.error)
+              setTimeout(() => {
+                  setError('')
+              }, 5000)
+          }
+  }
+  
+
+    useEffect(() => {
+      console.log("use effect is fired")
+      props.onLoadProducts()
+      UniqueidlocalStorage(Uniqueid)
+    },[])
+
+    const handleMoreDetails = (items) => {
+      props.onMoreDetails(items)
+    }
+
+
+
+    var  all_products = props.all_products 
+
+  let counter1 = 0;
+  for (let i = 0; i < all_products.length; i++) {
+    if (all_products[i]) counter1++;
+  }
+console.log(counter1)
+
+const Uniqueidzitem = localStorage.getItem('Uniqueid')
+const all_productsItems = all_products.map((items, index) => {
+  console.log(Uniqueid)
+    return <div key ={index} className="card" style={{width: "18rem"}}>
+        <div>
+        <Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
+        </div>
+        <div>
+        <Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
+        </div>
+        {/* <div>
+            <h4>{items.description}</h4>
+        </div>
+        <div>
+            <h6>rate : {items.rate}</h6>
+        </div>
+        <div>
+            <p>category : {items.category}</p>
+        </div>
+        <div>
+        <p>sub-category : {items.subcategory}</p>
+        </div>
+        <div>
+        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}>More details</Link></button>
+        </div> */}
+        
+        
+        
+
+        </div>
+})
+
+
+
+
+var  vegetable = props.vegetable 
+
+let counter2 = 0;
+for (let i = 0; i < all_products.length; i++) {
+    if (vegetable[i]) counter2++;
+}
+console.log(counter2)
+
+
+const vegetableItems = vegetable.map((items, index) => {
+    return <div key ={index} className="card" style={{width: "18rem"}}>
+        <div>
+        <Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
+        </div>
+        <div>
+        <Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
+        </div>
+        {/* <div>
+            <h4>{items.description}</h4>
+        </div>
+        <div>
+            <h6>rate : {items.rate}</h6>
+        </div>
+        <div>
+            <p>category : {items.category}</p>
+        </div>
+        <div>
+        <p>sub-category : {items.subcategory}</p>
+        </div>
+        <div>
+        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}>More details</Link></button>
+        </div> */}
+        
+
+        </div>
+})
+
+
+
+var  fruit = props.fruit 
+console.log(fruit)
+let counter3 = 0;
+for (let i = 0; i < all_products.length; i++) {
+    if (fruit[i]) counter3++;
+}
+console.log(counter3)
+
+const fruitItems = fruit.map((items, index) => {
+    return <div key ={index} className="card" style={{width: "18rem"}}>
+        <div>
+        <Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
+        </div>
+        <div>
+        <Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
+        </div>
+        {/* <div>
+            <h4>{items.description}</h4>
+        </div>
+        <div>
+            <h6>rate : {items.rate}</h6>
+        </div>
+        <div>
+            <p>category : {items.category}</p>
+        </div>
+        <div>
+        <p>sub-category : {items.subcategory}</p>
+        </div>
+        <div>
+        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}>More details</Link></button>
+        </div> */}
+        
+        
+
+        </div>
+})
+
+
+
+var  flower = props.flower 
+let counter4 = 0;
+for (let i = 0; i < all_products.length; i++) {
+    if (flower[i]) counter4++;
+}
+console.log(counter4)
+
+const flowerItems = flower.map((items, index) => {
+    return <div key ={index} className="card" style={{width: "18rem"}}>
+        <div>
+        <Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
+        </div>
+        <div>
+        <Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
+        </div>
+        {/* <div>
+            <h4>{items.description}</h4>
+        </div>
+        <div>
+            <h6>rate : {items.rate}</h6>
+        </div>
+        <div>
+            <p>category : {items.category}</p>
+        </div>
+        <div>
+        <p>sub-category : {items.subcategory}</p>
+        </div>
+        <div>
+        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}>More details</Link></button>
+        </div> */}
+        
+
+        </div>
+})
+
+
+
   return (
     <header>
       <MDBNavbar expand='lg' light bgColor='white'>
@@ -47,6 +242,9 @@ export default function App() {
               </MDBNavbarItem>
               <MDBNavbarItem>
                 <MDBNavbarLink href='/flowers'>Flowers</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <Link to='/mycart'><MDBNavbarLink>Cart</MDBNavbarLink></Link>
               </MDBNavbarItem>
               <MDBNavbarItem>
                 <MDBNavbarLink href='/auth/customer-login'>Login</MDBNavbarLink>
@@ -89,11 +287,15 @@ export default function App() {
     <Card.Body>
     <Card.Img variant="top" src="holder.js/100px180" />
     <Card.Title>Fruit</Card.Title>
-      <Card.Text>
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </Card.Text>
-      <a className='btn btn-outline-light btn-lg' href='#' role='button'>
+      <div className="product_display">
+        {fruitItems[0]}
+        {fruitItems[5]}
+        {fruitItems[10]}
+        {fruitItems[11]}
+        {fruitItems[15]}
+        {fruitItems[18]}
+      </div>
+      <a className='btn btn-outline-light btn-lg' href='/fruits' role='button'>
                 See All Fruit
               </a>
     </Card.Body>
@@ -103,11 +305,15 @@ export default function App() {
     <Card.Body>
     <Card.Img variant="top" src="holder.js/100px180" />
     <Card.Title>Vegetables</Card.Title>
-      <Card.Text>
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </Card.Text>
-      <a className='btn btn-outline-light btn-lg' href='#' role='button'>
+    <div className="product_display">
+        {vegetableItems[0]}
+        {vegetableItems[5]}
+        {vegetableItems[10]}
+        {vegetableItems[11]}
+        {vegetableItems[15]}
+        {vegetableItems[18]}
+      </div>
+      <a className='btn btn-outline-light btn-lg' href='/vegetables' role='button'>
                 See All Vegetables
               </a>
     </Card.Body>
@@ -118,11 +324,15 @@ export default function App() {
     <Card.Body>
     <Card.Img variant="top" src="holder.js/100px180" />
     <Card.Title>Flowers</Card.Title>
-      <Card.Text>
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </Card.Text>
-      <a className='btn btn-outline-light btn-lg' href='#' role='button'>
+    <div className="product_display">
+        {flowerItems[0]}
+        {flowerItems[5]}
+        {flowerItems[10]}
+        {flowerItems[11]}
+        {flowerItems[15]}
+        {flowerItems[18]}
+      </div>
+      <a className='btn btn-outline-light btn-lg' href='/flowers' role='button'>
                 See All Flowers
               </a>
     </Card.Body>
@@ -136,6 +346,27 @@ export default function App() {
   );
 }
 
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLoadProducts: () => dispatch(actionCreators.loadProducts()),
+    onMoreDetails :(items) => dispatch(actionCreators.onMoreDetails(items)) 
+    
+          
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+      all_products: state.all_products,
+      vegetable: state.vegetable,
+      fruit: state.fruit,
+      flower: state.flower,
+      
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 
 // const App = (props) => {
