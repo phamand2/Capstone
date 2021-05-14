@@ -103,8 +103,9 @@ app.post('/payment', (req, res) => {
       source: token.id
   }).then(customer => {
       stripe.charges.create({
+        // Stripe charges in cents
           // amount: getCartSubTotal() * 100,
-          amount: product.rate,
+          amount: Math.round(product.rate * 100),
           currency: 'usd',
           customer: customer.id,
           receipt_email: token.email,

@@ -27,7 +27,7 @@ const GuestLoginPage = ({history}) => {
             }, config)
 
             localStorage.setItem('customerToken', data.token)
-            localStorage.setItem('customerToken', data.token)
+            localStorage.setItem('customerEmail', email)
             
             history.push('/')
         } catch (error) {
