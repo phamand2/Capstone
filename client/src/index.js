@@ -8,6 +8,7 @@ import ProductCategoryVegetable from './components/pages/ProductCategoryVegetabl
 import ProductCategoryFruits from './components/pages/ProductCategoryFruits'
 import ProductCategoryFlowers from './components/pages/ProductCategoryFlowers'
 import ProductDetails from './components/pages/ProductDetails'
+import MyCart from './components/pages/MyCart'
 import ProductManage from '../src/components/pages/ProductManage'
 import BaseLayout from './components/pages/BaseLayout';
 import CustRegisterPage from './components/pages/CustRegisterPage'
@@ -54,7 +55,8 @@ ReactDOM.render(
             <Route exact path = "/vegetables" component = {ProductCategoryVegetable} />
             <Route exact path = "/fruits" component = {ProductCategoryFruits} />
             <Route exact path = "/flowers" component = {ProductCategoryFlowers} />
-            <Route exact path = "/product-detail/:title" component = {ProductDetails} />
+            <Route exact path = "/product-detail/:title/:Uniqueidzitem" component = {ProductDetails} />
+            <Route exact path = "/mycart" component = {MyCart} />
             <Route exact path = '/auth/customer-register' component = {CustRegisterPage}/>
             <Route exact path = '/auth/add-staff' component = {AddStaffPage}/>
             <Route exact path = '/auth/add-admin' component = {AddAdminPage}/>

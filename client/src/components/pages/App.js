@@ -8,11 +8,53 @@ import '../css/App.css';
 
 const App = (props) => {
 
+
+  const [Uniqueid] = useState(Math.random().toString(36).substr(2, 8));
+  const [error, setError] = useState('');
+
+
+
+  const UniqueidlocalStorage = (id) => {
+    console.log("hello")
+    console.log(id)
+    
+    try {
+    
+      console.log("hello2")
+      localStorage.setItem('Uniqueid', id)
+  
+    } catch (error) {
+            setError(error.response.data.error)
+            setTimeout(() => {
+                setError('')
+            }, 5000)
+        }
+    }
+
+  
+  
+  
+  // const handleUniqueId1 = (e) => {
+  //   setUniqueId1({
+  //       ...UniqueId1,
+  //       const [id]: (Math.random().toString(36).substr(2, 8)
+        
+  //   })
+  // }
+
+
   useEffect(() => {
     console.log("use effect is fired")
     props.onLoadProducts()
+    UniqueidlocalStorage(Uniqueid)
+    
   },[])
 
+
+  // const token = localStorage.getItem('customerToken')
+  // if (token) {
+  //   return 
+  // }
 
   const handleMoreDetails = (items) => {
     props.onMoreDetails(items)
@@ -48,7 +90,9 @@ const App = (props) => {
   }
 console.log(counter1)
 
+const Uniqueidzitem = localStorage.getItem('Uniqueid')
 const all_productsItems = all_products.map((items, index) => {
+  console.log(Uniqueid)
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
             <img src={items.imageurl} alt="item"/>
@@ -69,7 +113,7 @@ const all_productsItems = all_products.map((items, index) => {
         <p>sub-category : {items.subcategory}</p>
         </div>
         <div>
-        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}`}>More details</Link></button>
+        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}>More details</Link></button>
         </div>
         
         
@@ -110,7 +154,7 @@ const vegetableItems = vegetable.map((items, index) => {
         <p>sub-category : {items.subcategory}</p>
         </div>
         <div>
-        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}`}>More details</Link></button>
+        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}>More details</Link></button>
         </div>
         
 
@@ -148,7 +192,7 @@ const fruitItems = fruit.map((items, index) => {
         <p>sub-category : {items.subcategory}</p>
         </div>
         <div>
-        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}`}>More details</Link></button>
+        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}>More details</Link></button>
         </div>
         
 
@@ -185,7 +229,7 @@ const flowerItems = flower.map((items, index) => {
         <p>sub-category : {items.subcategory}</p>
         </div>
         <div>
-        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}`}>More details</Link></button>
+        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}>More details</Link></button>
         </div>
         
 
@@ -210,10 +254,15 @@ const flowerItems = flower.map((items, index) => {
         yourfirstname@test.com<br/>
         test123
         <br/><br/>
+
+      <Link to='/auth/customer-register'>Customer Register</Link><br/>
+      <Link to='/auth/customer-login'>Customer Login</Link><br/>
+      <Link to='/auth/admin-login'>Admin Login</Link><br/>
+      <Link to='/auth/staff-login'>Staff Login</Link><br/>
+      <Link to='/mycart'>cart</Link><br/>
         Admin landing page includes functionality for add/update/delete products, and
         links out to add a new staff member and add a new admin.
         <br/><br/>
-
       </div>
       <div>
       <div id="box">

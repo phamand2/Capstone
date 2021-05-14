@@ -22,7 +22,7 @@ const CustLoginPage = ({history}) => {
 
         try {
             const { data } = await axios.post('/auth/customerLogin', { email, password }, config)
-
+            console.log(data)
             localStorage.setItem('customerToken', data.token)
 
             history.push('/')

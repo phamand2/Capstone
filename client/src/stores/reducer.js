@@ -2,11 +2,16 @@ import * as actionTypes from '../stores/actions/actionTypes'
 
 
 const initialState = {
-    all_products: [],
-    vegetable: [],
-    fruit: [],
-    flower: [],
-    moredetails: [],     
+
+    all_products : [],
+    vegetable:[],
+    fruit:[],
+    flower:[],
+    moredetails:[],
+    cart:[],
+
+     
+
 }
 
 const reducer = (state = initialState, action) => {
@@ -44,6 +49,14 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 moredetails: action.payload
+            }
+        }
+
+
+        case actionTypes.onAddToCart:{
+            return {
+                ...state,
+                cart: state.cart.concat(action.payload)
             }
         }
         

@@ -8,10 +8,10 @@ exports.getAdminData = (req, res, next) => {
 }
 
 exports.addProduct = (req, res, next) => {
-  const { imageurl, title, description, rate, category, subcategory } = req.body
-  
+  const { imageurl, title, description, rate,  per, category, subcategory } = req.body
+  console.log('Adding product')
   let product  = new Product({
-      imageurl, title, description, rate, category, subcategory,
+      imageurl, title, description, rate, per, category, subcategory,
     })
 
   product.save((error) => {
@@ -25,14 +25,15 @@ exports.addProduct = (req, res, next) => {
 
 
 exports.updateProduct = (req, res, next) => {
-  console.log("update product is fired")
-    const { productId, imageurl, title, description, rate, category, subcategory } = req.body
+    console.log("update product is fired")
+    const { imageurl, title, description, rate, per, category, subcategory } = req.body
+    const productId = req.params.productId
   
     const updatedProduct = {
-      imageurl, title, description, rate, category, subcategory
+      imageurl, title, description, rate,  per, category, subcategory
     }
   
-    Product.findOneAndUpdate(productId, updatedProduct, (error, result) => {
+    Product.findByIdAndUpdate(productId, updatedProduct, (error, result) => {
         if(error) {
             res.json({error: 'Unable to update product'})
         } else {

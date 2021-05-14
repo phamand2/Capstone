@@ -30,6 +30,7 @@ function ProductUpdate(props) {
                 title: ProductManage.title,
                 description: ProductManage.description,
                 rate: ProductManage.rate,
+                per:ProductManage.per,
                 category: ProductManage.category,
                 subcategory: ProductManage.subcategory,
             })
@@ -65,6 +66,10 @@ function ProductUpdate(props) {
             <div id="storenametextbox">
                 <label>rate</label>
                 <input onChange = {handleChange}  type="text" name="rate" />
+            </div>
+            <div id="storenametextbox">
+                <label>rate</label>
+                <input onChange = {handleChange}  type="text" name="per" />
             </div>
             <div id="storenametextbox">
                 <label>category</label>
