@@ -66,11 +66,8 @@ const ProductDetails = (props) => {
     }
 
 
-    const handleAddToCart = (product, ) => {
+    const handleAddToCart = (product) => {
         props.onAddToCart(product)
-        
-        
-        
         alert("item has been added to the cart ")
     }
     var  product = props.moredetails
@@ -196,7 +193,7 @@ const ProductDetails = (props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onAddToCart :(product ) => dispatch(actionCreators.onAddToCart(product )),
-        onAddToCart :(Qty ) => dispatch(actionCreators.onAddToCart(Qty )),
+        // onAddToCart :(Qty ) => dispatch(actionCreators.onAddToCart(Qty )),
         
     }
 
