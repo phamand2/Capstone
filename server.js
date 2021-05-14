@@ -6,6 +6,7 @@ const connectDB = require('./config/db')
 const errorHandler = require('./middleware/error')
 const Product =require('./models/product')
 const cors = require('cors')
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 
 // Connect DB
@@ -78,6 +79,44 @@ app.get('/all-products/flower', (req, res) => {
       res.json(posts)
     }
   })
+})
+
+
+// stripe payment route
+app.post('/payment', (req, res) => {
+  const { product, token } = req.body
+
+  // const getCartSubTotal = () => {
+  //     return cartItems.reduce((price, item) => item.price * item.qty + price, 0)
+  // }
+
+  // const getCartCount = () => {
+  //     return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0)
+  // }
+
+  console.log('PRODUCT: ', product.name)
+  console.log('PRICE: $', product.rate)
+  const idempotencyKey = Math.random()
+
+  return stripe.customers.create({
+      email: token.email,
+      source: token.id
+  }).then(customer => {
+      stripe.charges.create({
+          // amount: getCartSubTotal() * 100,
+          currency: 'usd',
+          customer: customer.id,
+          receipt_email: token.email,
+          description: `Purchase from FruveFlow`,
+          shipping: {
+              name: token.card.name,
+              address: {
+                  country: token.card.address_country
+              }
+          }
+      }, {idempotencyKey})
+  }).then(result => res.status(200).json(result))
+  .catch(err => console.log(err))
 })
 
 

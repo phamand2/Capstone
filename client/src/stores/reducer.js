@@ -2,6 +2,7 @@ import * as actionTypes from '../stores/actions/actionTypes'
 
 
 const initialState = {
+
     all_products : [],
     vegetable:[],
     fruit:[],
@@ -10,6 +11,7 @@ const initialState = {
     cart:[],
 
      
+
 }
 
 const reducer = (state = initialState, action) => {

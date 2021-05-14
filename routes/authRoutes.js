@@ -14,7 +14,7 @@ router.route('/customer-forgot-password').post(customerForgotPassword)
 
 router.route('/customer-reset-password/:resetToken').put(customerResetPassword)
 
-router.route('/adminRegister').post(adminRegister)
+router.route('/add-admin').post(adminRegister)
 
 router.route('/adminLogin').post(adminLogin)
 
@@ -22,7 +22,7 @@ router.route('/admin-forgot-password').post(adminForgotPassword)
 
 router.route('/admin-reset-password/:resetToken').put(adminResetPassword)
 
-// router.route('/add-staff').post(staffRegister)
+router.route('/add-staff').post(staffRegister)
 
 router.route('/staffLogin').post(staffLogin)
 

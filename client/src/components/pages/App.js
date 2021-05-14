@@ -2,7 +2,6 @@ import { connect } from 'react-redux'
 import * as actionCreators from '../../stores/creators/actionCreators' 
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { NavLink } from "react-router-dom";
 import React from 'react';
 import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import '../css/App.css';
@@ -96,7 +95,7 @@ const all_productsItems = all_products.map((items, index) => {
   console.log(Uniqueid)
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-            <img src={items.imageurl} />
+            <img src={items.imageurl} alt="item"/>
         </div>
         <div>
             <h1>{items.title}</h1>
@@ -137,7 +136,7 @@ console.log(counter2)
 const vegetableItems = vegetable.map((items, index) => {
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-            <img src={items.imageurl} />
+            <img src={items.imageurl} alt="item"/>
         </div>
         <div>
             <h1>{items.title}</h1>
@@ -243,27 +242,33 @@ const flowerItems = flower.map((items, index) => {
       <div className="App">
         React App Home Page Until Router Switch Points Elsewhere
         <br/><br/>
-        Routes for add/update/delete product POST requests are now:<br/>
-        localhost:3000/admin/add-products<br/>
-        localhost:3000/admin/update-product/:productId<br/>
-        (delete) localhost:3000/admin/delete-product/:productId<br/>
+        <Link to='/auth/customer-register'>Customer Registration</Link> (contains link to guest login) <br/>
+        <Link to='/auth/customer-login'>Customer Login</Link><br/>
+        <Link to='/auth/admin-login'>Admin Login</Link><br/>
+        <Link to='/auth/staff-login'>Staff Login</Link><br/>
         <br/><br/>
-        localhost:3000/auth/admin-login<br/><br/>
-        It will redirect you to the admin landing page if it worked and otherwise display an error. Your credentials are:<br/>
+        Stripe Checkout button that proceeds smoothly but needs to be hooked up to the cart:<br/>
+        <Link to='/checkout'>Checkout</Link>
+        <br/><br/>
+        The admin login will redirect you to the admin landing page if it worked and otherwise display an error. Your credentials are:<br/>
         yourfirstname@test.com<br/>
         test123
         <br/><br/>
+
       <Link to='/auth/customer-register'>Customer Register</Link><br/>
       <Link to='/auth/customer-login'>Customer Login</Link><br/>
       <Link to='/auth/admin-login'>Admin Login</Link><br/>
       <Link to='/auth/staff-login'>Staff Login</Link><br/>
       <Link to='/mycart'>cart</Link><br/>
+        Admin landing page includes functionality for add/update/delete products, and
+        links out to add a new staff member and add a new admin.
+        <br/><br/>
       </div>
       <div>
       <div id="box">
         <>
             <div id="header">
-                <h1>All Fruits , Flowers  and Vegetables</h1>
+                <h1>All Fruits, Flowers and Vegetables</h1>
             </div>
             <MDBBtn onClick={toggleFirstElement} className="collapse_btn_title mt-3"> All Products (total products:{counter1}) </MDBBtn>
             <MDBBtn onClick={toggleSecondElement} className="collapse_btn_title mt-3">Vegetable (total products:{counter2})</MDBBtn>

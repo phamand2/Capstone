@@ -55,19 +55,3 @@ exports.deleteProduct = (req, res, next) => {
       }
     })
 }
-
-exports.addStaff = async (req, res, next) => {
-  const {username, email, password} = req.body;
-
-  try {
-      const staffMember = await StaffMember.create({
-          username, email, password
-      })
-      sendStaffMemberToken(staffMember, 201, res)
-  } catch (error) {
-      res.status(500).json({
-          success: false,
-          error: error.message
-      })
-  }
-}

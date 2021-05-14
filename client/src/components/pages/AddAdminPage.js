@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
-const AddStaffPage = ({history}) => {
+const AddAdminPage = ({history}) => {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -31,8 +31,8 @@ const AddStaffPage = ({history}) => {
         }
 
         try {
-            await axios.post('/auth/add-staff', {username, email, password}, config)
-            alert("Your new staff member has been added to the database")
+            await axios.post('/auth/add-admin', {username, email, password}, config)
+            alert("Your new administrator has been added to the database")
             history.push('/product-manage')
         } catch (error) {
             setError(error.response.data.error)
@@ -67,4 +67,4 @@ const AddStaffPage = ({history}) => {
     )
 }
 
-export default AddStaffPage
+export default AddAdminPage
