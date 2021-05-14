@@ -51,6 +51,7 @@ CustomerSchema.methods.getResetPasswordToken = function() {
     return resetToken
 }
 
+
 const Customer = mongoose.model('Customer', CustomerSchema)
 
 module.exports = Customer
