@@ -34,7 +34,6 @@ const CustRegisterPage = ({history}) => {
             const { data } = await axios.post('/auth/customer-register', {username, email, password}, config)
 
             localStorage.setItem('customerToken', data.token)
-            localStorage.setItem('customerUsername', username)
             localStorage.setItem('customerEmail', email)
 
             history.push('/')
@@ -69,7 +68,7 @@ const CustRegisterPage = ({history}) => {
 
                 <button type = 'submit' className = 'btn btn-primary'>Register</button>
                 
-                <span className='register-screen__subtext'>Already have an account? <Link to='/auth/login'>Log In</Link></span>
+                <span className='register-screen__subtext'>Already have an account? <Link to='/auth/customer-login'>Log In</Link></span>
             </form><br/>
             <Link to = '/guest-login'>Login As Guest</Link>
         </div>
