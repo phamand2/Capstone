@@ -22,8 +22,9 @@ const ProductDetails = (props) => {
 
     const handleSave =(product) => {
         const customerToken = localStorage.getItem('customerToken')
+        const customerEmail = localStorage.getItem('customerEmail')
         
-        fetch ('http://localhost:5000/customer/add-to-cart',{
+        fetch ('http://localhost:5000/add-to-cart',{
             method: 'POST',
             
             headers: {
@@ -39,6 +40,7 @@ const ProductDetails = (props) => {
                 category: product.category,
                 subcategory: product.subcategory,
                 customerToken:customerToken,
+                customerEmail:customerEmail
                 
             })
         }).then(response => response.json())
@@ -46,7 +48,7 @@ const ProductDetails = (props) => {
             if(result.success) {
                 
               alert("Your product has been added to the database")
-              window.location.reload(false);
+            //   window.location.reload(false);
               
             }
            
@@ -58,11 +60,11 @@ const ProductDetails = (props) => {
 
 
     const handleAddToCartLoggedIn = (product, ) => {
+        
         props.onAddToCart(product)
         handleSave (product)
+
         
-        
-        alert("item has been added to the cart and database")
     }
 
 
