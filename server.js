@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 5000
 const connectDB = require('./config/db')
 const errorHandler = require('./middleware/error')
 const Product =require('./models/product')
+const Cart =require('./models/Cart')
 const cors = require('cors')
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
@@ -79,6 +80,41 @@ app.get('/all-products/flower', (req, res) => {
       res.json(posts)
     }
   })
+})
+
+
+app.post ('/add-to-cart',(req,res) =>{
+  const images = req.body.images 
+  const title = req.body.title
+  const description = req.body.description 
+  const rate = req.body.rate 
+  const category = req.body.category 
+  const subcategory = req.body.subcategory 
+  const customerToken = req.body.customerToken 
+  const customerEmail = req.body.customerEmail 
+
+
+  let cart = new Cart({
+    images: images,
+    title: title,
+    description: description,
+    rate: rate,
+    category: category,
+    subcategory: subcategory,
+    customerToken:customerToken,
+    customerEmail:customerEmail,
+
+  })
+
+
+  cart.save((error) => {
+    if(error) {
+      res.json({error: 'Unable to save the cart!'})
+    } else {
+      res.json({success: true, message: 'New cart Saved'})
+    }
+  })
+
 })
 
 
