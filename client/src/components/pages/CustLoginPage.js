@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
 const CustLoginPage = ({history}) => {
-    
+    const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
@@ -21,9 +21,11 @@ const CustLoginPage = ({history}) => {
         }
 
         try {
-            const { data } = await axios.post('/auth/customerLogin', { email, password }, config)
+            const { data } = await axios.post('/auth/customerLogin', { username,email, password }, config)
             console.log(data)
             localStorage.setItem('customerToken', data.token)
+            localStorage.setItem('customerUsername', username)
+            localStorage.setItem('customerEmail', email)
 
             history.push('/')
         } catch (error) {

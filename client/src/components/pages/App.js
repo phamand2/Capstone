@@ -242,27 +242,31 @@ const flowerItems = flower.map((items, index) => {
       <div className="App">
         React App Home Page Until Router Switch Points Elsewhere
         <br/><br/>
-        <Link to='/auth/customer-register'>Customer Registration</Link> (contains link to guest login) <br/>
-        <Link to='/auth/customer-login'>Customer Login</Link><br/>
-        <Link to='/auth/admin-login'>Admin Login</Link><br/>
-        <Link to='/auth/staff-login'>Staff Login</Link><br/>
+
+        <Link to='/auth/customer-register' className = 'App-link'>Customer Registration</Link><br/> (contains link to guest login) <br/>
+      <Link to='/auth/customer-login' className = 'App-link'>Customer Login</Link><br/>
+      <Link to='/auth/staff-login' className = 'App-link'>Staff Login</Link><br/>
+      <Link to='/auth/admin-login' className = 'App-link'>Admin Login</Link><br/>
+      Admin landing page includes functionality for add/update/delete products, and links out to "add a new staff member" and "add a new admin".
+    <br/><br/>
+      <Link to='/mycart' className = 'App-link'>Shopping Cart</Link><br/>
+        
         <br/><br/>
+
         Stripe Checkout button that proceeds smoothly but needs to be hooked up to the cart:<br/>
-        <Link to='/checkout'>Checkout</Link>
+        <Link to='/checkout' className = 'App-link'>Checkout</Link>
+        <br/><br/>
+        Dummy card info if you want to test Stripe:<br/>
+        4242 4242 4242 4242<br/>
+        12/21 exp<br/>
+        123 CVV<br/>
         <br/><br/>
         The admin login will redirect you to the admin landing page if it worked and otherwise display an error. Your credentials are:<br/>
         yourfirstname@test.com<br/>
         test123
         <br/><br/>
 
-      <Link to='/auth/customer-register'>Customer Register</Link><br/>
-      <Link to='/auth/customer-login'>Customer Login</Link><br/>
-      <Link to='/auth/admin-login'>Admin Login</Link><br/>
-      <Link to='/auth/staff-login'>Staff Login</Link><br/>
-      <Link to='/mycart'>cart</Link><br/>
-        Admin landing page includes functionality for add/update/delete products, and
-        links out to add a new staff member and add a new admin.
-        <br/><br/>
+      
       </div>
       <div>
       <div id="box">

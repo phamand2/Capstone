@@ -34,6 +34,8 @@ const CustRegisterPage = ({history}) => {
             const { data } = await axios.post('/auth/customer-register', {username, email, password}, config)
 
             localStorage.setItem('customerToken', data.token)
+            localStorage.setItem('customerUsername', username)
+            localStorage.setItem('customerEmail', email)
 
             history.push('/')
         } catch (error) {
