@@ -3,7 +3,6 @@ import * as actionCreators from '../../stores/creators/actionCreators'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { NavLink } from "react-router-dom";
-
 import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import '../css/App.css';
 
@@ -41,13 +40,13 @@ export default function App() {
                 </MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink href='#'>Fruit</MDBNavbarLink>
+                <MDBNavbarLink href='/fruits'>Fruit</MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink href='#'>Vegetables</MDBNavbarLink>
+                <MDBNavbarLink href='/vegetables'>Vegetables</MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink href='#'>Flowers</MDBNavbarLink>
+                <MDBNavbarLink href='/flowers'>Flowers</MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
                 <MDBNavbarLink href='/auth/customer-login'>Login</MDBNavbarLink>
@@ -57,6 +56,9 @@ export default function App() {
               </MDBNavbarItem>
               <MDBNavbarItem>
                 <MDBNavbarLink href='/auth/admin-login'>Admin</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href='/auth/staff-login'>Staff</MDBNavbarLink>
               </MDBNavbarItem>
 
             </MDBNavbarNav>

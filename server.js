@@ -104,6 +104,7 @@ app.post('/payment', (req, res) => {
   }).then(customer => {
       stripe.charges.create({
           // amount: getCartSubTotal() * 100,
+          amount: product.rate,
           currency: 'usd',
           customer: customer.id,
           receipt_email: token.email,
@@ -115,7 +116,10 @@ app.post('/payment', (req, res) => {
               }
           }
       }, {idempotencyKey})
-  }).then(result => res.status(200).json(result))
+  }).then(result => {
+    console.log(result)
+    res.status(200).json(result)
+    })
   .catch(err => console.log(err))
 })
 

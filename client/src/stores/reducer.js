@@ -10,8 +10,6 @@ const initialState = {
     moredetails:[],
     cart:[],
 
-     
-
 }
 
 const reducer = (state = initialState, action) => {
