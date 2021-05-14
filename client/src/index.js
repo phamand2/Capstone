@@ -1,5 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -10,7 +10,7 @@ import ProductCategoryFlowers from './components/pages/ProductCategoryFlowers'
 import ProductDetails from './components/pages/ProductDetails'
 import MyCart from './components/pages/MyCart'
 import ProductManage from '../src/components/pages/ProductManage'
-import BaseLayout from './components/pages/BaseLayout';
+import BaseLayout from './components/pages/Baselayout';
 import CustRegisterPage from './components/pages/CustRegisterPage'
 import AddStaffPage from './components/pages/AddStaffPage'
 import AddAdminPage from './components/pages/AddAdminPage'

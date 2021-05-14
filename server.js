@@ -118,7 +118,7 @@ app.post ('/add-to-cart',(req,res) =>{
 })
 
 
-// stripe payment route
+// stripe payment route #1
 app.post('/payment', (req, res) => {
   const { product, token } = req.body
 
@@ -140,6 +140,7 @@ app.post('/payment', (req, res) => {
   }).then(customer => {
       stripe.charges.create({
           // amount: getCartSubTotal() * 100,
+          amount: Math.round(product.rate * 100),
           currency: 'usd',
           customer: customer.id,
           receipt_email: token.email,
@@ -151,9 +152,42 @@ app.post('/payment', (req, res) => {
               }
           }
       }, {idempotencyKey})
-  }).then(result => res.status(200).json(result))
+  }).then(result => {
+    console.log(result)
+    res.status(200).json(result)})
   .catch(err => console.log(err))
 })
+
+
+// stripe payment route #2 - still not working
+// app.post('/create-checkout-session', async (req, res) => {
+//   const domainUrl = process.env.FRUVEFLOW_URL
+//   const { line_items, customer_email } = req.body
+//   if(!line_items || !customer_email) {
+//     return res.status(400).json({ error: 'missing required session parameters'})
+//   }
+//   let session;
+
+//   try {
+//     session = await stripe.checkout.sessions.create({
+//       payment_method_types: ['card'],
+//       mode: 'payment',
+//       line_items,
+//       customer_email,
+//       success_url: `${domainUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
+//       cancel_url: `${domainUrl}/canceled`,
+//       shipping_address_collection: { allowed_countries: ['US'] }
+//     })
+//     console.log(session)
+//     res.status(200).json({ sessionID: session.id })
+//   } catch (error) {
+//     console.log(error)
+//     res.status(400).json({ error: 'An error occurred; unable to create session'})
+//   }
+// })
+
+
+
 
 
 
