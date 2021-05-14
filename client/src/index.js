@@ -33,6 +33,7 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { Router, Route, Switch } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
+import NeilApp from './components/pages/NeilApp';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -52,6 +53,7 @@ ReactDOM.render(
             <Route exact path = "/product-manage" component = {ProductManage} />
             <Route exact path = "/update-product/:_id" component = {ProductUpdate} />
             <Route exact path = "/" component = {App} />
+            <Route exact path = '/unstyled' component = {NeilApp}/>
             <Route exact path = "/vegetables" component = {ProductCategoryVegetable} />
             <Route exact path = "/fruits" component = {ProductCategoryFruits} />
             <Route exact path = "/flowers" component = {ProductCategoryFlowers} />
