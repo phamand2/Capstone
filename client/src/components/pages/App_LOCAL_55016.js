@@ -7,6 +7,12 @@ import { NavLink } from "react-router-dom";
 import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import '../css/App.css';
 
+
+
+
+
+
+
 import React from 'react';
 import Card from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck'
@@ -136,6 +142,20 @@ export default function App() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const App = (props) => {
 
 //   useEffect(() => {
@@ -147,6 +167,9 @@ export default function App() {
 //   const [showSecondElement, setShowSecondElement] = useState(false);
 //   const [showThirdElement, setShowThirdElement] = useState(false);
 //   const [showFourthElement, setShowFourthElement] = useState(false);
+
+
+
 
 //   const toggleFirstElement = () => setShowFirstElement(!showFirstElement);
 //   const toggleSecondElement = () => setShowSecondElement(!showSecondElement);
@@ -192,6 +215,9 @@ export default function App() {
 //         <div>
 //         <button >More details</button>
 //         </div>
+        
+        
+
 //         </div>
 // })
 

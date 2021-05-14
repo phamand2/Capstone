@@ -3,10 +3,9 @@ import * as actionCreators from '../../stores/creators/actionCreators'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { NavLink } from "react-router-dom";
-
 import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import '../css/App.css';
-
+import fruits from '../img/fruits.jpeg'
 import React from 'react';
 import Card from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck'
@@ -83,9 +82,8 @@ export default function App() {
         <div className='cards'>
         <>
   <Card>
-    
     <Card.Body>
-    <Card.Img variant="top" src="holder.js/100px180" />
+    <Card.Img  src={fruits} />
     <Card.Title>Fruit</Card.Title>
       <Card.Text>
         Some quick example text to build on the card title and make up the bulk
@@ -99,7 +97,7 @@ export default function App() {
   <br />
   <Card>
     <Card.Body>
-    <Card.Img variant="top" src="holder.js/100px180" />
+    <Card.Img  src="holder.js/100px180" />
     <Card.Title>Vegetables</Card.Title>
       <Card.Text>
         Some quick example text to build on the card title and make up the bulk
@@ -160,7 +158,6 @@ export default function App() {
 //     setShowFourthElement(!showFourthElement);
 //   }
 
-
 //   var  all_products = props.all_products 
 
 //   let counter1 = 0;
@@ -192,6 +189,9 @@ export default function App() {
 //         <div>
 //         <button >More details</button>
 //         </div>
+        
+        
+
 //         </div>
 // })
 
@@ -396,8 +396,5 @@ export default function App() {
       
 //   }
 // }
-
-
-
 
 // export default connect(mapStateToProps, mapDispatchToProps)(App);
