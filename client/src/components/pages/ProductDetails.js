@@ -1,12 +1,14 @@
-import { connect } from 'react-redux'
-import { useState} from 'react'
+import { connect, useDispatch } from 'react-redux'
+import { useState } from 'react'
+import { onAddToCart } from '../../stores/creators/actionCreators' 
 import * as actionCreators from '../../stores/creators/actionCreators' 
 
 
-const ProductDetails = (props, {history}) => {
-    const [Qty, setQty] = useState({})
+const ProductDetails = (props) => {
+    const [qty, setQty] = useState(1)
+    const dispatch = useDispatch()
 
-    var  product = props.moredetails
+    // var product = props.moredetails
     // var  product = props.moredetails
     // console.log(product)
     // const moredetails_imageurlItems = moredetails_imageurl.map((items, index) => {
@@ -64,18 +66,23 @@ const ProductDetails = (props, {history}) => {
         
     // }
 
-
-    const handleAddToCart = (product) => {
-        props.onAddToCart(product)
-        alert("item has been added to the cart ")
+    const handleAddToCart = () => {
+        dispatch(onAddToCart(product, qty))
+        alert("This item has been added to your cart!")
+        // history.push('/cart')
     }
-    var  product = props.moredetails
+
+    // const handleAddToCart = (product) => {
+    //     props.onAddToCart(product)
+    //     alert("Item has been added to the cart!")
+    // }
+    // var  product = props.moredetails
     
     
     const customerToken = localStorage.getItem('customerToken')
    
-        var  product = props.moredetails
-        console.log(product)
+        var product = props.moredetails
+        // console.log(product)
             return (
             <div className="home01">
         
@@ -107,13 +114,13 @@ const ProductDetails = (props, {history}) => {
                             <div className="product-desc product-description">
                                 <span className="item-number"><b>Product ID:</b>  {product._id}</span>
                                 <br></br>
-                                <span className="item-cat"><b>Category:</b>  {product.category}</span>
+                                <span className="item-cat"><b>Category:</b> {product.category}</span>
                                 <br></br>
                                 <span className="item-tag"><b>SubCategory:</b>  {product.subcategory}</span>
                             </div>
                             <div className="product-description">
                                 <ul>
-                                    <div><button onClick = {() => handleAddToCart(product)}><a className="add-cart" ><span><span className="icon_plus"></span></span> add to cart</a></button>
+                                    <div><button onClick = {() => handleAddToCart(product)}><a className="add-cart" ><span><span className="icon_plus"></span></span>Add To Cart</a></button>
                                     </div>
                                     <div><a href="#"><span className="icon_heart_alt"></span></a>
                                     </div>
@@ -127,11 +134,6 @@ const ProductDetails = (props, {history}) => {
             </div>
             </div>
         )}
-
-
-
-
-    
 
 
 const mapDispatchToProps = (dispatch) => {

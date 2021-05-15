@@ -2,18 +2,18 @@ import { connect } from 'react-redux'
 import * as actionCreators from '../../stores/creators/actionCreators' 
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { NavLink } from "react-router-dom";
-import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
+// import { NavLink } from "react-router-dom";
+// import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import '../css/App.css';
 
 import React from 'react';
 import Card from 'react-bootstrap/Card'
-import CardDeck from 'react-bootstrap/CardDeck'
-import Button from 'react-bootstrap/Button';
+// import CardDeck from 'react-bootstrap/CardDeck'
+// import Button from 'react-bootstrap/Button';
 
-import {
-  MDBNavbar, MDBNavbarNav, MDBNavbarItem, MDBNavbarLink,
-  MDBContainer, MDBNavbarToggler, MDBIcon } from 'mdb-react-ui-kit';
+// import {
+//   MDBNavbar, MDBNavbarNav, MDBNavbarItem, MDBNavbarLink,
+//   MDBContainer, MDBNavbarToggler, MDBIcon } from 'mdb-react-ui-kit';
 
 const App = (props) => {
 
@@ -42,7 +42,7 @@ const App = (props) => {
   
 
     useEffect(() => {
-      console.log("use effect is fired")
+      // console.log("use effect is fired")
       props.onLoadProducts()
       // UniqueidlocalStorage(Uniqueid)
     },[])
@@ -136,7 +136,7 @@ const vegetableItems = vegetable.map((items, index) => {
 
 
 var  fruit = props.fruit 
-console.log(fruit)
+// console.log(fruit)
 let counter3 = 0;
 for (let i = 0; i < all_products.length; i++) {
     if (fruit[i]) counter3++;

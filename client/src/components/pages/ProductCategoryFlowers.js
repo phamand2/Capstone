@@ -23,7 +23,6 @@ const ProductCategoryFlower = (props) =>{
     for (let i = 0; i < flower.length; i++) {
         if (flower[i]) counter2++;
     }
-    // console.log(counter2)
 
     const handleMoreDetails = (items) => {
         props.onMoreDetails(items)
@@ -52,7 +51,7 @@ const ProductCategoryFlower = (props) =>{
         <p>sub-category : {items.subcategory}</p>
         </div>
         <div>
-        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}`}>More details</Link></button>
+        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items._id}`}>Product Details</Link></button>
         </div>
         
 

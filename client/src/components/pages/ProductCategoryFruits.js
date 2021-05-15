@@ -36,23 +36,25 @@ const fruitItems = fruit.map((items, index) => {
         <div>
             <img src={items.imageurl} />
         </div>
+        <br/>
         <div>
             <h1>{items.title}</h1>
         </div>
+        <br/>
         <div>
             <h4>{items.description}</h4>
+        </div><br/>
+        <div>
+            <h6>Rate: {items.rate}</h6>
+        </div><br/>
+        <div>
+            <p>Category: {items.category}</p>
         </div>
         <div>
-            <h6>rate : {items.rate}</h6>
+        <p>Subcategory: {items.subcategory}</p>
         </div>
         <div>
-            <p>category : {items.category}</p>
-        </div>
-        <div>
-        <p>sub-category : {items.subcategory}</p>
-        </div>
-        <div>
-            <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}`}>More details</Link></button>
+            <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items._id}`}>Product Details</Link></button>
         </div>
         
 
