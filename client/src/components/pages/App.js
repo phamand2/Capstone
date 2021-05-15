@@ -565,8 +565,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 // const mapDispatchToProps = (dispatch) => {
 //   return {
 //     onLoadProducts: () => dispatch(actionCreators.loadProducts()),
-    
-          
 //   }
 // }
 
