@@ -24,10 +24,10 @@ const CustomerSchema = new mongoose.Schema({
     street: {
         type: String,
     },
-    address: {
+    city: {
         type: String,
     },
-    state: {
+    usaState: {
         type: String,
     },
     zip: {

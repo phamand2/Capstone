@@ -35,7 +35,7 @@ const CustRegisterPage = ({history}) => {
         }
 
         try {
-            const { data } = await axios.post('/auth/customer-register', {username, email, password}, config)
+            const { data } = await axios.post('/auth/customer-register', {username, email, password, street, city, usaState, zip}, config)
 
             localStorage.setItem('customerToken', data.token)
             localStorage.setItem('customerEmail', email)
@@ -67,6 +67,9 @@ const CustRegisterPage = ({history}) => {
                     <input type='password' required id='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <div className = 'form-group'>
+                    <input type='password' required id='confirmpassword' placeholder='Confirm password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
+                </div>
+                <div className = 'form-group'>
                     <input type='text' required id='street' placeholder='Street Address' value={street} onChange={(e) => setStreet(e.target.value)}/>
                 </div>
                 <div className = 'form-group'>
@@ -78,15 +81,12 @@ const CustRegisterPage = ({history}) => {
                 <div className = 'form-group'>
                     <input type='text' required id='zip' placeholder='Zip' value={zip} onChange={(e) => setZip(e.target.value)}/>
                 </div>
-                <div className = 'form-group'>
-                    <input type='password' required id='confirmpassword' placeholder='Confirm password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
-                </div>
 
                 <button type = 'submit' className = 'btn btn-primary'>Register</button>
                 
                 <span className='register-screen__subtext'>Already have an account? <Link to='/auth/customer-login'>Log In</Link></span>
             </form><br/>
-            Don't feel like sharing your address just yet? <Link to = '/guest-login'>Login As Guest</Link>
+            Want to check us out a bit more before sharing your address? <Link to = '/guest-login'>Login As Guest</Link>
         </div>
     )
 }
