@@ -6,6 +6,10 @@ import { NavLink } from "react-router-dom";
 
 import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import '../css/App.css';
+import fruits from '../img/fruits.jpeg'
+import vegetables from '../img/vegetables.jpeg'
+import flowers from '../img/flowers.jpeg'
+
 
 import React from 'react';
 import Card from 'react-bootstrap/Card'
@@ -242,7 +246,7 @@ const flowerItems = flower.map((items, index) => {
                 <MDBNavbarLink href='#'>Vegetables</MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink href='#'>Flowers</MDBNavbarLink>
+                <MDBNavbarLink href='/product-detail/flowers'>Flowers</MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
                 <Link to='/mycart'><MDBNavbarLink>Cart</MDBNavbarLink></Link>
@@ -282,16 +286,15 @@ const flowerItems = flower.map((items, index) => {
         <>
   <Card>
     
-    <Card.Body>
-    <Card.Img variant="top" src="holder.js/100px180" />
-    <Card.Title>Fruit</Card.Title>
+    <Card.Body className='cardBody'>
+   
+    <Card.Title className='cardTitles'>Fruit</Card.Title>
       <div className="product_display">
         {fruitItems[0]}
         {fruitItems[5]}
         {fruitItems[10]}
-        {fruitItems[11]}
-        {fruitItems[15]}
-        {fruitItems[18]}
+        
+        
       </div>
       <a className='btn btn-outline-light btn-lg' href='/fruits' role='button'>
                 See All Fruit
@@ -300,16 +303,14 @@ const flowerItems = flower.map((items, index) => {
   </Card>
   <br />
   <Card>
-    <Card.Body>
-    <Card.Img variant="top" src="holder.js/100px180" />
-    <Card.Title>Vegetables</Card.Title>
+    <Card.Body className='cardBody'>
+   
+    <Card.Title className='cardTitles'>Vegetables</Card.Title>
     <div className="product_display">
         {vegetableItems[0]}
         {vegetableItems[5]}
         {vegetableItems[10]}
-        {vegetableItems[11]}
-        {vegetableItems[15]}
-        {vegetableItems[18]}
+        
       </div>
       <a className='btn btn-outline-light btn-lg' href='/vegetables' role='button'>
                 See All Vegetables
@@ -319,16 +320,14 @@ const flowerItems = flower.map((items, index) => {
   </Card>
   <br />
   <Card>
-    <Card.Body>
-    <Card.Img variant="top" src="holder.js/100px180" />
-    <Card.Title>Flowers</Card.Title>
+    <Card.Body className='cardBody'>
+    
+    <Card.Title className='cardTitles'>Flowers</Card.Title>
     <div className="product_display">
         {flowerItems[0]}
         {flowerItems[5]}
         {flowerItems[10]}
-        {flowerItems[11]}
-        {flowerItems[15]}
-        {flowerItems[18]}
+       
       </div>
       <a className='btn btn-outline-light btn-lg' href='/flowers' role='button'>
                 See All Flowers

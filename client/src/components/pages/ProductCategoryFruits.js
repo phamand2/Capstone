@@ -37,7 +37,7 @@ const fruitItems = fruit.map((items, index) => {
             <img src={items.imageurl} />
         </div>
         <div>
-            <h1>{items.title}</h1>
+            <h1 className='itemsTitle'>{items.title}</h1>
         </div>
         <div>
             <h4>{items.description}</h4>
