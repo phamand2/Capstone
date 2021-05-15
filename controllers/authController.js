@@ -28,7 +28,7 @@ exports.customerLogin = async (req, res, next) => {
 
     try {
         const customer = await Customer.findOne({ email }).select('+password')
-        console.log(customer.username)
+        
         if(!customer) {
             return next(new ErrorResponse('Invalid Credentials', 401))
         }

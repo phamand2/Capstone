@@ -1,5 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -57,7 +57,7 @@ ReactDOM.render(
             <Route exact path = "/vegetables" component = {ProductCategoryVegetable} />
             <Route exact path = "/fruits" component = {ProductCategoryFruits} />
             <Route exact path = "/flowers" component = {ProductCategoryFlowers} />
-            <Route exact path = "/product-detail/:title/:Uniqueidzitem" component = {ProductDetails} />
+            <Route exact path = "/product-detail/:title" component = {ProductDetails} />
             <Route exact path = "/mycart" component = {MyCart} />
             <Route exact path = '/auth/customer-register' component = {CustRegisterPage}/>
             <Route exact path = '/auth/add-staff' component = {AddStaffPage}/>

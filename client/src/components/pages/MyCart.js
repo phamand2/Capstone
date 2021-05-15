@@ -79,7 +79,7 @@ const Mycart =(props) => {
                         </div>
                         <div className="refresh-shoping">
                             <a className="btn btn-update" href="shop-grid-sidebar.html"><img src="assets/images/refresh.png" alt="icon"/>update cart</a>
-                            <a className="btn btn-update" href="shop-grid-sidebar.html">continue shoping</a>
+                            <a className="btn btn-update" href="shop-grid-sidebar.html">continue shopping</a>
                         </div>
                     </div>
                     <div className="row">
@@ -99,12 +99,12 @@ const Mycart =(props) => {
                                         </tr>
                                         <tr className="order-shipping">
                                             <th>shipping</th>
-                                            <td><span className="shipping">free Shipping</span>
+                                            <td><span className="shipping">Free Shipping</span>
                                             </td>
                                         </tr>
                                         <tr className="order-total">
                                             <th>order total</th>
-                                            <td><span className="amount"><strong>$400</strong></span>
+                                            <td><span className="amount"><strong>$281.82</strong></span>
                                             </td>
                                         </tr>
                                     </tbody>

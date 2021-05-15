@@ -11,36 +11,40 @@ import Card from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck'
 import Button from 'react-bootstrap/Button';
 
+import {
+  MDBNavbar, MDBNavbarNav, MDBNavbarItem, MDBNavbarLink,
+  MDBContainer, MDBNavbarToggler, MDBIcon } from 'mdb-react-ui-kit';
+
 const App = (props) => {
 
 
-  const [Uniqueid] = useState(Math.random().toString(36).substr(2, 8));
-  const [error, setError] = useState('');
+  // const [Uniqueid] = useState(Math.random().toString(36).substr(2, 8));
+  // const [error, setError] = useState('');
 
 
 
-  const UniqueidlocalStorage = (id) => {
-    console.log("hello")
-    console.log(id)
+  // const UniqueidlocalStorage = (id) => {
+  //   console.log("hello")
+  //   console.log(id)
       
-      try {
+  //     try {
       
-        console.log("hello2")
-        localStorage.setItem('Uniqueid', id)
+  //       console.log("hello2")
+  //       localStorage.setItem('Uniqueid', id)
     
-      } catch (error) {
-              setError(error.response.data.error)
-              setTimeout(() => {
-                  setError('')
-              }, 5000)
-          }
-  }
+  //     } catch (error) {
+  //             setError(error.response.data.error)
+  //             setTimeout(() => {
+  //                 setError('')
+  //             }, 5000)
+  //         }
+  // }
   
 
     useEffect(() => {
       console.log("use effect is fired")
       props.onLoadProducts()
-      UniqueidlocalStorage(Uniqueid)
+      // UniqueidlocalStorage(Uniqueid)
     },[])
 
     const handleMoreDetails = (items) => {
@@ -57,15 +61,15 @@ const App = (props) => {
   }
 console.log(counter1)
 
-const Uniqueidzitem = localStorage.getItem('Uniqueid')
+// const Uniqueidzitem = localStorage.getItem('Uniqueid')
 const all_productsItems = all_products.map((items, index) => {
-  console.log(Uniqueid)
+  // console.log(Uniqueid)
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-        <Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
+        <Link to= {`/product-detail/${items.title}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
         </div>
         <div>
-        <Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
+        <Link to= {`/product-detail/${items.title}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
         </div>
         {/* <div>
             <h4>{items.description}</h4>
@@ -104,10 +108,10 @@ console.log(counter2)
 const vegetableItems = vegetable.map((items, index) => {
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-        <Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
+        <Link to= {`/product-detail/${items.title}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
         </div>
         <div>
-        <Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
+        <Link to= {`/product-detail/${items.title}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
         </div>
         {/* <div>
             <h4>{items.description}</h4>
@@ -142,10 +146,10 @@ console.log(counter3)
 const fruitItems = fruit.map((items, index) => {
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-        <Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
+        <Link to= {`/product-detail/${items.title}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
         </div>
         <div>
-        <Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
+        <Link to= {`/product-detail/${items.title}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
         </div>
         {/* <div>
             <h4>{items.description}</h4>
@@ -180,10 +184,10 @@ console.log(counter4)
 const flowerItems = flower.map((items, index) => {
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-        <Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
+        <Link to= {`/product-detail/${items.title}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
         </div>
         <div>
-        <Link to= {`/product-detail/${items.title}/${Uniqueidzitem}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
+        <Link to= {`/product-detail/${items.title}}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
         </div>
         {/* <div>
             <h4>{items.description}</h4>
@@ -307,6 +311,7 @@ const mapStateToProps = (state) => {
       vegetable: state.vegetable,
       fruit: state.fruit,
       flower: state.flower,
+      isLoggedIn: state.isAuthenticated,
       
   }
 }
