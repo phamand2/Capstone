@@ -3,7 +3,6 @@ import * as actionCreators from '../../stores/creators/actionCreators'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { NavLink } from "react-router-dom";
-
 import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import '../css/App.css';
 
@@ -214,49 +213,6 @@ const flowerItems = flower.map((items, index) => {
 
   return (
     <header>
-      <MDBNavbar expand='lg' light bgColor='white'>
-        <MDBContainer fluid>
-          <MDBNavbarToggler
-            aria-controls='navbarExample01'
-            aria-expanded='false'
-            aria-label='Toggle navigation'
-          >
-            <MDBIcon fas icon='bars' />
-          </MDBNavbarToggler>
-          <div className='collapse navbar-collapse' id='navbarExample01'>
-            <MDBNavbarNav right className='mb-2 mb-lg-0'>
-              <MDBNavbarItem >
-                <MDBNavbarLink aria-current='page' href='#'>
-                  Home
-                </MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href='#'>Fruit</MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href='#'>Vegetables</MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href='#'>Flowers</MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <Link to='/mycart'><MDBNavbarLink>Cart</MDBNavbarLink></Link>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href='/auth/customer-login'>Login</MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href='/auth/customer-register'>Register</MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href='/auth/admin-login'>Admin</MDBNavbarLink>
-              </MDBNavbarItem>
-
-            </MDBNavbarNav>
-          </div>
-        </MDBContainer>
-      </MDBNavbar>
-
       <div
         className='p-5 text-center bg-image'
         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544829728-e5cb9eedc20e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')" }}

@@ -23,7 +23,7 @@ const ProductCategoryFlower = (props) =>{
     for (let i = 0; i < flower.length; i++) {
         if (flower[i]) counter2++;
     }
-    console.log(counter2)
+    // console.log(counter2)
 
     const handleMoreDetails = (items) => {
         props.onMoreDetails(items)

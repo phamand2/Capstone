@@ -139,6 +139,7 @@ app.post('/payment', (req, res) => {
       source: token.id
   }).then(customer => {
       stripe.charges.create({
+        // Stripe charges in cents
           // amount: getCartSubTotal() * 100,
           amount: Math.round(product.rate * 100),
           currency: 'usd',
@@ -154,7 +155,8 @@ app.post('/payment', (req, res) => {
       }, {idempotencyKey})
   }).then(result => {
     console.log(result)
-    res.status(200).json(result)})
+    res.status(200).json(result)
+    })
   .catch(err => console.log(err))
 })
 
