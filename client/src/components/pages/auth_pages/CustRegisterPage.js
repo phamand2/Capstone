@@ -9,6 +9,10 @@ const CustRegisterPage = ({history}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [street, setStreet] = useState('')
+    const [city, setCity] = useState('')
+    const [usaState, setUsaState] = useState('')
+    const [zip, setZip] = useState('')
     const [error, setError] = useState('')
 
 
@@ -63,6 +67,18 @@ const CustRegisterPage = ({history}) => {
                     <input type='password' required id='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <div className = 'form-group'>
+                    <input type='text' required id='street' placeholder='Street Address' value={street} onChange={(e) => setStreet(e.target.value)}/>
+                </div>
+                <div className = 'form-group'>
+                    <input type='text' required id='city' placeholder='City' value={city} onChange={(e) => setCity(e.target.value)}/>
+                </div>
+                <div className = 'form-group'>
+                    <input type='text' required id='usaState' placeholder='State' value={usaState} onChange={(e) => setUsaState(e.target.value)}/>
+                </div>
+                <div className = 'form-group'>
+                    <input type='text' required id='zip' placeholder='Zip' value={zip} onChange={(e) => setZip(e.target.value)}/>
+                </div>
+                <div className = 'form-group'>
                     <input type='password' required id='confirmpassword' placeholder='Confirm password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
                 </div>
 
@@ -70,7 +86,7 @@ const CustRegisterPage = ({history}) => {
                 
                 <span className='register-screen__subtext'>Already have an account? <Link to='/auth/customer-login'>Log In</Link></span>
             </form><br/>
-            <Link to = '/guest-login'>Login As Guest</Link>
+            Don't feel like sharing your address just yet? <Link to = '/guest-login'>Login As Guest</Link>
         </div>
     )
 }
