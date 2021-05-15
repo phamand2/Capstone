@@ -68,7 +68,6 @@ const ProductDetails = (props, {history}) => {
     const handleAddToCart = (product) => {
         props.onAddToCart(product)
         alert("item has been added to the cart ")
-        history.push('/mycart')
     }
     var  product = props.moredetails
     

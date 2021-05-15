@@ -96,8 +96,8 @@ const Mycart =(props) => {
                                 <table>
                                     <tbody>
                                         <tr className="cart-subtotal">
-                                            <th>Subtotal ({getCartCount()}) items</th>
-                                            <td><span className="subtotal">${getCartSubTotal().toFixed(2)}</span>
+                                            <th>Subtotal</th>
+                                            <td><span className="subtotal">$281.82</span>
                                             </td>
                                         </tr>
                                         <tr className="order-shipping">
@@ -112,6 +112,7 @@ const Mycart =(props) => {
                                         </tr>
                                     </tbody>
                                 </table>
+                            
                                 <button type="submit" className="details-btn btn">proceed checkout</button>
                             </div>
                         </div>

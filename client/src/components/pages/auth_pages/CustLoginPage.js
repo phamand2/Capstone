@@ -1,5 +1,5 @@
 // can change any/all class names for CSS...just placeholder stuff
-import '../css/AllLoginPages.css'
+import '../../css/AllLoginPages.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'

@@ -1,10 +1,10 @@
 // can change any/all class names for CSS...just placeholder stuff
-import '../css/AllRegisterPages.css'
+import '../../css/AllRegisterPages.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
-const AddStaffPage = ({history}) => {
+const CustRegisterPage = ({history}) => {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -31,9 +31,12 @@ const AddStaffPage = ({history}) => {
         }
 
         try {
-            await axios.post('/auth/add-staff', {username, email, password}, config)
-            alert("Your new staff member has been added to the database")
-            history.push('/product-manage')
+            const { data } = await axios.post('/auth/customer-register', {username, email, password}, config)
+
+            localStorage.setItem('customerToken', data.token)
+            localStorage.setItem('customerEmail', email)
+
+            history.push('/')
         } catch (error) {
             setError(error.response.data.error)
             setTimeout(() => {
@@ -42,6 +45,9 @@ const AddStaffPage = ({history}) => {
         }
     }
 
+    
+
+   
     return (
         <div className = 'register-screen'>
             <form onSubmit={registerHandler} className = 'register-screen__form'>
@@ -60,11 +66,13 @@ const AddStaffPage = ({history}) => {
                     <input type='password' required id='confirmpassword' placeholder='Confirm password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
                 </div>
 
-                <button type = 'submit' className = 'btn btn-primary'>Register New Staff</button>
-                <Link to = '/product-manage'>Return to admin profile page</Link>
-            </form>
+                <button type = 'submit' className = 'btn btn-primary'>Register</button>
+                
+                <span className='register-screen__subtext'>Already have an account? <Link to='/auth/customer-login'>Log In</Link></span>
+            </form><br/>
+            <Link to = '/guest-login'>Login As Guest</Link>
         </div>
     )
 }
 
-export default AddStaffPage
+export default CustRegisterPage
