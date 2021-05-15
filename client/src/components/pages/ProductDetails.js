@@ -3,11 +3,8 @@ import { useState} from 'react'
 import * as actionCreators from '../../stores/creators/actionCreators' 
 
 
-const ProductDetails = (props) => {
+const ProductDetails = (props, {history}) => {
     const [Qty, setQty] = useState({})
-
-    
-    
 
     var  product = props.moredetails
     // var  product = props.moredetails
@@ -71,6 +68,7 @@ const ProductDetails = (props) => {
     const handleAddToCart = (product) => {
         props.onAddToCart(product)
         alert("item has been added to the cart ")
+        history.push('/mycart')
     }
     var  product = props.moredetails
     
@@ -98,10 +96,9 @@ const ProductDetails = (props) => {
                 <div className="col-md-7">
                     <div className="right-content">
                         <div className="product-info">
-                            <h2>{product.title}</h2>
-                            <h4 className="product-name">{product.category}</h4>
+                            <h1>{product.title}</h1>
                             <div className="price">
-                            <b>Price  :  $</b>  {product.rate}
+                            <h4>${product.rate}</h4>
                             </div>
                             
                             <div className="product-description">
@@ -109,7 +106,7 @@ const ProductDetails = (props) => {
                                 <p>{product.description}</p>
                             </div>
                             <div className="product-desc product-description">
-                                <span className="item-number"><b>Product Number:</b>  {product._id}</span>
+                                <span className="item-number"><b>Product ID:</b>  {product._id}</span>
                                 <br></br>
                                 <span className="item-cat"><b>Category:</b>  {product.category}</span>
                                 <br></br>

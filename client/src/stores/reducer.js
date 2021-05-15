@@ -58,11 +58,14 @@ const reducer = (state = initialState, action) => {
             }
         }
         
-        default: 
-            return state 
-
-    }
-
+        case actionTypes.REMOVE_FROM_CART:
+            return {
+                ...state,
+                cart: state.cart.filter((x) => x.product !== action.payload)
+            }
+        default:
+            return state
+         }
     
 }
 

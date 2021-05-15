@@ -234,7 +234,7 @@ const flowerItems = flower.map((items, index) => {
   <Card>
     
     <Card.Body>
-    <Card.Img variant="top" src="holder.js/100px180" />
+    {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
     <Card.Title>Fruit</Card.Title>
       <div className="product_display">
         {fruitItems[0]}
@@ -252,7 +252,7 @@ const flowerItems = flower.map((items, index) => {
   <br />
   <Card>
     <Card.Body>
-    <Card.Img variant="top" src="holder.js/100px180" />
+    {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
     <Card.Title>Vegetables</Card.Title>
     <div className="product_display">
         {vegetableItems[0]}
@@ -271,7 +271,7 @@ const flowerItems = flower.map((items, index) => {
   <br />
   <Card>
     <Card.Body>
-    <Card.Img variant="top" src="holder.js/100px180" />
+    {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
     <Card.Title>Flowers</Card.Title>
     <div className="product_display">
         {flowerItems[0]}

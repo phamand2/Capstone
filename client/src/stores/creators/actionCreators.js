@@ -79,9 +79,17 @@ export const onMoreDetails = (items) => {
     }
 }
 
-export const onAddToCart =(product) => {
+export const onAddToCart = (product) => {
     return {
         type: actionTypes.onAddToCart,
         payload : product
+    }
+}
+
+
+export const removeFromCart = (product) => {
+    return {
+        type: actionTypes.REMOVE_FROM_CART,
+        payload: product
     }
 }

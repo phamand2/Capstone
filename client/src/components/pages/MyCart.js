@@ -1,6 +1,6 @@
 import '../css/cart.css'; 
 import { connect } from 'react-redux'
-import { useEffect , useState} from 'react'
+import { useEffect , useState } from 'react'
 
 
 
@@ -16,14 +16,17 @@ const Mycart =(props) => {
         })
     }
 
-    
+    const cart = props.cart 
 
-    const carts = props.cart 
+    // const getCartSubTotal = () => {
+    //     return cart.reduce((rate, item) => item.rate * item.qty + rate, 0)
+    // }
 
-    const getCartSubTotal = () => {
-        
-    }
-    const cartItems = carts.map((cart, index) => {
+    // const getCartCount = () => {
+    //     return cart.reduce((qty, item) => Number(item.qty) + qty, 0)
+    // }
+
+    const cartItems = cart.map((cart, index) => {
         return <tbody  key = {cart._id} >
                                     <tr className="cart_item tbody">
                                         <td className="product-remove">
@@ -47,7 +50,7 @@ const Mycart =(props) => {
                                             <span>{cart._id}</span>
                                         </td>
                                         <td className="product-price">
-                                            <span className="amount">$  {cart.rate}</span>
+                                            <span className="amount">${cart.rate}</span>
                                         </td>
                                         <td className="product-subtotal">
                                             <span className="amount-subtotal"></span>
@@ -69,7 +72,7 @@ const Mycart =(props) => {
                                         <th className="product-quantity">Quantity</th>
                                         <th className="product-number">Product Id</th>
                                         <th className="product-price">Price</th>
-                                        <th className="product-subtotal">Sub Total</th>
+                                        <th className="product-subtotal">Subtotal</th>
                                     </tr>
                                 </thead>
                                 
@@ -93,8 +96,8 @@ const Mycart =(props) => {
                                 <table>
                                     <tbody>
                                         <tr className="cart-subtotal">
-                                            <th>SUBTOTAL</th>
-                                            <td><span className="subtotal">$281.82</span>
+                                            <th>Subtotal ({getCartCount()}) items</th>
+                                            <td><span className="subtotal">${getCartSubTotal().toFixed(2)}</span>
                                             </td>
                                         </tr>
                                         <tr className="order-shipping">
