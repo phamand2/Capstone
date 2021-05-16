@@ -1,15 +1,14 @@
-import { connect } from 'react-redux'
-import { useState} from 'react'
+import { connect, useDispatch } from 'react-redux'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { onAddToCart } from '../../stores/creators/actionCreators' 
 import * as actionCreators from '../../stores/creators/actionCreators' 
 
 
 const ProductDetails = (props) => {
-    const [Qty, setQty] = useState({})
+    const [qty, setQty] = useState(1)
+    const dispatch = useDispatch()
 
-    
-    
-
-    var  product = props.moredetails
     // var  product = props.moredetails
     // console.log(product)
     // const moredetails_imageurlItems = moredetails_imageurl.map((items, index) => {
@@ -20,192 +19,176 @@ const ProductDetails = (props) => {
     // })
 
 
-    const handleSave =(product) => {
-        const customerToken = localStorage.getItem('customerToken')
-        const customerEmail = localStorage.getItem('customerEmail')
+    // const handleSave =(product) => {
+    //     const customerToken = localStorage.getItem('customerToken')
+    //     const customerEmail = localStorage.getItem('customerEmail')
         
-        fetch ('http://localhost:5000/add-to-cart',{
-            method: 'POST',
+    //     fetch ('http://localhost:5000/add-to-cart',{
+    //         method: 'POST',
             
-            headers: {
+    //         headers: {
                 
-                'Content-Type': 'application/json'
-            },
-            //add username or email token here.
-            body:JSON.stringify({
-                imageurl: product.imageurl,
-                title: product.title,
-                description: product.description,
-                rate: product.rate,
-                category: product.category,
-                subcategory: product.subcategory,
-                customerToken:customerToken,
-                customerEmail:customerEmail
+    //             'Content-Type': 'application/json'
+    //         },
+    //         //add username or email token here.
+    //         body:JSON.stringify({
+    //             imageurl: product.imageurl,
+    //             title: product.title,
+    //             description: product.description,
+    //             rate: product.rate,
+    //             category: product.category,
+    //             subcategory: product.subcategory,
+    //             customerToken:customerToken,
+    //             customerEmail:customerEmail
                 
-            })
-        }).then(response => response.json())
-        .then(result => {
-            if(result.success) {
+    //         })
+    //     }).then(response => response.json())
+    //     .then(result => {
+    //         if(result.success) {
                 
-              alert("Your product has been added to the database")
-            //   window.location.reload(false);
+    //           alert("Your product has been added to the database")
+    //         //   window.location.reload(false);
               
-            }
+    //         }
            
-        }).catch(error => {
-            console.log(error)
-        })
-      }
+    //     }).catch(error => {
+    //         console.log(error)
+    //     })
+    // }
 
 
 
-    const handleAddToCartLoggedIn = (product, ) => {
+    // const handleAddToCartLoggedIn = (product, ) => {
         
-        props.onAddToCart(product)
-        handleSave (product)
+    //     props.onAddToCart(product)
+    //     handleSave (product)
+    // }
 
-        
+    const handleAddToCart = () => {
+        dispatch(onAddToCart(product, qty))
+        alert("This item has been added to your cart!")
+        // history.push('/cart')
     }
 
-
-    const handleAddToCart = (product) => {
-        props.onAddToCart(product)
-        alert("item has been added to the cart ")
-    }
-    var  product = props.moredetails
+    // const handleAddToCart = (product) => {
+    //     props.onAddToCart(product)
+    //     alert("Item has been added to the cart!")
+    // }
+    // var  product = props.moredetails
     
-    const Uniqueid = localStorage.getItem('Uniqueid')
+    
     const customerToken = localStorage.getItem('customerToken')
-    if (customerToken && Uniqueid) {
-        var  product = props.moredetails
-        console.log(product)
+   
+        var product = props.moredetails
+        // console.log(product)
             return (
-            <div className="home01">
-        
-            <div className="single-product-details clearfix">
-               
-                <div className="col-md-5">
-                    <div className="single-slider-item">
-                        <ul className="owl-slider">
-                            <div className="item">
-                                <img src={product.imageurl} alt={product.title} className="img-responsive"/>
-                            </div>
-                            
-                        </ul>
-                        
-                    </div>
-                </div>
-                <div className="col-md-7">
-                    <div className="right-content">
-                        <div className="product-info">
-                            <h2>{product.title}</h2>
-                            <h4 className="product-name">{product.category}</h4>
-                            <div className="price">
-                            <b>Price  :  $</b>  {product.rate}
-                            </div>
-                            
-                            <div className="product-description">
-                                <h4 className="small-title"><b>DESCRIPTION</b></h4>
-                                <p>{product.description}</p>
-                            </div>
-                            <div className="product-desc product-description">
-                                <span className="item-number"><b>Product Number:</b>  {product._id}</span>
-                                <br></br>
-                                <span className="item-cat"><b>Category:</b>  {product.category}</span>
-                                <br></br>
-                                <span className="item-tag"><b>SubCategory:</b>  {product.subcategory}</span>
-                            </div>
-                            <div className="product-description">
-                                <ul>
-                                    <div><button onClick = {() => handleAddToCartLoggedIn(product)}><a className="add-cart" ><span><span className="icon_plus"></span></span> add to cart</a></button>
-                                    </div>
-                                    <div><a href="#"><span className="icon_heart_alt"></span></a>
-                                    </div>
-                                    <div><a className="zoom" href="assets/images/gallery_men/single-shop-details/big/image1xxl.jpg"><span className="arrow_expand"></span></a>
-                                    </div>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+    <div class="card mb-3 bg-success text-white" style={{width: '99vw'}}>
+        <div class="row g-0">
+            <div class="col-md-4" style={{width: '50%', boxShadow: '0 0 8px 8px white, inset'}}>
+                <img className = 'detailsimg' src={product.imageurl} alt="..."/>
             </div>
-            </div>
-        )} if (Uniqueid) {
-            var  product = props.moredetails
-            console.log(product)
-                return (
-                <div className="home01">
+        <div class="col-md-8" style={{fontFamily: "sans-serif", width: '50%'}}>
+            <div class="card-body">
+                <div>
+                <h1 class="card-title" style={{fontSize: '80px'}}>{product.title} <span style={{fontSize: '60px', float:'right'}}>$ {product.rate} ea</span> </h1> 
+                </div>
+                <p class="card-text" style={{fontSize: '20px'}}>{product.description}</p>
+
+                <ul>
+                
+                <li>
+                    <p class="card-text" style={{fontSize: '20px'}}><b>Category: </b><i>{product.category}</i></p>
+                </li>
+                <li>
+                    <p class="card-text" style={{fontSize: '20px'}}><b>Sub-Category: </b><i>{product.subcategory}</i></p>
+                </li>
+                <li>
+                    <p class="card-text" style={{fontSize: '20px'}}> <b>Product ID: </b><i>{product._id}</i></p>
+
+                    
+                
+                </li>
+                </ul>
+                <p>Qty:&nbsp; &nbsp;
+                <input type="number" min="1" max="100" value={qty} onChange = {(e) => setQty(e.target.value)}/></p>
+                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white'}} onClick = {() => handleAddToCart(product)}>
+                    <a style = {{fontSize: '20px'}}className="add-cart" ><span><span className="icon_plus"></span></span> Add To Cart</a></button>
+                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white'}}>
+                    <a style = {{fontSize: '20px'}}className="add-cart" ><Link to = '/mycart'><span><span className="icon_plus"></span></span> Go To Cart</Link></a></button>
+                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white'}} >
+                    <a href = '/' style = {{fontSize: '20px'}}className="add-cart" ><span><span className="icon_plus"></span></span> Continue Shopping</a></button>
             
-                <div className="single-product-details clearfix">
-                   
-                    <div className="col-md-5">
-                        <div className="single-slider-item">
-                            <ul className="owl-slider">
-                                <div className="item">
-                                    <img src={product.imageurl} alt={product.title} className="img-responsive"/>
-                                </div>
-                                
-                            </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    )}
+            
+
+            // <div className="home01">
+        
+            // <div className="single-product-details clearfix">
+               
+            //     <div className="col-md-5">
+            //         <div className="single-slider-item">
+            //             <ul className="owl-slider">
+            //                 <div className="item">
+            //                     <img src={product.imageurl} alt={product.title} className="img-responsive"/>
+            //                 </div>
                             
-                        </div>
-                    </div>
-                    <div className="col-md-7">
-                        <div className="right-content">
-                            <div className="product-info">
-                                <h2>{product.title}</h2>
-                                <h4 className="product-name">{product.category}</h4>
-                                <div className="price">
-                                <b>Price  :  $</b>  {product.rate}
-                                </div>
-                                
-                                <div className="product-description">
-                                    <h4 className="small-title"><b>DESCRIPTION</b></h4>
-                                    <p>{product.description}</p>
-                                </div>
-                                <div className="product-desc product-description">
-                                    <span className="item-number"><b>Product Number:</b>  {product._id}</span>
-                                    <br></br>
-                                    <span className="item-cat"><b>Category:</b>  {product.category}</span>
-                                    <br></br>
-                                    <span className="item-tag"><b>SubCategory:</b>  {product.subcategory}</span>
-                                </div>
-                                <div className="product-description">
-                                    <ul>
-                                        <div><button onClick = {() => handleAddToCart(product)}><a className="add-cart" ><span><span className="icon_plus"></span></span> add to cart</a></button>
-                                        </div>
-                                        <div><a href="#"><span className="icon_heart_alt"></span></a>
-                                        </div>
-                                        <div><a className="zoom" href="assets/images/gallery_men/single-shop-details/big/image1xxl.jpg"><span className="arrow_expand"></span></a>
-                                        </div>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-        )}
-}
-
-
-
-    
+            //             </ul>
+                        
+                //     </div>
+                // </div>
+                // <div className="col-md-7">
+                //     <div className="right-content">
+                //         <div className="product-info">
+                //             <h1>{product.title}</h1>
+                //             <div className="price">
+                //             <h4>${product.rate} / {product.per}</h4>
+                //             </div>
+                            
+            //                 <div className="product-description">
+            //                     <h4 className="small-title"><b>DESCRIPTION</b></h4>
+            //                     <p>{product.description}</p>
+            //                 </div>
+            //                 <div className="product-desc product-description">
+            //                     <span className="item-number"><b>Product ID:</b>  {product._id}</span>
+            //                     <br></br>
+            //                     <span className="item-cat"><b>Category:</b>  {product.category}</span>
+            //                     <br></br>
+            //                     <span className="item-tag"><b>SubCategory:</b>  {product.subcategory}</span>
+            //                 </div>
+            //                 <div className="product-description">
+            //                     <ul>
+            //                         <div><button onClick = {() => handleAddToCart(product)}><a className="add-cart" ><span><span className="icon_plus"></span></span> add to cart</a></button>
+            //                         </div>
+            //                         <div><a href="#"><span className="icon_heart_alt"></span></a>
+            //                         </div>
+            //                         <div><a className="zoom" href="assets/images/gallery_men/single-shop-details/big/image1xxl.jpg"><span className="arrow_expand"></span></a>
+            //                         </div>
+            //                     </ul>
+            //                 </div>
+            //             </div>
+            //         </div>
+            //     </div>
+            // </div>
+            // </div>
 
 
 const mapDispatchToProps = (dispatch) => {
     return {
         onAddToCart :(product ) => dispatch(actionCreators.onAddToCart(product )),
-        // onAddToCart :(Qty ) => dispatch(actionCreators.onAddToCart(Qty )),
-        
+        // onAddToCart :(Qty ) => dispatch(actionCreators.onAddToCart(Qty )),        
     }
-
 }
 
 const mapStateToProps = (state) => {
     return {
-        moredetails: state.moredetails,
-        
+        moredetails: state.moredetails, 
     }
-  }
+}
 
-  export default connect(mapStateToProps,mapDispatchToProps)(ProductDetails);
+export default connect(mapStateToProps,mapDispatchToProps)(ProductDetails);

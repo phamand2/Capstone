@@ -28,7 +28,8 @@ const Checkout = () => {
 
     return (
         <StripeCheckout 
-            stripeKey = 'pk_test_51In4ABCDwFUaylUuuSu1e43AVzMfTkMUQq4wu5sU7iTRpVkTjhQD9JxkVTZiZPKQLH0VOtKfVPgVP6naDlrpDx4Z00SDMXekQC' 
+            stripeKey = 'pk_test_51In4ABCDwFUaylUuuSu1e43AVzMfTkMUQq4wu5sU7iTRpVkTjhQD9JxkVTZiZPKQLH0VOtKfVPgVP6naDlrpDx4Z00SDMXekQC'
+            amount = {product.rate} 
             token = {makePayment} 
             name = 'FruveFlow Checkout'
             // amount = {Number(getCartSubTotal().toFixed(2))*100}

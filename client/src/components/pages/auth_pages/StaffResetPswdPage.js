@@ -1,10 +1,10 @@
-import "../css/AllResetPswdPages.css";
+import "../../css/AllResetPswdPages.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 
-const AdminResetPswdPage = ({ history, match }) => {
+const StaffResetPswdPage = ({ history, match }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -30,7 +30,7 @@ const AdminResetPswdPage = ({ history, match }) => {
 
     try {
       const { data } = await axios.put(
-        `/auth/admin-reset-password/${match.params.resetToken}`,
+        `/auth/staff-reset-password/${match.params.resetToken}`,
         {
           password,
         },
@@ -57,7 +57,7 @@ const AdminResetPswdPage = ({ history, match }) => {
         {error && <span className="error-message">{error} </span>}
         {success && (
           <span className="success-message">
-            {success}!   <Link to="/auth/admin-login" className='post__reset__login__link'>Login</Link>
+            {success}!   <Link to="/auth/staff-login" className='post__reset__login__link'>Login</Link>
           </span>
         )}
         <div className="form-group">
@@ -78,4 +78,4 @@ const AdminResetPswdPage = ({ history, match }) => {
   );
 };
 
-export default AdminResetPswdPage;
+export default StaffResetPswdPage;

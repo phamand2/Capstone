@@ -1,14 +1,18 @@
 // can change any/all class names for CSS...just placeholder stuff
-import '../css/AllRegisterPages.css'
+import '../../css/AllRegisterPages.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
-const AddStaffPage = ({history}) => {
+const CustRegisterPage = ({history}) => {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [street, setStreet] = useState('')
+    const [city, setCity] = useState('')
+    const [usaState, setUsaState] = useState('')
+    const [zip, setZip] = useState('')
     const [error, setError] = useState('')
 
 
@@ -31,9 +35,12 @@ const AddStaffPage = ({history}) => {
         }
 
         try {
-            await axios.post('/auth/add-staff', {username, email, password}, config)
-            alert("Your new staff member has been added to the database")
-            history.push('/product-manage')
+            const { data } = await axios.post('/auth/customer-register', {username, email, password, street, city, usaState, zip}, config)
+
+            localStorage.setItem('customerToken', data.token)
+            localStorage.setItem('customerEmail', email)
+
+            history.push('/')
         } catch (error) {
             setError(error.response.data.error)
             setTimeout(() => {
@@ -42,6 +49,9 @@ const AddStaffPage = ({history}) => {
         }
     }
 
+    
+
+   
     return (
         <div className = 'register-screen'>
             <form onSubmit={registerHandler} className = 'register-screen__form'>
@@ -59,12 +69,26 @@ const AddStaffPage = ({history}) => {
                 <div className = 'form-group'>
                     <input type='password' required id='confirmpassword' placeholder='Confirm password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
                 </div>
+                <div className = 'form-group'>
+                    <input type='text' required id='street' placeholder='Street Address' value={street} onChange={(e) => setStreet(e.target.value)}/>
+                </div>
+                <div className = 'form-group'>
+                    <input type='text' required id='city' placeholder='City' value={city} onChange={(e) => setCity(e.target.value)}/>
+                </div>
+                <div className = 'form-group'>
+                    <input type='text' required id='usaState' placeholder='State' value={usaState} onChange={(e) => setUsaState(e.target.value)}/>
+                </div>
+                <div className = 'form-group'>
+                    <input type='text' required id='zip' placeholder='Zip' value={zip} onChange={(e) => setZip(e.target.value)}/>
+                </div>
 
-                <button type = 'submit' className = 'btn btn-primary'>Register New Staff</button>
-                <Link to = '/product-manage'>Return to admin profile page</Link>
-            </form>
+                <button type = 'submit' className = 'btn btn-primary'>Register</button>
+                
+                <span className='register-screen__subtext'>Already have an account? <Link to='/auth/customer-login'>Log In</Link></span>
+            </form><br/>
+            Want to check us out a bit more before sharing your address? <Link to = '/guest-login'>Login As Guest</Link>
         </div>
     )
 }
 
-export default AddStaffPage
+export default CustRegisterPage

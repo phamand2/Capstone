@@ -1,6 +1,7 @@
 import '../css/cart.css'; 
 import { connect } from 'react-redux'
-import { useEffect , useState} from 'react'
+import { useEffect , useState } from 'react'
+import { Link } from 'react-router-dom'
 
 
 
@@ -8,22 +9,36 @@ const Mycart =(props) => {
 
     const [Qty, setQty] = useState({})
 
-    const handleChange = (e) => {   
-        setQty({
-            ...Qty,
-            [e.target.name]: e.target.value,
+    // const handleChange = (e) => {   
+    //     setQty({
+    //         ...Qty,
+    //         [e.target.name]: e.target.value,
             
-        })
-    }
-
+    //     })
+    // }
+    console.log(Qty.qty)
+    const cart = props.cart 
+    console.log(cart.rate)
     
+    // const getCartSubTotal = () => {
+    //     return cart.reduce((rate, item) => item.rate * item.qty + rate, 0)
+    // }
 
-    const carts = props.cart 
+    // const getCartCount = () => {
+    //     return cart.reduce((qty, item) => Number(item.qty) + qty, 0)
+    // }
 
-    const getCartSubTotal = () => {
+    const cartItems = cart.map((cart, index) => {
         
-    }
-    const cartItems = carts.map((cart, index) => {
+        const handleChange = (e) => {   
+            setQty({
+                ...Qty,
+                [e.target.name]: e.target.value,
+                
+            })
+        }
+
+        const subtotal = cart.rate *(Qty.qty)
         return <tbody  key = {cart._id} >
                                     <tr className="cart_item tbody">
                                         <td className="product-remove">
@@ -40,17 +55,17 @@ const Mycart =(props) => {
                                         </td>
                                         <td className="product-quantity">
                                             <div className="quantity">
-                                                <input onChange = {handleChange} type="number" value="1" name="qty" className="input-field"/>
+                                                <input onChange = {handleChange} type="number"  name="qty" className="input-field" required/>
                                             </div>
                                         </td>
                                         <td className="product-number">
                                             <span>{cart._id}</span>
                                         </td>
                                         <td className="product-price">
-                                            <span className="amount">$  {cart.rate}</span>
+                                            <span className="amount">${cart.rate} /{cart.per}</span>
                                         </td>
                                         <td className="product-subtotal">
-                                            <span className="amount-subtotal"></span>
+                                            <span className="amount-subtotal">{subtotal}</span>
                                         </td>
                                     </tr>
                 </tbody>
@@ -69,7 +84,7 @@ const Mycart =(props) => {
                                         <th className="product-quantity">Quantity</th>
                                         <th className="product-number">Product Id</th>
                                         <th className="product-price">Price</th>
-                                        <th className="product-subtotal">Sub Total</th>
+                                        <th className="product-subtotal">Subtotal</th>
                                     </tr>
                                 </thead>
                                 
@@ -78,8 +93,8 @@ const Mycart =(props) => {
                             </table>
                         </div>
                         <div className="refresh-shoping">
-                            <a className="btn btn-update" href="shop-grid-sidebar.html"><img src="assets/images/refresh.png" alt="icon"/>update cart</a>
-                            <a className="btn btn-update" href="shop-grid-sidebar.html">continue shoping</a>
+                            <a className="btn btn-update" href="shop-grid-sidebar.html"><img src="refresh.png" alt="icon"/>update cart</a>
+                            <Link to="/" className="btn btn-update"> continue shopping</Link>
                         </div>
                     </div>
                     <div className="row">
@@ -93,18 +108,18 @@ const Mycart =(props) => {
                                 <table>
                                     <tbody>
                                         <tr className="cart-subtotal">
-                                            <th>SUBTOTAL</th>
+                                            <th>Subtotal</th>
                                             <td><span className="subtotal">$281.82</span>
                                             </td>
                                         </tr>
                                         <tr className="order-shipping">
                                             <th>shipping</th>
-                                            <td><span className="shipping">free Shipping</span>
+                                            <td><span className="shipping">Free Shipping</span>
                                             </td>
                                         </tr>
                                         <tr className="order-total">
                                             <th>order total</th>
-                                            <td><span className="amount"><strong>$400</strong></span>
+                                            <td><span className="amount"><strong>$281.82</strong></span>
                                             </td>
                                         </tr>
                                     </tbody>

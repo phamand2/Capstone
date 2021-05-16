@@ -1,16 +1,15 @@
 import * as actionTypes from '../stores/actions/actionTypes'
+// const cartFromLocalStorage = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
 
 
 const initialState = {
 
-    all_products : [],
-    vegetable:[],
-    fruit:[],
-    flower:[],
-    moredetails:[],
-    cart:[],
-
-     
+    all_products: [],
+    vegetable: [],
+    fruit: [],
+    flower: [],
+    moredetails: [],
+    cart: [],
 
 }
 
@@ -60,11 +59,14 @@ const reducer = (state = initialState, action) => {
             }
         }
         
-        default: 
-            return state 
-
-    }
-
+        case actionTypes.REMOVE_FROM_CART:
+            return {
+                ...state,
+                cart: state.cart.filter((x) => x.product !== action.payload)
+            }
+        default:
+            return state
+         }
     
 }
 

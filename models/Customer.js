@@ -21,6 +21,18 @@ const CustomerSchema = new mongoose.Schema({
         minlength: 6,
         select: false
     },
+    street: {
+        type: String,
+    },
+    city: {
+        type: String,
+    },
+    usaState: {
+        type: String,
+    },
+    zip: {
+        type: String
+    },
     resetPasswordToken: String,
     resetPasswordExpire: Date,
 })

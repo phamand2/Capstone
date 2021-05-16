@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import "../css/AllForgotPswdPages.css";
+import "../../css/AllForgotPswdPages.css";
 
 const CustForgotPswdPage = () => {
   const [email, setEmail] = useState("");

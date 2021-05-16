@@ -7,11 +7,11 @@ const StaffMember = require('../models/StaffMember')
 
 
 exports.customerRegister = async (req, res, next) => {
-    const {username, email, password} = req.body;
+    const {username, email, password, street, city, usaState, zip} = req.body;
 
     try {
         const customer = await Customer.create({
-            username, email, password
+            username, email, password, street, city, usaState, zip
         })
         sendCustomerToken(customer, 201, res)
     } catch (error) {
@@ -28,7 +28,7 @@ exports.customerLogin = async (req, res, next) => {
 
     try {
         const customer = await Customer.findOne({ email }).select('+password')
-        console.log(customer.username)
+        
         if(!customer) {
             return next(new ErrorResponse('Invalid Credentials', 401))
         }

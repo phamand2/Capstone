@@ -5,9 +5,10 @@ const productSchema = new mongoose.Schema({
     title: String,
     description: String,
     rate: Number,
-    per : String,
+    per: String,
     category: String,
     subcategory: String,
+    countInStock: Number
 })
 
 const Product = mongoose.model('Product', productSchema)

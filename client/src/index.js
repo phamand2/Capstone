@@ -1,5 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -10,20 +10,20 @@ import ProductCategoryFlowers from './components/pages/ProductCategoryFlowers'
 import ProductDetails from './components/pages/ProductDetails'
 import MyCart from './components/pages/MyCart'
 import ProductManage from '../src/components/pages/ProductManage'
-import BaseLayout from './components/pages/BaseLayout';
-import CustRegisterPage from './components/pages/CustRegisterPage'
-import AddStaffPage from './components/pages/AddStaffPage'
-import AddAdminPage from './components/pages/AddAdminPage'
-import CustLoginPage from './components/pages/CustLoginPage'
-import AdminLoginPage from './components/pages/AdminLoginPage'
-import StaffLoginPage from './components/pages/StaffLoginPage'
-import GuestLoginPage from './components/pages/GuestLoginPage'
-import CustForgotPswdPage from './components/pages/CustForgotPswdPage'
-import AdminForgotPswdPage from './components/pages/AdminForgotPswdPage'
-import StaffForgotPswdPage from './components/pages/StaffForgotPswdPage'
-import CustResetPswdPage from './components/pages/CustResetPswdPage'
-import AdminResetPswdPage from './components/pages/AdminResetPswdPage'
-import StaffResetPswdPage from './components/pages/StaffResetPswdPage'
+import BaseLayout from './components/pages/Baselayout';
+import CustRegisterPage from './components/pages/auth_pages/CustRegisterPage'
+import AddStaffPage from './components/pages/admin_pages/AddStaffPage'
+import AddAdminPage from './components/pages/admin_pages/AddAdminPage'
+import CustLoginPage from './components/pages/auth_pages/CustLoginPage'
+import AdminLoginPage from './components/pages/auth_pages/AdminLoginPage'
+import StaffLoginPage from './components/pages/auth_pages/StaffLoginPage'
+import GuestLoginPage from './components/pages/auth_pages/GuestLoginPage'
+import CustForgotPswdPage from './components/pages/auth_pages/CustForgotPswdPage'
+import AdminForgotPswdPage from './components/pages/auth_pages/AdminForgotPswdPage'
+import StaffForgotPswdPage from './components/pages/auth_pages/StaffForgotPswdPage'
+import CustResetPswdPage from './components/pages/auth_pages/CustResetPswdPage'
+import AdminResetPswdPage from './components/pages/auth_pages/AdminResetPswdPage'
+import StaffResetPswdPage from './components/pages/auth_pages/StaffResetPswdPage'
 import ProductUpdate from '../src/components/pages/UpdateProduct'
 import Checkout from '../src/components/pages/Checkout'
 import reportWebVitals from './reportWebVitals';
@@ -57,7 +57,7 @@ ReactDOM.render(
             <Route exact path = "/vegetables" component = {ProductCategoryVegetable} />
             <Route exact path = "/fruits" component = {ProductCategoryFruits} />
             <Route exact path = "/flowers" component = {ProductCategoryFlowers} />
-            <Route exact path = "/product-detail/:title/:Uniqueidzitem" component = {ProductDetails} />
+            <Route exact path = "/product-detail/:title" component = {ProductDetails} />
             <Route exact path = "/mycart" component = {MyCart} />
             <Route exact path = '/auth/customer-register' component = {CustRegisterPage}/>
             <Route exact path = '/auth/add-staff' component = {AddStaffPage}/>
