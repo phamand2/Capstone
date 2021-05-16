@@ -46,12 +46,6 @@ const ProductCategoryFlower = (props) =>{
             <h6>Price: ${items.rate} / {items.per}</h6>
         </div>
         <br/>
-        {/* <div>
-            <p>category: {items.category}</p>
-        </div>
-        <div>
-        <p>sub-category: {items.subcategory}</p>
-        </div> */}
         <div>
         <button className = 'detailsbtn' onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items._id}`}>Product Details</Link></button>
         </div>
@@ -78,7 +72,7 @@ const ProductCategoryFlower = (props) =>{
 const mapDispatchToProps = (dispatch) => {
     return {
       onLoadProducts: () => dispatch(actionCreators.loadProducts()), 
-      onMoreDetails :(items) => dispatch(actionCreators.onMoreDetails(items)) 
+      onMoreDetails: (items) => dispatch(actionCreators.onMoreDetails(items)) 
     }
   }
 
