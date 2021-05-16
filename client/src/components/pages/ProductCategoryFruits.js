@@ -41,8 +41,9 @@ const ProductCategoryFruit = (props) => {
 
 const fruitItems = fruit.map((items, index) => {
     return <div key ={index} className="card" style={{width: "18rem"}}>
-        <div>
+        <div><div className='square'>
             <img className = 'productimg' src={items.imageurl} />
+            </div>
         </div>
         <br/>
         <div>

@@ -91,19 +91,22 @@
 }
 
 .square {
-  position: relative;
-  width: 200px;
+  position: center;
+  
   height: 200px;
   overflow: hidden;
 }
 
+.productimg{
+  height: 100%
+}
+
 .img {
-  position: absolute;
-  max-width: 100%;
-  width: 100%;
-  height: auto;
-  top: 50%;
-  transform: translate( -50%, -50%);
+  position: center;
+  size: fill;
+  top: 100%;
+  height: 100%;
+  
 }
 
 
