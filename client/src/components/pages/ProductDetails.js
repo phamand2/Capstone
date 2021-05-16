@@ -136,15 +136,15 @@ const ProductDetails = (props) => {
                             
             //             </ul>
                         
-                    </div>
-                </div>
-                <div className="col-md-7">
-                    <div className="right-content">
-                        <div className="product-info">
-                            <h1>{product.title}</h1>
-                            <div className="price">
-                            <h4>${product.rate} / {product.per}</h4>
-                            </div>
+                //     </div>
+                // </div>
+                // <div className="col-md-7">
+                //     <div className="right-content">
+                //         <div className="product-info">
+                //             <h1>{product.title}</h1>
+                //             <div className="price">
+                //             <h4>${product.rate} / {product.per}</h4>
+                //             </div>
                             
             //                 <div className="product-description">
             //                     <h4 className="small-title"><b>DESCRIPTION</b></h4>
