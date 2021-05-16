@@ -27,29 +27,29 @@ const ProductCategoryVegetable = (props) =>{
     }
 
 
-        const vegetableItems = vegetable.map((items, index) => {
-        return <div key ={index} className="card" style={{width: "18rem"}}>
-            <div>
-                <img src={items.imageurl} />
-            </div>
-            <div>
-                <h1>{items.title}</h1>
-            </div>
-            <div>
-                <h4>{items.description}</h4>
-            </div>
-            <div>
-                <h6>Rate: {items.rate}</h6>
-            </div>
-            <div>
-                <p>Category: {items.category}</p>
-            </div>
-            <div>
-            <p>Subcategory: {items.subcategory}</p>
-            </div>
-            <div>
-            <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items._id}`}>Product Details</Link></button>
-            </div>
+const vegetableItems = vegetable.map((items, index) => {
+    return <div key ={index} className="card" style={{width: "18rem"}}>
+        <div>
+            <img src={items.imageurl} />
+        </div>
+        <div>
+            <h1>{items.title}</h1>
+        </div>
+        <div>
+            <h4>{items.description}</h4>
+        </div>
+        <div>
+            <h6>rate : {items.rate} / {items.per}</h6>
+        </div>
+        <div>
+            <p>category : {items.category}</p>
+        </div>
+        <div>
+        <p>sub-category : {items.subcategory}</p>
+        </div>
+        <div>
+        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}`}>More details</Link></button>
+        </div>
         
 
         </div>
