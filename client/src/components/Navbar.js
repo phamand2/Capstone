@@ -15,7 +15,7 @@ const Navbar = () => {
                 aria-expanded='false'
                 aria-label='Toggle navigation'
                 >
-                <MDBIcon fas icon='bars' />
+                <MDBIcon glyphicon='glyphicon-list' />
                 </MDBNavbarToggler>
                 <div className='collapse navbar-collapse' id='navbarExample01'>
                 <MDBNavbarNav right className='mb-2 mb-lg-0'>
