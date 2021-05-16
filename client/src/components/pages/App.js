@@ -219,7 +219,7 @@ const flowerItems = flower.map((items, index) => {
         className='p-5 text-center bg-image'
         // style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544829728-e5cb9eedc20e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')" }}
         
-        style={{ backgroundImage: "url('/veg.jpg')" }}
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1610492219815-f76905e3f084?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80')" }}
       >
         <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)', height: 300 }}>
           <div className='d-flex justify-content-center align-items-center h-100'>
