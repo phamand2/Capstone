@@ -82,8 +82,21 @@ app.get('/all-products/flower', (req, res) => {
   })
 })
 
+// get product by ID
+app.get('/product/:id', (req, res) => {
+  try {
+    Product.findById(req.params.id)
+    console.log(req.params.id)
+    res.json(product)
+  } catch (error) {
+      console.error(error)
+      res.status(500).json({message: 'Server error.'})
+  }
+})
 
-app.post ('/add-to-cart',(req,res) =>{
+
+
+app.post ('/add-to-cart', (req, res) => {
   const images = req.body.images 
   const title = req.body.title
   const description = req.body.description 

@@ -40,13 +40,13 @@ const Navbar = () => {
                     <Link to='/auth/customer-login'><MDBNavbarLink>Login</MDBNavbarLink></Link>
                     </MDBNavbarItem>
                     <MDBNavbarItem>
-                    <Link href='/auth/customer-register'><MDBNavbarLink>Register</MDBNavbarLink></Link>
+                    <Link to='/auth/customer-register'><MDBNavbarLink>Register</MDBNavbarLink></Link>
                     </MDBNavbarItem>
                     <MDBNavbarItem>
-                    <Link href='/auth/admin-login'><MDBNavbarLink>Admin</MDBNavbarLink></Link>
+                    <Link to='/auth/admin-login'><MDBNavbarLink>Admin</MDBNavbarLink></Link>
                     </MDBNavbarItem>
                     <MDBNavbarItem>
-                    <Link href='/auth/staff-login'><MDBNavbarLink>Staff</MDBNavbarLink></Link>
+                    <Link to='/auth/staff-login'><MDBNavbarLink>Staff</MDBNavbarLink></Link>
                     </MDBNavbarItem>
                 </MDBNavbarNav>
                 </div>
