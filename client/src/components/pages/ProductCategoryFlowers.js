@@ -42,7 +42,7 @@ const ProductCategoryFlower = (props) =>{
             <h4>{items.description}</h4>
         </div>
         <div>
-            <h6>rate : {items.rate}</h6>
+            <h6>rate : {items.rate} / {items.per}</h6>
         </div>
         <div>
             <p>category : {items.category}</p>

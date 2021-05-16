@@ -45,8 +45,8 @@ const fruitItems = fruit.map((items, index) => {
             <h4>{items.description}</h4>
         </div><br/>
         <div>
-            <h6>Rate: {items.rate}</h6>
-        </div><br/>
+            <h6>rate : {items.rate} / {items.per}</h6>
+        </div>
         <div>
             <p>Category: {items.category}</p>
         </div>
