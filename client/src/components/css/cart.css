@@ -135,6 +135,7 @@ span.amount-subtotal {
 
 
 
+
 /*------------------------------------------------------------------
 [Master Stylesheet]
 
@@ -193,7 +194,6 @@ body {
   font-size: 14px;
   line-height: 1.45em;
   -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
   color: #454545;
 }
 
@@ -216,6 +216,9 @@ a {
 a, a:hover, a:focus {
   text-decoration: none;
   outline: none;
+  font-size: 18px;
+  font-style: italic;
+  font-family: 'Oswald', sans-serif;;
 }
 
 i {
@@ -229,17 +232,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h3, h4, h5 {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
+
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0px;
 }
 
+h6 {
+  font-size: 25px;
+  font-style: italic;
+}
 h1 {
   font-size: 32px;
   margin: 0 0 em(30px);
-  font-family: "Montserrat", sans-serif;
+  
 }
 
 h2 {
@@ -460,13 +468,15 @@ td {
 # Elements
 --------------------------------------*/
 .btn {
-  font-family: 'Montserrat Light';
+  
   border: 1px solid #a8a8a8;
   display: inline-block;
-  font-size: 10px;
+  font-size: 20px;
   text-transform: uppercase;
   font-weight: lighter;
   border-radius: 0px;
+  padding-inline: revert;
+  padding-bottom: 10px;
 }
 
 .details-btn {
@@ -740,8 +750,8 @@ select option {
 }
 
 .megamenu .dropdown.megamenu-fw .dropdown-menu {
-  /*left: 0;
-  right: 0;*/
+  left: 0;
+  right: 0;
 }
 
 .megamenu .megamenu-content li a {
@@ -2592,7 +2602,7 @@ span.close-icon {
   text-align: center;
   display: block;
   display: table-cell;
-  vertical-align: middle;
+  
 }
 
 .clients ul li a img {

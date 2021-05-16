@@ -32,7 +32,7 @@ const vegetableItems = vegetable.map((items, index) => {
         </div>
         <br/>
         <div>
-            <h1>{items.title}</h1>
+            <h1 className='itemsTitle'>{items.title}</h1>
         </div>
         <br/>
         <div>
