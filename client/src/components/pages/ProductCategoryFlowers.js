@@ -1,10 +1,8 @@
 import { connect } from 'react-redux'
 import * as actionCreators from '../../stores/creators/actionCreators' 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { NavLink } from "react-router-dom";
 import React from 'react';
-import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import '../css/App.css';
 
 
@@ -51,7 +49,7 @@ const ProductCategoryFlower = (props) =>{
         <p>sub-category : {items.subcategory}</p>
         </div>
         <div>
-        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items._id}`}>Product Details</Link></button>
+        <button className = 'detailsbtn' onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items._id}`}>Product Details</Link></button>
         </div>
         
 

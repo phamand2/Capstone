@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import * as actionCreators from '../../stores/creators/actionCreators' 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import React from 'react';
 import '../css/App.css';
@@ -52,7 +52,7 @@ const fruitItems = fruit.map((items, index) => {
         <p>Subcategory: {items.subcategory}</p>
         </div>
         <div>
-            <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items._id}`}>Product Details</Link></button>
+            <button className = 'detailsbtn' onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items._id}`}>Product Details</Link></button>
         </div>
         
 
