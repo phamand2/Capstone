@@ -1,5 +1,5 @@
 import Navbar from '../Navbar'
-const BaseLayout = (props) =>  {
+const Baselayout = (props) =>  {
 
     return (
         <div>
@@ -10,4 +10,4 @@ const BaseLayout = (props) =>  {
 }
 
 
-export default BaseLayout
+export default Baselayout
