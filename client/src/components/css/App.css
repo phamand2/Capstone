@@ -72,8 +72,10 @@
   margin: 10px;
   padding:10px;
   border: 1px solid grey;
-
+  align-items: center;
 }
+
+
 .card:hover {
   border: 5px solid grey;
 }
@@ -156,6 +158,8 @@
 
 .product-description {
   margin-top: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 .itemsTitle {

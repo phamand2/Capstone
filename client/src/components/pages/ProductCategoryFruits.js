@@ -1,12 +1,16 @@
-import { connect } from 'react-redux'
-import * as actionCreators from '../../stores/creators/actionCreators' 
-import { useEffect } from 'react'
+import { connect, useDispatch } from 'react-redux'
+import { onAddToCart } from '../../stores/creators/actionCreators' 
+import * as actionCreators from '../../stores/creators/actionCreators'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import React from 'react';
 import '../css/App.css';
 
 
-const ProductCategoryFruit = (props) =>{
+const ProductCategoryFruit = (props) => {
+
+    const [qty, setQty] = useState(1)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         // console.log("use effect is fired")
@@ -17,10 +21,16 @@ const ProductCategoryFruit = (props) =>{
         props.onMoreDetails(items)
     }
 
+// not working rn
+    // const handleAddToCart = (product) => {
+    //     props.onAddToCart(product)
+    //     alert("Item has been added to the cart!")
+    // }
 
-      
 
-    var  fruit = props.fruit 
+
+    var  product = props.moredetails
+    var  fruit = props.fruit
 
     let counter2 = 0;
     for (let i = 0; i < fruit.length; i++) {
@@ -46,16 +56,14 @@ const fruitItems = fruit.map((items, index) => {
             <h6>Price:  ${items.rate} / {items.per}</h6>
         </div>
         <br/>
-        {/* <div>
-            <p>Category: {items.category}</p>
-        </div>
-        <div>
-        <p>Subcategory: {items.subcategory}</p>
-        </div> */}
         <div>
             <button className = 'detailsbtn' onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items._id}`}>Product Details</Link></button>
+            {/* not working rn */}
+            {/* <button style = {{backgroundColor: '#860286', padding: '8px', marginRight: '10px'}} onClick = {() => handleAddToCart(items)}>
+                    <a style = {{fontSize: '15px'}}className="add-cart" ><span><span className="icon_plus"></span></span> Add To Cart</a>
+            </button> */}
         </div>
-        
+
 
         </div>
 })
@@ -80,7 +88,7 @@ const fruitItems = fruit.map((items, index) => {
 const mapDispatchToProps = (dispatch) => {
     return {
       onLoadProducts: () => dispatch(actionCreators.loadProducts()),
-      onMoreDetails :(items) => dispatch(actionCreators.onMoreDetails(items))   
+      onMoreDetails :(items) => dispatch(actionCreators.onMoreDetails(items))
     }
   }
 
@@ -91,7 +99,7 @@ const mapStateToProps = (state) => {
         vegetable: state.vegetable,
         fruit: state.fruit,
         flower: state.flower,
-        
+
     }
   }
 

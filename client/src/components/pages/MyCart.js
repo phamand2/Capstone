@@ -37,8 +37,8 @@ const Mycart =(props) => {
                 
             })
         }
-
-        const subtotal = cart.rate *(Qty.qty)
+        // subtotal needs to loop through each item in the cart, multiply it by the qty, then get the total. so...not this below
+        // const subtotal = cart.rate *(Qty.qty)
         return <tbody  key = {cart._id} >
                                     <tr className="cart_item tbody">
                                         <td className="product-remove">
@@ -65,7 +65,7 @@ const Mycart =(props) => {
                                             <span className="amount">${cart.rate} /{cart.per}</span>
                                         </td>
                                         <td className="product-subtotal">
-                                            <span className="amount-subtotal">{subtotal}</span>
+                                            {/* <span className="amount-subtotal">{subtotal}</span> */}
                                         </td>
                                     </tr>
                 </tbody>
