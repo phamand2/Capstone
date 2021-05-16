@@ -47,7 +47,7 @@ const fruitItems = fruit.map((items, index) => {
         <img src={items.imageurl} class="card-img-top"/>
         <div class="card-body">
             <h1 class="card-title">{items.title}</h1>
-            <p class="card-text">{items.description}</p>
+            <p class="card-text">{items.description.substring(0,99)}...</p>
         </div>
 
         
