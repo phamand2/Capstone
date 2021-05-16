@@ -43,7 +43,7 @@ const fruitItems = fruit.map((items, index) => {
             <h4>{items.description.substring(0, 100)}...</h4>
         </div><br/>
         <div>
-            <h6>Price: ${items.rate} / {items.per}</h6>
+            <h6>Price:  ${items.rate} / {items.per}</h6>
         </div>
         <br/>
         {/* <div>

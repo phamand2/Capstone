@@ -40,7 +40,7 @@ const vegetableItems = vegetable.map((items, index) => {
         </div>
         <br/>
         <div>
-            <h6>Price: ${items.rate} / {items.per}</h6>
+            <h6>Price:  ${items.rate} / {items.per}</h6>
         </div>
         <br/>
         {/* <div>
