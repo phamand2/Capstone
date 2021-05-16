@@ -8,7 +8,7 @@ import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import '../css/App.css';
 
 
-const ProductCategoryFruit = (props) =>{
+const ProductCategoryFruit = (props,{history}) =>{
 
     useEffect(() => {
         console.log("use effect is fired")
@@ -18,6 +18,17 @@ const ProductCategoryFruit = (props) =>{
     const handleMoreDetails = (items) => {
         props.onMoreDetails(items)
     }
+
+    const handleAddToCart = (product) => {
+        props.onAddToCart(product)
+        alert("item has been added to the cart ")
+    }
+
+    var  product = props.moredetails
+
+     const customerToken = localStorage.getItem('customerToken')
+
+
 
 
       
@@ -33,30 +44,41 @@ console.log(counter2)
 
 const fruitItems = fruit.map((items, index) => {
     return <div key ={index} className="card" style={{width: "18rem"}}>
-        <div>
-            <img src={items.imageurl} />
+        <img src={items.imageurl} class="card-img-top"/>
+        <div class="card-body">
+            <h1 class="card-title">{items.title}</h1>
+            <p class="card-text">{items.description}</p>
         </div>
-        <div>
-            <h1>{items.title}</h1>
-        </div>
-        <div>
-            <h4>{items.description}</h4>
-        </div>
-        <div>
-            <h6>rate : {items.rate}</h6>
-        </div>
-        <div>
-            <p>category : {items.category}</p>
-        </div>
-        <div>
-        <p>sub-category : {items.subcategory}</p>
-        </div>
-        <div>
-            <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}`}>More details</Link></button>
-        </div>
+
         
 
+        
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    price : {items.rate}
+                </li>
+                <li class="list-group-item">
+                    Category : {items.category}
+                </li>
+                <li class="list-group-item">
+                    Subcategory : {items.subcategory}
+                </li>
+            </ul>
+            
+        
+        <div class="card-body">
+          
+             <button style = {{backgroundColor: 'limegreen', padding: '8px', marginRight: '10px'}} onClick = {() => handleAddToCart(items)}>
+                    <a style = {{fontSize: '15px'}}className="add-cart" ><span><span className="icon_plus"></span></span> Add To Cart</a>
+            </button>
+          
+            
+            <button style = {{backgroundColor: '#f89494', padding: '8px', marginLeft: '10px', fontSize: '15px'}} onClick = {() => handleMoreDetails(items)}>
+                <Link to= {`/product-detail/${items.title}`}> More details </Link>
+            </button>
+            
         </div>
+    </div>
 })
 
 
@@ -83,7 +105,8 @@ const fruitItems = fruit.map((items, index) => {
 const mapDispatchToProps = (dispatch) => {
     return {
       onLoadProducts: () => dispatch(actionCreators.loadProducts()),
-      onMoreDetails :(items) => dispatch(actionCreators.onMoreDetails(items))   
+      onMoreDetails :(items) => dispatch(actionCreators.onMoreDetails(items)),
+      onAddToCart :(items ) => dispatch(actionCreators.onAddToCart(items ))   
     }
   }
 
