@@ -66,12 +66,19 @@
 
 
 .img, .productimg {
-  width: 175px;
-  height: 175px;
+  width: 200px;
+  height: 200px;
+}
+
+.detailsimg {
+  width: 400px;
+  height: 500px;
 }
 
 .detailsbtn {
   padding: 8px;
+  background-color: #860286;
+  color: white
 }
 
 .collapsible {

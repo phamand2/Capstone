@@ -43,14 +43,15 @@ const fruitItems = fruit.map((items, index) => {
             <h4>{items.description.substring(0, 100)}...</h4>
         </div><br/>
         <div>
-            <h6>rate : {items.rate} / {items.per}</h6>
+            <h6>Price: ${items.rate} / {items.per}</h6>
         </div>
-        <div>
+        <br/>
+        {/* <div>
             <p>Category: {items.category}</p>
         </div>
         <div>
         <p>Subcategory: {items.subcategory}</p>
-        </div>
+        </div> */}
         <div>
             <button className = 'detailsbtn' onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items._id}`}>Product Details</Link></button>
         </div>
@@ -66,7 +67,7 @@ const fruitItems = fruit.map((items, index) => {
         <div>
             <div>
                 <h1>
-                    Try Some Of Our Delicious Fruits!
+                &nbsp;&nbsp;Try Some Of Our Delicious Fruits!
                 </h1>
             </div>
             <div className="card_flex best-book-h1">

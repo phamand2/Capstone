@@ -30,21 +30,25 @@ const vegetableItems = vegetable.map((items, index) => {
         <div>
             <img className = 'productimg' src={items.imageurl} />
         </div>
+        <br/>
         <div>
             <h1>{items.title}</h1>
         </div>
+        <br/>
         <div>
             <h4>{items.description.substring(0, 100)}...</h4>
         </div>
+        <br/>
         <div>
-            <h6>rate: {items.rate} / {items.per}</h6>
+            <h6>Price: ${items.rate} / {items.per}</h6>
         </div>
-        <div>
+        <br/>
+        {/* <div>
             <p>category : {items.category}</p>
         </div>
         <div>
         <p>sub-category : {items.subcategory}</p>
-        </div>
+        </div> */}
         <div>
         <button className = 'detailsbtn' onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}`}>Product Details</Link></button>
         </div>
@@ -64,7 +68,7 @@ const vegetableItems = vegetable.map((items, index) => {
         <div>
             <div>
                 <h1>
-                    Enjoy the sharp crunch of our fresh vegetables!
+                    &nbsp;&nbsp;Enjoy the sharp crunch of our fresh vegetables!
                 </h1>
             </div>
             <div className="card_flex best-book-h1">

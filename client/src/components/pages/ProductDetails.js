@@ -9,7 +9,6 @@ const ProductDetails = (props) => {
     const [qty, setQty] = useState(1)
     const dispatch = useDispatch()
 
-    // var product = props.moredetails
     // var  product = props.moredetails
     // console.log(product)
     // const moredetails_imageurlItems = moredetails_imageurl.map((items, index) => {
@@ -87,7 +86,7 @@ const ProductDetails = (props) => {
     <div class="card mb-3 bg-success text-white" style={{width: '99vw'}}>
         <div class="row g-0">
             <div class="col-md-4" style={{width: '50%', boxShadow: '0 0 8px 8px white, inset'}}>
-                <img src={product.imageurl} alt="..."/>
+                <img className = 'detailsimg' src={product.imageurl} alt="..."/>
             </div>
         <div class="col-md-8" style={{fontFamily: "sans-serif", width: '50%'}}>
             <div class="card-body">
@@ -96,7 +95,6 @@ const ProductDetails = (props) => {
                 </div>
                 <p class="card-text" style={{fontSize: '20px'}}>{product.description}</p>
 
-                
                 <ul>
                 
                 <li>
@@ -114,11 +112,11 @@ const ProductDetails = (props) => {
                 </ul>
                 <p>Qty:&nbsp; &nbsp;
                 <input type="number" min="1" max="100" value={qty} onChange = {(e) => setQty(e.target.value)}/></p>
-                    <button style = {{backgroundColor: 'limegreen', padding: '8px'}} onClick = {() => handleAddToCart(product)}>
+                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white'}} onClick = {() => handleAddToCart(product)}>
                     <a style = {{fontSize: '20px'}}className="add-cart" ><span><span className="icon_plus"></span></span> Add To Cart</a></button>
-                    <button style = {{backgroundColor: 'limegreen', padding: '8px'}}>
+                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white'}}>
                     <a style = {{fontSize: '20px'}}className="add-cart" ><Link to = '/mycart'><span><span className="icon_plus"></span></span> Go To Cart</Link></a></button>
-                    <button style = {{backgroundColor: 'limegreen', padding: '8px'}} >
+                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white'}} >
                     <a href = '/' style = {{fontSize: '20px'}}className="add-cart" ><span><span className="icon_plus"></span></span> Continue Shopping</a></button>
             
             </div>

@@ -177,7 +177,7 @@ let counter4 = 0;
 for (let i = 0; i < all_products.length; i++) {
     if (flower[i]) counter4++;
 }
-console.log(counter4)
+// console.log(counter4)
 
 const flowerItems = flower.map((items, index) => {
     return <div key ={index} className="card" style={{width: "18rem"}}>

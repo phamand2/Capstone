@@ -33,21 +33,25 @@ const ProductCategoryFlower = (props) =>{
         <div>
             <img className = 'productimg' src={items.imageurl} />
         </div>
+        <br/>
         <div>
             <h1>{items.title}</h1>
         </div>
+        <br/>
         <div>
             <h4>{items.description.substring(0, 100)}...</h4>
         </div>
+        <br/>
         <div>
-            <h6>rate : {items.rate} / {items.per}</h6>
+            <h6>Price: ${items.rate} / {items.per}</h6>
+        </div>
+        <br/>
+        {/* <div>
+            <p>category: {items.category}</p>
         </div>
         <div>
-            <p>category : {items.category}</p>
-        </div>
-        <div>
-        <p>sub-category : {items.subcategory}</p>
-        </div>
+        <p>sub-category: {items.subcategory}</p>
+        </div> */}
         <div>
         <button className = 'detailsbtn' onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items._id}`}>Product Details</Link></button>
         </div>
@@ -61,7 +65,7 @@ const ProductCategoryFlower = (props) =>{
         <div>
             <div>
                 <h1>
-                    Brighten up your home with some of our beautiful flowers!
+                &nbsp;&nbsp;Brighten up your home with some of our beautiful flowers!
                 </h1>
             </div>
             <div className="card_flex best-book-h1">
