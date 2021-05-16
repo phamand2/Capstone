@@ -1,5 +1,6 @@
 import { connect, useDispatch } from 'react-redux'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { onAddToCart } from '../../stores/creators/actionCreators' 
 import * as actionCreators from '../../stores/creators/actionCreators' 
 
@@ -114,6 +115,10 @@ const ProductDetails = (props) => {
                 
                     <button style = {{backgroundColor: 'limegreen', padding: '8px'}} onClick = {() => handleAddToCart(product)}>
                     <a style = {{fontSize: '20px'}}className="add-cart" ><span><span className="icon_plus"></span></span> Add To Cart</a></button>
+                    <button style = {{backgroundColor: 'limegreen', padding: '8px'}}>
+                    <a style = {{fontSize: '20px'}}className="add-cart" ><Link to = '/mycart'><span><span className="icon_plus"></span></span> Go To Cart</Link></a></button>
+                    <button style = {{backgroundColor: 'limegreen', padding: '8px'}} >
+                    <a href = '/' style = {{fontSize: '20px'}}className="add-cart" ><span><span className="icon_plus"></span></span> Continue Shopping</a></button>
             
             </div>
         </div>
@@ -177,17 +182,14 @@ const ProductDetails = (props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onAddToCart :(product ) => dispatch(actionCreators.onAddToCart(product )),
-        // onAddToCart :(Qty ) => dispatch(actionCreators.onAddToCart(Qty )),
-        
+        // onAddToCart :(Qty ) => dispatch(actionCreators.onAddToCart(Qty )),        
     }
-
 }
 
 const mapStateToProps = (state) => {
     return {
-        moredetails: state.moredetails,
-        
+        moredetails: state.moredetails, 
     }
-  }
+}
 
-  export default connect(mapStateToProps,mapDispatchToProps)(ProductDetails);
+export default connect(mapStateToProps,mapDispatchToProps)(ProductDetails);
