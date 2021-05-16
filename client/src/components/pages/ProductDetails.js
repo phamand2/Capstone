@@ -100,19 +100,20 @@ const ProductDetails = (props) => {
                 <ul>
                 
                 <li>
-                    <p class="card-text" style={{fontSize: '20px'}}><b>Category: </b> <i>{product.category}</i></p>
+                    <p class="card-text" style={{fontSize: '20px'}}><b>Category: </b><i>{product.category}</i></p>
                 </li>
                 <li>
-                    <p class="card-text" style={{fontSize: '20px'}}><b>Sub-Category: </b> <i>{product.subcategory}</i></p>
+                    <p class="card-text" style={{fontSize: '20px'}}><b>Sub-Category: </b><i>{product.subcategory}</i></p>
                 </li>
                 <li>
-                    <p class="card-text" style={{fontSize: '20px'}}> <b> Product ID: </b> <i>{product._id}</i></p>
+                    <p class="card-text" style={{fontSize: '20px'}}> <b>Product ID: </b><i>{product._id}</i></p>
 
                     
                 
                 </li>
                 </ul>
-                
+                <p>Qty:&nbsp; &nbsp;
+                <input type="number" min="1" max="100" value={qty} onChange = {(e) => setQty(e.target.value)}/></p>
                     <button style = {{backgroundColor: 'limegreen', padding: '8px'}} onClick = {() => handleAddToCart(product)}>
                     <a style = {{fontSize: '20px'}}className="add-cart" ><span><span className="icon_plus"></span></span> Add To Cart</a></button>
                     <button style = {{backgroundColor: 'limegreen', padding: '8px'}}>

@@ -33,13 +33,13 @@ const ProductCategoryFlower = (props) =>{
     console.log(items)
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-            <img src={items.imageurl} />
+            <img className = 'productimg' src={items.imageurl} />
         </div>
         <div>
             <h1>{items.title}</h1>
         </div>
         <div>
-            <h4>{items.description}</h4>
+            <h4>{items.description.substring(0, 100)}...</h4>
         </div>
         <div>
             <h6>rate : {items.rate} / {items.per}</h6>

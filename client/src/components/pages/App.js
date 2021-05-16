@@ -51,8 +51,6 @@ const App = (props) => {
       props.onMoreDetails(items)
     }
 
-
-
     var  all_products = props.all_products 
 
   let counter1 = 0;
