@@ -57,24 +57,16 @@ const ProductDetails = (props) => {
     // }
 
 
-
-    // const handleAddToCartLoggedIn = (product, ) => {
-        
-    //     props.onAddToCart(product)
-    //     handleSave (product)
+    // const handleAddToCart = () => {
+    //     dispatch(onAddToCart(product, qty))
+    //     alert("This item has been added to your cart!")
     // }
 
-    const handleAddToCart = () => {
-        dispatch(onAddToCart(product, qty))
-        alert("This item has been added to your cart!")
-        // history.push('/cart')
+    const handleAddToCart = (product, qty) => {
+        props.onAddToCart(product, qty)
+        alert("Item has been added to the cart!")
     }
-
-    // const handleAddToCart = (product) => {
-    //     props.onAddToCart(product)
-    //     alert("Item has been added to the cart!")
-    // }
-    // var  product = props.moredetails
+    var  product = props.moredetails
     
     
     const customerToken = localStorage.getItem('customerToken')
@@ -180,7 +172,7 @@ const ProductDetails = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAddToCart :(product ) => dispatch(actionCreators.onAddToCart(product )),
+        onAddToCart :(product, qty) => dispatch(actionCreators.onAddToCart(product, qty)),
         // onAddToCart :(Qty ) => dispatch(actionCreators.onAddToCart(Qty )),        
     }
 }
