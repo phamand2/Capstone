@@ -194,7 +194,6 @@ body {
   font-size: 14px;
   line-height: 1.45em;
   -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
   color: #454545;
 }
 
@@ -751,8 +750,8 @@ select option {
 }
 
 .megamenu .dropdown.megamenu-fw .dropdown-menu {
-  /*left: 0;
-  right: 0;*/
+  left: 0;
+  right: 0;
 }
 
 .megamenu .megamenu-content li a {
@@ -2603,7 +2602,7 @@ span.close-icon {
   text-align: center;
   display: block;
   display: table-cell;
-  vertical-align: middle;
+  
 }
 
 .clients ul li a img {

@@ -68,7 +68,7 @@ const all_productsItems = all_products.map((items, index) => {
   // console.log(Uniqueid)
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-        <Link to= {`/product-detail/${items.title}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
+        <Link to= {`/product-detail/${items.title}`}><div className='square'><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></div></Link>
         </div>
         <div>
         <Link to= {`/product-detail/${items.title}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
@@ -110,7 +110,7 @@ console.log(counter2)
 const vegetableItems = vegetable.map((items, index) => {
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-        <Link to= {`/product-detail/${items.title}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
+        <Link to= {`/product-detail/${items.title}`}><div className="square"><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title} /></div></Link>
         </div>
         <div>
         <Link to= {`/product-detail/${items.title}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
@@ -148,7 +148,7 @@ console.log(counter3)
 const fruitItems = fruit.map((items, index) => {
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-        <Link to= {`/product-detail/${items.title}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
+        <Link to= {`/product-detail/${items.title}`}><div className='square'><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></div></Link>
         </div>
         <div>
         <Link to= {`/product-detail/${items.title}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
@@ -186,7 +186,7 @@ for (let i = 0; i < all_products.length; i++) {
 const flowerItems = flower.map((items, index) => {
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-        <Link to= {`/product-detail/${items.title}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
+        <Link to= {`/product-detail/${items.title}`}><div className='square'><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></div></Link>
         </div>
         <div>
         <Link to= {`/product-detail/${items.title}}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>

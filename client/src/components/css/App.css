@@ -90,11 +90,22 @@
   
 }
 
+.square {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
 
 .img {
-  width:200px;
-  height:200px;
+  position: absolute;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  top: 50%;
+  transform: translate( -50%, -50%);
 }
+
 
 .collapsible {
   background-color: #777;
