@@ -2,9 +2,7 @@ import { connect } from 'react-redux'
 import * as actionCreators from '../../stores/creators/actionCreators' 
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { NavLink } from "react-router-dom";
 import React from 'react';
-import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import '../css/App.css';
 
 
@@ -30,13 +28,13 @@ const ProductCategoryVegetable = (props) =>{
 const vegetableItems = vegetable.map((items, index) => {
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-            <img src={items.imageurl} />
+            <img className = 'productimg' src={items.imageurl} />
         </div>
         <div>
             <h1>{items.title}</h1>
         </div>
         <div>
-            <h4>{items.description}</h4>
+            <h4>{items.description.substring(0, 100)}...</h4>
         </div>
         <div>
             <h6>rate : {items.rate} / {items.per}</h6>
@@ -66,7 +64,7 @@ const vegetableItems = vegetable.map((items, index) => {
         <div>
             <div>
                 <h1>
-                    Vegetable display page
+                    Enjoy the sharp crunch of our fresh vegetables!
                 </h1>
             </div>
             <div className="card_flex best-book-h1">

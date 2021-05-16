@@ -59,17 +59,11 @@ const ProductCategoryFlower = (props) =>{
     })
 
 
-
-
-
-
-
-
     return (
         <div>
             <div>
                 <h1>
-                    Flower display page
+                    Brighten up your home with some of our beautiful flowers!
                 </h1>
             </div>
             <div className="card_flex best-book-h1">

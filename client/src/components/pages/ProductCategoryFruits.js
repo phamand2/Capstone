@@ -2,16 +2,14 @@ import { connect } from 'react-redux'
 import * as actionCreators from '../../stores/creators/actionCreators' 
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { NavLink } from "react-router-dom";
 import React from 'react';
-import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import '../css/App.css';
 
 
 const ProductCategoryFruit = (props) =>{
 
     useEffect(() => {
-        console.log("use effect is fired")
+        // console.log("use effect is fired")
         props.onLoadProducts()
     },[])
 
@@ -28,13 +26,13 @@ const ProductCategoryFruit = (props) =>{
     for (let i = 0; i < fruit.length; i++) {
         if (fruit[i]) counter2++;
 }
-console.log(counter2)
+// console.log(counter2)
 
 
 const fruitItems = fruit.map((items, index) => {
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-            <img src={items.imageurl} />
+            <img className = 'productimg' src={items.imageurl} />
         </div>
         <br/>
         <div>
@@ -42,7 +40,7 @@ const fruitItems = fruit.map((items, index) => {
         </div>
         <br/>
         <div>
-            <h4>{items.description}</h4>
+            <h4>{items.description.substring(0, 100)}...</h4>
         </div><br/>
         <div>
             <h6>rate : {items.rate} / {items.per}</h6>
@@ -64,15 +62,11 @@ const fruitItems = fruit.map((items, index) => {
 
 
 
-
-
-
-
     return (
         <div>
             <div>
                 <h1>
-                    Fruits display page
+                    Try Some Of Our Delicious Fruits!
                 </h1>
             </div>
             <div className="card_flex best-book-h1">
