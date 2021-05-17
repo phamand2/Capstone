@@ -82,17 +82,17 @@ app.get('/all-products/flower', (req, res) => {
   })
 })
 
-// get product by ID
-app.get('/product/:id', (req, res) => {
-  try {
-    Product.findById(req.params.id)
-    console.log(req.params.id)
-    res.json(product)
-  } catch (error) {
-      console.error(error)
-      res.status(500).json({message: 'Server error.'})
-  }
-})
+// // get product by ID
+// app.get('/product/:id', (req, res) => {
+//   try {
+//     Product.findById(req.params.id)
+//     console.log(req.params.id)
+//     res.json(product)
+//   } catch (error) {
+//       console.error(error)
+//       res.status(500).json({message: 'Server error.'})
+//   }
+// })
 
 
 
@@ -131,50 +131,40 @@ app.post ('/add-to-cart', (req, res) => {
 })
 
 
-// stripe payment route #1
-app.post('/payment', (req, res) => {
-  const { product, token } = req.body
+// stripe payment route #1 - now superseded
+// app.post('/payment', (req, res) => {
+//   const { product, token } = req.body
 
-  // const getCartSubTotal = () => {
-  //     return cartItems.reduce((price, item) => item.price * item.qty + price, 0)
-  // }
+  // console.log('PRODUCT: ', product.name)
+  // console.log('PRICE: $', product.rate)
+  // const idempotencyKey = Math.random()
 
-  // const getCartCount = () => {
-  //     return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0)
-  // }
-
-  console.log('PRODUCT: ', product.name)
-  console.log('PRICE: $', product.rate)
-  const idempotencyKey = Math.random()
-
-  return stripe.customers.create({
-      email: token.email,
-      source: token.id
-  }).then(customer => {
-      stripe.charges.create({
-        // Stripe charges in cents
-          // amount: getCartSubTotal() * 100,
-          amount: Math.round(product.rate * 100),
-          currency: 'usd',
-          customer: customer.id,
-          receipt_email: token.email,
-          description: `Purchase from FruveFlow`,
-          shipping: {
-              name: token.card.name,
-              address: {
-                  country: token.card.address_country
-              }
-          }
-      }, {idempotencyKey})
-  }).then(result => {
-    console.log(result)
-    res.status(200).json(result)
-    })
-  .catch(err => console.log(err))
-})
+  // return stripe.customers.create({
+  //     email: token.email,
+  //     source: token.id
+  // }).then(customer => {
+  //     stripe.charges.create({
+//           amount: Math.round(product.rate * 100),
+//           currency: 'usd',
+//           customer: customer.id,
+//           receipt_email: token.email,
+//           description: `Purchase from FruveFlow`,
+//           shipping: {
+//               name: token.card.name,
+//               address: {
+//                   country: token.card.address_country
+//               }
+//           }
+//       }, {idempotencyKey})
+//   }).then(result => {
+//     console.log(result)
+//     res.status(200).json(result)
+//     })
+//   .catch(err => console.log(err))
+// })
 
 
-// stripe payment route #2 - still not working
+// stripe payment route #2 - now fully functional!
 app.post('/nonmodalpayment', cors(), async (req, res) => {
   let {amount, id} = req.body
   try {

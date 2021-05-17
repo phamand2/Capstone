@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { connect } from 'react-redux'
 import './css/Checkout.css'; 
 import axios from 'axios'
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
@@ -24,10 +25,14 @@ const CARD_OPTIONS = {
 }
 
 
-const PaymentForm = () => {
+const PaymentForm = (props) => {
     const [success, setSuccess] = useState(false)
     const stripe = useStripe()
     const elements = useElements()
+    const cart = props.cart 
+    const subtotal = cart.reduce((prev, current) => {
+        return prev + current.subtotal
+    }, 0)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -41,7 +46,7 @@ const PaymentForm = () => {
             try {
                 const { id } = paymentMethod
                 const response = await axios.post('http://localhost:5000/nonmodalpayment', {
-                    amount: 2829,
+                    amount: {subtotal} * 100,
                     id 
                 })
 
@@ -67,7 +72,8 @@ const PaymentForm = () => {
                     <CardElement options = {CARD_OPTIONS}/>
                 </div>
             </fieldset>
-            <button>Place Your Order</button>
+            
+            <button>Place Your Order: ${subtotal}</button>
         </form>
         :
         <div>
@@ -80,4 +86,10 @@ const PaymentForm = () => {
     )
 }
 
-export default PaymentForm
+const mapStateToProps = (state) => {
+    return {
+        cart: state.cart
+    }
+}
+
+export default connect(mapStateToProps)(PaymentForm)

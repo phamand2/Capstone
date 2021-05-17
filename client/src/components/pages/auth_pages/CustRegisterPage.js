@@ -81,12 +81,12 @@ const CustRegisterPage = ({history}) => {
                 <div className = 'form-group'>
                     <input type='text' required id='zip' placeholder='Zip' value={zip} onChange={(e) => setZip(e.target.value)}/>
                 </div>
-
-                <button type = 'submit' className = 'btn btn-primary'>Register</button>
-                
-                <span className='register-screen__subtext'>Already have an account? <Link to='/auth/customer-login'>Log In</Link></span>
+                <button type = 'submit' className = 'regbutton'>Register</button>
+                <br/>
+                <span className='register-screen__subtext'>Already have an account? <Link to='/auth/customer-login' className="guestloginlink">Log In</Link></span>
             </form><br/>
-            Want to check us out a bit more before sharing your address? <Link to = '/guest-login'>Login As Guest</Link>
+            <div className = 'guestlogin'>Want to check us out a bit more before sharing your address? <Link to = '/guest-login' className="guestloginlink">Login As Guest</Link>
+            </div>
         </div>
     )
 }

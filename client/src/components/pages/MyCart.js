@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import * as actionCreators from '../../stores/creators/actionCreators'
 import { useEffect , useState } from 'react'
 import { Link } from 'react-router-dom'
-import StripeCheckout from 'react-stripe-checkout';
 import StripeContainer from '../StripeContainer'
 
 
@@ -52,7 +51,7 @@ const Mycart = (props) => {
         return prev + current.subtotal
     }, 0)
 
-    console.log(subtotal)
+    // console.log(subtotal)
    
 
 
@@ -178,7 +177,7 @@ const Mycart = (props) => {
                         </div>
                         <div className="refresh-shoping">
                             <a className="btn btn-update" href="shop-grid-sidebar.html">
-                                <img src="refresh.png" alt="icon"/>
+                                {/* <img src="refresh.png" alt="icon"/> */}
                                 update cart</a>
                             <Link to="/" className="btn btn-update"> continue shopping</Link>
                         </div>
@@ -186,39 +185,41 @@ const Mycart = (props) => {
                     <div className="row">
 
                     <div class="col-md-4">
-                    <h5 className="small-title" style={{color: 'black', fontSize: '30px', fontWeight: 'bold'}}>Shipping Address</h5><br></br>
+                    <h5 className="small-title" style={{color: 'black', fontSize: '30px', fontWeight: 'bold'}}>Shipping Address</h5>
                     <form>
                         <div class="form-group">
-                            <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Full Nmae</label>
-                            <input type="text" onChange = {handleAddressChange} name="Street1" class="form-control" id="formGroupExampleInput" placeholder="Example input" required/>
+                            {/* <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Full Nmae</label> */}
+                            <input type="text" onChange = {handleAddressChange} name="fullname" class="form-control" id="formGroupname" placeholder="Full name" required/>
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Contact No:</label>
-                            <input type="text" onChange = {handleAddressChange} name="Street1" class="form-control" id="formGroupExampleInput" placeholder="Example input" required/>
+                            {/* <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Contact No:</label> */}
+                            <input type="text" onChange = {handleAddressChange} name="Street1" class="form-control" id="formGroupstreet1" placeholder="Street address" required/>
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Street Address</label>
-                            <input type="text" onChange = {handleAddressChange} name="Street1" class="form-control" id="formGroupExampleInput" placeholder="Example input" required/>
+                            {/* <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Street Address</label> */}
+                            <input type="text" onChange = {handleAddressChange} name="Street2" class="form-control" id="formGroupstreet2" placeholder="Continued street address, if needed"/>
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput2" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Street Address 2</label>
-                            <input type="text" onChange = {handleAddressChange} name="Street2" class="form-control" id="formGroupExampleInput2" placeholder="Another input"/>
+                            {/* <label for="formGroupExampleInput2" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Street Address 2</label> */}
+                            <input type="text" onChange = {handleAddressChange} name="city" class="form-control" id="formGroupcity" placeholder="City" required/>
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>City</label>
-                            <input type="text" onChange = {handleAddressChange} name="city" class="form-control" id="formGroupExampleInput" placeholder="Example input" required/>
+                            {/* <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>City</label> */}
+                            <input type="text" onChange = {handleAddressChange} name="state" class="form-control" id="formGroupstate" placeholder="State" required/>
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>State</label>
-                            <input type="text"  onChange = {handleAddressChange} name="state" class="form-control" id="formGroupExampleInput" placeholder="Example input" required/>
+                            {/* <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>State</label> */}
+                            <input type="text"  onChange = {handleAddressChange} name="zip" class="form-control" id="formGroupZip" placeholder="Zip code" required/>
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Zip-Code</label>
-                            <input type="text" onChange = {handleAddressChange} name="zip-code" class="form-control" id="formGroupExampleInput" placeholder="Example input" required/>
+                            {/* <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Zip-Code</label> */}
+                            <input type="text" onChange = {handleAddressChange} name="phone" class="form-control" id="formGroupphone" placeholder="Telephone number" required/>
                         </div>
                     </form>
                     <div className="refresh-shoping">
-                        <a className="btn btn-update" onClick = {() => handleUpdateAddress(address)} ><img src="refresh.png" alt="icon"/>update Address</a>
+                        <a className="btn btn-update" onClick = {() => handleUpdateAddress(address)} >
+                            {/* <img src="refresh.png" alt="icon"/> */}
+                        Update Address</a>
                             
                     </div>
 
@@ -282,7 +283,7 @@ const Mycart = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onUpdateAddress :(address) => dispatch(actionCreators.onUpdateAddress(address)),
+        onUpdateAddress: (address) => dispatch(actionCreators.onUpdateAddress(address)),
     }
 }
 

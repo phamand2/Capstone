@@ -1,4 +1,4 @@
-import { connect, useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { onAddToCart } from '../../stores/creators/actionCreators' 
@@ -7,7 +7,6 @@ import * as actionCreators from '../../stores/creators/actionCreators'
 
 const ProductDetails = (props) => {
     const [qty, setQty] = useState(1)
-    const dispatch = useDispatch()
 
     // var  product = props.moredetails
     // console.log(product)
@@ -72,13 +71,13 @@ const ProductDetails = (props) => {
         })
     }
 
-    console.log(qty)
-    console.log(product)
+    // console.log(qty)
+    // console.log(product)
 
     const handleAddToCart = (product, qty) => {
         
         const subtotal = parseFloat(qty * product.rate)
-        console.log(subtotal)
+        // console.log(subtotal)
         const transformProduct  = {...product, qty , subtotal}
 
 
@@ -92,7 +91,7 @@ const ProductDetails = (props) => {
     const customerToken = localStorage.getItem('customerToken')
    
         var product = props.moredetails
-        console.log(product)
+        // console.log(product)
 
         return (
 
@@ -193,7 +192,7 @@ const ProductDetails = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAddToCart :(product, qty) => dispatch(actionCreators.onAddToCart(product, qty)),
+        onAddToCart: (product, qty) => dispatch(actionCreators.onAddToCart(product, qty)),
         // onAddToCart :(Qty ) => dispatch(actionCreators.onAddToCart(Qty )),        
     }
 }
