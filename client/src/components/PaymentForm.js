@@ -73,7 +73,7 @@ const PaymentForm = (props) => {
                 </div>
             </fieldset>
             
-            <button>Place Your Order: ${subtotal}</button>
+            <button>Place Your Order: ${subtotal.toFixed(2)}</button>
         </form>
         :
         <div>
