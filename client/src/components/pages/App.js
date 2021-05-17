@@ -2,8 +2,6 @@ import { connect } from 'react-redux'
 import * as actionCreators from '../../stores/creators/actionCreators' 
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-// import { NavLink } from "react-router-dom";
-// import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import '../css/App.css';
 import fruits from '../img/fruits.jpeg'
 import vegetables from '../img/vegetables.jpeg'
@@ -15,12 +13,8 @@ import Card from 'react-bootstrap/Card'
 // import CardDeck from 'react-bootstrap/CardDeck'
 // import Button from 'react-bootstrap/Button';
 
-// import {
-//   MDBNavbar, MDBNavbarNav, MDBNavbarItem, MDBNavbarLink,
-//   MDBContainer, MDBNavbarToggler, MDBIcon } from 'mdb-react-ui-kit';
 
 const App = (props) => {
-
 
   // const [Uniqueid] = useState(Math.random().toString(36).substr(2, 8));
   // const [error, setError] = useState('');
@@ -163,7 +157,7 @@ const flowerItems = flower.map((items, index) => {
         className='p-5 text-center bg-image'
 
         
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1610492219815-f76905e3f084?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80')" }}
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1610492219815-f76905e3f084?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdl'fHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80')" }}
       >
         <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)', height: 300 }}>
           <div className='d-flex justify-content-center align-items-center h-100'>
@@ -183,7 +177,7 @@ const flowerItems = flower.map((items, index) => {
     
     <Card.Body>
     {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-    <Card.Title>Fruit</Card.Title>
+    {/* <Card.Title>Fruit</Card.Title> */}
       <div className="product_display">
         {fruitItems[0]}
         {fruitItems[5]}
@@ -200,7 +194,7 @@ const flowerItems = flower.map((items, index) => {
   <Card>
     <Card.Body>
     {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-    <Card.Title>Vegetables</Card.Title>
+    {/* <Card.Title>Vegetables</Card.Title> */}
     <div className="product_display">
         {vegetableItems[0]}
         {vegetableItems[5]}
@@ -217,7 +211,7 @@ const flowerItems = flower.map((items, index) => {
   <Card>
     <Card.Body>
     {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-    <Card.Title>Flowers</Card.Title>
+    {/* <Card.Title>Flowers</Card.Title> */}
     <div className="product_display">
         {flowerItems[0]}
         {flowerItems[5]}

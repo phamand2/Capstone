@@ -22,7 +22,7 @@ const ProductCategoryFruit = (props) => {
 
 const handleAddToCart = (product) => {
         props.onAddToCart(product)
-        alert("item has been added to the cart ")
+        alert("Item has been added to your cart!")
     }
 
 
