@@ -86,6 +86,14 @@ export const onAddToCart = (product) => {
     }
 }
 
+
+export const onUpdateAddress = (address) => {
+    return {
+        type: actionTypes.onUpdateAddress,
+        payload: address
+    }
+}
+
 // export const onAddToCart = (product, qty) => (getState => {
 //     return {
 //         type: actionTypes.onAddToCart,

@@ -1,11 +1,16 @@
 import '../css/cart.css'; 
 import { connect } from 'react-redux'
+import * as actionCreators from '../../stores/creators/actionCreators'
 import { useEffect , useState } from 'react'
 import { Link } from 'react-router-dom'
+import StripeCheckout from 'react-stripe-checkout';
+import StripeContainer from '../StripeContainer'
 
 
+const Mycart = (props) => {
 
-const Mycart =(props) => {
+    const [address, setaddress] = useState({})
+
 
     // const [Qty, setQty] = useState({})
 
@@ -54,15 +59,18 @@ const Mycart =(props) => {
 
    
     
-    // const getCartSubTotal = () => {
-    //     return cart.reduce((rate, item) => item.rate * item.qty + rate, 0)
-    // }
+    const handleAddressChange = (e) => {   
+        setaddress({
+            ...address,
+            [e.target.name]: e.target.value,
+            
+        })
+    }
 
-    // const getCartCount = () => {
-    //     return cart.reduce((qty, item) => Number(item.qty) + qty, 0)
-    // }
-
-
+    const handleUpdateAddress = () => {
+        props.onUpdateAddress(address)
+        
+    }
 
     
 
@@ -84,7 +92,6 @@ const Mycart =(props) => {
                 
         //     })
         // }
-        // subtotal needs to loop through each item in the cart, multiply it by the qty, then get the total. so...not this below
         // const subtotal = cart.rate *(Qty.qty)
         return <tbody  key = {cart._id} >
                                     <tr className="cart_item tbody">
@@ -120,7 +127,35 @@ const Mycart =(props) => {
                 </tbody>
     })
 
-    return(
+    // checkout functionality here
+
+    const [stripeTestProduct, setStripeTestProduct] = useState({
+        name: 'hyacinths',
+        rate: 28.29
+    })
+
+    const makePayment = (token, addresses) => {
+        const body = {
+            token,
+            stripeTestProduct
+        }
+        const headers = {
+            'Content-Type': 'application/json',
+        }
+        return fetch(`http://localhost:5000/payment`, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify(body)
+        }).then(response => {
+            console.log('RESPONSE', response)
+            const { status } = response
+            console.log('STATUS', status)
+        }).catch(error => console.log(error))
+    }
+
+
+
+    return (
         <div>
             <div className="shopping-cart">
                 <div className="container">
@@ -142,18 +177,60 @@ const Mycart =(props) => {
                             </table>
                         </div>
                         <div className="refresh-shoping">
-                            <a className="btn btn-update" href="shop-grid-sidebar.html">update cart</a>
+                            <a className="btn btn-update" href="shop-grid-sidebar.html">
+                                <img src="refresh.png" alt="icon"/>
+                                update cart</a>
                             <Link to="/" className="btn btn-update"> continue shopping</Link>
                         </div>
                     </div>
                     <div className="row">
+
+                    <div class="col-md-4">
+                    <h5 className="small-title" style={{color: 'black', fontSize: '30px', fontWeight: 'bold'}}>Shipping Address</h5><br></br>
+                    <form>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Full Nmae</label>
+                            <input type="text" onChange = {handleAddressChange} name="Street1" class="form-control" id="formGroupExampleInput" placeholder="Example input" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Contact No:</label>
+                            <input type="text" onChange = {handleAddressChange} name="Street1" class="form-control" id="formGroupExampleInput" placeholder="Example input" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Street Address</label>
+                            <input type="text" onChange = {handleAddressChange} name="Street1" class="form-control" id="formGroupExampleInput" placeholder="Example input" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Street Address 2</label>
+                            <input type="text" onChange = {handleAddressChange} name="Street2" class="form-control" id="formGroupExampleInput2" placeholder="Another input"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>City</label>
+                            <input type="text" onChange = {handleAddressChange} name="city" class="form-control" id="formGroupExampleInput" placeholder="Example input" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>State</label>
+                            <input type="text"  onChange = {handleAddressChange} name="state" class="form-control" id="formGroupExampleInput" placeholder="Example input" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Zip-Code</label>
+                            <input type="text" onChange = {handleAddressChange} name="zip-code" class="form-control" id="formGroupExampleInput" placeholder="Example input" required/>
+                        </div>
+                    </form>
+                    <div className="refresh-shoping">
+                        <a className="btn btn-update" onClick = {() => handleUpdateAddress(address)} ><img src="refresh.png" alt="icon"/>update Address</a>
+                            
+                    </div>
+
+                
+                    </div>
                         
 
                         
 
                         <div className="col-md-4"><div className="squarebg">
                             <div className="cart-total">
-                                <h5 className="small-title">CART TOTALS</h5>
+                                <h5 className="small-title" style={{color: 'black', fontSize: '30px', fontWeight: 'bold'}}>CART TOTALS</h5>
                                 <table>
                                     <tbody>
                                         <tr className="cart-subtotal">
@@ -162,8 +239,8 @@ const Mycart =(props) => {
                                             </td>
                                         </tr>
                                         <tr className="order-shipping">
-                                            <th>shipping</th>
-                                            <td><span className="shipping">Free Shipping</span>
+                                            <th>delivery</th>
+                                            <td><span className="shipping">Free Delivery (please tip your driver!)</span>
                                             </td>
                                         </tr>
                                         <tr className="order-total">
@@ -173,8 +250,26 @@ const Mycart =(props) => {
                                         </tr>
                                     </tbody>
                                 </table>
-                                <button type="submit" className="details-btn btn">proceed to checkout</button><br/>
+                                {/* <StripeCheckout 
+                                    stripeKey = 'pk_test_51In4ABCDwFUaylUuuSu1e43AVzMfTkMUQq4wu5sU7iTRpVkTjhQD9JxkVTZiZPKQLH0VOtKfVPgVP6naDlrpDx4Z00SDMXekQC'
+                                    amount = {stripeTestProduct.rate *100} 
+                                    token = {makePayment} 
+                                    name = 'FruveFlow Checkout'
+                                    // amount = {Number(getCartSubTotal().toFixed(2))*100}
+                                    shippingAddress
+                                    billingAddress>
+                                    <div><button className = 'btn'>Secure Checkout With Stripe</button></div>
+                                </StripeCheckout> */}
+                                
                             </div></div>
+                        </div><br/><br/>
+                        <div className = 'stripediv'>
+                            <h2>Secure Checkout Handled Through&nbsp; <a href = 'https://stripe.com/' _target = 'blank'><img 
+                                src='https://stripe.com/img/v3/home/social.png' 
+                                style = {{height: '60px'}} 
+                                alt = 'stripe logo'/>
+                            </a></h2><br/><br/> 
+                            <StripeContainer/>
                         </div>
                     </div>
                 </div>
@@ -185,6 +280,12 @@ const Mycart =(props) => {
     )
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onUpdateAddress :(address) => dispatch(actionCreators.onUpdateAddress(address)),
+    }
+}
+
 
 const mapStateToProps = (state) => {
     return {
@@ -192,4 +293,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Mycart)
+export default connect(mapStateToProps, mapDispatchToProps)(Mycart)
