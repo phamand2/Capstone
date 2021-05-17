@@ -10,6 +10,7 @@ const initialState = {
     flower: [],
     moredetails: [],
     cart: [],
+    address:[],
 
 }
 
@@ -63,7 +64,20 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 cart: state.cart.filter((x) => x.product !== action.payload)
+        }
+
+        case actionTypes.REMOVE_FROM_CART:
+            return {
+                ...state,
+                cart: state.cart.filter((x) => x.product !== action.payload)
+        }
+
+        case actionTypes.onUpdateAddress:{
+            return {
+                ...state,
+                address: action.payload
             }
+        }
         default:
             return state
          }
