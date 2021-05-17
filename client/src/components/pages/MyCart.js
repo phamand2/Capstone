@@ -102,7 +102,7 @@ const Mycart =(props) => {
 
                         
 
-                        <div className="col-md-4">
+                        <div className="col-md-4"><div className="squarebg">
                             <div className="cart-total">
                                 <h5 className="small-title">CART TOTALS</h5>
                                 <table>
@@ -124,8 +124,8 @@ const Mycart =(props) => {
                                         </tr>
                                     </tbody>
                                 </table>
-                                <button type="submit" className="details-btn btn">proceed checkout</button>
-                            </div>
+                                <button type="submit" className="details-btn btn">proceed to checkout</button><br/>
+                            </div></div>
                         </div>
                     </div>
                 </div>
