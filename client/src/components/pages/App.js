@@ -1,11 +1,8 @@
 import { connect } from 'react-redux'
 import * as actionCreators from '../../stores/creators/actionCreators' 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import '../css/App.css';
-import fruits from '../img/fruits.jpeg'
-import vegetables from '../img/vegetables.jpeg'
-import flowers from '../img/flowers.jpeg'
 
 
 import React from 'react';

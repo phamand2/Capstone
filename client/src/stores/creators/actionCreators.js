@@ -47,6 +47,44 @@ export const loadProducts = () => {
 
     }
 }
+export const loadAllUsers = () => {
+    return(dispatch) => {
+        
+
+        // api call to fetch all admins 
+        fetch('http://localhost:5000/all-admins')
+            .then(response => response.json())
+            .then (admins => {
+                // console.log(products)
+                dispatch ({type:actionTypes.Admin_Loaded, payload: admins})
+        }).catch(error => {
+            console.log(error)
+        })
+
+        // api call to fetch all staff 
+        fetch('http://localhost:5000/all-staff')
+            .then(response => response.json())
+            .then (staff => {
+                // console.log(vegetable)
+                dispatch ({type:actionTypes.Staff_Loaded, payload: staff})
+        }).catch(error => {
+            console.log(error)
+        })
+
+        // api call to fetch all users 
+        fetch('http://localhost:5000/all-users')
+            .then(response => response.json())
+            .then (user => {
+                // console.log(fruit)
+                dispatch ({type:actionTypes.Users_Loaded, payload: user})
+        }).catch(error => {
+            console.log(error)
+        })
+
+       
+
+    }
+}
 
 export const deleteProduct = (_id, props) => {
     return(dispatch) => {

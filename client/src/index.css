@@ -64,6 +64,7 @@ h1 {
   background-color: rgb(134, 2, 134);
   color: #fff;
   font-family: 'Amatic SC', cursive;
+  width: 90%;
 }
 
 .error-message {
