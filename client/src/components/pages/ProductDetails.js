@@ -1,4 +1,4 @@
-import { connect, useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { onAddToCart } from '../../stores/creators/actionCreators' 
@@ -7,7 +7,6 @@ import * as actionCreators from '../../stores/creators/actionCreators'
 
 const ProductDetails = (props) => {
     const [qty, setQty] = useState(1)
-    const dispatch = useDispatch()
 
     // var  product = props.moredetails
     // console.log(product)
@@ -72,13 +71,13 @@ const ProductDetails = (props) => {
         })
     }
 
-    console.log(qty)
-    console.log(product)
+    // console.log(qty)
+    // console.log(product)
 
     const handleAddToCart = (product, qty) => {
         
         const subtotal = parseFloat(qty * product.rate)
-        console.log(subtotal)
+        // console.log(subtotal)
         const transformProduct  = {...product, qty , subtotal}
 
 
@@ -92,16 +91,16 @@ const ProductDetails = (props) => {
     const customerToken = localStorage.getItem('customerToken')
    
         var product = props.moredetails
-        console.log(product)
+        // console.log(product)
 
         return (
 
     <div class="card mb-3 bg-success text-white" style={{width: '99vw', border: 'solid 5px black'}}>
         <div class="row g-0"style={{height: '100%'}}>
-            <div className="product-details-image" class="col-md-4" style={{height: 'auto'}}>
+            <div className="product-details-image" class="col-md-4" style={{height: 'auto', width: '31%'}}>
                 <img className="productimg" style={{height: '100%'}} class = 'card-img' src={product.imageurl} alt="..."/>
             </div>
-        <div class="col-md-8" style={{fontFamily: "sans-serif"}}>
+        <div class="col-md-8" style={{fontFamily: "sans-serif", width: '67%'}}>
             <div class="card-body">
                 <div>
                 <h1 class="card-title" style={{fontSize: '80px'}}>{product.title} <span style={{fontSize: '60px', float:'right'}}>$ {product.rate}/{product.per}</span> </h1> 
@@ -123,14 +122,17 @@ const ProductDetails = (props) => {
                 
                 </li>
                 </ul>
+                <div style={{display:"flex"}}>
                 <p>Qty:&nbsp; &nbsp;
                 <input type="number" min="1" max="100" value={qty} onChange = {(e) => setQty(e.target.value)}/></p>
-                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white'}} onClick = {() => handleAddToCart(product,qty)}>
+                
+                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white', marginTop:'28px'}} onClick = {() => handleAddToCart(product,qty)}>
                     <a style = {{fontSize: '20px'}}className="add-cart" ><span><span className="icon_plus"></span></span> Add To Cart</a></button>
-                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white'}}>
+                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white', marginTop:'28px'}}>
                     <a style = {{fontSize: '20px'}}className="add-cart" ><Link to = '/mycart'><span><span className="icon_plus"></span></span> Go To Cart</Link></a></button>
-                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white'}} >
+                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white', marginTop:'28px'}} >
                     <a href = '/' style = {{fontSize: '20px'}}className="add-cart" ><span><span className="icon_plus"></span></span> Continue Shopping</a></button>
+                    </div>
             
             </div>
         </div>
@@ -193,7 +195,7 @@ const ProductDetails = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAddToCart :(product, qty) => dispatch(actionCreators.onAddToCart(product, qty)),
+        onAddToCart: (product, qty) => dispatch(actionCreators.onAddToCart(product, qty)),
         // onAddToCart :(Qty ) => dispatch(actionCreators.onAddToCart(Qty )),        
     }
 }

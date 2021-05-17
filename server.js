@@ -5,6 +5,9 @@ const PORT = process.env.PORT || 5000
 const connectDB = require('./config/db')
 const errorHandler = require('./middleware/error')
 const Product =require('./models/product')
+const Admin =require('./models/Admin')
+const StaffMember = require('./models/StaffMember')
+const Customer = require('./models/Customer')
 const Cart =require('./models/Cart')
 const cors = require('cors')
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
@@ -39,6 +42,41 @@ app.get('/all-products', (req, res) => {
 
 
 //route to get product by all vegetable
+app.get('/all-admins', (req, res) => {
+  
+  Admin.find({}, (error, posts) => {
+    if(error) {
+      res.json({error: 'Unable to fetch products!'}) 
+    } else {
+      res.json(posts)
+    }
+  })
+})
+
+app.get('/all-staff', (req, res) => {
+  
+  StaffMember.find({}, (error, posts) => {
+    if(error) {
+      res.json({error: 'Unable to fetch products!'}) 
+    } else {
+      res.json(posts)
+    }
+  })
+})
+
+
+app.get('/all-users', (req, res) => {
+  
+  Customer.find({}, (error, posts) => {
+    if(error) {
+      res.json({error: 'Unable to fetch products!'}) 
+    } else {
+      res.json(posts)
+    }
+  })
+})
+
+//route to get product by all vegetable
 app.get('/all-products/vegetable', (req, res) => {
   
   Product.find({
@@ -51,6 +89,7 @@ app.get('/all-products/vegetable', (req, res) => {
     }
   })
 })
+
 
 
 //route to get product by all fruit
@@ -82,17 +121,20 @@ app.get('/all-products/flower', (req, res) => {
   })
 })
 
+
 // get product by ID
-app.get('/product/:id', (req, res) => {
-  try {
-    Product.findById(req.params.id)
-    console.log(req.params.id)
-    res.json(product)
-  } catch (error) {
-      console.error(error)
-      res.status(500).json({message: 'Server error.'})
-  }
-})
+// app.get('/product/:id', (req, res) => {
+//   try {
+//     Product.findById(req.params.id)
+//     console.log(req.params.id)
+//     res.json(product)
+//   } catch (error) {
+//       console.error(error)
+//       res.status(500).json({message: 'Server error.'})
+//   }
+// })
+
+
 
 
 
@@ -131,50 +173,40 @@ app.post ('/add-to-cart', (req, res) => {
 })
 
 
-// stripe payment route #1
-app.post('/payment', (req, res) => {
-  const { product, token } = req.body
+// stripe payment route #1 - now superseded
+// app.post('/payment', (req, res) => {
+//   const { product, token } = req.body
 
-  // const getCartSubTotal = () => {
-  //     return cartItems.reduce((price, item) => item.price * item.qty + price, 0)
-  // }
+  // console.log('PRODUCT: ', product.name)
+  // console.log('PRICE: $', product.rate)
+  // const idempotencyKey = Math.random()
 
-  // const getCartCount = () => {
-  //     return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0)
-  // }
-
-  console.log('PRODUCT: ', product.name)
-  console.log('PRICE: $', product.rate)
-  const idempotencyKey = Math.random()
-
-  return stripe.customers.create({
-      email: token.email,
-      source: token.id
-  }).then(customer => {
-      stripe.charges.create({
-        // Stripe charges in cents
-          // amount: getCartSubTotal() * 100,
-          amount: Math.round(product.rate * 100),
-          currency: 'usd',
-          customer: customer.id,
-          receipt_email: token.email,
-          description: `Purchase from FruveFlow`,
-          shipping: {
-              name: token.card.name,
-              address: {
-                  country: token.card.address_country
-              }
-          }
-      }, {idempotencyKey})
-  }).then(result => {
-    console.log(result)
-    res.status(200).json(result)
-    })
-  .catch(err => console.log(err))
-})
+  // return stripe.customers.create({
+  //     email: token.email,
+  //     source: token.id
+  // }).then(customer => {
+  //     stripe.charges.create({
+//           amount: Math.round(product.rate * 100),
+//           currency: 'usd',
+//           customer: customer.id,
+//           receipt_email: token.email,
+//           description: `Purchase from FruveFlow`,
+//           shipping: {
+//               name: token.card.name,
+//               address: {
+//                   country: token.card.address_country
+//               }
+//           }
+//       }, {idempotencyKey})
+//   }).then(result => {
+//     console.log(result)
+//     res.status(200).json(result)
+//     })
+//   .catch(err => console.log(err))
+// })
 
 
-// stripe payment route #2 - still not working
+// stripe payment route #2 - now fully functional!
 app.post('/nonmodalpayment', cors(), async (req, res) => {
   let {amount, id} = req.body
   try {

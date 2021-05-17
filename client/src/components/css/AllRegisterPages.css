@@ -34,3 +34,41 @@
     background-size: cover;
     background-repeat: no-repeat;
   }
+
+  .guestlogin {
+    background-color: white;
+    padding: 30px
+  }
+
+  .guestloginlink {
+    color: #860286;
+  }
+
+  .guestloginlink:hover {
+    opacity: 0.8;
+    color: #coral;
+  }
+
+  .regbutton {
+    margin-right: 40px;
+      padding: 20px 20px;
+      padding-bottom: 40px;
+      cursor: pointer;
+      width: 90%%;
+      font-size: 2rem;
+      border: #fff;
+      background-color: rgb(134, 2, 134);
+      color: white;
+      /* font-family: 'Oswald', sans-serif; */
+      font-family: 'Amatic SC', cursive;
+      font-style: italic;
+    }
+    
+  .regbutton:hover {
+    opacity: 0.8;
+    color: white;
+    background-color: coral
+  }
+  
+
+  

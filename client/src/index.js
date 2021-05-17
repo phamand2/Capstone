@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'font-awesome/css/font-awesome.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -26,7 +25,6 @@ import CustResetPswdPage from './components/pages/auth_pages/CustResetPswdPage'
 import AdminResetPswdPage from './components/pages/auth_pages/AdminResetPswdPage'
 import StaffResetPswdPage from './components/pages/auth_pages/StaffResetPswdPage'
 import ProductUpdate from '../src/components/pages/UpdateProduct'
-import Checkout from '../src/components/pages/Checkout'
 import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from '../src/stores/reducer';
@@ -34,7 +32,6 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { Router, Route, Switch } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-import NeilApp from './components/pages/NeilApp';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -54,11 +51,10 @@ ReactDOM.render(
             <Route exact path = "/product-manage" component = {ProductManage} />
             <Route exact path = "/update-product/:_id" component = {ProductUpdate} />
             <Route exact path = "/" component = {App} />
-            <Route exact path = '/unstyled' component = {NeilApp}/>
             <Route exact path = "/vegetables" component = {ProductCategoryVegetable} />
             <Route exact path = "/fruits" component = {ProductCategoryFruits} />
             <Route exact path = "/flowers" component = {ProductCategoryFlowers} />
-            <Route exact path = "/product-detail/:title" component = {ProductDetails} />
+            <Route exact path = "/product-detail/:id" component = {ProductDetails} />
             <Route exact path = "/mycart" component = {MyCart} />
             <Route exact path = '/auth/customer-register' component = {CustRegisterPage}/>
             <Route exact path = '/auth/add-staff' component = {AddStaffPage}/>
@@ -73,7 +69,6 @@ ReactDOM.render(
             <Route exact path = '/auth/customer-reset-password/:resetToken' component = {CustResetPswdPage}/>
             <Route exact path = '/auth/admin-reset-password/:resetToken' component = {AdminResetPswdPage}/>
             <Route exact path = '/auth/staff-reset-password/:resetToken' component = {StaffResetPswdPage}/>
-            <Route exact path = '/checkout' component = {Checkout}/>
           </Switch>
         </BaseLayout>
       </Router>
