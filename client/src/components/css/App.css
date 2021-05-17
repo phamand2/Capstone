@@ -62,15 +62,14 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  border-bottom: 1px solid grey;
-  background-color: #61dafb;
-  
+  border-bottom: 1px solid rgb(204, 203, 203);
+  background-color: rgba(0, 0, 0, 0.6)
   
 }
 
 .card {
   margin: 10px;
-  border: 3px solid black;
+  border: 5px solid rgb(255, 255, 255);
   align-items: center;
 }
 
@@ -80,14 +79,17 @@
 }
 
 .best-book-h1{
-  
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   text-align: center;
   align-items: center;
-  
 }
+  
+
+  
+  
+
 
 .square {
   position: center;
@@ -180,3 +182,5 @@
     font-family: 'Amatic SC', cursive;
    
 }
+
+
