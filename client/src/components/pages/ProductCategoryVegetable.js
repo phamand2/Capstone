@@ -8,6 +8,7 @@ import '../css/App.css';
 
 const ProductCategoryVegetable = (props) =>{
 
+
     useEffect(() => {
         console.log("use effect is fired")
         props.onLoadProducts()
@@ -17,6 +18,13 @@ const ProductCategoryVegetable = (props) =>{
         props.onMoreDetails(items)
     }
 
+    const handleAddToCart = (product) => {
+        props.onAddToCart(product)
+        alert("Item has been added to your cart!")
+    }
+
+
+    
     var  vegetable = props.vegetable 
 
     let counter2 = 0;
@@ -26,36 +34,39 @@ const ProductCategoryVegetable = (props) =>{
 
 
 const vegetableItems = vegetable.map((items, index) => {
-    return <div key ={index} className="card" style={{width: "18rem"}}>
-        <div><div className='square'>
-            <img className = 'productimg' src={items.imageurl} />
-            </div>
+    return <div key ={index} className= "card" class="card" style={{width: "18rem"}}>
+        <img src={items.imageurl} className= "card-img-top"class="card-img-top"/>
+
+        <div className="card-body" class="card-body">
+            <h1 className="card-title"class="card-title">{items.title}</h1>
+            <ul class="list-group list-group-flush">
+                <li className="list-group-item" class="list-group-item">
+                    <b>Price: </b> ${items.rate}/{items.per}
+                </li>
+            </ul>
+
+             
+
+             <button className="add-cart-button" onClick = {() => handleAddToCart(items)}>
+                    <a className="add-cart" class="card-link" ><span><span className="icon_plus"></span></span> Add To Cart</a>
+            </button>
+            
+            
         </div>
-        <br/>
-        <div>
-            <h1 className='itemsTitle'>{items.title}</h1>
+
+        <div className="card-body" class="card-body">
+             <p className="card-text" class="card-text">{items.description}</p>
+         
+
+            <button className="more-details-button" onClick = {() => handleMoreDetails(items)}>
+                <Link to= {`/product-detail/${items.title}`} class="card-link" className="card-link-details"> More Details </Link>
+            </button>
         </div>
-        <br/>
-        <div>
-            <h4>{items.description.substring(0, 100)}...</h4>
-        </div>
-        <br/>
-        <div>
-            <h6>Price:  ${items.rate} / {items.per}</h6>
-        </div>
-        <br/>
-        {/* <div>
-            <p>category : {items.category}</p>
-        </div>
-        <div>
-        <p>sub-category : {items.subcategory}</p>
-        </div> */}
-        <div>
-        <button className = 'detailsbtn' onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}`}>Product Details</Link></button>
         </div>
         
 
-        </div>
+
+       
 })
 
 
@@ -67,13 +78,14 @@ const vegetableItems = vegetable.map((items, index) => {
 
     return (
         <div>
-            <div>
+            
                 <h1>
                     &nbsp;&nbsp;Enjoy the sharp crunch of our fresh vegetables!
                 </h1>
-            </div>
-            <div className="card_flex best-book-h1">
-                {vegetableItems}
+            <div className="all-vegetables-page">
+                <div className="card_flex best-book-h1">
+                    {vegetableItems}
+                </div>
             </div>
         </div>
     )
@@ -82,7 +94,8 @@ const vegetableItems = vegetable.map((items, index) => {
 const mapDispatchToProps = (dispatch) => {
     return {
       onLoadProducts: () => dispatch(actionCreators.loadProducts()), 
-      onMoreDetails :(items) => dispatch(actionCreators.onMoreDetails(items))  
+      onMoreDetails :(items) => dispatch(actionCreators.onMoreDetails(items)), 
+      onAddToCart :(items ) => dispatch(actionCreators.onAddToCart(items )) 
     }
   }
 

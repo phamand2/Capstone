@@ -176,6 +176,16 @@ height: 250px
   font-size: 20px;
 }
 
+.all-vegetables-page{
+  background-image: url('./components/img/vegetables2.jpg');
+  background-size: contain;
+}
+
+.all-flowers-page{
+  background-image: url('./components/img/flowers3.jpg');
+  background-size: contain;
+}
+
 
 
 

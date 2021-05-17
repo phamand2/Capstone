@@ -55,7 +55,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.onAddToCart:{
             return {
                 ...state,
-                cart: state.cart.concat(action.payload)
+                cart: state.cart.concat (action.payload)
             }
         }
         

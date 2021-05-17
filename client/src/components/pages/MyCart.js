@@ -7,7 +7,7 @@ import StripeCheckout from 'react-stripe-checkout';
 
 const Mycart = (props) => {
 
-    const [Qty, setQty] = useState({})
+    // const [Qty, setQty] = useState({})
 
     // const handleChange = (e) => {   
     //     setQty({
@@ -16,9 +16,43 @@ const Mycart = (props) => {
             
     //     })
     // }
-    console.log(Qty.qty)
+    // console.log(Qty.qty)
+
+
+
+
     const cart = props.cart 
-    console.log(cart.rate)
+
+
+    
+
+    // const carttotalItems = cart.map((cart, index) =>{
+        
+    //     const subtotal = parseFloat(cart.subtotal)
+    //     console.log(subtotal)
+    //     let total =+ subtotal
+    //     console.log(total)
+
+    //     return total 
+    // })
+
+    let total = 0
+    // for (let i = 0; i < cart.length; i++) {
+    //     const subtotal = parseFloat(cart[i].subtotal)
+    //     console.log(subtotal)
+    //     let total =+ subtotal
+    //     console.log(total)
+    // }
+    const subtotal = cart.reduce((prev, current) => {
+        return prev + current.subtotal
+    }, 0)
+
+    console.log(subtotal)
+   
+
+
+
+   
     
     // const getCartSubTotal = () => {
     //     return cart.reduce((rate, item) => item.rate * item.qty + rate, 0)
@@ -28,16 +62,28 @@ const Mycart = (props) => {
     //     return cart.reduce((qty, item) => Number(item.qty) + qty, 0)
     // }
 
+
+
+    
+
+
+
+
+    
     const cartItems = cart.map((cart, index) => {
+            
+        // console.log(cart.rate)
+        // console.log(cart.qty)
+
+        // const CartSubTotalItems= (cart.rate) *  (cart.qty)
         
-        const handleChange = (e) => {   
-            setQty({
-                ...Qty,
-                [e.target.name]: e.target.value,
+        // const handleChange = (e) => {   
+        //     setQty({
+        //         ...Qty,
+        //         [e.target.name]: e.target.value,
                 
-            })
-        }
-        
+        //     })
+        // }
         // const subtotal = cart.rate *(Qty.qty)
         return <tbody  key = {cart._id} >
                                     <tr className="cart_item tbody">
@@ -55,7 +101,8 @@ const Mycart = (props) => {
                                         </td>
                                         <td className="product-quantity">
                                             <div className="quantity">
-                                                <input onChange = {handleChange} type="number"  name="qty" className="input-field" required/>
+                                                {/* <input onChange = {handleChange} type="number"  name="qty" className="input-field" required/> */}
+                                                {cart.qty}
                                             </div>
                                         </td>
                                         <td className="product-number">
@@ -66,6 +113,7 @@ const Mycart = (props) => {
                                         </td>
                                         <td className="product-subtotal">
                                             {/* <span className="amount-subtotal">{subtotal}</span> */}
+                                            {cart.subtotal}
                                         </td>
                                     </tr>
                 </tbody>
@@ -139,7 +187,7 @@ const Mycart = (props) => {
                                     <tbody>
                                         <tr className="cart-subtotal">
                                             <th>Subtotal</th>
-                                            <td><span className="subtotal">$28.29</span>
+                                            <td><span className="subtotal">{subtotal}</span>
                                             </td>
                                         </tr>
                                         <tr className="order-shipping">
@@ -149,7 +197,7 @@ const Mycart = (props) => {
                                         </tr>
                                         <tr className="order-total">
                                             <th>order total</th>
-                                            <td><span className="amount"><strong>$28.29</strong></span>
+                                            <td><span className="amount"><strong> {subtotal}</strong></span>
                                             </td>
                                         </tr>
                                     </tbody>
