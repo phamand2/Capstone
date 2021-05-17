@@ -151,7 +151,9 @@ height: 250px
 
 .all-fruits-page{
   background-image: url('./components/img/fruitsBackground.jpg');
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 
