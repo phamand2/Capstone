@@ -18,7 +18,9 @@ h1 {
 }
 
 
-
+.mainPageTitles {
+  font-family:'Amatic SC', cursive; 
+}
 
 .form-group,
 .form-group label,
@@ -109,7 +111,8 @@ padding: 0 16px 16px
 }
 
 .card-title{
-    font-family: sans-serif;
+    font-family: 'Amatic SC', cursive;
+    font-size: 30px;
 }
 
 .card-text {

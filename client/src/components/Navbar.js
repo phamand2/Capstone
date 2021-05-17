@@ -6,18 +6,16 @@ import {
   MDBNavbarLink, MDBContainer, MDBNavbarToggler,
   MDBIcon } from 'mdb-react-ui-kit';
 
+
 const Navbar = () => {
     return (
         <MDBNavbar expand='lg' light bgColor='white'>
             <MDBContainer fluid>
-                <MDBNavbarToggler
-                aria-controls='navbarExample01'
-                aria-expanded='false'
-                aria-label='Toggle navigation'
-                >
-                <MDBIcon glyphicon='glyphicon-list' />
+                <MDBNavbarToggler>
+                <MDBIcon />
+                <button className='collapse navbar-collapse' data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span className="navbar-toggler-icon"></span></button>
                 </MDBNavbarToggler>
-                <div className='collapse navbar-collapse' id='navbarExample01'>
+               
                 <MDBNavbarNav right className='mb-2 mb-lg-0'>
                     <MDBNavbarItem >
                     <Link aria-current='page' to='/'>
@@ -48,8 +46,9 @@ const Navbar = () => {
                     <MDBNavbarItem>
                     <Link to='/auth/staff-login'><MDBNavbarLink>Staff</MDBNavbarLink></Link>
                     </MDBNavbarItem>
+                    
                 </MDBNavbarNav>
-                </div>
+               
             </MDBContainer>
         </MDBNavbar>
     )
