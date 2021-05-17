@@ -102,15 +102,59 @@ h1 {
   font-family: 'Amatic SC', cursive;
 }
 
-.card {
-  align-items: center;
-  font-size: 45px;
-  font-family: 'Amatic SC', cursive;
-  }
-
-.card-title {
-  font-size: 35px;
+.card-body {
+font-family: "sans-serif";
+font-size: 15px;
+padding: 0 16px 16px
 }
+
+.card-title{
+    font-family: sans-serif;
+}
+
+.card-text {
+    font-family: sans-serif;
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 4; /* number of lines to show */
+   -webkit-box-orient: vertical;
+   margin-bottom: 5px;
+}
+
+.list-group-item {
+    font-family: sans-serif;
+    font-size: 15px;
+}
+
+.add-cart {
+    font-size: '15px';
+
+}
+
+.add-cart-button{
+    background-color: limegreen;
+    padding: 2px 5px;
+    margin-right: 10px;
+}
+
+.more-details-button {
+    background-color: #f89494;
+    padding: 2px 5px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+.card-img-top {
+height: 250px
+}
+
+#all-fruits-page{
+  background-image: url('./components/img/fruitsBackground.jpg');
+  background-size: contain;
+}
+
+
 
 
 
