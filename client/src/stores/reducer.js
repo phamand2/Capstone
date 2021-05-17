@@ -11,6 +11,9 @@ const initialState = {
     moredetails: [],
     cart: [],
     address:[],
+    admins:[],
+    staff:[],
+    users:[],
 
 }
 
@@ -78,6 +81,31 @@ const reducer = (state = initialState, action) => {
                 address: action.payload
             }
         }
+
+        case actionTypes.Admin_Loaded:{
+            return {
+                ...state,
+                admins: action.payload
+            }
+        }
+
+
+        case actionTypes.Staff_Loaded:{
+            return {
+                ...state,
+                staff: action.payload
+            }
+        }
+
+        case actionTypes.Users_Loaded:{
+            return {
+                ...state,
+                users: action.payload
+            }
+        }
+
+
+
         default:
             return state
          }

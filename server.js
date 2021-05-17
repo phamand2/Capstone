@@ -5,6 +5,9 @@ const PORT = process.env.PORT || 5000
 const connectDB = require('./config/db')
 const errorHandler = require('./middleware/error')
 const Product =require('./models/product')
+const Admin =require('./models/Admin')
+const StaffMember = require('./models/StaffMember')
+const Customer = require('./models/Customer')
 const Cart =require('./models/Cart')
 const cors = require('cors')
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
@@ -39,6 +42,41 @@ app.get('/all-products', (req, res) => {
 
 
 //route to get product by all vegetable
+app.get('/all-admins', (req, res) => {
+  
+  Admin.find({}, (error, posts) => {
+    if(error) {
+      res.json({error: 'Unable to fetch products!'}) 
+    } else {
+      res.json(posts)
+    }
+  })
+})
+
+app.get('/all-staff', (req, res) => {
+  
+  StaffMember.find({}, (error, posts) => {
+    if(error) {
+      res.json({error: 'Unable to fetch products!'}) 
+    } else {
+      res.json(posts)
+    }
+  })
+})
+
+
+app.get('/all-users', (req, res) => {
+  
+  Customer.find({}, (error, posts) => {
+    if(error) {
+      res.json({error: 'Unable to fetch products!'}) 
+    } else {
+      res.json(posts)
+    }
+  })
+})
+
+//route to get product by all vegetable
 app.get('/all-products/vegetable', (req, res) => {
   
   Product.find({
@@ -51,6 +89,7 @@ app.get('/all-products/vegetable', (req, res) => {
     }
   })
 })
+
 
 
 //route to get product by all fruit
@@ -82,6 +121,20 @@ app.get('/all-products/flower', (req, res) => {
   })
 })
 
+
+app.get('/all-products/flower', (req, res) => {
+  
+  Product.find({
+    category: "flowers",
+  }, (error, posts) => {
+    if(error) {
+      res.json({error: 'Unable to fetch products!'})
+    } else {
+      res.json(posts)
+    }
+  })
+})
+
 // get product by ID
 app.get('/product/:id', (req, res) => {
   try {
@@ -93,6 +146,8 @@ app.get('/product/:id', (req, res) => {
       res.status(500).json({message: 'Server error.'})
   }
 })
+
+
 
 
 
