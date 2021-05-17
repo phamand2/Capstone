@@ -152,10 +152,30 @@ padding: 0 16px 16px
 height: 250px
 }
 
-#all-fruits-page{
+.all-fruits-page{
   background-image: url('./components/img/fruitsBackground.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.list-group-item{
+  font-size: 20px;
+}
+
+.all-vegetables-page{
+  background-image: url('./components/img/vegetables2.jpg');
   background-size: contain;
 }
+
+
+
+
+
+
+
+
+
 
 
 

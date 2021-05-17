@@ -62,8 +62,28 @@ const ProductDetails = (props) => {
     //     alert("This item has been added to your cart!")
     // }
 
+
+
+    const handleChange = (e) => {   
+        setQty({
+            ...qty,
+            [e.target.name]: e.target.value,
+            
+        })
+    }
+
+    console.log(qty)
+    console.log(product)
+
     const handleAddToCart = (product, qty) => {
-        props.onAddToCart(product, qty)
+        
+        const subtotal = parseFloat(qty * product.rate)
+        console.log(subtotal)
+        const transformProduct  = {...product, qty , subtotal}
+
+
+        console.log(transformProduct)
+        props.onAddToCart(transformProduct)
         alert("Item has been added to the cart!")
     }
     var  product = props.moredetails
@@ -72,8 +92,9 @@ const ProductDetails = (props) => {
     const customerToken = localStorage.getItem('customerToken')
    
         var product = props.moredetails
-        // console.log(product)
-            return (
+        console.log(product)
+
+        return (
 
     <div class="card mb-3 bg-success text-white" style={{width: '99vw'}}>
         <div class="row g-0">
@@ -104,7 +125,7 @@ const ProductDetails = (props) => {
                 </ul>
                 <p>Qty:&nbsp; &nbsp;
                 <input type="number" min="1" max="100" value={qty} onChange = {(e) => setQty(e.target.value)}/></p>
-                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white'}} onClick = {() => handleAddToCart(product)}>
+                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white'}} onClick = {() => handleAddToCart(product,qty)}>
                     <a style = {{fontSize: '20px'}}className="add-cart" ><span><span className="icon_plus"></span></span> Add To Cart</a></button>
                     <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white'}}>
                     <a style = {{fontSize: '20px'}}className="add-cart" ><Link to = '/mycart'><span><span className="icon_plus"></span></span> Go To Cart</Link></a></button>

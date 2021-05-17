@@ -7,10 +7,9 @@ import React from 'react';
 import '../css/App.css';
 
 
-const ProductCategoryFruit = (props, {history}) => {
+const ProductCategoryFruit = (props) => {
 
-    const [qty, setQty] = useState(1)
-    const dispatch = useDispatch()
+    
 
     useEffect(() => {
         // console.log("use effect is fired")
@@ -25,12 +24,6 @@ const handleAddToCart = (product) => {
         props.onAddToCart(product)
         alert("item has been added to the cart ")
     }
-
-
-     const customerToken = localStorage.getItem('customerToken')
-
-
-
 
 
     var  product = props.moredetails
@@ -52,9 +45,6 @@ const fruitItems = fruit.map((items, index) => {
             <ul class="list-group list-group-flush">
                 <li className="list-group-item" class="list-group-item">
                     <b>Price: </b> ${items.rate}/{items.per}
-                </li>
-                <li class="list-group-item">
-                    <b>Subcategory:</b> {items.subcategory}
                 </li>
             </ul>
 
@@ -87,18 +77,20 @@ const fruitItems = fruit.map((items, index) => {
 
     return (
         <div>
-            <div>
-                <h1>
+            <h1>
                 &nbsp;&nbsp;Try Some Of Our Delicious Fruits!
-                </h1>
-            </div>
-            <div id="all-fruits-page" className="card_flex best-book-h1">
-                
-                {fruitItems}
-                
-            </div>
+            </h1>
+
+                <div className="all-fruits-page">
+                    <div className="card_flex best-book-h1">
+                        {fruitItems}
+                    </div>
+                </div>
+            
         </div>
     )
+
+   
 }
 
 const mapDispatchToProps = (dispatch) => {
