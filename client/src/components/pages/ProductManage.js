@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import * as actionCreators from '../../stores/creators/actionCreators' 
 import { useEffect , useState} from 'react'
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import React from 'react';
 import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import '../css/App.css';
@@ -15,29 +15,45 @@ function ProductManage(props) {
   const [showSecondElement, setShowSecondElement] = useState(false);
   const [showThirdElement, setShowThirdElement] = useState(false);
   const [showFourthElement, setShowFourthElement] = useState(false);
+  const [showFiveElement, setShowFiveElement] = useState(false);
+  const [showSixElement, setShowSixElement] = useState(false);
+  const [showSevenElement, setShowSevenElement] = useState(false);
+
 
 
   const toggleFirstElement = () => setShowFirstElement(!showFirstElement);
   const toggleSecondElement = () => setShowSecondElement(!showSecondElement);
   const toggleThirdElement = () => setShowThirdElement(!showThirdElement);
   const toggleFourthElement = () => setShowFourthElement(!showFourthElement);
+  const toggleFiveElement = () => setShowFiveElement(!showFiveElement);
+  const toggleSixElement = () => setShowSixElement(!showSixElement);
+  const toggleSevenElement = () => setShowSevenElement(!showSevenElement);
 
   const toggleAllElements = () => {
     setShowFirstElement(!showFirstElement);
     setShowSecondElement(!showSecondElement);
     setShowThirdElement(!showThirdElement);
     setShowFourthElement(!showFourthElement);
+    
+  }
+  const toggleAllElements2 = () => {
+    
+    setShowFiveElement(!showFiveElement);
+    setShowSixElement(!showSixElement);
+    setShowSevenElement(!showSevenElement);
   }
 
 
     useEffect(() => {
         console.log("use effect is fired")
         props.onLoadProducts()
+        props.onLoadUsers()
     },[])
 
     const handledelete = (_id) => {
         props.onDelete(_id)
         props.onLoadProducts()
+        props.onLoadUsers()
         window.location.reload(false);
         
     }
@@ -205,6 +221,97 @@ function ProductManage(props) {
             </div>
     })
 
+    var  admins = props.admins 
+    console.log(admins)
+
+    let counter5 = 0;
+    for (let i = 0; i < admins.length; i++) {
+        if (admins[i]) counter5++;
+    }
+    console.log(counter5)
+    
+    const adminsItems = admins.map((items, index) => {
+        return <div key ={index} className="card" style={{width: "18rem"}}>
+            
+            <div>
+                <h1>{items.username}</h1>
+            </div>
+            <div>
+                <h4>{items.email}</h4>
+            </div>
+            
+            <div>
+            <p>Id : {items._id}</p>
+            </div>
+
+            </div>
+    })
+
+
+
+
+
+    var  staff = props.staff 
+    console.log(staff)
+
+    let counter6 = 0;
+    for (let i = 0; i < staff.length; i++) {
+        if (staff[i]) counter6++;
+    }
+    console.log(counter6)
+    
+    const staffItems = staff.map((items, index) => {
+        return <div key ={index} className="card" style={{width: "18rem"}}>
+            
+            <div>
+                <h1>{items.username}</h1>
+            </div>
+            <div>
+                <h4>{items.email}</h4>
+            </div>
+            
+            <div>
+            <p>Id : {items._id}</p>
+            </div>
+
+            </div>
+    })
+
+
+    var  users = props.users
+    console.log(users)
+
+    let counter7 = 0;
+    for (let i = 0; i < users.length; i++) {
+        if (users[i]) counter7++;
+    }
+    console.log(counter7)
+    
+    const usersItems = users.map((items, index) => {
+        return <div key ={index} className="card" style={{width: "18rem"}}>
+            
+            <div>
+                <h1>{items.username}</h1>
+            </div>
+            <div>
+                <h4>{items.email}</h4>
+            </div>
+            <div>
+                <h3>Address</h3>
+                <h4>Street: {items.street}</h4><br></br>
+                <h4>City: {items.city}</h4><br></br>
+                <h4>State: {items.usaState}</h4><br></br>
+                <h4>Zip: {items.zip}</h4><br></br>
+            </div>
+            
+            <div>
+            <p>Id : {items._id}</p>
+            </div>
+
+            </div>
+    })
+
+
 
 
 
@@ -289,10 +396,11 @@ function ProductManage(props) {
                     <button id="btnsubmit" onClick = {handleSave}>Add product</button>
                 </div>
             </div><br/>
-            <div id="box">
+            <div id="box-admin">
             <>
                 <div id="header">
                     <h1>Edit Or Delete Products</h1>
+                    
                 </div>
                 <MDBBtn onClick={toggleFirstElement} className="collapse_btn_title mt-3"> All Products (total products: {counter1}) </MDBBtn>
                 <MDBBtn onClick={toggleSecondElement} className="collapse_btn_title mt-3">Vegetables (total products: {counter2})</MDBBtn>
@@ -328,12 +436,53 @@ function ProductManage(props) {
                 </MDBRow>
             </>
             </div>
-            <div id="box">
-                <h1>hello</h1>
+
+            <div id="box-admin">
+            <>
+                <div id="header">
+                    <h1>All Admin / Staff / Users list</h1>
+                    
+                </div>
+                
+                <MDBBtn onClick={toggleFiveElement} className="collapse_btn_title mt-3">Admins (total Admins: {counter5})</MDBBtn>
+                <MDBBtn onClick={toggleSixElement} className="collapse_btn_title mt-3">Staff (total Staff: {counter6})</MDBBtn>
+                <MDBBtn onClick={toggleSevenElement} className="collapse_btn_title mt-3">Users (total Users: {counter7})</MDBBtn>
+                <MDBBtn onClick={toggleAllElements2} className="collapse_btn_title mt-3"> Show All</MDBBtn>
+
+                <MDBRow>
+                    
+                    <MDBCol>
+                        <MDBCollapse show={showFiveElement} className='mt-3 card_flex best-book-h1'>
+                            <div><h1 style={{color: 'black', fontSize: '40px', fontWeight: 'bold'}}>Admins</h1></div>
+                            <div>{adminsItems}</div>
+                        </MDBCollapse>
+                    </MDBCol>
+                    <MDBCol>
+                        <MDBCollapse show={showSixElement} className='mt-3 card_flex best-book-h1'>
+                            <div><h1>Staff</h1></div>
+                            {staffItems}
+                        </MDBCollapse>
+                    </MDBCol>
+                    <MDBCol>
+                        <MDBCollapse show={showSevenElement} className='mt-3 card_flex best-book-h1'>
+                            <div><h1>Users</h1></div>
+                            {usersItems}
+                        </MDBCollapse>
+                    </MDBCol>
+                </MDBRow>
+            </>
             </div>
-            <div className = 'admin__links'>
-                <NavLink to= {`/auth/add-admin`}>Add New Admin</NavLink><br/>
-                <NavLink to= {`/auth/add-staff`}>Add New Staff</NavLink>
+            <div className = 'admin__links' id="box-admin">
+            <div id="header">
+                    <h1>Add Admin / Staff</h1>
+                    
+                </div>
+                <Link to={`/auth/add-admin`}><MDBBtn  className="collapse_btn_title mt-3">Add New Admin</MDBBtn></Link>
+                <Link to= {`/auth/add-staff`}><MDBBtn  className="collapse_btn_title mt-3">Add New Staff</MDBBtn></Link>
+            </div>
+            <div id="box-admin">
+                <h1>hello</h1>
+                
             </div>
         </div>
     
@@ -345,6 +494,7 @@ function ProductManage(props) {
 const mapDispatchToProps = (dispatch) => {
   return {
     onLoadProducts: () => dispatch(actionCreators.loadProducts()),
+    onLoadUsers: () => dispatch(actionCreators.loadAllUsers()),
     onDelete: (_id) => dispatch(actionCreators.deleteProduct(_id)),
           
   }
@@ -356,6 +506,9 @@ const mapStateToProps = (state) => {
         vegetable: state.vegetable,
         fruit: state.fruit,
         flower: state.flower,
+        admins: state.admins,
+        staff : state.staff,
+        users: state.users,
         
     }
 }
