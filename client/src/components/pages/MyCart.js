@@ -236,7 +236,7 @@ const Mycart = (props) => {
                                     <tbody>
                                         <tr className="cart-subtotal">
                                             <th>Subtotal</th>
-                                            <td><span className="subtotal">{subtotal}</span>
+                                            <td><span className="subtotal">{subtotal.toFixed(2)}</span>
                                             </td>
                                         </tr>
                                         <tr className="order-shipping">
@@ -246,7 +246,7 @@ const Mycart = (props) => {
                                         </tr>
                                         <tr className="order-total">
                                             <th>order total</th>
-                                            <td><span className="amount"><strong> {subtotal}</strong></span>
+                                            <td><span className="amount"><strong> {subtotal.toFixed(2)}</strong></span>
                                             </td>
                                         </tr>
                                     </tbody>
