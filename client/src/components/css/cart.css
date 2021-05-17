@@ -2,9 +2,12 @@
 
 .col-md-4 {
   background-color: #fff;
+  height: 350px;
 }
 
-
+.shop_table {
+  background-color: #fff;
+}
 
 .cart-total {
   background-color:#fff;
@@ -1122,6 +1125,7 @@ span.close-icon {
   font-family: 'Montserrat Semi Bold';
   letter-spacing: 1px;
   text-transform: uppercase;
+  padding-top: 10px;
 }
 
 .items-carosel-single .heading-title, .latest-blogs .heading-title, .testimonials-area .heading-title, .about_our_team_area .heading-title, .our_experiences_area .heading-title, .related-products .heading-title {

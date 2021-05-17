@@ -124,7 +124,7 @@ const Mycart =(props) => {
                                         </tr>
                                     </tbody>
                                 </table>
-                                <button type="submit" className="details-btn btn">proceed checkout</button>
+                                <button type="submit" className="details-btn btn">proceed to checkout</button><br/>
                             </div></div>
                         </div>
                     </div>
