@@ -1,4 +1,14 @@
 
+
+.col-md-4 {
+  background-color: #fff;
+}
+
+
+
+.cart-total {
+  background-color:#fff;
+}
 .shop_table {
   border: 1px solid #e3e3e3;
   border-collapse: collapse;
