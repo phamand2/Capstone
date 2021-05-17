@@ -413,10 +413,9 @@ dd {
 }
 
 img {
-  height: auto;
-  /* Make sure images are scaled correctly. */
+  height: inherit;
   max-width: 100%;
-  /* Adhere to container width. */
+  width: -webkit-fill-available;
 }
 
 .tb {
@@ -525,6 +524,7 @@ td {
 
 .btn-update {
   padding: 10px 19px;
+  background-color: white;
 }
 
 .btn-update img {

@@ -142,7 +142,7 @@ const Mycart =(props) => {
                             </table>
                         </div>
                         <div className="refresh-shoping">
-                            <a className="btn btn-update" href="shop-grid-sidebar.html"><img src="refresh.png" alt="icon"/>update cart</a>
+                            <a className="btn btn-update" href="shop-grid-sidebar.html">update cart</a>
                             <Link to="/" className="btn btn-update"> continue shopping</Link>
                         </div>
                     </div>

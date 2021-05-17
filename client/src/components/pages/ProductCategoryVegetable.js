@@ -47,9 +47,9 @@ const vegetableItems = vegetable.map((items, index) => {
 
              
 
-             <button className="add-cart-button" onClick = {() => handleAddToCart(items)}>
+             {/* <button className="add-cart-button" onClick = {() => handleAddToCart(items)}>
                     <a className="add-cart" class="card-link" ><span><span className="icon_plus"></span></span> Add To Cart</a>
-            </button>
+            </button> */}
             
             
         </div>
