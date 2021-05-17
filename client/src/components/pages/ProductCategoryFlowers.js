@@ -35,7 +35,7 @@ const ProductCategoryFlower = (props) =>{
     const flowerItems = flower.map((items, index) => {
     console.log(items)
     return <div key ={index} className= "card" class="card" style={{width: "18rem"}}>
-        <img src={items.imageurl} className= "card-img-top"class="card-img-top"/>
+        <img  src={items.imageurl} className= "card-img-top"class="card-img-top"/>
 
         <div className="card-body" class="card-body">
             <h1 className="card-title"class="card-title">{items.title}</h1>

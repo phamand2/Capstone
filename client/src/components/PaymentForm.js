@@ -1,7 +1,28 @@
 import { useState } from 'react'
-import '../css/Checkout.css'; 
+import './css/Checkout.css'; 
 import axios from 'axios'
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
+
+const CARD_OPTIONS = {
+    iconStyle: 'solid',
+    style: {
+        base: {
+            iconColor: '#c4f0ff',
+            color: '#fff',
+            fontWeight: 500,
+            fontFamily: 'Roboto, OpenSans, Segoe UI, sans-serif',
+            fontSize: '16px',
+            fontSmoothing: 'antialiased',
+            ':-webkit-autofill': { color: '#fce883'},
+            '::placeholder': { color: '#87bbfd' }
+        },
+        invalid: {
+            iconColor: '#ffc7ee',
+            color: '#ff0000'
+        }
+    }
+}
+
 
 const PaymentForm = () => {
     const [success, setSuccess] = useState(false)
@@ -21,7 +42,7 @@ const PaymentForm = () => {
                 const { id } = paymentMethod
                 const response = await axios.post('http://localhost:5000/nonmodalpayment', {
                     amount: 2829,
-                    id: 
+                    id 
                 })
 
                 if(response.data.success) {
@@ -46,11 +67,13 @@ const PaymentForm = () => {
                     <CardElement options = {CARD_OPTIONS}/>
                 </div>
             </fieldset>
-            <button>Pay Securely Through Stripe</button>
+            <button>Place Your Order</button>
         </form>
         :
         <div>
-            Thank you for your purchase! Your items will be selected for maximum freshness and delivered to you within 24 hours.
+            <h2>Thank you for your purchase!<br/>
+            Your items will be selected for maximum freshness and delivered to you within 24 hours.<br/>
+            Please print this page for your receipt.</h2>
         </div>
         }
         </>
