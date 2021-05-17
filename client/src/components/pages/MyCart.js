@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import StripeCheckout from 'react-stripe-checkout';
 
 
-const Mycart =(props) => {
+const Mycart = (props) => {
 
     const [Qty, setQty] = useState({})
 
