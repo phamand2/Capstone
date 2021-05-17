@@ -7,10 +7,9 @@ import React from 'react';
 import '../css/App.css';
 
 
-const ProductCategoryFruit = (props, {history}) => {
+const ProductCategoryFruit = (props) => {
 
-    const [qty, setQty] = useState(1)
-    const dispatch = useDispatch()
+    
 
     useEffect(() => {
         // console.log("use effect is fired")
@@ -25,12 +24,6 @@ const handleAddToCart = (product) => {
         props.onAddToCart(product)
         alert("item has been added to the cart ")
     }
-
-
-     const customerToken = localStorage.getItem('customerToken')
-
-
-
 
 
     var  product = props.moredetails
@@ -53,9 +46,6 @@ const fruitItems = fruit.map((items, index) => {
                 <li className="list-group-item" class="list-group-item">
                     <b>Price: </b> ${items.rate}/{items.per}
                 </li>
-                {/* <li class="list-group-item">
-                    <b>Subcategory:</b> {items.subcategory}
-                </li> */}
             </ul>
 
              
