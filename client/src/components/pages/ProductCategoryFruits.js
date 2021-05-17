@@ -53,9 +53,9 @@ const fruitItems = fruit.map((items, index) => {
                 <li className="list-group-item" class="list-group-item">
                     <b>Price: </b> ${items.rate}/{items.per}
                 </li>
-                <li class="list-group-item">
+                {/* <li class="list-group-item">
                     <b>Subcategory:</b> {items.subcategory}
-                </li>
+                </li> */}
             </ul>
 
              
