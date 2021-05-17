@@ -20,11 +20,11 @@ const ProductCategoryVegetable = (props) =>{
 
     const handleAddToCart = (product) => {
         props.onAddToCart(product)
-        alert("item has been added to the cart ")
+        alert("Item has been added to your cart!")
     }
 
 
-    var  product = props.moredetails
+    
     var  vegetable = props.vegetable 
 
     let counter2 = 0;
@@ -94,7 +94,8 @@ const vegetableItems = vegetable.map((items, index) => {
 const mapDispatchToProps = (dispatch) => {
     return {
       onLoadProducts: () => dispatch(actionCreators.loadProducts()), 
-      onMoreDetails :(items) => dispatch(actionCreators.onMoreDetails(items))  
+      onMoreDetails :(items) => dispatch(actionCreators.onMoreDetails(items)), 
+      onAddToCart :(items ) => dispatch(actionCreators.onAddToCart(items )) 
     }
   }
 
