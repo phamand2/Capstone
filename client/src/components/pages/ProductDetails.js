@@ -96,15 +96,15 @@ const ProductDetails = (props) => {
 
         return (
 
-    <div class="card mb-3 bg-success text-white" style={{width: '99vw'}}>
-        <div class="row g-0">
-            <div class="col-md-4" style={{width: '50%', boxShadow: '0 0 8px 8px white, inset'}}>
-                <img className = 'detailsimg' src={product.imageurl} alt="..."/>
+    <div class="card mb-3 bg-success text-white" style={{width: '99vw', border: 'solid 5px black'}}>
+        <div class="row g-0"style={{height: '100%'}}>
+            <div className="product-details-image" class="col-md-4" style={{height: 'auto'}}>
+                <img className="productimg" style={{height: '100%'}} class = 'card-img' src={product.imageurl} alt="..."/>
             </div>
-        <div class="col-md-8" style={{fontFamily: "sans-serif", width: '50%'}}>
+        <div class="col-md-8" style={{fontFamily: "sans-serif"}}>
             <div class="card-body">
                 <div>
-                <h1 class="card-title" style={{fontSize: '80px'}}>{product.title} <span style={{fontSize: '60px', float:'right'}}>$ {product.rate} ea</span> </h1> 
+                <h1 class="card-title" style={{fontSize: '80px'}}>{product.title} <span style={{fontSize: '60px', float:'right'}}>$ {product.rate}/{product.per}</span> </h1> 
                 </div>
                 <p class="card-text" style={{fontSize: '20px'}}>{product.description}</p>
 
