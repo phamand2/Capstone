@@ -87,18 +87,20 @@ const fruitItems = fruit.map((items, index) => {
 
     return (
         <div>
-            <div>
-                <h1>
+            <h1>
                 &nbsp;&nbsp;Try Some Of Our Delicious Fruits!
-                </h1>
-            </div>
-            <div id="all-fruits-page" className="card_flex best-book-h1">
-                
-                {fruitItems}
-                
-            </div>
+            </h1>
+
+                <div className="all-fruits-page">
+                    <div className="card_flex best-book-h1">
+                        {fruitItems}
+                    </div>
+                </div>
+            
         </div>
     )
+
+   
 }
 
 const mapDispatchToProps = (dispatch) => {

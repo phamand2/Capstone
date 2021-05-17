@@ -167,10 +167,19 @@ padding: 0 16px 16px
 height: 250px
 }
 
-#all-fruits-page{
+.all-fruits-page{
   background-image: url('./components/img/fruitsBackground.jpg');
   background-size: contain;
 }
+
+
+
+
+
+
+
+
+
 
 
 
