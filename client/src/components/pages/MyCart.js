@@ -121,7 +121,9 @@ const Mycart =(props) => {
                             </table>
                         </div>
                         <div className="refresh-shoping">
-                            <a className="btn btn-update" href="shop-grid-sidebar.html"><img src="refresh.png" alt="icon"/>update cart</a>
+                            <a className="btn btn-update" href="shop-grid-sidebar.html">
+                                <img src="refresh.png" alt="icon"/>
+                                update cart</a>
                             <Link to="/" className="btn btn-update"> continue shopping</Link>
                         </div>
                     </div>
@@ -137,7 +139,7 @@ const Mycart =(props) => {
                                     <tbody>
                                         <tr className="cart-subtotal">
                                             <th>Subtotal</th>
-                                            <td><span className="subtotal">$281.82</span>
+                                            <td><span className="subtotal">$28.29</span>
                                             </td>
                                         </tr>
                                         <tr className="order-shipping">
@@ -147,7 +149,7 @@ const Mycart =(props) => {
                                         </tr>
                                         <tr className="order-total">
                                             <th>order total</th>
-                                            <td><span className="amount"><strong>$281.82</strong></span>
+                                            <td><span className="amount"><strong>$28.29</strong></span>
                                             </td>
                                         </tr>
                                     </tbody>
