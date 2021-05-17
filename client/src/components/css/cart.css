@@ -5319,3 +5319,11 @@ span.close-icon {
 {
     .login .login-method  .btn-hover {margin-bottom: 15px; margin-left: 20px;}
 }
+
+
+.stripediv {
+  margin-top: 40px;
+  background-color: white;
+  padding: 20px 0px;
+  text-align: center;
+}

@@ -4,6 +4,7 @@ import * as actionCreators from '../../stores/creators/actionCreators'
 import { useEffect , useState } from 'react'
 import { Link } from 'react-router-dom'
 import StripeCheckout from 'react-stripe-checkout';
+import StripeContainer from '../StripeContainer'
 
 
 const Mycart = (props) => {
@@ -249,8 +250,7 @@ const Mycart = (props) => {
                                         </tr>
                                     </tbody>
                                 </table>
-                                {/* <button type="submit" className="details-btn btn">proceed to checkout</button><br/> */}
-                                <StripeCheckout 
+                                {/* <StripeCheckout 
                                     stripeKey = 'pk_test_51In4ABCDwFUaylUuuSu1e43AVzMfTkMUQq4wu5sU7iTRpVkTjhQD9JxkVTZiZPKQLH0VOtKfVPgVP6naDlrpDx4Z00SDMXekQC'
                                     amount = {stripeTestProduct.rate *100} 
                                     token = {makePayment} 
@@ -259,8 +259,17 @@ const Mycart = (props) => {
                                     shippingAddress
                                     billingAddress>
                                     <div><button className = 'btn'>Secure Checkout With Stripe</button></div>
-                                </StripeCheckout>
+                                </StripeCheckout> */}
+                                
                             </div></div>
+                        </div><br/><br/>
+                        <div className = 'stripediv'>
+                            <h2>Secure Checkout Handled Through&nbsp; <a href = 'https://stripe.com/' _target = 'blank'><img 
+                                src='https://stripe.com/img/v3/home/social.png' 
+                                style = {{height: '60px'}} 
+                                alt = 'stripe logo'/>
+                            </a></h2><br/><br/> 
+                            <StripeContainer/>
                         </div>
                     </div>
                 </div>
