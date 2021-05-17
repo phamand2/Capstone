@@ -9,10 +9,11 @@ import {
 const Navbar = () => {
     return (
         <MDBNavbar expand='lg' light bgColor='white'>
-            <MDBContainer fluid><button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria hidden='false' aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
-                <MDBNavbarNav right className='mb-2 mb-lg-0 '>
+            <MDBContainer fluid>
+                <MDBNavbarNav right className='mb-2 mb-lg-0 'id="navbarSupportedContent">
                     <MDBNavbarItem >
                     <Link aria-current='page' to='/'>
                     <MDBNavbarLink>Home</MDBNavbarLink>
