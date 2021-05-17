@@ -175,32 +175,29 @@ app.post('/payment', (req, res) => {
 
 
 // stripe payment route #2 - still not working
-// app.post('/create-checkout-session', async (req, res) => {
-//   const domainUrl = process.env.FRUVEFLOW_URL
-//   const { line_items, customer_email } = req.body
-//   if(!line_items || !customer_email) {
-//     return res.status(400).json({ error: 'missing required session parameters'})
-//   }
-//   let session;
-
-//   try {
-//     session = await stripe.checkout.sessions.create({
-//       payment_method_types: ['card'],
-//       mode: 'payment',
-//       line_items,
-//       customer_email,
-//       success_url: `${domainUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-//       cancel_url: `${domainUrl}/canceled`,
-//       shipping_address_collection: { allowed_countries: ['US'] }
-//     })
-//     console.log(session)
-//     res.status(200).json({ sessionID: session.id })
-//   } catch (error) {
-//     console.log(error)
-//     res.status(400).json({ error: 'An error occurred; unable to create session'})
-//   }
-// })
-
+app.post('/nonmodalpayment', cors(), async (req, res) => {
+  let {amount, id} = req.body
+  try {
+    const payment = await stripe.paymentIntents.create({
+      amount, 
+      currency: 'USD',
+      description: 'FruVe Flow',
+      payment_method: id,
+      confirm: true
+    })
+    console.log('Payment', payment)
+    res.json({
+      message: "Payment successful",
+      success: true
+    })
+  } catch (error) {
+      console.log('Error', error)
+      res.json({
+        message: 'Payment failed',
+        success: false
+      })
+  }
+})
 
 
 
