@@ -52,13 +52,13 @@
 
 .card {
   margin: 10px;
-  border: 4px solid black;
+  border: 3px solid black;
   align-items: center;
 }
 
 
 .card:hover {
-  border: 5px solid #028602;
+  border: 5px solid black;
 }
 
 .best-book-h1{
