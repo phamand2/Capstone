@@ -2,10 +2,10 @@ import '../css/cart.css';
 import { connect } from 'react-redux'
 import { useEffect , useState } from 'react'
 import { Link } from 'react-router-dom'
+import StripeCheckout from 'react-stripe-checkout';
 
 
-
-const Mycart =(props) => {
+const Mycart = (props) => {
 
     // const [Qty, setQty] = useState({})
 
@@ -84,7 +84,6 @@ const Mycart =(props) => {
                 
         //     })
         // }
-        // subtotal needs to loop through each item in the cart, multiply it by the qty, then get the total. so...not this below
         // const subtotal = cart.rate *(Qty.qty)
         return <tbody  key = {cart._id} >
                                     <tr className="cart_item tbody">
@@ -120,7 +119,35 @@ const Mycart =(props) => {
                 </tbody>
     })
 
-    return(
+    // checkout functionality here
+
+    const [stripeTestProduct, setStripeTestProduct] = useState({
+        name: 'hyacinths',
+        rate: 28.29
+    })
+
+    const makePayment = (token, addresses) => {
+        const body = {
+            token,
+            stripeTestProduct
+        }
+        const headers = {
+            'Content-Type': 'application/json',
+        }
+        return fetch(`http://localhost:5000/payment`, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify(body)
+        }).then(response => {
+            console.log('RESPONSE', response)
+            const { status } = response
+            console.log('STATUS', status)
+        }).catch(error => console.log(error))
+    }
+
+
+
+    return (
         <div>
             <div className="shopping-cart">
                 <div className="container">
@@ -142,7 +169,9 @@ const Mycart =(props) => {
                             </table>
                         </div>
                         <div className="refresh-shoping">
-                            <a className="btn btn-update" href="shop-grid-sidebar.html"><img src="refresh.png" alt="icon"/>update cart</a>
+                            <a className="btn btn-update" href="shop-grid-sidebar.html">
+                                <img src="refresh.png" alt="icon"/>
+                                update cart</a>
                             <Link to="/" className="btn btn-update"> continue shopping</Link>
                         </div>
                     </div>
@@ -162,8 +191,8 @@ const Mycart =(props) => {
                                             </td>
                                         </tr>
                                         <tr className="order-shipping">
-                                            <th>shipping</th>
-                                            <td><span className="shipping">Free Shipping</span>
+                                            <th>delivery</th>
+                                            <td><span className="shipping">Free Delivery (please tip your driver!)</span>
                                             </td>
                                         </tr>
                                         <tr className="order-total">
@@ -173,7 +202,17 @@ const Mycart =(props) => {
                                         </tr>
                                     </tbody>
                                 </table>
-                                <button type="submit" className="details-btn btn">proceed to checkout</button><br/>
+                                {/* <button type="submit" className="details-btn btn">proceed to checkout</button><br/> */}
+                                <StripeCheckout 
+                                    stripeKey = 'pk_test_51In4ABCDwFUaylUuuSu1e43AVzMfTkMUQq4wu5sU7iTRpVkTjhQD9JxkVTZiZPKQLH0VOtKfVPgVP6naDlrpDx4Z00SDMXekQC'
+                                    amount = {stripeTestProduct.rate *100} 
+                                    token = {makePayment} 
+                                    name = 'FruveFlow Checkout'
+                                    // amount = {Number(getCartSubTotal().toFixed(2))*100}
+                                    shippingAddress
+                                    billingAddress>
+                                    <div><button className = 'btn'>Secure Checkout With Stripe</button></div>
+                                </StripeCheckout>
                             </div></div>
                         </div>
                     </div>
