@@ -1,14 +1,15 @@
 import * as actionTypes from '../stores/actions/actionTypes'
+// const cartFromLocalStorage = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
 
 
 const initialState = {
 
-    all_products : [],
-    vegetable:[],
-    fruit:[],
-    flower:[],
-    moredetails:[],
-    cart:[],
+    all_products: [],
+    vegetable: [],
+    fruit: [],
+    flower: [],
+    moredetails: [],
+    cart: [],
 
 }
 

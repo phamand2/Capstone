@@ -2,18 +2,22 @@ import { connect } from 'react-redux'
 import * as actionCreators from '../../stores/creators/actionCreators' 
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { NavLink } from "react-router-dom";
-import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
+// import { NavLink } from "react-router-dom";
+// import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import '../css/App.css';
+import fruits from '../img/fruits.jpeg'
+import vegetables from '../img/vegetables.jpeg'
+import flowers from '../img/flowers.jpeg'
+
 
 import React from 'react';
 import Card from 'react-bootstrap/Card'
-import CardDeck from 'react-bootstrap/CardDeck'
-import Button from 'react-bootstrap/Button';
+// import CardDeck from 'react-bootstrap/CardDeck'
+// import Button from 'react-bootstrap/Button';
 
-import {
-  MDBNavbar, MDBNavbarNav, MDBNavbarItem, MDBNavbarLink,
-  MDBContainer, MDBNavbarToggler, MDBIcon } from 'mdb-react-ui-kit';
+// import {
+//   MDBNavbar, MDBNavbarNav, MDBNavbarItem, MDBNavbarLink,
+//   MDBContainer, MDBNavbarToggler, MDBIcon } from 'mdb-react-ui-kit';
 
 const App = (props) => {
 
@@ -42,7 +46,7 @@ const App = (props) => {
   
 
     useEffect(() => {
-      console.log("use effect is fired")
+      // console.log("use effect is fired")
       props.onLoadProducts()
       // UniqueidlocalStorage(Uniqueid)
     },[])
@@ -50,8 +54,6 @@ const App = (props) => {
     const handleMoreDetails = (items) => {
       props.onMoreDetails(items)
     }
-
-
 
     var  all_products = props.all_products 
 
@@ -66,7 +68,7 @@ const all_productsItems = all_products.map((items, index) => {
   // console.log(Uniqueid)
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-        <Link to= {`/product-detail/${items.title}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
+        <Link to= {`/product-detail/${items.title}`}><div className='square'><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></div></Link>
         </div>
         <div>
         <Link to= {`/product-detail/${items.title}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
@@ -108,7 +110,7 @@ console.log(counter2)
 const vegetableItems = vegetable.map((items, index) => {
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-        <Link to= {`/product-detail/${items.title}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
+        <Link to= {`/product-detail/${items.title}`}><div className="square"><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title} /></div></Link>
         </div>
         <div>
         <Link to= {`/product-detail/${items.title}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
@@ -136,7 +138,7 @@ const vegetableItems = vegetable.map((items, index) => {
 
 
 var  fruit = props.fruit 
-console.log(fruit)
+// console.log(fruit)
 let counter3 = 0;
 for (let i = 0; i < all_products.length; i++) {
     if (fruit[i]) counter3++;
@@ -146,7 +148,7 @@ console.log(counter3)
 const fruitItems = fruit.map((items, index) => {
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-        <Link to= {`/product-detail/${items.title}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
+        <Link to= {`/product-detail/${items.title}`}><div className='square'><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></div></Link>
         </div>
         <div>
         <Link to= {`/product-detail/${items.title}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
@@ -179,12 +181,12 @@ let counter4 = 0;
 for (let i = 0; i < all_products.length; i++) {
     if (flower[i]) counter4++;
 }
-console.log(counter4)
+// console.log(counter4)
 
 const flowerItems = flower.map((items, index) => {
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-        <Link to= {`/product-detail/${items.title}`}><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></Link>
+        <Link to= {`/product-detail/${items.title}`}><div className='square'><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></div></Link>
         </div>
         <div>
         <Link to= {`/product-detail/${items.title}}`}><h1 onClick = {() => handleMoreDetails(items)}>{items.title}</h1></Link>
@@ -215,7 +217,9 @@ const flowerItems = flower.map((items, index) => {
     <header>
       <div
         className='p-5 text-center bg-image'
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544829728-e5cb9eedc20e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')" }}
+        // style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544829728-e5cb9eedc20e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')" }}
+        
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1610492219815-f76905e3f084?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80')" }}
       >
         <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)', height: 300 }}>
           <div className='d-flex justify-content-center align-items-center h-100'>
@@ -240,9 +244,8 @@ const flowerItems = flower.map((items, index) => {
         {fruitItems[0]}
         {fruitItems[5]}
         {fruitItems[10]}
-        {fruitItems[11]}
-        {fruitItems[15]}
-        {fruitItems[18]}
+        
+        
       </div>
       <a className='btn btn-outline-light btn-lg' href='/fruits' role='button'>
                 See All Fruit
@@ -258,9 +261,7 @@ const flowerItems = flower.map((items, index) => {
         {vegetableItems[0]}
         {vegetableItems[5]}
         {vegetableItems[10]}
-        {vegetableItems[11]}
-        {vegetableItems[15]}
-        {vegetableItems[18]}
+        
       </div>
       <a className='btn btn-outline-light btn-lg' href='/vegetables' role='button'>
                 See All Vegetables
@@ -277,9 +278,7 @@ const flowerItems = flower.map((items, index) => {
         {flowerItems[0]}
         {flowerItems[5]}
         {flowerItems[10]}
-        {flowerItems[11]}
-        {flowerItems[15]}
-        {flowerItems[18]}
+       
       </div>
       <a className='btn btn-outline-light btn-lg' href='/flowers' role='button'>
                 See All Flowers

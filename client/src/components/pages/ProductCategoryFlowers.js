@@ -1,10 +1,8 @@
 import { connect } from 'react-redux'
 import * as actionCreators from '../../stores/creators/actionCreators' 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { NavLink } from "react-router-dom";
 import React from 'react';
-import { MDBCollapse, MDBBtn, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import '../css/App.css';
 
 
@@ -23,7 +21,6 @@ const ProductCategoryFlower = (props) =>{
     for (let i = 0; i < flower.length; i++) {
         if (flower[i]) counter2++;
     }
-    // console.log(counter2)
 
     const handleMoreDetails = (items) => {
         props.onMoreDetails(items)
@@ -34,25 +31,23 @@ const ProductCategoryFlower = (props) =>{
     console.log(items)
     return <div key ={index} className="card" style={{width: "18rem"}}>
         <div>
-            <img src={items.imageurl} />
+            <img className = 'productimg' src={items.imageurl} />
         </div>
+        <br/>
         <div>
-            <h1>{items.title}</h1>
+            <h1 className='itemsTitle'>{items.title}</h1>
         </div>
+        <br/>
         <div>
-            <h4>{items.description}</h4>
+            <h4>{items.description.substring(0, 100)}...</h4>
         </div>
+        <br/>
         <div>
-            <h6>rate : {items.rate}</h6>
+            <h6>Price: ${items.rate} / {items.per}</h6>
         </div>
+        <br/>
         <div>
-            <p>category : {items.category}</p>
-        </div>
-        <div>
-        <p>sub-category : {items.subcategory}</p>
-        </div>
-        <div>
-        <button onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items.title}`}>More details</Link></button>
+        <button className = 'detailsbtn' onClick = {() => handleMoreDetails(items)}><Link to= {`/product-detail/${items._id}`}>Product Details</Link></button>
         </div>
         
 
@@ -60,17 +55,11 @@ const ProductCategoryFlower = (props) =>{
     })
 
 
-
-
-
-
-
-
     return (
         <div>
             <div>
                 <h1>
-                    Flower display page
+                &nbsp;&nbsp;Brighten up your home with some of our beautiful flowers!
                 </h1>
             </div>
             <div className="card_flex best-book-h1">
@@ -83,7 +72,7 @@ const ProductCategoryFlower = (props) =>{
 const mapDispatchToProps = (dispatch) => {
     return {
       onLoadProducts: () => dispatch(actionCreators.loadProducts()), 
-      onMoreDetails :(items) => dispatch(actionCreators.onMoreDetails(items)) 
+      onMoreDetails: (items) => dispatch(actionCreators.onMoreDetails(items)) 
     }
   }
 

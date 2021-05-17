@@ -1,12 +1,14 @@
-import { connect } from 'react-redux'
-import { useState} from 'react'
+import { connect, useDispatch } from 'react-redux'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { onAddToCart } from '../../stores/creators/actionCreators' 
 import * as actionCreators from '../../stores/creators/actionCreators' 
 
 
-const ProductDetails = (props, {history}) => {
-    const [Qty, setQty] = useState({})
+const ProductDetails = (props) => {
+    const [qty, setQty] = useState(1)
+    const dispatch = useDispatch()
 
-    var  product = props.moredetails
     // var  product = props.moredetails
     // console.log(product)
     // const moredetails_imageurlItems = moredetails_imageurl.map((items, index) => {
@@ -55,35 +57,28 @@ const ProductDetails = (props, {history}) => {
     // }
 
 
-
-    // const handleAddToCartLoggedIn = (product, ) => {
-        
-    //     props.onAddToCart(product)
-    //     handleSave (product)
-
-        
+    // const handleAddToCart = () => {
+    //     dispatch(onAddToCart(product, qty))
+    //     alert("This item has been added to your cart!")
     // }
 
-
-    const handleAddToCart = (product) => {
-        props.onAddToCart(product)
-        alert("item has been added to the cart ")
+    const handleAddToCart = (product, qty) => {
+        props.onAddToCart(product, qty)
+        alert("Item has been added to the cart!")
     }
     var  product = props.moredetails
     
     
     const customerToken = localStorage.getItem('customerToken')
    
-        var  product = props.moredetails
-        console.log(product)
-
-    
+        var product = props.moredetails
+        // console.log(product)
             return (
 
     <div class="card mb-3 bg-success text-white" style={{width: '99vw'}}>
         <div class="row g-0">
             <div class="col-md-4" style={{width: '50%', boxShadow: '0 0 8px 8px white, inset'}}>
-                <img src={product.imageurl} alt="..."/>
+                <img className = 'detailsimg' src={product.imageurl} alt="..."/>
             </div>
         <div class="col-md-8" style={{fontFamily: "sans-serif", width: '50%'}}>
             <div class="card-body">
@@ -92,25 +87,29 @@ const ProductDetails = (props, {history}) => {
                 </div>
                 <p class="card-text" style={{fontSize: '20px'}}>{product.description}</p>
 
-                
                 <ul>
                 
                 <li>
-                    <p class="card-text" style={{fontSize: '20px'}}><b>Category: </b> <i>{product.category}</i></p>
+                    <p class="card-text" style={{fontSize: '20px'}}><b>Category: </b><i>{product.category}</i></p>
                 </li>
                 <li>
-                    <p class="card-text" style={{fontSize: '20px'}}><b>Sub-Category: </b> <i>{product.subcategory}</i></p>
+                    <p class="card-text" style={{fontSize: '20px'}}><b>Sub-Category: </b><i>{product.subcategory}</i></p>
                 </li>
                 <li>
-                    <p class="card-text" style={{fontSize: '20px'}}> <b> Product ID: </b> <i>{product._id}</i></p>
+                    <p class="card-text" style={{fontSize: '20px'}}> <b>Product ID: </b><i>{product._id}</i></p>
 
                     
                 
                 </li>
                 </ul>
-                
-                    <button style = {{backgroundColor: 'limegreen', padding: '8px'}} onClick = {() => handleAddToCart(product)}>
+                <p>Qty:&nbsp; &nbsp;
+                <input type="number" min="1" max="100" value={qty} onChange = {(e) => setQty(e.target.value)}/></p>
+                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white'}} onClick = {() => handleAddToCart(product)}>
                     <a style = {{fontSize: '20px'}}className="add-cart" ><span><span className="icon_plus"></span></span> Add To Cart</a></button>
+                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white'}}>
+                    <a style = {{fontSize: '20px'}}className="add-cart" ><Link to = '/mycart'><span><span className="icon_plus"></span></span> Go To Cart</Link></a></button>
+                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white'}} >
+                    <a href = '/' style = {{fontSize: '20px'}}className="add-cart" ><span><span className="icon_plus"></span></span> Continue Shopping</a></button>
             
             </div>
         </div>
@@ -133,15 +132,15 @@ const ProductDetails = (props, {history}) => {
                             
             //             </ul>
                         
-            //         </div>
-            //     </div>
-            //     <div className="col-md-7">
-            //         <div className="right-content">
-            //             <div className="product-info">
-            //                 <h1>{product.title}</h1>
-            //                 <div className="price">
-            //                 <h4>${product.rate}</h4>
-            //                 </div>
+                //     </div>
+                // </div>
+                // <div className="col-md-7">
+                //     <div className="right-content">
+                //         <div className="product-info">
+                //             <h1>{product.title}</h1>
+                //             <div className="price">
+                //             <h4>${product.rate} / {product.per}</h4>
+                //             </div>
                             
             //                 <div className="product-description">
             //                     <h4 className="small-title"><b>DESCRIPTION</b></h4>
@@ -171,25 +170,17 @@ const ProductDetails = (props, {history}) => {
             // </div>
 
 
-
-
-    
-
-
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAddToCart :(product ) => dispatch(actionCreators.onAddToCart(product )),
-        // onAddToCart :(Qty ) => dispatch(actionCreators.onAddToCart(Qty )),
-        
+        onAddToCart :(product, qty) => dispatch(actionCreators.onAddToCart(product, qty)),
+        // onAddToCart :(Qty ) => dispatch(actionCreators.onAddToCart(Qty )),        
     }
-
 }
 
 const mapStateToProps = (state) => {
     return {
-        moredetails: state.moredetails,
-        
+        moredetails: state.moredetails, 
     }
-  }
+}
 
-  export default connect(mapStateToProps,mapDispatchToProps)(ProductDetails);
+export default connect(mapStateToProps,mapDispatchToProps)(ProductDetails);

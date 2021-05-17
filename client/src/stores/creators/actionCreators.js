@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes'
+import axios from 'axios'
 
 export const loadProducts = () => {
     return(dispatch) => {
@@ -8,7 +9,7 @@ export const loadProducts = () => {
         fetch('http://localhost:5000/all-products')
             .then(response => response.json())
             .then (products => {
-                console.log(products)
+                // console.log(products)
                 dispatch ({type:actionTypes.Products_Loaded, payload: products})
         }).catch(error => {
             console.log(error)
@@ -18,7 +19,7 @@ export const loadProducts = () => {
         fetch('http://localhost:5000/all-products/vegetable')
             .then(response => response.json())
             .then (vegetable => {
-                console.log(vegetable)
+                // console.log(vegetable)
                 dispatch ({type:actionTypes.Products_Loaded_VEGETABLE, payload: vegetable})
         }).catch(error => {
             console.log(error)
@@ -28,7 +29,7 @@ export const loadProducts = () => {
         fetch('http://localhost:5000/all-products/fruit')
             .then(response => response.json())
             .then (fruit => {
-                console.log(fruit)
+                // console.log(fruit)
                 dispatch ({type:actionTypes.Products_Loaded_FRUIT, payload: fruit})
         }).catch(error => {
             console.log(error)
@@ -38,7 +39,7 @@ export const loadProducts = () => {
         fetch('http://localhost:5000/all-products/flower')
             .then(response => response.json())
             .then (flower => {
-                console.log(flower)
+                // console.log(flower)
                 dispatch ({type:actionTypes.Products_Loaded_FLOWER, payload: flower})
         }).catch(error => {
             console.log(error)
@@ -71,25 +72,35 @@ export const deleteProduct = (_id, props) => {
 }
 
 
-
 export const onMoreDetails = (items) => {
     return {
         type: actionTypes.onMoreDetails,
-        payload : items
+        payload: items
     }
 }
 
 export const onAddToCart = (product) => {
     return {
         type: actionTypes.onAddToCart,
-        payload : product
-    }
-}
-
-
-export const removeFromCart = (product) => {
-    return {
-        type: actionTypes.REMOVE_FROM_CART,
         payload: product
     }
 }
+
+// export const onAddToCart = (product, qty) => (getState => {
+//     return {
+//         type: actionTypes.onAddToCart,
+//         payload: {
+//             product,
+//             qty
+//         }
+//     }
+//     localStorage.setItem('cart', JSON.stringify(getState().cart))
+// })
+
+
+// export const removeFromCart = (product) => {
+//     return {
+//         type: actionTypes.REMOVE_FROM_CART,
+//         payload: product
+//     }
+// }

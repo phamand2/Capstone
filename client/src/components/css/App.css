@@ -72,8 +72,10 @@
   margin: 10px;
   padding:10px;
   border: 1px solid grey;
-
+  align-items: center;
 }
+
+
 .card:hover {
   border: 5px solid grey;
 }
@@ -88,11 +90,20 @@
   
 }
 
+.square {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
 
 .img {
-  width: 175px;
-  height: 175px;
-  box-shadow: 0 0 8px 8px white inset;
+  position: absolute;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  top: 50%;
+  transform: translate( -50%, -50%);
 }
 
 
@@ -142,6 +153,7 @@
 
 #btnsubmit {
   margin: 10px;
+  font-family:'Amatic SC', cursive;
   font-size: 30px;
   border: 3px solid black;
 }
@@ -157,4 +169,12 @@
 
 .product-description {
   margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemsTitle {
+    font-size: 35px;
+    font-family: 'Amatic SC', cursive;
+   
 }
