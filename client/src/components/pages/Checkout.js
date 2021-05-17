@@ -28,16 +28,22 @@ const Checkout = () => {
     }
 
     return (
-        <StripeCheckout 
-            stripeKey = 'pk_test_51In4ABCDwFUaylUuuSu1e43AVzMfTkMUQq4wu5sU7iTRpVkTjhQD9JxkVTZiZPKQLH0VOtKfVPgVP6naDlrpDx4Z00SDMXekQC'
-            amount = {product.rate *100} 
-            token = {makePayment} 
-            name = 'FruveFlow Checkout'
-            // amount = {Number(getCartSubTotal().toFixed(2))*100}
-            shippingAddress
-            billingAddress>
-            <div><button className = 'btn'>Secure Checkout With Stripe</button></div>
-        </StripeCheckout>
+        <div className = 'checkout'>
+            <h1>FruveFlow Checkout - Powered by Stripe</h1>
+            <h3>some kind of link to/info about Stripe here, maybe</h3>
+            {/* {showItem ? <StripeContainer/> : <> <h3} */}
+
+        </div>
+        // <StripeCheckout 
+        //     stripeKey = 'pk_test_51In4ABCDwFUaylUuuSu1e43AVzMfTkMUQq4wu5sU7iTRpVkTjhQD9JxkVTZiZPKQLH0VOtKfVPgVP6naDlrpDx4Z00SDMXekQC'
+        //     amount = {product.rate *100} 
+        //     token = {makePayment} 
+        //     name = 'FruveFlow Checkout'
+        //     // amount = {Number(getCartSubTotal().toFixed(2))*100}
+        //     shippingAddress
+        //     billingAddress>
+        //     <div><button className = 'btn'>Secure Checkout With Stripe</button></div>
+        // </StripeCheckout>
     )
 }
 

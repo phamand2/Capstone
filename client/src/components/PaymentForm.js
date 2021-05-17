@@ -48,7 +48,10 @@ const PaymentForm = () => {
             </fieldset>
             <button>Pay Securely Through Stripe</button>
         </form>
-        
+        :
+        <div>
+            Thank you for your purchase! Your items will be selected for maximum freshness and delivered to you within 24 hours.
+        </div>
         }
         </>
     )
