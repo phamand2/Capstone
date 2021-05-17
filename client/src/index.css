@@ -163,6 +163,11 @@ height: 250px
   background-size: contain;
 }
 
+.all-flowers-page{
+  background-image: url('./components/img/flowers3.jpg');
+  background-size: contain;
+}
+
 
 
 
