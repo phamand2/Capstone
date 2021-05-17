@@ -77,7 +77,7 @@ const ProductDetails = (props) => {
 
     const handleAddToCart = (product, qty) => {
         
-        const subtotal = parseFloat(qty * product.rate)
+        const subtotal = parseFloat(qty * product.rate).toFixed(2)
         console.log(subtotal)
         const transformProduct  = {...product, qty , subtotal}
 
