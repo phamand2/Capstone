@@ -2,7 +2,8 @@
 
 .col-md-4 {
   background-color: #fff;
-  height: 350px;
+  height: fit-content;
+  margin :10px;
 }
 
 .shop_table {
@@ -494,7 +495,8 @@ td {
 }
 
 .details-btn {
-  padding: 12px 25px;
+  padding: 12px 25px ;
+  margin-bottom:10px;
   letter-spacing: 1px;
   -webkit-transition: ease-in 0.25s;
   transition: ease-in 0.25s;
@@ -1925,7 +1927,7 @@ span.close-icon {
 }
 
 .home01 .featured-collection .col-md-4 {
-  padding: 0px 15px 15px 0;
+  padding: 0px 15px 15px 5px;
 }
 
 .home01 .featured-collection .single-featured .caption, .home02 .featured-collection .featured-col .single-featured .caption {
