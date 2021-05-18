@@ -67,13 +67,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.REMOVE_FROM_CART:
             return {
                 ...state,
-                cart: state.cart.filter((x) => x.product !== action.payload)
-        }
-
-        case actionTypes.REMOVE_FROM_CART:
-            return {
-                ...state,
-                cart: state.cart.filter((x) => x.product !== action.payload)
+                cart: state.cart.filter((x) => x.title !== action.payload)
         }
 
         case actionTypes.onUpdateAddress:{

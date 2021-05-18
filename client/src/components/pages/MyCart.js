@@ -10,7 +10,9 @@ const Mycart = (props) => {
 
     const [address, setaddress] = useState({})
 
-
+    const removeItem = (title) => {
+        props.removeFromCart(title)
+    } 
     // const [Qty, setQty] = useState({})
 
     // const handleChange = (e) => {   
@@ -95,16 +97,18 @@ const Mycart = (props) => {
         return <tbody  key = {cart._id} >
                                     <tr className="cart_item tbody">
                                         <td className="product-remove">
-                                            <a href="#" className="remove" title="Remove this item"><img src="assets/images/remove.png" alt="" />
+                                            <a href="#" onClick = {() => {removeItem(cart.title)}}className="remove" title="Remove this item"><img src="./trashcan.jpeg" alt="" />
                                             </a>
                                         </td>
                                         <td className="product-thumbnail">
-                                           <img src={cart.imageurl}/>
+                                           <Link to = {`/product-detail/${cart.title}`}><img src={cart.imageurl}/></Link>
                                             
                                         </td>
                                         <td className="product-info">
+                                        <Link to = {`/product-detail/${cart.title}`}>
                                             <h2>{cart.title}</h2>
                                             <h4>{cart.category} / {cart.subcategory}</h4>
+                                            </Link>
                                         </td>
                                         <td className="product-quantity">
                                             <div className="quantity">
@@ -112,15 +116,15 @@ const Mycart = (props) => {
                                                 {cart.qty}
                                             </div>
                                         </td>
-                                        <td className="product-number">
+                                        {/* <td className="product-number">
                                             <span>{cart._id}</span>
-                                        </td>
+                                        </td> */}
                                         <td className="product-price">
                                             <span className="amount">${cart.rate} /{cart.per}</span>
                                         </td>
                                         <td className="product-subtotal">
                                             {/* <span className="amount-subtotal">{subtotal}</span> */}
-                                            {cart.subtotal}
+                                            ${cart.subtotal}
                                         </td>
                                     </tr>
                 </tbody>
@@ -164,8 +168,8 @@ const Mycart = (props) => {
                                 <thead>
                                     <tr>
                                         <th colSpan="3" className="product-name">Product</th>
-                                        <th className="product-quantity">Quantity</th>
-                                        <th className="product-number">Product Id</th>
+                                        <th className="product-quantity">qty</th>
+                                        {/* <th className="product-number">Product Id</th> */}
                                         <th className="product-price">Price</th>
                                         <th className="product-subtotal">Subtotal</th>
                                     </tr>
@@ -176,16 +180,14 @@ const Mycart = (props) => {
                             </table>
                         </div>
                         <div className="refresh-shoping">
-                            <a className="btn btn-update" href="shop-grid-sidebar.html">
-                                {/* <img src="refresh.png" alt="icon"/> */}
-                                update cart</a>
+                            <a className="btn btn-update" href="shop-grid-sidebar.html">update cart</a>
                             <Link to="/" className="btn btn-update"> continue shopping</Link>
                         </div>
                     </div>
                     <div className="row">
 
                     <div class="col-md-4">
-                    <h5 className="small-title" style={{color: 'black', fontSize: '30px', fontWeight: 'bold'}}>Shipping Address</h5>
+                    <h5 className="small-title" style={{color: 'black', fontSize: '30px', fontWeight: 'bold'}}>Delivery Address</h5>
                     <form>
                         <div class="form-group">
                             {/* <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Full Nmae</label> */}
@@ -265,7 +267,7 @@ const Mycart = (props) => {
                             </div></div>
                         </div><br/><br/>
                         <div className = 'stripediv'>
-                            <h2>Secure Checkout Handled Through&nbsp; <a href = 'https://stripe.com/' _target = 'blank'><img 
+                            <h2 className = 'checkout'>Secure Checkout Handled Through&nbsp; <a href = 'https://stripe.com/' _target = 'blank'><img 
                                 src='https://stripe.com/img/v3/home/social.png' 
                                 style = {{height: '60px'}} 
                                 alt = 'stripe logo'/>
@@ -284,6 +286,7 @@ const Mycart = (props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onUpdateAddress: (address) => dispatch(actionCreators.onUpdateAddress(address)),
+        removeFromCart: (item) => dispatch({type: 'REMOVE_FROM_CART', payload: item})
     }
 }
 

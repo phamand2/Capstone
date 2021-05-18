@@ -9,5 +9,4 @@ export const Admin_Loaded = 'Admin_Loaded'
 export const Staff_Loaded = 'Staff_Loaded'
 export const Users_Loaded = 'Users_Loaded'
 export const OrderConformation = 'OrderConformation'
-
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
