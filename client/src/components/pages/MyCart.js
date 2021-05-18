@@ -112,15 +112,15 @@ const Mycart = (props) => {
                                                 {cart.qty}
                                             </div>
                                         </td>
-                                        <td className="product-number">
+                                        {/* <td className="product-number">
                                             <span>{cart._id}</span>
-                                        </td>
+                                        </td> */}
                                         <td className="product-price">
                                             <span className="amount">${cart.rate} /{cart.per}</span>
                                         </td>
                                         <td className="product-subtotal">
                                             {/* <span className="amount-subtotal">{subtotal}</span> */}
-                                            {cart.subtotal}
+                                            ${cart.subtotal}
                                         </td>
                                     </tr>
                 </tbody>
@@ -164,8 +164,8 @@ const Mycart = (props) => {
                                 <thead>
                                     <tr>
                                         <th colSpan="3" className="product-name">Product</th>
-                                        <th className="product-quantity">Quantity</th>
-                                        <th className="product-number">Product Id</th>
+                                        <th className="product-quantity">qty</th>
+                                        {/* <th className="product-number">Product Id</th> */}
                                         <th className="product-price">Price</th>
                                         <th className="product-subtotal">Subtotal</th>
                                     </tr>
@@ -185,7 +185,7 @@ const Mycart = (props) => {
                     <div className="row">
 
                     <div class="col-md-4">
-                    <h5 className="small-title" style={{color: 'black', fontSize: '30px', fontWeight: 'bold'}}>Shipping Address</h5>
+                    <h5 className="small-title" style={{color: 'black', fontSize: '30px', fontWeight: 'bold'}}>Delivery Address</h5>
                     <form>
                         <div class="form-group">
                             {/* <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Full Nmae</label> */}
@@ -265,7 +265,7 @@ const Mycart = (props) => {
                             </div></div>
                         </div><br/><br/>
                         <div className = 'stripediv'>
-                            <h2>Secure Checkout Handled Through&nbsp; <a href = 'https://stripe.com/' _target = 'blank'><img 
+                            <h2 className = 'checkout'>Secure Checkout Handled Through&nbsp; <a href = 'https://stripe.com/' _target = 'blank'><img 
                                 src='https://stripe.com/img/v3/home/social.png' 
                                 style = {{height: '60px'}} 
                                 alt = 'stripe logo'/>

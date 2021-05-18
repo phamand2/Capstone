@@ -60,7 +60,7 @@ const AddAdminPage = ({history}) => {
                     <input type='password' required id='confirmpassword' placeholder='Confirm password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
                 </div>
 
-                <button type = 'submit' className = 'btn btn-primary'>Register New Staff</button>
+                <button type = 'submit' className = 'btn btn-primary'>Register New Admin</button>
                 <Link to = '/product-manage'>Return to admin profile page</Link>
             </form>
         </div>
