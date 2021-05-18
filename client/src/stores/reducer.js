@@ -14,6 +14,7 @@ const initialState = {
     admins:[],
     staff:[],
     users:[],
+    OrderConformation:[],
 
 }
 
@@ -103,6 +104,14 @@ const reducer = (state = initialState, action) => {
                 users: action.payload
             }
         }
+
+        case actionTypes.OrderConformation:{
+            return {
+                ...state,
+                OrderConformation: action.payload
+            }
+        }
+
 
 
 

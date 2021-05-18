@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { connect } from 'react-redux'
 import './css/Checkout.css'; 
+import * as actionCreators from '../stores/creators/actionCreators'
 import axios from 'axios'
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 
@@ -27,6 +28,7 @@ const CARD_OPTIONS = {
 
 const PaymentForm = (props) => {
     const [success, setSuccess] = useState(false)
+    const [OrderConformation] = useState(Math.random().toString(36).substr(2, 8));
     const stripe = useStripe()
     const elements = useElements()
     const cart = props.cart 
@@ -53,7 +55,8 @@ const PaymentForm = (props) => {
                 if(response.data.success) {
                     console.log('your payment went through successfully')
                     setSuccess(true)
-
+                    props.OrderConformation()
+                    
                 }
             } catch (error) {
                 console.log('error: ', error)
@@ -85,6 +88,14 @@ const PaymentForm = (props) => {
         </>
     )
 }
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        OrderConformation: (OrderConformation) => dispatch(actionCreators.OrderConformation(OrderConformation)),
+    }
+  }
+  
 
 const mapStateToProps = (state) => {
     return {
