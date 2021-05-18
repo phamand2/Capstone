@@ -32,6 +32,11 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { Router, Route, Switch } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
+import Popper from 'popper.js';
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

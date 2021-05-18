@@ -194,3 +194,12 @@
     padding-right: 20px
   }
 }
+
+.dropdown-backdrop {
+    position: static;
+}
+
+.show>.dropdown-menu {
+  display: block;
+  position: absolute;
+}
