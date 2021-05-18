@@ -365,42 +365,7 @@ function ProductManage(props) {
 
   return (
       <div>
-            {/* <div id="header">
-              <h2>Admin Page</h2>
-            </div>
-            <div id="inputsection">
-                <div id="storenametextbox">
-                    <label>Image</label>
-                    <input onChange = {handleChange}  type="text" name="imageurl" />
-                </div>
-                <div id="storenametextbox">
-                    <label>title</label>
-                    <input onChange = {handleChange}  type="text" name="title" />
-                </div>
-                <div id="storenametextbox">
-                    <label>description</label>
-                    <input onChange = {handleChange}  type="text" name="description" />
-                </div>
-                <div id="storenametextbox">
-                    <label>rate</label>
-                    <input onChange = {handleChange}  type="text" name="rate" />
-                </div>
-                <div id="storenametextbox">
-                    <label>per</label>
-                    <input onChange = {handleChange}  type="text" name="per" />
-                </div>
-                <div id="storenametextbox">
-                    <label>category</label>
-                    <input onChange = {handleChange}  type="text" name="category" />
-                </div>
-                <div id="storenametextbox">
-                    <label>subcategory</label>
-                    <input onChange = {handleChange}  type="text" name="subcategory" />
-                </div>
-                <div>
-                    <button id="btnsubmit" onClick = {handleSave}>Add product</button>
-                </div>
-            </div><br/> */}
+           
             <div id="box-admin">                                 
             <>
                 <div id="header">
@@ -415,31 +380,29 @@ function ProductManage(props) {
                 <MDBBtn onClick={toggleAllElements} className="collapse_btn_title mt-3"> Show All</MDBBtn>
 
                 <MDBRow>
-                    <MDBCol>
+                   
                         <MDBCollapse show={showFirstElement} className='mt-3 card_flex best-book-h1'>
                             <div><h1>All Products</h1></div>
                             {all_productsItems}
                         </MDBCollapse>
-                    </MDBCol>
-                    <MDBCol>
+                   
                         <MDBCollapse show={showSecondElement} className='mt-3 card_flex best-book-h1'>
                             <div><h1>Vegetable</h1></div>
                             {vegetableItems}
                         </MDBCollapse>
-                    </MDBCol>
-                    <MDBCol>
+                    
                         <MDBCollapse show={showThirdElement} className='mt-3 card_flex best-book-h1'>
                             <div><h1>Fruit</h1></div>
                             {fruitItems}
                         </MDBCollapse>
-                    </MDBCol>
-                    <MDBCol>
+                    
+                    
                         <MDBCollapse show={showFourthElement} className='mt-3 card_flex best-book-h1'>
                             <div><h1>Flowers</h1></div>
                             {flowerItems}
                         </MDBCollapse>
-                    </MDBCol>
-                    <MDBCol>
+                    
+                    
                         <MDBCollapse show={showEighthElement} className='mt-3 card_flex best-book-h1'>
                                 <div id="inputsection">
                             <div id="storenametextbox">
@@ -475,7 +438,7 @@ function ProductManage(props) {
                                 </div>
                                 </div>    
                         </MDBCollapse>
-                    </MDBCol>
+                    
                 </MDBRow>
             </>
             </div>
