@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import * as actionCreators from '../../stores/creators/actionCreators' 
+import * as actionCreators from '../../stores/creators/actionCreators'
 import { useEffect , useState} from 'react'
 import { NavLink, Link } from "react-router-dom";
 import React from 'react';
@@ -22,7 +22,7 @@ function ProductManage(props) {
   const [showNineElement, setShowNineElement] = useState(false);
   const [showTenElement, setShowTenElement] = useState(false);
   const [showElevenElement, setShowElevenElement] = useState(false);
-  
+
 
 
 
@@ -45,10 +45,10 @@ function ProductManage(props) {
     setShowFourthElement(!showFourthElement);
     setShowElevenElement(!showElevenElement);
 
-    
+
   }
   const toggleAllElements2 = () => {
-    
+
     setShowFiveElement(!showFiveElement);
     setShowSixElement(!showSixElement);
     setShowSevenElement(!showSevenElement);
@@ -56,7 +56,7 @@ function ProductManage(props) {
   }
 
   const toggleAllElements3 = () => {
-    
+
     setShowEightElement(!showEightElement);
     setShowNineElement(!showNineElement);
     setShowTenElement(!showTenElement);
@@ -76,18 +76,18 @@ function ProductManage(props) {
         props.onLoadUsers()
         props.onLoadOrders()
         window.location.reload(false);
-        
+
     }
 
 
-    var  all_products = props.all_products 
+    var  all_products = props.all_products
 
     let counter1 = 0;
     for (let i = 0; i < all_products.length; i++) {
         if (all_products[i]) counter1++;
     }
     console.log(counter1)
-    
+
     const all_productsItems = all_products.map((items, index) => {
         return <div key ={index} className="card" style={{width: "18rem"}}>
             <div>
@@ -124,15 +124,15 @@ function ProductManage(props) {
 
 
 
-    var vegetable = props.vegetable 
+    var vegetable = props.vegetable
 
     let counter2 = 0;
     for (let i = 0; i < all_products.length; i++) {
         if (vegetable[i]) counter2++;
     }
     console.log(counter2)
-    
-    
+
+
     const vegetableItems = vegetable.map((items, index) => {
         return <div key ={index} className="card" style={{width: "18rem"}}>
             <div>
@@ -165,14 +165,14 @@ function ProductManage(props) {
 
 
 
-    var fruit = props.fruit 
+    var fruit = props.fruit
     console.log(fruit)
     let counter3 = 0;
     for (let i = 0; i < all_products.length; i++) {
         if (fruit[i]) counter3++;
     }
     console.log(counter3)
-    
+
     const fruitItems = fruit.map((items, index) => {
         return <div key ={index} className="card" style={{width: "18rem"}}>
             <div>
@@ -205,13 +205,13 @@ function ProductManage(props) {
 
 
 
-    var flower = props.flower 
+    var flower = props.flower
     let counter4 = 0;
     for (let i = 0; i < all_products.length; i++) {
         if (flower[i]) counter4++;
     }
     console.log(counter4)
-    
+
     const flowerItems = flower.map((items, index) => {
         return <div key ={index} className="card" style={{width: "18rem"}}>
             <div>
@@ -242,7 +242,7 @@ function ProductManage(props) {
             </div>
     })
 
-    var  admins = props.admins 
+    var  admins = props.admins
     console.log(admins)
 
     let counter5 = 0;
@@ -250,17 +250,17 @@ function ProductManage(props) {
         if (admins[i]) counter5++;
     }
     console.log(counter5)
-    
+
     const adminsItems = admins.map((items, index) => {
         return <div key ={index} className="card" style={{width: "18rem"}}>
-            
+
             <div>
                 <h1>{items.username}</h1>
             </div>
             <div>
                 <h4>{items.email}</h4>
             </div>
-            
+
             <div>
             <p>Id : {items._id}</p>
             </div>
@@ -272,7 +272,7 @@ function ProductManage(props) {
 
 
 
-    var  staff = props.staff 
+    var  staff = props.staff
     console.log(staff)
 
     let counter6 = 0;
@@ -280,17 +280,17 @@ function ProductManage(props) {
         if (staff[i]) counter6++;
     }
     console.log(counter6)
-    
+
     const staffItems = staff.map((items, index) => {
         return <div key ={index} className="card" style={{width: "18rem"}}>
-            
+
             <div>
                 <h1>{items.username}</h1>
             </div>
             <div>
                 <h4>{items.email}</h4>
             </div>
-            
+
             <div>
             <p>Id : {items._id}</p>
             </div>
@@ -307,10 +307,10 @@ function ProductManage(props) {
         if (users[i]) counter7++;
     }
     console.log(counter7)
-    
+
     const usersItems = users.map((items, index) => {
         return <div key ={index} className="card" style={{width: "18rem"}}>
-            
+
             <div>
                 <h1>{items.username}</h1>
             </div>
@@ -324,7 +324,7 @@ function ProductManage(props) {
                 <h4>State: {items.usaState}</h4><br></br>
                 <h4>Zip: {items.zip}</h4><br></br>
             </div>
-            
+
             <div>
             <p>Id : {items._id}</p>
             </div>
@@ -353,7 +353,7 @@ function ProductManage(props) {
         if (orders[i]) counter8++;
     }
     console.log(counter8)
-    
+
     const orderItems = orders.map((items, index) => {
         return <div key ={index} className="card" style={{width: "18rem"}}>
             <div>
@@ -391,13 +391,13 @@ function ProductManage(props) {
 
 
 
-  
+
   const handleSave = () => {
     const token = localStorage.getItem('adminToken')
-    
+
     fetch ('http://localhost:5000/admin/add-products',{
         method: 'POST',
-        
+
         headers: {
             'authorization':`Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -410,17 +410,17 @@ function ProductManage(props) {
             per: ProductManage.per,
             category: ProductManage.category,
             subcategory: ProductManage.subcategory,
-            
+
         })
     }).then(response => response.json())
     .then(result => {
         if(result.success) {
-            
+
           alert("Your product has been added to the database")
           window.location.reload(false);
-          
+
         }
-       
+
     }).catch(error => {
         console.log(error)
     })
@@ -430,51 +430,51 @@ function ProductManage(props) {
     setProductManage({
         ...ProductManage,
         [e.target.name]: e.target.value,
-        
+
     })
   }
 
   return (
       <div>
-           
-            <div id="box-admin">                                 
+
+            <div id="box-admin">
             <>
                 <div id="header">
                     <h2>Add, Edit, Or Delete Products</h2>
-                    
+
                 </div>
                 <MDBBtn onClick={toggleFirstElement} className="collapse_btn_title mt-3"> All Products (total products: {counter1}) </MDBBtn>
                 <MDBBtn onClick={toggleSecondElement} className="collapse_btn_title mt-3">Vegetables (total products: {counter2})</MDBBtn>
                 <MDBBtn onClick={toggleThirdElement} className="collapse_btn_title mt-3">Fruit (total products: {counter3})</MDBBtn>
                 <MDBBtn onClick={toggleFourthElement} className="collapse_btn_title mt-3">Flowers (total products: {counter4})</MDBBtn>
-                <MDBBtn onClick={toggleEighthElement} className="collapse_btn_title mt-3">Add Product</MDBBtn>
+                <MDBBtn onClick={toggleEightElement} className="collapse_btn_title mt-3">Add Product</MDBBtn>
                 {/* <MDBBtn onClick={toggleAllElements} className="collapse_btn_title mt-3"> Show All</MDBBtn> */}
 
 
                 <MDBRow>
-                   
+
                         <MDBCollapse show={showFirstElement} className='mt-3 card_flex best-book-h1'>
                             <div><h1>All Products</h1></div>
                             {all_productsItems}
                         </MDBCollapse>
-                   
+
                         <MDBCollapse show={showSecondElement} className='mt-3 card_flex best-book-h1'>
                             <div><h1>Vegetable</h1></div>
                             {vegetableItems}
                         </MDBCollapse>
-                    
+
                         <MDBCollapse show={showThirdElement} className='mt-3 card_flex best-book-h1'>
                             <div><h1>Fruit</h1></div>
                             {fruitItems}
                         </MDBCollapse>
-                    
-                    
+
+
                         <MDBCollapse show={showFourthElement} className='mt-3 card_flex best-book-h1'>
                             <div><h1>Flowers</h1></div>
                             {flowerItems}
                         </MDBCollapse>
-                    
-                    
+
+
                         <MDBCollapse show={showElevenElement} className='mt-3 card_flex best-book-h1'>
                                 <div id="inputsection">
                             <div id="storenametextbox">
@@ -508,9 +508,9 @@ function ProductManage(props) {
                                     <div>
                                     <button id="btnsubmit" onClick = {handleSave}>Add product</button>
                                 </div>
-                                </div>    
+                                </div>
                         </MDBCollapse>
-                    
+
                 </MDBRow>
             </>
             </div>
@@ -518,18 +518,18 @@ function ProductManage(props) {
             <div id="box-admin">
             <>
                 <div id="header">
-                   
+
                     <h1>Orders</h1>
-                    
+
                 </div>
-                
+
                 <MDBBtn onClick={toggleEightElement} className="collapse_btn_title mt-3">All Orders (total Orders: {counter8})</MDBBtn>
                 <MDBBtn onClick={toggleNineElement} className="collapse_btn_title mt-3">Pending Orders (total Orders: {counter6})</MDBBtn>
                 <MDBBtn onClick={toggleTenElement} className="collapse_btn_title mt-3">Completed Orders (total Orders: {counter7})</MDBBtn>
                 <MDBBtn onClick={toggleAllElements3} className="collapse_btn_title mt-3"> Show All</MDBBtn>
 
                 <MDBRow>
-                    
+
                     <MDBCol>
                         <MDBCollapse show={showEightElement} className='mt-3 card_flex best-book-h1'>
                             <div><h1 style={{color: 'black', fontSize: '40px', fontWeight: 'bold'}}>All Orders</h1></div>
@@ -539,13 +539,13 @@ function ProductManage(props) {
                     <MDBCol>
                         <MDBCollapse show={showNineElement} className='mt-3 card_flex best-book-h1'>
                             <div><h1>Pending Orders</h1></div>
-                            
+
                         </MDBCollapse>
                     </MDBCol>
                     <MDBCol>
                         <MDBCollapse show={showTenElement} className='mt-3 card_flex best-book-h1'>
                             <div><h1>Completed Orders</h1></div>
-                            
+
                         </MDBCollapse>
                     </MDBCol>
                 </MDBRow>
@@ -556,16 +556,16 @@ function ProductManage(props) {
             <>
                 <div id="header">
                     <h1>All Admin / Staff / Users list</h1>
-                    
+
                 </div>
-                
+
                 <MDBBtn onClick={toggleFiveElement} className="collapse_btn_title mt-3">Admins (Total Admins: {counter5})</MDBBtn>
                 <MDBBtn onClick={toggleSixElement} className="collapse_btn_title mt-3">Staff (Total Staff: {counter6})</MDBBtn>
                 <MDBBtn onClick={toggleSevenElement} className="collapse_btn_title mt-3">Users (Total Users: {counter7})</MDBBtn>
                 <MDBBtn onClick={toggleAllElements2} className="collapse_btn_title mt-3"> Show All</MDBBtn>
 
                 <MDBRow>
-                    
+
                     <MDBCol>
                         <MDBCollapse show={showFiveElement} className='mt-3 card_flex best-book-h1'>
                             <div><h2 style={{color: 'Red'}}>Admin Team</h2></div>
@@ -590,14 +590,14 @@ function ProductManage(props) {
             <div className = 'admin__links' id="box-admin">
             <div id="header">
                     <h2>Add Admin / Staff</h2>
-                    
+
                 </div>
                 <Link to={`/auth/add-admin`}><MDBBtn  className="collapse_btn_title mt-3">Add New Admin</MDBBtn></Link>
                 <Link to= {`/auth/add-staff`}><MDBBtn  className="collapse_btn_title mt-3">Add New Staff</MDBBtn></Link>
             </div>
 
         </div>
-    
+
   );
 }
 
@@ -609,7 +609,7 @@ const mapDispatchToProps = (dispatch) => {
     onLoadUsers: () => dispatch(actionCreators.loadAllUsers()),
     onDelete: (_id) => dispatch(actionCreators.deleteProduct(_id)),
     onLoadOrders: () => dispatch(actionCreators.LoadOrders()),
-          
+
   }
 }
 
@@ -623,7 +623,7 @@ const mapStateToProps = (state) => {
         staff : state.staff,
         users: state.users,
         orders:state.orders,
-        
+
     }
 }
 
