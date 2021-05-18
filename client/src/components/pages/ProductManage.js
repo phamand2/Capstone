@@ -447,8 +447,9 @@ function ProductManage(props) {
                 <MDBBtn onClick={toggleSecondElement} className="collapse_btn_title mt-3">Vegetables (total products: {counter2})</MDBBtn>
                 <MDBBtn onClick={toggleThirdElement} className="collapse_btn_title mt-3">Fruit (total products: {counter3})</MDBBtn>
                 <MDBBtn onClick={toggleFourthElement} className="collapse_btn_title mt-3">Flowers (total products: {counter4})</MDBBtn>
-                <MDBBtn onClick={toggleElevenElement} className="collapse_btn_title mt-3">Add Product</MDBBtn>
-                <MDBBtn onClick={toggleAllElements} className="collapse_btn_title mt-3"> Show All</MDBBtn>
+                <MDBBtn onClick={toggleEighthElement} className="collapse_btn_title mt-3">Add Product</MDBBtn>
+                {/* <MDBBtn onClick={toggleAllElements} className="collapse_btn_title mt-3"> Show All</MDBBtn> */}
+
 
                 <MDBRow>
                    
@@ -477,31 +478,31 @@ function ProductManage(props) {
                         <MDBCollapse show={showElevenElement} className='mt-3 card_flex best-book-h1'>
                                 <div id="inputsection">
                             <div id="storenametextbox">
-                                <label>Image</label>
+                                <label>Image: </label>
                                 <input onChange = {handleChange}  type="text" name="imageurl" />
                                     </div>
                             <div id="storenametextbox">
-                                <label>title</label>
+                                <label>Title: </label>
                                 <input onChange = {handleChange}  type="text" name="title" />
                             </div>
                             <div id="storenametextbox">
-                                <label>description</label>
+                                <label>Description: </label>
                                 <input onChange = {handleChange}  type="text" name="description" />
                             </div>
                             <div id="storenametextbox">
-                                <label>rate</label>
+                                <label>Rate: </label>
                                 <input onChange = {handleChange}  type="text" name="rate" />
                             </div>
                             <div id="storenametextbox">
-                                <label>per</label>
+                                <label>Quantity: </label>
                                 <input onChange = {handleChange}  type="text" name="per" />
                             </div>
                                 <div id="storenametextbox">
-                                    <label>category</label>
+                                    <label>Category: </label>
                                         <input onChange = {handleChange}  type="text" name="category" />
                                     </div>
                                     <div id="storenametextbox">
-                                        <label>subcategory</label>
+                                        <label>Subcategory: </label>
                                         <input onChange = {handleChange}  type="text" name="subcategory" />
                                     </div>
                                     <div>
@@ -558,29 +559,29 @@ function ProductManage(props) {
                     
                 </div>
                 
-                <MDBBtn onClick={toggleFiveElement} className="collapse_btn_title mt-3">Admins (total Admins: {counter5})</MDBBtn>
-                <MDBBtn onClick={toggleSixElement} className="collapse_btn_title mt-3">Staff (total Staff: {counter6})</MDBBtn>
-                <MDBBtn onClick={toggleSevenElement} className="collapse_btn_title mt-3">Users (total Users: {counter7})</MDBBtn>
+                <MDBBtn onClick={toggleFiveElement} className="collapse_btn_title mt-3">Admins (Total Admins: {counter5})</MDBBtn>
+                <MDBBtn onClick={toggleSixElement} className="collapse_btn_title mt-3">Staff (Total Staff: {counter6})</MDBBtn>
+                <MDBBtn onClick={toggleSevenElement} className="collapse_btn_title mt-3">Users (Total Users: {counter7})</MDBBtn>
                 <MDBBtn onClick={toggleAllElements2} className="collapse_btn_title mt-3"> Show All</MDBBtn>
 
                 <MDBRow>
                     
                     <MDBCol>
                         <MDBCollapse show={showFiveElement} className='mt-3 card_flex best-book-h1'>
-                            <div><h2 style={{color: 'black', fontSize: '40px', fontWeight: 'bold'}}>Admins</h2></div>
+                            <div><h2 style={{color: 'Red'}}>Admin Team</h2></div>
                             <div>{adminsItems}</div>
                         </MDBCollapse>
                     </MDBCol>
                     <MDBCol>
                         <MDBCollapse show={showSixElement} className='mt-3 card_flex best-book-h1'>
-                            <div><h2>Staff</h2></div>
-                            {staffItems}
+                            <div><h2>Staff</h2></div><br/>
+                            <div>{staffItems}</div>
                         </MDBCollapse>
                     </MDBCol>
                     <MDBCol>
                         <MDBCollapse show={showSevenElement} className='mt-3 card_flex best-book-h1'>
-                            <div><h2>Users</h2></div>
-                            {usersItems}
+                            <div><h2>Users</h2></div><br/>
+                            <div>{usersItems}</div>
                         </MDBCollapse>
                     </MDBCol>
                 </MDBRow>

@@ -85,7 +85,7 @@ console.log(counter2)
 
 
 const vegetableItems = vegetable.map((items, index) => {
-    return <div key ={index} className="card" style={{width: "18rem"}}>
+    return <div key ={index} className="card" id='card-vegetable' style={{width: "18rem"}}>
         <div>
         <Link to= {`/product-detail/${items.title}`}><div className="square"><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title} /></div></Link>
         </div>
@@ -109,7 +109,7 @@ for (let i = 0; i < all_products.length; i++) {
 console.log(counter3)
 
 const fruitItems = fruit.map((items, index) => {
-    return <div key ={index} className="card" style={{width: "18rem"}}>
+    return <div key ={index} className="card" id='card-fruit' style={{width: "18rem"}}>
         <div>
         <Link to= {`/product-detail/${items.title}`}><div className='square'><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></div></Link>
         </div>
@@ -133,7 +133,7 @@ for (let i = 0; i < all_products.length; i++) {
 // console.log(counter4)
 
 const flowerItems = flower.map((items, index) => {
-    return <div key ={index} className="card" style={{width: "18rem"}}>
+    return <div key ={index} className="card" id='card-flower' style={{width: "18rem"}}>
         <div>
         <Link to= {`/product-detail/${items.title}`}><div className='square'><img className="img" onClick = {() => handleMoreDetails(items)} src={items.imageurl} alt={items.title}/></div></Link>
         </div>
@@ -170,7 +170,7 @@ const flowerItems = flower.map((items, index) => {
         <br />
         <div className='cards'>
         <>
-  <Card>
+  <Card id="card-fruits">
     
     <Card.Body>
     {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
@@ -189,7 +189,7 @@ const flowerItems = flower.map((items, index) => {
     </Card.Body>
   </Card>
   <br />
-  <Card>
+  <Card id="card-vegetables">
     <Card.Body>
     {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
     {/* <Card.Title>Vegetables</Card.Title> */}
@@ -207,7 +207,7 @@ const flowerItems = flower.map((items, index) => {
     
   </Card>
   <br />
-  <Card>
+  <Card id="card-flowers">
     <Card.Body>
     {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
     {/* <Card.Title>Flowers</Card.Title> */}
