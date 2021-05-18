@@ -447,7 +447,7 @@ function ProductManage(props) {
                 <MDBBtn onClick={toggleSecondElement} className="collapse_btn_title mt-3">Vegetables (total products: {counter2})</MDBBtn>
                 <MDBBtn onClick={toggleThirdElement} className="collapse_btn_title mt-3">Fruit (total products: {counter3})</MDBBtn>
                 <MDBBtn onClick={toggleFourthElement} className="collapse_btn_title mt-3">Flowers (total products: {counter4})</MDBBtn>
-                <MDBBtn onClick={toggleEightElement} className="collapse_btn_title mt-3">Add Product</MDBBtn>
+                <MDBBtn onClick={toggleElevenElement} className="collapse_btn_title mt-3">Add Product</MDBBtn>
                 {/* <MDBBtn onClick={toggleAllElements} className="collapse_btn_title mt-3"> Show All</MDBBtn> */}
 
 
