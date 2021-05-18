@@ -30,6 +30,7 @@
 .shop_table tr {
   border-bottom: 1px solid #e3e3e3;
   padding: 10px;
+  text-align: center !important;
 }
 
 .shop_table td {
@@ -44,8 +45,8 @@
 }
 
 .shopping-cart .product-name {
-  padding-left: 110px;
-  text-align: left !important;
+  /* padding-left: 20px; */
+  text-align: center !important;
 }
 
 .shopping-cart thead tr th {
@@ -2876,9 +2877,9 @@ span.close-icon {
       color: #000;
 }
 
-.shopping-cart .shop_table thead th.product-name, .shopping-cart .shop_table thead td.product-name, .wishlist-page .shop_table thead th.product-name, .wishlist-page .shop_table thead td.product-name {
-  padding-left: 202px !important;
-}
+/* .shopping-cart .shop_table thead th.product-name, .shopping-cart .shop_table thead td.product-name, .wishlist-page .shop_table thead th.product-name, .wishlist-page .shop_table thead td.product-name {
+  padding-left: 20px !important;
+} */
 
 .shopping-cart .shop_table tr, .wishlist-page .shop_table tr {
   border-bottom: 1px solid #a8a8a8;
@@ -2986,15 +2987,15 @@ span.close-icon {
 
 .shopping-cart .refresh-shoping {
   text-align: right;
-  margin-bottom: 102px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: flex-end;
 
 }
 
-.shopping-cart .refresh-shoping a {
+/* .shopping-cart .refresh-shoping a {
   margin-left: 24px;
-}
+} */
 
 .shopping-cart .calculate h5, .shopping-cart .cupon-code h5 {
   margin-bottom: 5px;
@@ -3091,9 +3092,9 @@ span.close-icon {
   color: #000;
 }
 
-.checkout-page .cart-totals table .product-info td:first-child {
+/* .checkout-page .cart-totals table .product-info td:first-child {
   padding-left: 92px;
-}
+} */
 
 .checkout-page .cart-totals table .order-total .amount {
   font-size: 14px;
@@ -4397,7 +4398,7 @@ span.close-icon {
   font-weight: 600;
   height: 11px;
   line-height: 11px;
-  padding-left: 29px;
+  /* padding-left: 29px; */
   vertical-align: middle;
   color: #404040;
 }
@@ -4641,9 +4642,9 @@ span.close-icon {
     height: auto;
   }/*28-09-2016*/
   .product-single .product-thumb { height: auto; }/*28-09-2016*/
-  .wishlist-page .shop_table thead th.product-name, .wishlist-page .shop_table thead td.product-name {
-    padding-left: 143px !important;
-  }
+  /* .wishlist-page .shop_table thead th.product-name, .wishlist-page .shop_table thead td.product-name {
+    padding-left: 20px !important;
+  } */
   .wishlist-page .tbody tbody .cart_item td.product-remove {
     width: 6%;
   }
@@ -4720,9 +4721,9 @@ span.close-icon {
   .comment-respond {
     margin-bottom: 55px;
   }
-  .shopping-cart .shop_table thead th.product-name, .shopping-cart .shop_table thead td.product-name {
-    padding-left: 172px !important;
-  }
+  /* .shopping-cart .shop_table thead th.product-name, .shopping-cart .shop_table thead td.product-name {
+    padding-left: 20px !important;
+  } */
   .shopping-cart .tbody tbody .cart_item td.product-thumbnail {
     width: 13.5%;
   }
@@ -5004,9 +5005,9 @@ span.close-icon {
     float: none;
     text-align: center;
   }
-  .checkout-page .cart-totals table .product-info td:first-child {
+  /* .checkout-page .cart-totals table .product-info td:first-child {
     padding-left: 50px;
-  }
+  } */
 }
 
 @media only screen and (max-width: 400px) {
@@ -5158,7 +5159,7 @@ span.close-icon {
 {
     .groham-nav .nav > li > a {padding: 12px 20px;}
     .groham-nav .nav > li > a:before {left: 8px;}
-    .header-middle .site-logo .cart-text {font-size: 11px; padding-left: 7px;}
+    /* .header-middle .site-logo .cart-text {font-size: 11px; padding-left: 7px;} */
     .header-middle .site-logo .cart-text img {   margin-right: 5px;}
 /*    .megamenu .megamenu-fw .megamenu-content .col-md-3 {width:50%; float:left;}
      .megamenu .megamenu-fw .megamenu-content .col-md-3:nth-child(2) {clear:left;}*/
@@ -5306,8 +5307,8 @@ span.close-icon {
 .latest-blogs .entry-content p {color: #000;}
 @media (max-width:520px)
 {
-/*    .shopping-cart .shop_table thead th.product-name, .shopping-cart .shop_table thead td.product-name {   padding-left: 127px !important;}
-    .shopping-cart .shop_table thead th {font-size: 9px;}*/
+   /* .shopping-cart .shop_table thead th.product-name, .shopping-cart .shop_table thead td.product-name {   padding-left: 20px !important;} */
+    .shopping-cart .shop_table thead th {font-size: 9px;}
 }
 
 @media (max-width:480px){

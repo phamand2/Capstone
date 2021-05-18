@@ -112,15 +112,15 @@ const Mycart = (props) => {
                                                 {cart.qty}
                                             </div>
                                         </td>
-                                        <td className="product-number">
+                                        {/* <td className="product-number">
                                             <span>{cart._id}</span>
-                                        </td>
+                                        </td> */}
                                         <td className="product-price">
                                             <span className="amount">${cart.rate} /{cart.per}</span>
                                         </td>
                                         <td className="product-subtotal">
                                             {/* <span className="amount-subtotal">{subtotal}</span> */}
-                                            {cart.subtotal}
+                                            ${cart.subtotal}
                                         </td>
                                     </tr>
                 </tbody>
@@ -164,8 +164,8 @@ const Mycart = (props) => {
                                 <thead>
                                     <tr>
                                         <th colSpan="3" className="product-name">Product</th>
-                                        <th className="product-quantity">Quantity</th>
-                                        <th className="product-number">Product Id</th>
+                                        <th className="product-quantity">qty</th>
+                                        {/* <th className="product-number">Product Id</th> */}
                                         <th className="product-price">Price</th>
                                         <th className="product-subtotal">Subtotal</th>
                                     </tr>
