@@ -83,7 +83,7 @@ const PaymentForm = (props) => {
         </form>
         :
         <div>
-            <h2>Thank you for your purchase!<br/>
+            <h2 className = 'checkout'>Thank you for your purchase!<br/>
             Your items will be selected for maximum freshness and delivered to you within 24 hours.<br/>
             Please print this page for your receipt.</h2>
         </div>
