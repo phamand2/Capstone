@@ -265,7 +265,7 @@ const Mycart = (props) => {
                             </div></div>
                         </div><br/><br/>
                         <div className = 'stripediv'>
-                            <h2>Secure Checkout Handled Through&nbsp; <a href = 'https://stripe.com/' _target = 'blank'><img 
+                            <h2 className = 'checkout'>Secure Checkout Handled Through&nbsp; <a href = 'https://stripe.com/' _target = 'blank'><img 
                                 src='https://stripe.com/img/v3/home/social.png' 
                                 style = {{height: '60px'}} 
                                 alt = 'stripe logo'/>

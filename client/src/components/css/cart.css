@@ -21,7 +21,7 @@
 
 .shop_table th {
   color: #292929;
-  font-family: "Montserrat Semi Bold";
+  /* font-family: "Montserrat Semi Bold"; */
   font-size: 14px;
   text-align: center !important;
   text-transform: uppercase;
@@ -1125,7 +1125,8 @@ span.close-icon {
 .small-title {
   font-size: 11px;
   color: #202020;
-  font-family: 'Montserrat Semi Bold';
+  /* font-family: 'Montserrat Semi Bold';s */
+  font-family: 'Amatic SC', cursive;
   letter-spacing: 1px;
   text-transform: uppercase;
   padding-top: 10px;
@@ -2987,7 +2988,7 @@ span.close-icon {
 
 .shopping-cart .refresh-shoping {
   text-align: right;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: flex-end;
 
@@ -5329,3 +5330,6 @@ span.close-icon {
   text-align: center;
 }
 
+.checkout {
+  font-family: 'Amatic SC', cursive;
+}
