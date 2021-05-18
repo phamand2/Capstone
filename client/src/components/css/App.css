@@ -185,10 +185,6 @@
 }
 
 @media only screen and (max-width: 970px) {
-  .detailsbuttondiv {
-    flex-direction: column;
-  }
-
   .detailsbutton {
     height: 80px;
     min-width: none;

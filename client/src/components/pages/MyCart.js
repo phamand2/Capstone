@@ -99,12 +99,14 @@ const Mycart = (props) => {
                                             </a>
                                         </td>
                                         <td className="product-thumbnail">
-                                           <img src={cart.imageurl}/>
+                                           <Link to = {`/product-detail/${cart.title}`}><img src={cart.imageurl}/></Link>
                                             
                                         </td>
                                         <td className="product-info">
+                                        <Link to = {`/product-detail/${cart.title}`}>
                                             <h2>{cart.title}</h2>
                                             <h4>{cart.category} / {cart.subcategory}</h4>
+                                            </Link>
                                         </td>
                                         <td className="product-quantity">
                                             <div className="quantity">

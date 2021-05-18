@@ -5333,3 +5333,7 @@ span.close-icon {
 .checkout {
   font-family: 'Amatic SC', cursive;
 }
+
+.table-responsive {
+  margin-top: 50px;
+}
