@@ -9,16 +9,11 @@ import {
 const Navbar = () => {
     return (
         <MDBNavbar expand='lg' light bgColor='white'>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria hidden='false' aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+                </button>
             <MDBContainer fluid>
-                <MDBNavbarToggler
-                aria-controls='navbarExample01'
-                aria-expanded='false'
-                aria-label='Toggle navigation'
-                >
-                <MDBIcon glyphicon='glyphicon-list' />
-                </MDBNavbarToggler>
-                <div className='collapse navbar-collapse' id='navbarExample01'>
-                <MDBNavbarNav right className='mb-2 mb-lg-0'>
+                <MDBNavbarNav right className='mb-2 mb-lg-0 'id="navbarSupportedContent">
                     <MDBNavbarItem >
                     <Link aria-current='page' to='/'>
                     <MDBNavbarLink>Home</MDBNavbarLink>
@@ -49,7 +44,7 @@ const Navbar = () => {
                     <Link to='/auth/staff-login'><MDBNavbarLink>Staff</MDBNavbarLink></Link>
                     </MDBNavbarItem>
                 </MDBNavbarNav>
-                </div>
+               
             </MDBContainer>
         </MDBNavbar>
     )
