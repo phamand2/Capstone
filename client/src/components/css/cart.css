@@ -416,7 +416,7 @@ dd {
 img {
   height: inherit;
   max-width: 100%;
-  width: -webkit-fill-available;
+  
 }
 
 .tb {
