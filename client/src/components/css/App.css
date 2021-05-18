@@ -62,6 +62,19 @@
   border: 2px solid black;
 }
 
+#card-fruits{
+  background-color: #396790;
+}
+
+#card-vegetables{
+  background-color: #547341;
+}
+
+#card-flowers{
+  background-color: #6b2020
+}
+
+
 #card-fruits:hover{
   border: 1px solid black
 }

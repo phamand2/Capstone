@@ -122,6 +122,18 @@ app.get('/all-products/flower', (req, res) => {
 })
 
 
+app.get('/all-orders', (req, res) => {
+  
+  Cart.find({}, (error, posts) => {
+    if(error) {
+      res.json({error: 'Unable to fetch products!'})
+    } else {
+      res.json(posts)
+    }
+  })
+})
+
+
 // get product by ID
 // app.get('/product/:id', (req, res) => {
 //   try {
@@ -138,28 +150,45 @@ app.get('/all-products/flower', (req, res) => {
 
 
 
-app.post ('/add-to-cart', (req, res) => {
-  const images = req.body.images 
-  const title = req.body.title
-  const description = req.body.description 
-  const rate = req.body.rate 
-  const category = req.body.category 
-  const subcategory = req.body.subcategory 
-  const customerToken = req.body.customerToken 
-  const customerEmail = req.body.customerEmail 
+app.post ('/order-confirmation', (req, res) => {
 
+  const fullname = req.body.fullname
+  const street1 = req.body.address.street1
+  const street2 = req.body.address.street2
+  const city = req.body.address.city
+  const state = req.body.address.state
+  const zipcode = req.body.address.zipcode
+  const images = req.body.cart.images 
+  const title = req.body.cart.title
+  const description = req.body.cart.description 
+  const rate = req.body.cart.rate 
+  const per = req.body.cart.per
+  const category = req.body.cart.category 
+  const subcategory = req.body.cart.subcategory 
+  const phone = req.body.phone
+  // const OrderConformation = req.body.OrderConformation
+  const is_delivered = false
 
+ console.log(req.body)
   let cart = new Cart({
-    images: images,
-    title: title,
-    description: description,
-    rate: rate,
-    category: category,
-    subcategory: subcategory,
-    customerToken:customerToken,
-    customerEmail:customerEmail,
+    fullname:fullname,
+    address:req.body.address,
+  //   address:[{ 
+  //     street1:street1,
+  //     street2:street2,
+  //     city:city,
+  //     state:state,
+  //     zipcode:zipcode,
+  // }],
+    phone: phone,
+    // OrderConformation: OrderConformation,
+   cart:req.body.cart,
+    is_delivered: is_delivered,
 
   })
+  // console.log(cart)
+  // const newTitle = cart.cart.map(item => console.log(item))
+  // console.log(newTitle)
 
 
   cart.save((error) => {
