@@ -178,7 +178,7 @@ const flowerItems = flower.map((items, index) => {
       <div className="product_display">
         {fruitItems[0]}
         {fruitItems[5]}
-        {fruitItems[10]}
+        {fruitItems[7]}
         
         
       </div>
@@ -211,8 +211,8 @@ const flowerItems = flower.map((items, index) => {
     {/* <Card.Title>Flowers</Card.Title> */}
     <div className="product_display">
         {flowerItems[0]}
-        {flowerItems[5]}
-        {flowerItems[10]}
+        {flowerItems[4]}
+        {flowerItems[3]}
        
       </div>
       <a className='btn btn-outline-light btn-lg' href='/flowers' role='button'>
