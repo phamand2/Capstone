@@ -185,7 +185,7 @@ const Mycart = (props) => {
                     <div className="row">
 
                     <div class="col-md-4">
-                    <h5 className="small-title" style={{color: 'black', fontSize: '30px', fontWeight: 'bold'}}>Shipping Address</h5>
+                    <h5 className="small-title" style={{color: 'black', fontSize: '30px', fontWeight: 'bold'}}>Delivery Address</h5>
                     <form>
                         <div class="form-group">
                             {/* <label for="formGroupExampleInput" style={{color: 'black', fontSize: '20px', fontWeight: 'bold'}}>Full Nmae</label> */}

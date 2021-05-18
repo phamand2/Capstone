@@ -35,6 +35,9 @@ const PaymentForm = (props) => {
     const subtotal = cart.reduce((prev, current) => {
         return prev + current.subtotal
     }, 0)
+    let amount = parseInt(subtotal*100)
+    console.log(typeof(amount))
+    console.log(amount)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -48,7 +51,7 @@ const PaymentForm = (props) => {
             try {
                 const { id } = paymentMethod
                 const response = await axios.post('http://localhost:5000/nonmodalpayment', {
-                    amount: {subtotal} * 100,
+                    amount: amount,
                     id 
                 })
 
