@@ -18,5 +18,5 @@
 MERN stack (MongoDB, Express, React, Node), Redux, SendGrid SMTP relay, Javascript, HTML/CSS
 
 * **Developers:**<br/>
-Neil Shah, Younus Qureishy, Wesley Kolar, and Nicole Aldurien
+Neil Shah, Younus Qureishy, Wesley Kolar, and Nicole Aldurien. Thanks also to Malav Shah for his assistance with database entry!
 
