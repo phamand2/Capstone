@@ -18,8 +18,11 @@ function ProductManage(props) {
   const [showFiveElement, setShowFiveElement] = useState(false);
   const [showSixElement, setShowSixElement] = useState(false);
   const [showSevenElement, setShowSevenElement] = useState(false);
-  const [showEighthElement, setShowEighthElement] = useState(false);
-
+  const [showEightElement, setShowEightElement] = useState(false);
+  const [showNineElement, setShowNineElement] = useState(false);
+  const [showTenElement, setShowTenElement] = useState(false);
+  const [showElevenElement, setShowElevenElement] = useState(false);
+  
 
 
 
@@ -30,13 +33,17 @@ function ProductManage(props) {
   const toggleFiveElement = () => setShowFiveElement(!showFiveElement);
   const toggleSixElement = () => setShowSixElement(!showSixElement);
   const toggleSevenElement = () => setShowSevenElement(!showSevenElement);
-  const toggleEighthElement = () => setShowEighthElement(!showEighthElement);
+  const toggleEightElement = () => setShowEightElement(!showEightElement);
+  const toggleNineElement = () => setShowNineElement(!showNineElement);
+  const toggleTenElement = () => setShowTenElement(!showTenElement);
+  const toggleElevenElement = () => setShowElevenElement(!showElevenElement);
 
   const toggleAllElements = () => {
     setShowFirstElement(!showFirstElement);
     setShowSecondElement(!showSecondElement);
     setShowThirdElement(!showThirdElement);
     setShowFourthElement(!showFourthElement);
+    setShowElevenElement(!showElevenElement);
 
     
   }
@@ -48,17 +55,26 @@ function ProductManage(props) {
 
   }
 
+  const toggleAllElements3 = () => {
+    
+    setShowEightElement(!showEightElement);
+    setShowNineElement(!showNineElement);
+    setShowTenElement(!showTenElement);
+  }
+
 
     useEffect(() => {
         console.log("use effect is fired")
         props.onLoadProducts()
         props.onLoadUsers()
+        props.onLoadOrders()
     },[])
 
     const handledelete = (_id) => {
         props.onDelete(_id)
         props.onLoadProducts()
         props.onLoadUsers()
+        props.onLoadOrders()
         window.location.reload(false);
         
     }
@@ -318,6 +334,61 @@ function ProductManage(props) {
 
 
 
+    var  orders = props.orders
+    console.log(orders)
+    console.log(orders.address)
+    console.log("cart",orders.cart)
+    var  orders_cart = props.orders.cart
+
+    // const order_cart_Items = orders_cart.map((items, index) => {
+    //     return<div>
+    //         <h1>{items.title}</h1>
+    //     </div>
+    // })
+
+
+
+    let counter8 = 0;
+    for (let i = 0; i < orders.length; i++) {
+        if (orders[i]) counter8++;
+    }
+    console.log(counter8)
+    
+    const orderItems = orders.map((items, index) => {
+        return <div key ={index} className="card" style={{width: "18rem"}}>
+            <div>
+            <h1>{items.fullname}</h1>
+            </div>
+            <div>
+                <h1>{items.address.Street1}</h1>
+            </div>
+            <div>
+                <h1>{items.address.Street2}</h1>
+            </div>
+             <div>
+                <h1>{items.address.city} , {items.address.state} - {items.address.zip}</h1>
+            </div>
+           <div>
+                <p>Phone No. : {items.phone}</p>
+            </div>
+                <h2>Order Details</h2>
+             <div>
+                 <p>{items.cart.map(cartItems => {
+                     return(
+                     <p><h1>{cartItems.title} - {cartItems.qty}</h1></p>
+                     )})}</p>
+            </div>
+            <div>
+            <p>delivered:{items.is_delivered}</p>
+            </div>
+            <div>
+            <p>Id : {items._id}</p>
+            </div>
+
+            </div>
+    })
+
+
 
 
   
@@ -376,7 +447,7 @@ function ProductManage(props) {
                 <MDBBtn onClick={toggleSecondElement} className="collapse_btn_title mt-3">Vegetables (total products: {counter2})</MDBBtn>
                 <MDBBtn onClick={toggleThirdElement} className="collapse_btn_title mt-3">Fruit (total products: {counter3})</MDBBtn>
                 <MDBBtn onClick={toggleFourthElement} className="collapse_btn_title mt-3">Flowers (total products: {counter4})</MDBBtn>
-                <MDBBtn onClick={toggleEighthElement} className="collapse_btn_title mt-3">Add Product</MDBBtn>
+                <MDBBtn onClick={toggleElevenElement} className="collapse_btn_title mt-3">Add Product</MDBBtn>
                 <MDBBtn onClick={toggleAllElements} className="collapse_btn_title mt-3"> Show All</MDBBtn>
 
                 <MDBRow>
@@ -403,7 +474,7 @@ function ProductManage(props) {
                         </MDBCollapse>
                     
                     
-                        <MDBCollapse show={showEighthElement} className='mt-3 card_flex best-book-h1'>
+                        <MDBCollapse show={showElevenElement} className='mt-3 card_flex best-book-h1'>
                                 <div id="inputsection">
                             <div id="storenametextbox">
                                 <label>Image</label>
@@ -446,7 +517,44 @@ function ProductManage(props) {
             <div id="box-admin">
             <>
                 <div id="header">
-                    <h2>All Admin / Staff / Users list</h2>
+                   
+                    <h1>Orders</h1>
+                    
+                </div>
+                
+                <MDBBtn onClick={toggleEightElement} className="collapse_btn_title mt-3">All Orders (total Orders: {counter8})</MDBBtn>
+                <MDBBtn onClick={toggleNineElement} className="collapse_btn_title mt-3">Pending Orders (total Orders: {counter6})</MDBBtn>
+                <MDBBtn onClick={toggleTenElement} className="collapse_btn_title mt-3">Completed Orders (total Orders: {counter7})</MDBBtn>
+                <MDBBtn onClick={toggleAllElements3} className="collapse_btn_title mt-3"> Show All</MDBBtn>
+
+                <MDBRow>
+                    
+                    <MDBCol>
+                        <MDBCollapse show={showEightElement} className='mt-3 card_flex best-book-h1'>
+                            <div><h1 style={{color: 'black', fontSize: '40px', fontWeight: 'bold'}}>All Orders</h1></div>
+                            <div>{orderItems}</div>
+                        </MDBCollapse>
+                    </MDBCol>
+                    <MDBCol>
+                        <MDBCollapse show={showNineElement} className='mt-3 card_flex best-book-h1'>
+                            <div><h1>Pending Orders</h1></div>
+                            
+                        </MDBCollapse>
+                    </MDBCol>
+                    <MDBCol>
+                        <MDBCollapse show={showTenElement} className='mt-3 card_flex best-book-h1'>
+                            <div><h1>Completed Orders</h1></div>
+                            
+                        </MDBCollapse>
+                    </MDBCol>
+                </MDBRow>
+            </>
+            </div>
+
+            <div id="box-admin">
+            <>
+                <div id="header">
+                    <h1>All Admin / Staff / Users list</h1>
                     
                 </div>
                 
@@ -499,6 +607,7 @@ const mapDispatchToProps = (dispatch) => {
     onLoadProducts: () => dispatch(actionCreators.loadProducts()),
     onLoadUsers: () => dispatch(actionCreators.loadAllUsers()),
     onDelete: (_id) => dispatch(actionCreators.deleteProduct(_id)),
+    onLoadOrders: () => dispatch(actionCreators.LoadOrders()),
           
   }
 }
@@ -512,6 +621,7 @@ const mapStateToProps = (state) => {
         admins: state.admins,
         staff : state.staff,
         users: state.users,
+        orders:state.orders,
         
     }
 }
