@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { onAddToCart } from '../../stores/creators/actionCreators' 
 import * as actionCreators from '../../stores/creators/actionCreators' 
+import '../css/App.css';
 
 
 const ProductDetails = (props) => {
@@ -122,16 +123,16 @@ const ProductDetails = (props) => {
                 
                 </li>
                 </ul>
-                <div style={{display:"flex"}}>
-                <p>Qty:&nbsp; &nbsp;
+                <div classname = 'detailsbuttondiv' style={{display:"flex"}}>
+                <p><b>QTY:</b>&nbsp; &nbsp;
                 <input type="number" min="1" max="100" value={qty} onChange = {(e) => setQty(e.target.value)}/></p>
                 
-                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white', marginTop:'28px'}} onClick = {() => handleAddToCart(product,qty)}>
+                    <button className = 'detailsbutton' style = {{backgroundColor: '#860286', padding: '8px', color: 'white', marginTop:'28px'}} onClick = {() => handleAddToCart(product,qty)}>
                     <a style = {{fontSize: '20px'}}className="add-cart" ><span><span className="icon_plus"></span></span> Add To Cart</a></button>
-                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white', marginTop:'28px'}}>
+                    <button className = 'detailsbutton' style = {{backgroundColor: '#860286', padding: '8px', color: 'white', marginTop:'28px'}}>
                     <a style = {{fontSize: '20px'}}className="add-cart" ><Link to = '/mycart'><span><span className="icon_plus"></span></span> Go To Cart</Link></a></button>
-                    <button style = {{backgroundColor: '#860286', padding: '8px', color: 'white', marginTop:'28px'}} >
-                    <a href = '/' style = {{fontSize: '20px'}}className="add-cart" ><span><span className="icon_plus"></span></span> Continue Shopping</a></button>
+                    <button className = 'detailsbutton' style = {{backgroundColor: '#860286', padding: '8px', color: 'white', marginTop:'28px'}} >
+                    <a href = '/' style = {{fontSize: '20px'}}className="add-cart" ><span><span className="icon_plus"></span></span>Continue Shopping</a></button>
                     </div>
             
             </div>
