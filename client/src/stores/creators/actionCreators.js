@@ -132,6 +132,13 @@ export const onUpdateAddress = (address) => {
     }
 }
 
+export const OrderConformation = (OrderConformation) => {
+    return {
+        type: actionTypes.OrderConformation,
+        payload: OrderConformation
+    }
+}
+
 // export const onAddToCart = (product, qty) => (getState => {
 //     return {
 //         type: actionTypes.onAddToCart,
