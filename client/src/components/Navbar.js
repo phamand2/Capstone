@@ -14,7 +14,7 @@ import { faTemperatureHigh } from '@fortawesome/free-solid-svg-icons';
 const Navbar2 = () => {
     return (
         <Navbar bg="light" expand="lg">
-  <Navbar.Brand href="#home">FruVe Flow</Navbar.Brand>
+  <Navbar.Brand href="/">FruVe Flow</Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav"style={{border: "none"}}>
     <Nav className="mr-auto">

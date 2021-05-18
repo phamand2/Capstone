@@ -161,9 +161,9 @@ const flowerItems = flower.map((items, index) => {
             <div className='text-white'>
               <h1 className='mb-3'>FruVe Flow</h1>
               <h4 className='mb-4'>Get your Fruit, Vegetables, and Flowers delivered fresh.</h4>
-              <a className='btn btn-outline-light btn-lg' href='/auth/customer-register' role='button'>
+              <Link className='btn btn-outline-light btn-lg' to='/auth/customer-register' role='button'>
                 Register Today!
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -183,9 +183,9 @@ const flowerItems = flower.map((items, index) => {
         
         
       </div>
-      <a className='btn btn-outline-light btn-lg' href='/fruits' role='button'>
+      <Link className='btn btn-outline-light btn-lg' to='/fruits' role='button'>
                 See All Fruits
-              </a>
+              </Link>
     </Card.Body>
   </Card>
   <br />
@@ -200,9 +200,9 @@ const flowerItems = flower.map((items, index) => {
         {vegetableItems[10]}
         
       </div>
-      <a className='btn btn-outline-light btn-lg' href='/vegetables' role='button'>
+      <Link className='btn btn-outline-light btn-lg' to='/vegetables' role='button'>
                 See All Vegetables
-              </a>
+              </Link>
     </Card.Body>
     
   </Card>
@@ -218,9 +218,9 @@ const flowerItems = flower.map((items, index) => {
         {flowerItems[3]}
        
       </div>
-      <a className='btn btn-outline-light btn-lg' href='/flowers' role='button'>
+      <Link className='btn btn-outline-light btn-lg' to='/flowers' role='button'>
                 See All Flowers
-              </a>
+              </Link>
     </Card.Body>
     
   </Card>
