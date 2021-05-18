@@ -10,7 +10,9 @@ const Mycart = (props) => {
 
     const [address, setaddress] = useState({})
 
-
+    const removeItem = (title) => {
+        props.removeFromCart(title)
+    } 
     // const [Qty, setQty] = useState({})
 
     // const handleChange = (e) => {   
@@ -95,7 +97,7 @@ const Mycart = (props) => {
         return <tbody  key = {cart._id} >
                                     <tr className="cart_item tbody">
                                         <td className="product-remove">
-                                            <a href="#" className="remove" title="Remove this item"><img src="assets/images/remove.png" alt="" />
+                                            <a href="#" onClick = {() => {removeItem(cart.title)}}className="remove" title="Remove this item"><img src="./trashcan.jpeg" alt="" />
                                             </a>
                                         </td>
                                         <td className="product-thumbnail">
@@ -178,9 +180,7 @@ const Mycart = (props) => {
                             </table>
                         </div>
                         <div className="refresh-shoping">
-                            <a className="btn btn-update" href="shop-grid-sidebar.html">
-                                {/* <img src="refresh.png" alt="icon"/> */}
-                                update cart</a>
+                            <a className="btn btn-update" href="shop-grid-sidebar.html">update cart</a>
                             <Link to="/" className="btn btn-update"> continue shopping</Link>
                         </div>
                     </div>
@@ -286,6 +286,7 @@ const Mycart = (props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onUpdateAddress: (address) => dispatch(actionCreators.onUpdateAddress(address)),
+        removeFromCart: (item) => dispatch({type: 'REMOVE_FROM_CART', payload: item})
     }
 }
 
