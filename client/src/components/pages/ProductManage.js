@@ -18,6 +18,8 @@ function ProductManage(props) {
   const [showFiveElement, setShowFiveElement] = useState(false);
   const [showSixElement, setShowSixElement] = useState(false);
   const [showSevenElement, setShowSevenElement] = useState(false);
+  const [showEighthElement, setShowEighthElement] = useState(false);
+
 
 
 
@@ -28,12 +30,14 @@ function ProductManage(props) {
   const toggleFiveElement = () => setShowFiveElement(!showFiveElement);
   const toggleSixElement = () => setShowSixElement(!showSixElement);
   const toggleSevenElement = () => setShowSevenElement(!showSevenElement);
+  const toggleEighthElement = () => setShowEighthElement(!showEighthElement);
 
   const toggleAllElements = () => {
     setShowFirstElement(!showFirstElement);
     setShowSecondElement(!showSecondElement);
     setShowThirdElement(!showThirdElement);
     setShowFourthElement(!showFourthElement);
+
     
   }
   const toggleAllElements2 = () => {
@@ -41,6 +45,7 @@ function ProductManage(props) {
     setShowFiveElement(!showFiveElement);
     setShowSixElement(!showSixElement);
     setShowSevenElement(!showSevenElement);
+
   }
 
 
@@ -360,79 +365,80 @@ function ProductManage(props) {
 
   return (
       <div>
-            <div id="header">
-              <h1>Admin Page</h1>
-            </div>
-            <div id="inputsection">
-                <div id="storenametextbox">
-                    <label>Image</label>
-                    <input onChange = {handleChange}  type="text" name="imageurl" />
-                </div>
-                <div id="storenametextbox">
-                    <label>title</label>
-                    <input onChange = {handleChange}  type="text" name="title" />
-                </div>
-                <div id="storenametextbox">
-                    <label>description</label>
-                    <input onChange = {handleChange}  type="text" name="description" />
-                </div>
-                <div id="storenametextbox">
-                    <label>rate</label>
-                    <input onChange = {handleChange}  type="text" name="rate" />
-                </div>
-                <div id="storenametextbox">
-                    <label>per</label>
-                    <input onChange = {handleChange}  type="text" name="per" />
-                </div>
-                <div id="storenametextbox">
-                    <label>category</label>
-                    <input onChange = {handleChange}  type="text" name="category" />
-                </div>
-                <div id="storenametextbox">
-                    <label>subcategory</label>
-                    <input onChange = {handleChange}  type="text" name="subcategory" />
-                </div>
-                <div>
-                    <button id="btnsubmit" onClick = {handleSave}>Add product</button>
-                </div>
-            </div><br/>
-            <div id="box-admin">
+           
+            <div id="box-admin">                                 
             <>
                 <div id="header">
-                    <h1>Edit Or Delete Products</h1>
+                    <h2>Add, Edit, Or Delete Products</h2>
                     
                 </div>
                 <MDBBtn onClick={toggleFirstElement} className="collapse_btn_title mt-3"> All Products (total products: {counter1}) </MDBBtn>
                 <MDBBtn onClick={toggleSecondElement} className="collapse_btn_title mt-3">Vegetables (total products: {counter2})</MDBBtn>
                 <MDBBtn onClick={toggleThirdElement} className="collapse_btn_title mt-3">Fruit (total products: {counter3})</MDBBtn>
                 <MDBBtn onClick={toggleFourthElement} className="collapse_btn_title mt-3">Flowers (total products: {counter4})</MDBBtn>
+                <MDBBtn onClick={toggleEighthElement} className="collapse_btn_title mt-3">Add Product</MDBBtn>
                 <MDBBtn onClick={toggleAllElements} className="collapse_btn_title mt-3"> Show All</MDBBtn>
 
                 <MDBRow>
-                    <MDBCol>
+                   
                         <MDBCollapse show={showFirstElement} className='mt-3 card_flex best-book-h1'>
                             <div><h1>All Products</h1></div>
                             {all_productsItems}
                         </MDBCollapse>
-                    </MDBCol>
-                    <MDBCol>
+                   
                         <MDBCollapse show={showSecondElement} className='mt-3 card_flex best-book-h1'>
                             <div><h1>Vegetable</h1></div>
                             {vegetableItems}
                         </MDBCollapse>
-                    </MDBCol>
-                    <MDBCol>
+                    
                         <MDBCollapse show={showThirdElement} className='mt-3 card_flex best-book-h1'>
                             <div><h1>Fruit</h1></div>
                             {fruitItems}
                         </MDBCollapse>
-                    </MDBCol>
-                    <MDBCol>
+                    
+                    
                         <MDBCollapse show={showFourthElement} className='mt-3 card_flex best-book-h1'>
                             <div><h1>Flowers</h1></div>
                             {flowerItems}
                         </MDBCollapse>
-                    </MDBCol>
+                    
+                    
+                        <MDBCollapse show={showEighthElement} className='mt-3 card_flex best-book-h1'>
+                                <div id="inputsection">
+                            <div id="storenametextbox">
+                                <label>Image</label>
+                                <input onChange = {handleChange}  type="text" name="imageurl" />
+                                    </div>
+                            <div id="storenametextbox">
+                                <label>title</label>
+                                <input onChange = {handleChange}  type="text" name="title" />
+                            </div>
+                            <div id="storenametextbox">
+                                <label>description</label>
+                                <input onChange = {handleChange}  type="text" name="description" />
+                            </div>
+                            <div id="storenametextbox">
+                                <label>rate</label>
+                                <input onChange = {handleChange}  type="text" name="rate" />
+                            </div>
+                            <div id="storenametextbox">
+                                <label>per</label>
+                                <input onChange = {handleChange}  type="text" name="per" />
+                            </div>
+                                <div id="storenametextbox">
+                                    <label>category</label>
+                                        <input onChange = {handleChange}  type="text" name="category" />
+                                    </div>
+                                    <div id="storenametextbox">
+                                        <label>subcategory</label>
+                                        <input onChange = {handleChange}  type="text" name="subcategory" />
+                                    </div>
+                                    <div>
+                                    <button id="btnsubmit" onClick = {handleSave}>Add product</button>
+                                </div>
+                                </div>    
+                        </MDBCollapse>
+                    
                 </MDBRow>
             </>
             </div>
@@ -440,7 +446,7 @@ function ProductManage(props) {
             <div id="box-admin">
             <>
                 <div id="header">
-                    <h1>All Admin / Staff / Users list</h1>
+                    <h2>All Admin / Staff / Users list</h2>
                     
                 </div>
                 
@@ -453,19 +459,19 @@ function ProductManage(props) {
                     
                     <MDBCol>
                         <MDBCollapse show={showFiveElement} className='mt-3 card_flex best-book-h1'>
-                            <div><h1 style={{color: 'black', fontSize: '40px', fontWeight: 'bold'}}>Admins</h1></div>
+                            <div><h2 style={{color: 'black', fontSize: '40px', fontWeight: 'bold'}}>Admins</h2></div>
                             <div>{adminsItems}</div>
                         </MDBCollapse>
                     </MDBCol>
                     <MDBCol>
                         <MDBCollapse show={showSixElement} className='mt-3 card_flex best-book-h1'>
-                            <div><h1>Staff</h1></div>
+                            <div><h2>Staff</h2></div>
                             {staffItems}
                         </MDBCollapse>
                     </MDBCol>
                     <MDBCol>
                         <MDBCollapse show={showSevenElement} className='mt-3 card_flex best-book-h1'>
-                            <div><h1>Users</h1></div>
+                            <div><h2>Users</h2></div>
                             {usersItems}
                         </MDBCollapse>
                     </MDBCol>
@@ -474,16 +480,13 @@ function ProductManage(props) {
             </div>
             <div className = 'admin__links' id="box-admin">
             <div id="header">
-                    <h1>Add Admin / Staff</h1>
+                    <h2>Add Admin / Staff</h2>
                     
                 </div>
                 <Link to={`/auth/add-admin`}><MDBBtn  className="collapse_btn_title mt-3">Add New Admin</MDBBtn></Link>
                 <Link to= {`/auth/add-staff`}><MDBBtn  className="collapse_btn_title mt-3">Add New Staff</MDBBtn></Link>
             </div>
-            <div id="box-admin">
-                <h1>hello</h1>
-                
-            </div>
+
         </div>
     
   );

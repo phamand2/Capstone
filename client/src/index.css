@@ -63,8 +63,8 @@ h1 {
 .btn-primary {
   background-color: rgb(134, 2, 134);
   color: #fff;
-  font-family: 'Amatic SC', cursive;
-  width: 90%;
+  width: 40%;
+  
 }
 
 .error-message {
