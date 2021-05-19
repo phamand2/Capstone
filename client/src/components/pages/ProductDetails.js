@@ -98,7 +98,7 @@ const ProductDetails = (props) => {
 
     <div class="card mb-3 bg-success text-white" style={{width: '99vw', border: 'solid 5px black'}}>
         <div class="row g-0"style={{height: '100%'}}>
-            <div className="product-details-image" class="col-md-4" style={{height: 'auto', width: '31%'}}>
+            <div className="product-details-image" class="col-md-4" style={{height: 'auto', width: '31%', margin: '0px'}}>
                 <img className="productimg" style={{height: '100%'}} class = 'card-img' src={product.imageurl} alt="..."/>
             </div>
         <div class="col-md-8" style={{fontFamily: "sans-serif", width: '67%'}}>
@@ -127,11 +127,11 @@ const ProductDetails = (props) => {
                 <p><b>QTY:</b>&nbsp; &nbsp;
                 <input type="number" min="1" max="100" value={qty} onChange = {(e) => setQty(e.target.value)}/></p>
                 
-                    <button className = 'detailsbutton' style = {{backgroundColor: '#860286', padding: '8px', color: 'white', marginTop:'28px'}} onClick = {() => handleAddToCart(product,qty)}>
+                    <button className = 'detailsbutton' style = {{backgroundColor: '#860286', padding: '8px', color: 'white', marginTop:'28px', width:'400px', marginRight: '25px', marginLeft: '25px'}} onClick = {() => handleAddToCart(product,qty)}>
                     <a style = {{fontSize: '20px'}}className="add-cart" ><span><span className="icon_plus"></span></span> Add To Cart</a></button>
-                    <button className = 'detailsbutton' style = {{backgroundColor: '#860286', padding: '8px', color: 'white', marginTop:'28px'}}>
+                    <button className = 'detailsbutton' style = {{backgroundColor: '#860286', padding: '8px', color: 'white', marginTop:'28px', width:'400px', marginRight: '15px', marginLeft: '15px'}}>
                     <a style = {{fontSize: '20px'}}className="add-cart" ><Link to = '/mycart'><span><span className="icon_plus"></span></span> Go To Cart</Link></a></button>
-                    <button className = 'detailsbutton' style = {{backgroundColor: '#860286', padding: '8px', color: 'white', marginTop:'28px'}} >
+                    <button className = 'detailsbutton' style = {{backgroundColor: '#860286', padding: '8px', color: 'white', marginTop:'28px', width:'400px', marginRight: '15px', marginLeft: '15px'}} >
                     <a href = '/' style = {{fontSize: '20px'}}className="add-cart" ><span><span className="icon_plus"></span></span>Continue Shopping</a></button>
                     </div>
             
