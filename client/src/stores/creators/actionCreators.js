@@ -107,7 +107,7 @@ export const LoadOrders = () => {
         const token = localStorage.getItem('adminToken')
 
         // api call to fetch all orders 
-        fetch('http://localhost:5000/admin/all-orders', {
+        fetch('http://localhost:5000/all-orders', {
             method: 'GET',
             headers: {
                 'authorization':`Bearer ${token}`,
@@ -121,8 +121,8 @@ export const LoadOrders = () => {
             console.log(error)
         })
 
-        // api call to fetch all staff 
-        fetch('http://localhost:5000/admin/completed-orders', {
+        // api call to fetch all completed-orders 
+        fetch('http://localhost:5000/completed-orders', {
             method: 'GET',
             headers: {
                 'authorization':`Bearer ${token}`,
@@ -136,8 +136,8 @@ export const LoadOrders = () => {
             console.log(error)
         })
 
-        // api call to fetch all users 
-        fetch('http://localhost:5000/admin/pending-orders', {
+        // api call to fetch all pending-orders 
+        fetch('http://localhost:5000/pending-orders', {
             method: 'GET',
             headers: {
                 'authorization':`Bearer ${token}`,
@@ -209,6 +209,9 @@ export const OrderConformation = (OrderConformation) => {
         payload: OrderConformation
     }
 }
+
+
+
 
 // export const onAddToCart = (product, qty) => (getState => {
 //     return {

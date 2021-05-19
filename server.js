@@ -87,44 +87,9 @@ app.get('/all-products/flower', (req, res) => {
   })
 })
 
-
-
-//route to get all admin :(not staff or users)
-app.get('/all-admins', (req, res) => {
-  
-  Admin.find({}, (error, posts) => {
-    if(error) {
-      res.json({error: 'Unable to fetch products!'}) 
-    } else {
-      res.json(posts)
-    }
-  })
-})
-
-
-//route to get all staff :(not admin or users)
-app.get('/all-staff', (req, res) => {
-  
-  StaffMember.find({}, (error, posts) => {
-    if(error) {
-      res.json({error: 'Unable to fetch products!'}) 
-    } else {
-      res.json(posts)
-    }
-  })
-})
-
-//route to get all users :(not admin or staff)
-app.get('/all-users', (req, res) => {
-  
-  Customer.find({}, (error, posts) => {
-    if(error) {
-      res.json({error: 'Unable to fetch products!'}) 
-    } else {
-      res.json(posts)
-    }
-  })
-})
+///////////////////////////////////////////////
+//  below is the section for getting all types of orders
+//////////////////////////////////////////////
 
 
 //routes to get all order history
@@ -132,7 +97,7 @@ app.get('/all-orders', (req, res) => {
   
   Cart.find({}, (error, posts) => {
     if(error) {
-      res.json({error: 'Unable to fetch products!'})
+      res.json({error: 'Unable to fetch orders!'})
     } else {
       res.json(posts)
     }
@@ -169,7 +134,7 @@ app.get('/pending-orders', (req, res) => {
   })
 })
 
-
+//routes to change the delivery status to delivered
 app.patch('/change_to_delivered/:cartId', (req, res) => {
 
   const cartId = req.params.cartId 
@@ -191,7 +156,7 @@ app.patch('/change_to_delivered/:cartId', (req, res) => {
 })
 
 
-
+//routes to change the delivery status to not delivered
 app.patch('/change_to_not_delivered/:cartId', (req, res) => {
 
   const cartId = req.params.cartId 
@@ -210,21 +175,9 @@ app.patch('/change_to_not_delivered/:cartId', (req, res) => {
 
 })
 
-// get product by ID
-// app.get('/product/:id', (req, res) => {
-//   try {
-//     Product.findById(req.params.id)
-//     console.log(req.params.id)
-//     res.json(product)
-//   } catch (error) {
-//       console.error(error)
-//       res.status(500).json({message: 'Server error.'})
-//   }
-// })
-
-
-
-
+///////////////////////////////////////////////
+// below is the section for posting orders after a successful payment only
+//////////////////////////////////////////////
 
 app.post ('/order-confirmation', (req, res) => {
 

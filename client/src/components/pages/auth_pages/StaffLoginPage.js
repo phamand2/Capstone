@@ -27,7 +27,7 @@ const StaffLoginPage = ({history}) => {
 
             localStorage.setItem('staffToken', data.token)
 
-            history.push('/')
+            history.push('/staffHome')
         } catch (error) {
             setError(error.response.data.error)
             setTimeout(() => {
