@@ -379,9 +379,9 @@ function ProductManage(props) {
                      <p><h1>{cartItems.title} - {cartItems.qty}</h1></p>
                      )})}</p>
             </div>
-            {/* <div>
-            <button><p> mark As delivered delivered</p></button>
-            </div> */}
+            <div>
+            <button onClick = {() => handleDeleteOrder({items})}><p> Delete Order</p></button>
+            </div>
             <div>
             <p>Id : {items._id}</p>
             </div>
@@ -490,19 +490,22 @@ function ProductManage(props) {
         console.log(items.items._id)
        const _id = items.items._id
         console.log(_id)
+        const token = localStorage.getItem('adminToken')
 
 
         fetch (`http://localhost:5000/change_to_delivered/${_id}`,{
         method: 'PATCH',
-
-        
-        
-    }).then(response => response.json())
-    .then(result => {
+        headers: {
+            'authorization':`Bearer ${token}`,
+            
+        }}).then(response => response.json())
+        .then(result => {
         if(result.success) {
 
           alert("Products Has Been Delivered")
-          window.location.reload(false);
+            props.onLoadProducts()
+            props.onLoadUsers()
+            props.onLoadOrders()
 
         }
 
@@ -517,10 +520,16 @@ function ProductManage(props) {
         console.log(items.items._id)
        const _id = items.items._id
         console.log(_id)
+        const token = localStorage.getItem('adminToken')
+
 
 
         fetch (`http://localhost:5000/change_to_not_delivered/${_id}`,{
         method: 'PATCH',
+        headers: {
+            'authorization':`Bearer ${token}`,
+            
+        }
 
         
         
@@ -529,8 +538,9 @@ function ProductManage(props) {
         if(result.success) {
 
           alert("Delivery Has Been Moved to Pending")
-          window.location.reload(false);
-
+          props.onLoadProducts()
+            props.onLoadUsers()
+            props.onLoadOrders()
         }
 
     }).catch(error => {
@@ -538,6 +548,45 @@ function ProductManage(props) {
     })
 
     }
+
+
+
+
+    const handleDeleteOrder = (items) => {
+        console.log("deleteOrder is fired")
+        console.log(items.items._id)
+       const _id = items.items._id
+        console.log(_id)
+        const token = localStorage.getItem('adminToken')
+
+
+        fetch (`http://localhost:5000/admin/delete-order/${_id}`,{
+        method: 'DELETE',
+        headers: {
+            'authorization':`Bearer ${token}`,
+            
+        }
+
+        
+        
+        }).then(response => response.json())
+        .then(result => {
+        if(result.success) {
+
+          alert("Order Has Been Deleted")
+          props.onLoadProducts()
+          props.onLoadUsers()
+          props.onLoadOrders()
+
+        }
+
+        }).catch(error => {
+            console.log(error)
+        })
+
+    }
+
+
 
   const handleSave = () => {
     const token = localStorage.getItem('adminToken')
@@ -564,7 +613,9 @@ function ProductManage(props) {
         if(result.success) {
 
           alert("Your product has been added to the database")
-          window.location.reload(false);
+          props.onLoadProducts()
+            props.onLoadUsers()
+            props.onLoadOrders()
 
         }
 
