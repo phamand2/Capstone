@@ -99,7 +99,7 @@ const ProductDetails = (props) => {
     <div class="card mb-3 bg-success text-white" style={{width: '99vw', border: 'solid 5px black'}}>
         <div class="row g-0"style={{height: '100%'}}>
             <div className="product-details-image" class="col-md-4" style={{height: 'auto', width: '31%', margin: '0px'}}>
-                <img className="productimg" style={{height: '100%'}} class = 'card-img' src={product.imageurl} alt="..."/>
+                <img className="productimg" style={{width: '100%', height: '438px'}} class = 'card-img' src={product.imageurl} alt="..."/>
             </div>
         <div class="col-md-8" style={{fontFamily: "sans-serif", width: '67%'}}>
             <div class="card-body">
