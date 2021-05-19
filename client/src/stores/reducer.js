@@ -15,7 +15,13 @@ const initialState = {
     staff:[],
     users:[],
     orders:[],
-    OrderConformation:[],
+    completed_orders:[],
+    pending_orders:[],
+
+
+
+    // OrderConformation:[],
+    
 
 
 }
@@ -108,15 +114,22 @@ const reducer = (state = initialState, action) => {
             }
         }
 
-        case actionTypes.OrderConformation:{
+
+
+        case actionTypes.Completed_Orders_Loaded:{
             return {
                 ...state,
-                OrderConformation: action.payload
+                completed_orders: action.payload
             }
         }
+        
 
-
-
+        case actionTypes.Pending_Orders_Loaded:{
+            return {
+                ...state,
+                pending_orders: action.payload
+            }
+        }
 
         default:
             return state

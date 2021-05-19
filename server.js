@@ -41,40 +41,6 @@ app.get('/all-products', (req, res) => {
 })
 
 
-//route to get product by all vegetable
-app.get('/all-admins', (req, res) => {
-  
-  Admin.find({}, (error, posts) => {
-    if(error) {
-      res.json({error: 'Unable to fetch products!'}) 
-    } else {
-      res.json(posts)
-    }
-  })
-})
-
-app.get('/all-staff', (req, res) => {
-  
-  StaffMember.find({}, (error, posts) => {
-    if(error) {
-      res.json({error: 'Unable to fetch products!'}) 
-    } else {
-      res.json(posts)
-    }
-  })
-})
-
-
-app.get('/all-users', (req, res) => {
-  
-  Customer.find({}, (error, posts) => {
-    if(error) {
-      res.json({error: 'Unable to fetch products!'}) 
-    } else {
-      res.json(posts)
-    }
-  })
-})
 
 //route to get product by all vegetable
 app.get('/all-products/vegetable', (req, res) => {
@@ -122,6 +88,46 @@ app.get('/all-products/flower', (req, res) => {
 })
 
 
+
+//route to get all admin :(not staff or users)
+app.get('/all-admins', (req, res) => {
+  
+  Admin.find({}, (error, posts) => {
+    if(error) {
+      res.json({error: 'Unable to fetch products!'}) 
+    } else {
+      res.json(posts)
+    }
+  })
+})
+
+
+//route to get all staff :(not admin or users)
+app.get('/all-staff', (req, res) => {
+  
+  StaffMember.find({}, (error, posts) => {
+    if(error) {
+      res.json({error: 'Unable to fetch products!'}) 
+    } else {
+      res.json(posts)
+    }
+  })
+})
+
+//route to get all users :(not admin or staff)
+app.get('/all-users', (req, res) => {
+  
+  Customer.find({}, (error, posts) => {
+    if(error) {
+      res.json({error: 'Unable to fetch products!'}) 
+    } else {
+      res.json(posts)
+    }
+  })
+})
+
+
+//routes to get all order history
 app.get('/all-orders', (req, res) => {
   
   Cart.find({}, (error, posts) => {
@@ -133,6 +139,76 @@ app.get('/all-orders', (req, res) => {
   })
 })
 
+
+//routes to get all completed-orders history
+app.get('/completed-orders', (req, res) => {
+  
+  Cart.find({
+    is_delivered: true,
+  }, (error, posts) => {
+    if(error) {
+      res.json({error: 'Unable to fetch products!'})
+    } else {
+      res.json(posts)
+    }
+  })
+})
+
+
+//routes to get all pending-orders history
+app.get('/pending-orders', (req, res) => {
+  
+  Cart.find({
+    is_delivered: false,
+  }, (error, posts) => {
+    if(error) {
+      res.json({error: 'Unable to fetch products!'})
+    } else {
+      res.json(posts)
+    }
+  })
+})
+
+
+app.patch('/change_to_delivered/:cartId', (req, res) => {
+
+  const cartId = req.params.cartId 
+  
+  
+
+  const update_delivery_status = {
+    is_delivered : true
+  }
+
+  Cart.findByIdAndUpdate(cartId, update_delivery_status, (error, result) => {
+      if(error) {
+          res.json({error: 'Unable to updated'})
+      } else {
+          res.json({success: true})
+      }
+  })
+
+})
+
+
+
+app.patch('/change_to_not_delivered/:cartId', (req, res) => {
+
+  const cartId = req.params.cartId 
+
+  const update_delivery_status = {
+    is_delivered : false
+  }
+
+  Cart.findByIdAndUpdate(cartId, update_delivery_status, (error, result) => {
+      if(error) {
+          res.json({error: 'Unable to updated'})
+      } else {
+          res.json({success: true})
+      }
+  })
+
+})
 
 // get product by ID
 // app.get('/product/:id', (req, res) => {

@@ -9,6 +9,7 @@ import '../css/App.css';
 
 function ProductManage(props) {
   const [ProductManage, setProductManage] = useState({})
+//   const [ProductManage, setProductManage] = useState({})
 
 
   const [showFirstElement, setShowFirstElement] = useState(false);
@@ -378,8 +379,56 @@ function ProductManage(props) {
                      <p><h1>{cartItems.title} - {cartItems.qty}</h1></p>
                      )})}</p>
             </div>
+            {/* <div>
+            <button><p> mark As delivered delivered</p></button>
+            </div> */}
             <div>
-            <p>delivered:{items.is_delivered}</p>
+            <p>Id : {items._id}</p>
+            </div>
+
+            </div>
+    })
+
+
+
+
+
+    var  completed_orders = props.completed_orders
+    
+
+
+    let counter9 = 0;
+    for (let i = 0; i < completed_orders.length; i++) {
+        if (completed_orders[i]) counter9++;
+    }
+    console.log(counter9)
+
+    const completed_ordersItems = completed_orders.map((items, index) => {
+        return <div key ={index} className="card" style={{width: "18rem"}}>
+            <div>
+            <h1>{items.fullname}</h1>
+            </div>
+            <div>
+                <h1>{items.address.Street1}</h1>
+            </div>
+            <div>
+                <h1>{items.address.Street2}</h1>
+            </div>
+             <div>
+                <h1>{items.address.city} , {items.address.state} - {items.address.zip}</h1>
+            </div>
+           <div>
+                <p>Phone No. : {items.phone}</p>
+            </div>
+                <h2>Order Details</h2>
+             <div>
+                 <p>{items.cart.map(cartItems => {
+                     return(
+                     <p><h1>{cartItems.title} - {cartItems.qty}</h1></p>
+                     )})}</p>
+            </div>
+            <div>
+            <button onClick = {() => handleNotDeliveried({items})}><p> mark As Not delivered delivered</p></button>
             </div>
             <div>
             <p>Id : {items._id}</p>
@@ -391,6 +440,104 @@ function ProductManage(props) {
 
 
 
+
+    var  pending_orders = props.pending_orders
+    
+
+    let counter10 = 0;
+    for (let i = 0; i < pending_orders.length; i++) {
+        if (pending_orders[i]) counter10++;
+    }
+    console.log(counter10)
+
+    const pending_ordersItems = pending_orders.map((items, index) => {
+        return <div key ={index} className="card" style={{width: "18rem"}}>
+            <div>
+            <h1>{items.fullname}</h1>
+            </div>
+            <div>
+                <h1>{items.address.Street1}</h1>
+            </div>
+            <div>
+                <h1>{items.address.Street2}</h1>
+            </div>
+             <div>
+                <h1>{items.address.city} , {items.address.state} - {items.address.zip}</h1>
+            </div>
+           <div>
+                <p>Phone No. : {items.phone}</p>
+            </div>
+                <h2>Order Details</h2>
+             <div>
+                 <p>{items.cart.map(cartItems => {
+                     return(
+                     <p><h1>{cartItems.title} - {cartItems.qty}</h1></p>
+                     )})}</p>
+            </div>
+            <div>
+            <button onClick = {() => handleDeliveried({items})}><p> mark As delivered delivered</p></button>
+            </div>
+            <div>
+            <p>Id : {items._id}</p>
+            </div>
+
+            </div>
+    })
+
+
+
+    const handleDeliveried = (items) => {
+        console.log(items.items._id)
+       const _id = items.items._id
+        console.log(_id)
+
+
+        fetch (`http://localhost:5000/change_to_delivered/${_id}`,{
+        method: 'PATCH',
+
+        
+        
+    }).then(response => response.json())
+    .then(result => {
+        if(result.success) {
+
+          alert("Products Has Been Delivered")
+          window.location.reload(false);
+
+        }
+
+    }).catch(error => {
+        console.log(error)
+    })
+
+    }
+
+
+    const handleNotDeliveried = (items) => {
+        console.log(items.items._id)
+       const _id = items.items._id
+        console.log(_id)
+
+
+        fetch (`http://localhost:5000/change_to_not_delivered/${_id}`,{
+        method: 'PATCH',
+
+        
+        
+    }).then(response => response.json())
+    .then(result => {
+        if(result.success) {
+
+          alert("Delivery Has Been Moved to Pending")
+          window.location.reload(false);
+
+        }
+
+    }).catch(error => {
+        console.log(error)
+    })
+
+    }
 
   const handleSave = () => {
     const token = localStorage.getItem('adminToken')
@@ -524,8 +671,8 @@ function ProductManage(props) {
                 </div>
 
                 <MDBBtn onClick={toggleEightElement} className="collapse_btn_title mt-3">All Orders (total Orders: {counter8})</MDBBtn>
-                <MDBBtn onClick={toggleNineElement} className="collapse_btn_title mt-3">Pending Orders (total Orders: {counter6})</MDBBtn>
-                <MDBBtn onClick={toggleTenElement} className="collapse_btn_title mt-3">Completed Orders (total Orders: {counter7})</MDBBtn>
+                <MDBBtn onClick={toggleNineElement} className="collapse_btn_title mt-3">Pending Orders (total Orders: {counter10})</MDBBtn>
+                <MDBBtn onClick={toggleTenElement} className="collapse_btn_title mt-3">Completed Orders (total Orders: {counter9})</MDBBtn>
                 <MDBBtn onClick={toggleAllElements3} className="collapse_btn_title mt-3"> Show All</MDBBtn>
 
                 <MDBRow>
@@ -539,13 +686,13 @@ function ProductManage(props) {
                     <MDBCol>
                         <MDBCollapse show={showNineElement} className='mt-3 card_flex best-book-h1'>
                             <div><h1>Pending Orders</h1></div>
-
+                            {pending_ordersItems}
                         </MDBCollapse>
                     </MDBCol>
                     <MDBCol>
                         <MDBCollapse show={showTenElement} className='mt-3 card_flex best-book-h1'>
                             <div><h1>Completed Orders</h1></div>
-
+                            {completed_ordersItems}
                         </MDBCollapse>
                     </MDBCol>
                 </MDBRow>
@@ -623,6 +770,8 @@ const mapStateToProps = (state) => {
         staff : state.staff,
         users: state.users,
         orders:state.orders,
+        completed_orders:state.completed_orders,
+        pending_orders:state.pending_orders,
 
     }
 }

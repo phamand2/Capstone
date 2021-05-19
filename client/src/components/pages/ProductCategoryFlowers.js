@@ -17,7 +17,7 @@ const ProductCategoryFlower = (props) =>{
         props.onMoreDetails(items)
     }
 
-     const handleAddToCart = (product) => {
+    const handleAddToCart = (product) => {
         props.onAddToCart(product)
         alert("Item has been added to your cart!")
     }
