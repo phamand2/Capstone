@@ -717,7 +717,7 @@ function ProductManage(props) {
             <>
                 <div id="header">
 
-                    <h1>Orders</h1>
+                    <h2>Orders</h2>
 
                 </div>
 
@@ -753,7 +753,7 @@ function ProductManage(props) {
             <div id="box-admin">
             <>
                 <div id="header">
-                    <h1>All Admin / Staff / Users list</h1>
+                    <h2>All Admin / Staff / Users list</h2>
 
                 </div>
 
