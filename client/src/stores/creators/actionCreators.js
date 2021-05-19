@@ -6,7 +6,7 @@ export const loadProducts = () => {
         
 
         // api call to fetch all products 
-        fetch('http://localhost:5000/all-products')
+        fetch('/all-products')
             .then(response => response.json())
             .then (products => {
                 // console.log(products)
