@@ -49,10 +49,16 @@ export const loadProducts = () => {
 }
 export const loadAllUsers = () => {
     return(dispatch) => {
-        
+        const token = localStorage.getItem('adminToken')
+
 
         // api call to fetch all admins 
-        fetch('http://localhost:5000/all-admins')
+        fetch('http://localhost:5000/admin/all-admins', {
+            method: 'GET',
+            headers: {
+                'authorization':`Bearer ${token}`,
+                
+            }})
             .then(response => response.json())
             .then (admins => {
                 // console.log(products)
@@ -62,7 +68,12 @@ export const loadAllUsers = () => {
         })
 
         // api call to fetch all staff 
-        fetch('http://localhost:5000/all-staff')
+        fetch('http://localhost:5000/admin/all-staff', {
+            method: 'GET',
+            headers: {
+                'authorization':`Bearer ${token}`,
+                'Content-type': 'application/json'
+            }})
             .then(response => response.json())
             .then (staff => {
                 // console.log(vegetable)
@@ -72,7 +83,12 @@ export const loadAllUsers = () => {
         })
 
         // api call to fetch all users 
-        fetch('http://localhost:5000/all-users')
+        fetch('http://localhost:5000/admin/all-users', {
+            method: 'GET',
+            headers: {
+                'authorization':`Bearer ${token}`,
+                'Content-type': 'application/json'
+            }})
             .then(response => response.json())
             .then (user => {
                 // console.log(fruit)
@@ -88,10 +104,15 @@ export const loadAllUsers = () => {
 
 export const LoadOrders = () => {
     return(dispatch) => {
-        
+        const token = localStorage.getItem('adminToken')
 
         // api call to fetch all orders 
-        fetch('http://localhost:5000/all-orders')
+        fetch('http://localhost:5000/admin/all-orders', {
+            method: 'GET',
+            headers: {
+                'authorization':`Bearer ${token}`,
+                'Content-type': 'application/json'
+            }})
             .then(response => response.json())
             .then (orders => {
                 // console.log(products)
@@ -101,7 +122,12 @@ export const LoadOrders = () => {
         })
 
         // api call to fetch all staff 
-        fetch('http://localhost:5000/completed-orders')
+        fetch('http://localhost:5000/admin/completed-orders', {
+            method: 'GET',
+            headers: {
+                'authorization':`Bearer ${token}`,
+                'Content-type': 'application/json'
+            }})
             .then(response => response.json())
             .then (orders => {
                 // console.log(vegetable)
@@ -111,7 +137,12 @@ export const LoadOrders = () => {
         })
 
         // api call to fetch all users 
-        fetch('http://localhost:5000/pending-orders')
+        fetch('http://localhost:5000/admin/pending-orders', {
+            method: 'GET',
+            headers: {
+                'authorization':`Bearer ${token}`,
+                'Content-type': 'application/json'
+            }})
             .then(response => response.json())
             .then (orders => {
                 // console.log(fruit)
