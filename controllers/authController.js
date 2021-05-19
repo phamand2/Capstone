@@ -58,10 +58,7 @@ exports.customerForgotPassword = async(req, res, next) => {
 
         const resetToken = customer.getResetPasswordToken()
             await customer.save()
-            //if deployed to fruveflow
-            // const resetUrl = `https://fruveflow.herokuapp.com/auth/customer-reset-password/${resetToken}`
-            // if deployed to shopfruveflow
-            const resetUrl = `https://shopfruveflow.herokuapp.com/auth/customer-reset-password/${resetToken}`
+            const resetUrl = `${process.env.FRUVEFLOW_URL}/auth/customer-reset-password/${resetToken}`
 
             const message = `
                 <h1>You have requested a password reset.</h1>
@@ -171,10 +168,7 @@ exports.adminForgotPassword = async (req, res, next) => {
 
         const resetToken = admin.getResetPasswordToken()
             await admin.save()
-            //if deployed to fruveflow
-            // const resetUrl = `https://fruveflow.herokuapp.com/auth/admin-reset-password/${resetToken}`
-            // if deployed to shopfruveflow
-            const resetUrl = `https://shopfruveflow.herokuapp.com/auth/admin-reset-password/${resetToken}`
+            const resetUrl = `${process.env.FRUVEFLOW_URL}/auth/admin-reset-password/${resetToken}`
             const message = `
                 <h1>You have requested a password reset.</h1>
                 <p>Follow this link to reset your password:</p>
@@ -282,10 +276,7 @@ exports.staffForgotPassword = async (req, res, next) => {
 
         const resetToken = staff.getResetPasswordToken()
             await staff.save()
-            //if deployed to fruveflow
-            // const resetUrl = `https://fruveflow.herokuapp.com/auth/staff-reset-password/${resetToken}`
-            // if deployed to shopfruveflow
-            const resetUrl = `https://shopfruveflow.herokuapp.com/auth/staff-reset-password/${resetToken}`
+            const resetUrl = `${process.env.FRUVEFLOW_URL}/auth/staff-reset-password/${resetToken}`
             const message = `
                 <h1>You have requested a password reset.</h1>
                 <p>Follow this link to reset your password:</p>
